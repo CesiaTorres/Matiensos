@@ -12,3 +12,7 @@ Route::get('/contacto', function () {
     // Busca el archivo contacto.blade.php dentro de la carpeta resources/views/front/
     return view('front.contacto'); 
 });
+
+Route::get('/', function () {
+    return view('front.inicio');
+});
