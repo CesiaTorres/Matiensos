@@ -13,15 +13,15 @@
             </div>
 
             {{-- Columna 2: Info --}}
-            <div class="col-md-5 mb-4 px-md-5 border-start border-secondary border-opacity-25">
-                <h4>Sobre Nosotros</h4>
+            <div class="col-md-5 mb-4 ">
+                <h4>Contactos</h4>
                 <p><i class="bi bi-whatsapp me-2"></i> 3782456372</p>
                 <p><i class="bi bi-envelope me-2"></i> Correo@gmail.com </p>
                 <p><i class="bi bi-geo-alt me-2"></i> Av. Las Heras 727, Corrientes</p>
             </div>
 
             {{-- Columna 3: Redes Sociales --}}
-            <div class="col-md-3 mb-4 px-md-5 border-start border-secondary border-opacity-25">
+            <div class="col-md-3 mb-4 ">
                 <h4>Seguinos</h4>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
