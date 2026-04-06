@@ -4,7 +4,7 @@
         {{-- Llamas a head --}}
         @include('partials.head') 
     </head>
-    <body>
+    <body id="top">
 
         {{-- Llamas a navbar --}}
         @include('partials.navbar')
