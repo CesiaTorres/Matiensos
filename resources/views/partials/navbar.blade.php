@@ -2,7 +2,7 @@
     <div class="container-fluid">
         {{-- Seccion logo + titulo --}}
         <a class="navbar-brand" href="{{ route('inicio') }}">
-            <span class="d-flex align-items-center fs-1 fw-bold text-success">🧉Matiensos</span>
+            <span class="d-flex align-items-center fs-1 text-light">🧉Matiensos</span>
         </a>
         
         {{-- Adapta las opciones que siguen a pantalla de celulares --}}
@@ -12,7 +12,7 @@
         
         <div class="collapse navbar-collapse" id="navbarContent"> 
             {{-- Seccion de opciones centrales 'Productos', 'Nosotros' y 'Contacto' --}}
-            <ul class="navbar-nav mx-auto text-secondary">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         Productos
@@ -27,10 +27,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <a class="nav-link" href="{{ route('nosotros') }}">Nosotros</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contacto') }}">Preguntas Frecuentes</a>
                 </li>
             </ul>
 

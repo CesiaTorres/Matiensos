@@ -41,7 +41,7 @@
 }
 
 /* bg del body */
-body {
+.body {
     background-color: #F5F5F5 ;
 }
 
@@ -49,11 +49,19 @@ body {
 
 /* Maneja el tamaño, color y efectos de los links en iconos */
 .nav-link-icon {
-    color: #333;
+    color: #f8fdfa;
     font-size: 1.5rem;
     text-decoration: none;
     transition: 0.3s;
 }
 .nav-link-icon:hover { /*pseudo-clase*/
     color: #1c814c; /* Verde al pasar el mouse */
+}
+.nav-link {
+    color: #f8fdfa;
+    text-align: center;
+}
+.nav-link:hover{
+    font-weight: bold;
+    color: #f8fdfa;
 }
