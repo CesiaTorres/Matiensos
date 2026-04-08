@@ -6,7 +6,7 @@
 
 {{-- 3. Aquí metemos el contenido real de la sección --}}
 @section('content')
-<section class="container my-5">
+<section class="container my-5 ">
     <div class="row">
         <div class="col-md-6">
             <h2>Contacto</h2>

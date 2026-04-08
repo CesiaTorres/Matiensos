@@ -5,17 +5,23 @@
     font-size: 35px;
     font-weight: bolder;  /* Negrita */
     letter-spacing: 1px; /* Esto separa un poquito las letras */
-    color: #1c814c; /* Color específico */
+    color: #f8fdfa; /* Color específico */
     align-items: center;
     display: flex;
+    
 }
 
 /*NAVEGACION CENTRALES*/
 
 /*Estilo para los links (Productos, Nosotros, Contacto) */
 .opc-nav .nav-link {
-    color: #333;
+    color: #f8fdfa ;
     font-weight: 500;
+    align-items: center;
+
+}
+.opc-nav .nav-link:hover { /*pseudo-clase*/
+    color: #1c814c; /* Verde al pasar el mouse */
 }
 /*Estilo para la cajita desplegable (dropdown) */
 .opc-nav .dropdown-menu {
@@ -41,7 +47,7 @@
 }
 /* Maneja el tamaño, color y efectos de los botones iconos */
 .icon-nav-btn {
-    color: #333;
+    color:#f8fdfa;
     font-size: 1.5rem;
     text-decoration: none;
     position: relative; /* Para que el numerito del carrito flote */
@@ -83,4 +89,15 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* background del navbar personalizado*/
+
+.bg-navbar {
+    background-color: #386150;
+}
+
+/* bg del body */
+body {
+    background-color: #F5F5F5 ;
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+<nav class="navbar navbar-expand-lg bg-navbar border-bottom">
     <div class="container-fluid">
         {{-- Seccion logo + titulo --}}
         <a class="navbar-brand" href="{{ route('inicio') }}">
