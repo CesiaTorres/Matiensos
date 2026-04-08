@@ -34,6 +34,17 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* background del navbar personalizado*/
+
+.bg-navbar {
+    background-color: #386150;
+}
+
+/* bg del body */
+body {
+    background-color: #F5F5F5 ;
+}
+
 /*OPCIONES ICONOS (DCHA)*/
 
 /* Maneja el tamaño, color y efectos de los links en iconos */
