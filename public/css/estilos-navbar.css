@@ -1,72 +1,21 @@
 /*BARRA DE NAVEGACION*/
 
-/*TITULO*/
-.title-nav {
-    font-size: 35px;
-    font-weight: bolder;  /* Negrita */
-    letter-spacing: 1px; /* Esto separa un poquito las letras */
-    color: #1c814c; /* Color específico */
-    align-items: center;
-    display: flex;
-}
-
 /*NAVEGACION CENTRALES*/
 
-/*Estilo para los links (Productos, Nosotros, Contacto) */
-.opc-nav .nav-link {
-    color: #333;
-    font-weight: 500;
-}
 /*Estilo para la cajita desplegable (dropdown) */
-.opc-nav .dropdown-menu {
+.dropdown-menu {
     border: none;
     border-radius: 12px;
     padding: 10px;
 }
-/*Estilo al pasar el mouse sobre los iconos*/
-.opc-nav .dropdown-item:hover {
-    background-color: #f8fdfa;
+.dropdown-item:hover {
+    background-color: #dde8e1;
     color: #1c814c;
     border-radius: 8px;
 }
-
-/*OPCIONES ICONOS (DCHA)*/
-
-/*Iconos config*/
-.icon-nav-config {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Empuja todo a la derecha */
-    gap: 20px;         /* Espacio entre los elementos */
-}
-/* Maneja el tamaño, color y efectos de los botones iconos */
-.icon-nav-btn {
-    color: #333;
-    font-size: 1.5rem;
-    text-decoration: none;
-    position: relative; /* Para que el numerito del carrito flote */
-    transition: 0.3s;
-}
-.icon-nav-btn:hover { /*pseudo-clase*/
-    color: #1c814c; /* Verde al pasar el mouse */
-}
-
 .dropdown-toggle::after { /*pseudo-elemento*/
     display: none;  /*Oculta la flecha de los menu desplegables*/ 
 }
-
-/* Extra: El circulito rojo del carrito (badge) */
-.badge-notif {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: #dc3545;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.7rem;
-}
-
 /* --- ABRIR DROPDOWNS AL PASAR EL MOUSE --- */
 @media (min-width: 992px) { /* Solo para pantallas grandes (Laptops y PC) */
     .dropdown:hover > .dropdown-menu {
@@ -83,4 +32,17 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/*OPCIONES ICONOS (DCHA)*/
+
+/* Maneja el tamaño, color y efectos de los links en iconos */
+.nav-link-icon {
+    color: #333;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.nav-link-icon:hover { /*pseudo-clase*/
+    color: #1c814c; /* Verde al pasar el mouse */
 }
