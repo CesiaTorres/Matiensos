@@ -24,9 +24,9 @@
             <div class="col-md-3 mb-4 ">
                 <h4>Seguinos</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
-                    <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
-                    <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
+                    <li><a href="https://twitter.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
                 </ul>
                  {{-- Botón Ir Arriba --}}
                 <div class="col-12 d-flex justify-content-center justify-content-md-start mt-4">
