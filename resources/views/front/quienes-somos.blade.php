@@ -4,7 +4,9 @@
 
 @section('content')
 <section>
-    <p class="text-start">'Quiénes Somos' en construcción.</p>
+    <div class="container py-5">
+        <h2 class="text-center">'Quiénes Somos' en construcción.</h2>
+    </div>
 </section>
 
 @endsection

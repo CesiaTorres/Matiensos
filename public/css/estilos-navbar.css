@@ -79,3 +79,16 @@
 .nav-link.show {
     font-weight: bold;
 }
+
+
+/*Tipografia*/
+/* Para los títulos del Navbar y Footer */
+h1, h2, h3, h4, .navbar-brand {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+}
+
+/* Para los enlaces del menú, textos de productos y el resto */
+body, .nav-link, .dropdown-item {
+    font-family: 'Montserrat', sans-serif;
+}

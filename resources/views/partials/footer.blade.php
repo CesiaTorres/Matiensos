@@ -1,44 +1,51 @@
 <footer class="bg-dark text-light py-5 mt-auto">
-    <div class="container text-center text-md-start">
-        <div class="row justify-content-between">
+    <div class="container">
+        <div class="row text-center text-md-start">
             
             {{-- Columna 1: Categorías --}}
-            <div class="col-md-3 mb-4">
+            <div class="col-md-3 col-sm-6 mb-4">
                 <h4>Categorías</h4>
                 <ul class="list-unstyled">
-                    <li><a href="{{ url('/productos') }}" class="text-decoration-none text-light">Productos</a></li>
-                    <li><a href="{{ url('/nosotros') }}" class="text-decoration-none text-light">Nosotros</a></li>
-                    <li><a href="{{ url('/contacto') }}" class="text-decoration-none text-light">Contactos</a></li>
+                    <li><a href="{{ route('productos') }}" class="text-decoration-none text-light opacity-75">Productos</a></li>
+                    <li><a href="{{ route('quienes-somos') }}" class="text-decoration-none text-light opacity-75">Quiénes Somos</a></li>
+                    <li><a href="{{ route('contacto') }}" class="text-decoration-none text-light opacity-75">Contactos</a></li>
                 </ul>
             </div>
 
-            {{-- Columna 2: Info --}}
-            <div class="col-md-5 mb-4 ">
+            {{-- Columna 2: Contactos --}}
+            <div class="col-md-3 col-sm-6 mb-4">
                 <h4>Contactos</h4>
-                <p><i class="bi bi-whatsapp me-2"></i> 3782456372</p>
-                <p><i class="bi bi-envelope me-2"></i> Correo@gmail.com </p>
-                <p><i class="bi bi-geo-alt me-2"></i> Av. Las Heras 727, Corrientes</p>
+                <p class="mb-2 text-light opacity-75"><i class="bi bi-whatsapp me-2"></i> 3782456372</p>
+                <p class="mb-2 text-light opacity-75"><i class="bi bi-envelope me-2"></i> Matiensos@gmail.com</p>
+                <p class="mb-2 text-light opacity-75"><i class="bi bi-geo-alt me-2"></i> Av. Las Heras 727, Corrientes</p>
             </div>
 
-            {{-- Columna 3: Redes Sociales --}}
-            <div class="col-md-3 mb-4 ">
-                <h4>Seguinos</h4>
+            {{-- Columna 3: Legales --}}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <h4>Términos y Legales</h4>
                 <ul class="list-unstyled">
-                    <li><a href="https://www.facebook.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
-                    <li><a href="https://twitter.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
-                    <li><a href="https://www.instagram.com/" target="_blank" class="text-decoration-none text-light"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+                    <li><a href="#" class="text-decoration-none text-light opacity-75">Términos de uso</a></li>
+                    <li><a href="#" class="text-decoration-none text-light opacity-75">Legales</a></li>
                 </ul>
-                 {{-- Botón Ir Arriba --}}
-                <div class="col-12 d-flex justify-content-center justify-content-md-start mt-4">
-                <a href="#top" class="btn btn-outline-light btn-sm">
+            </div>
+
+            {{-- Columna 4: Seguinos --}}
+            <div class="col-md-3 col-sm-6 mb-4">
+                <h4>Redes sociales</h4>
+                <ul class="list-unstyled mb-3">
+                    <li><a href="#" class="text-decoration-none text-light opacity-75"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
+                    <li><a href="#" class="text-decoration-none text-light opacity-75"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
+                    <li><a href="#" class="text-decoration-none text-light opacity-75"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+                </ul>
+                <a href="#top" class="btn btn-outline-light btn-sm mt-2">
                     <i class="bi bi-arrow-up"></i> Ir arriba
                 </a>
             </div>
-            </div>
-        
-        <hr class="bg-light my-4">
 
-        {{-- Copyright --}}
+        </div>
+        
+        <hr class="bg-light opacity-25 my-4">
+
         <div class="row">
             <div class="col-12 text-center">
                 <p class="mb-0 small opacity-75">Derechos de autor &copy; 2026 Universidad Nacional del Nordeste. Todos los derechos reservados.</p>
