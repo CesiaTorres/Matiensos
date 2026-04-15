@@ -42,7 +42,7 @@
 
 /* bg del body */
 .body {
-    background-color: #F5F5F5 ;
+    background-color: #FAF9F6 ;
 }
 
 /*OPCIONES ICONOS (DCHA)*/
@@ -66,3 +66,17 @@
     color: #f8fdfa;
 }
     
+/**Carrousel principal */
+.img-banner {
+    width: 100%;       /* Ocupa el ancho del contenedor */
+    height: 450px;     /* Altura fija para que no sea gigante en PC */
+    object-fit: cover; /* Recorta los bordes para no deformar la imagen */
+    object-position: center;
+}
+
+/* Ajuste para celulares (Pantallas menores a 768px) */
+@media (max-width: 768px) {
+    .img-banner {
+        height: 250px; /* En el celu es más bajito para que se vea mejor */
+    }
+}

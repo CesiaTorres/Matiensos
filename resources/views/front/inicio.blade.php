@@ -5,14 +5,14 @@
 @section('content')
 <section>
     {{--Banner de inicio con carrusel de imágenes --}}
-
+<section class="w-100">
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('images/banneroficial1.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/banner-1.0.svg') }}" class="d-block img-banner" alt="banner 1">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('images/banner-2.png') }}" class="d-block w-100" alt="...">
+      <img src="{{ asset('img/banner-2.0.svg') }}" class="d-block img-banner" alt="banner 2">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -24,136 +24,173 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+</section>
 {{--Fin carousel--}}
 
-{{-- Seccion de productos destacados --}}
-<div>
-    <h2 class="text-start my-5 ">Productos Destacados</h2>
+{{-- Sección de productos destacados con Carrusel --}}
 <div class="container my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-    {{-- Producto 1 --}}
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-mate.jpg" class="card-img-top" alt="Mate Imperial">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Mates</small>
-          <h5 class="card-title">Mate Imperial Premium</h5>
-          <p class="card-text fw-bold text-success fs-4">$25.000</p>
-          <p class="card-text text-secondary small">Calabaza forrada en cuero con virola de alpaca cincelada.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h2 class="text-start mb-5">Productos Destacados</h2>
 
-    {{-- Producto 2 --}}
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-yerba.jpg" class="card-img-top" alt="Yerba Mate">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Yerbas</small>
-          <h5 class="card-title">Yerba Mate Orgánica 1kg</h5>
-          <p class="card-text fw-bold text-success fs-4">$4.500</p>
-          <p class="card-text text-secondary small">Estacionamiento natural de 24 meses. Sabor suave.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
+    <div id="carouselProductos" class="carousel slide" data-bs-interval="false">
+        <div class="carousel-inner">
+            
+            {{-- GRUPO 1: Primeros 4 productos --}}
+            <div class="carousel-item active">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    
+                    {{-- Producto 1 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Mate Imperial">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Mates</small>
+                                <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
+                                <p class="card-text fw-bold text-success fs-4">$25.000</p>
+                                <p class="card-text text-secondary small">Calabaza forrada en cuero con virola de alpaca cincelada.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 2 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Yerba Mate">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Yerbas</small>
+                                <h5 class="card-title fw-bold">Yerba Mate Orgánica 1kg</h5>
+                                <p class="card-text fw-bold text-success fs-4">$4.500</p>
+                                <p class="card-text text-secondary small">Estacionamiento natural de 24 meses. Sabor suave.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 3 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Kit Selección">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Kits</small>
+                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <p class="card-text fw-bold text-success fs-4">$45.000</p>
+                                <p class="card-text text-secondary small">Incluye termo, mate y bombilla con logo oficial AFA.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 4 (Ejemplo para completar la fila) --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Termo">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Accesorios</small>
+                                <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
+                                <p class="card-text fw-bold text-success fs-4">$32.000</p>
+                                <p class="card-text text-secondary small">Mantiene el agua caliente por 24hs. Resistente a golpes.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> {{-- Fin Row --}}
+            </div> {{-- Fin Carousel Item --}}
+                      {{-- GRUPO 1: Primeros 4 productos --}}
+            <div class="carousel-item ">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    
+                    {{-- Producto 1 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Mate Imperial">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Mates</small>
+                                <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
+                                <p class="card-text fw-bold text-success fs-4">$25.000</p>
+                                <p class="card-text text-secondary small">Calabaza forrada en cuero con virola de alpaca cincelada.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 2 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Yerba Mate">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Yerbas</small>
+                                <h5 class="card-title fw-bold">Yerba Mate Orgánica 1kg</h5>
+                                <p class="card-text fw-bold text-success fs-4">$4.500</p>
+                                <p class="card-text text-secondary small">Estacionamiento natural de 24 meses. Sabor suave.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 3 --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Kit Selección">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Kits</small>
+                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <p class="card-text fw-bold text-success fs-4">$45.000</p>
+                                <p class="card-text text-secondary small">Incluye termo, mate y bombilla con logo oficial AFA.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Producto 4 (Ejemplo para completar la fila) --}}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ asset('img/produc1.png') }}" class="card-img-top p-2" alt="Termo">
+                            <div class="card-body d-flex flex-column">
+                                <small class="text-muted mb-2">Accesorios</small>
+                                <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
+                                <p class="card-text fw-bold text-success fs-4">$32.000</p>
+                                <p class="card-text text-secondary small">Mantiene el agua caliente por 24hs. Resistente a golpes.</p>
+                                <div class="mt-auto">
+                                    <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> {{-- Fin Row --}}
+            </div>
+            {{-- GRUPO 2: Podés agregar 4 productos más aquí de la misma forma --}}
+
         </div>
-      </div>
+
+        {{-- Botones de navegación (Personalizados para que no tapen las fotos) --}}
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev" style="width: 2%; filter: invert(1);">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next" style="width: 2%; filter: invert(1);">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
-{{-- Producto 3 --}}
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-kit-seleccion.jpg" class="card-img-top" alt="Kit Selección">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Kits</small>
-          <h5 class="card-title">Combo "El Campeón"</h5>
-          <p class="card-text fw-bold text-success fs-4">$45.000</p>
-          <p class="card-text text-secondary small">Incluye termo, mate y bombilla con logo oficial AFA.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-{{-- Producto 4 --}}
-    <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-bombilla.jpg" class="card-img-top" alt="Bombilla Pico Loro">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Bombillas</small>
-          <h5 class="card-title">Bombilla Pico de Loro</h5>
-          <p class="card-text fw-bold text-success fs-4">$8.200</p>
-          <p class="card-text text-secondary small">Acero inoxidable quirúrgico, desarmable para limpieza.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-{{-- Producto 5 --}}
-     <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-bombilla.jpg" class="card-img-top" alt="Bombilla Pico Loro">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Bombillas</small>
-          <h5 class="card-title">Bombilla Pico de Loro</h5>
-          <p class="card-text fw-bold text-success fs-4">$8.200</p>
-          <p class="card-text text-secondary small">Acero inoxidable quirúrgico, desarmable para limpieza.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-{{-- Producto 6 --}}    
-     <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-bombilla.jpg" class="card-img-top" alt="Bombilla Pico Loro">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Bombillas</small>
-          <h5 class="card-title">Bombilla Pico de Loro</h5>
-          <p class="card-text fw-bold text-success fs-4">$8.200</p>
-          <p class="card-text text-secondary small">Acero inoxidable quirúrgico, desarmable para limpieza.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-{{-- Producto 7 --}}
-     <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-bombilla.jpg" class="card-img-top" alt="Bombilla Pico Loro">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Bombillas</small>
-          <h5 class="card-title">Bombilla Pico de Loro</h5>
-          <p class="card-text fw-bold text-success fs-4">$8.200</p>
-          <p class="card-text text-secondary small">Acero inoxidable quirúrgico, desarmable para limpieza.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-{{-- Producto 8 --}}
-     <div class="col">
-      <div class="card h-100 shadow-sm">
-        <img src="images/producto-bombilla.jpg" class="card-img-top" alt="Bombilla Pico Loro">
-        <div class="card-body d-flex flex-column">
-          <small class="text-muted mb-2">Bombillas</small>
-          <h5 class="card-title">Bombilla Pico de Loro</h5>
-          <p class="card-text fw-bold text-success fs-4">$8.200</p>
-          <p class="card-text text-secondary small">Acero inoxidable quirúrgico, desarmable para limpieza.</p>
-          <div class="mt-auto">
-            <a href="#" class="btn btn-dark w-100">Agregar al carrito</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+    
+
 {{-- Fin productos destacados --}}
 
 {{-- Seccion promos--}}
@@ -176,7 +213,7 @@
   <img src="img/mate.png" class="card-img" alt="Promoción de Mates" style="filter: brightness(0.6);">
   
   <div class="card-img-overlay d-flex flex-column justify-content-start text-center">
-    <h5 class="card-title fw-bold fs-3">TERMOS</h5>
+    <h5 class="card-title fw-bold fs-3">BOMBILLAS</h5>
     <p class="card-text">La mejor calidad para tu ritual diario.</p>
     <a href="#" class="btn btn-outline-light mx-auto" style="width: fit-content;">Ver Colección</a>
   </div>
@@ -186,7 +223,7 @@
   <img src="img/mate.png" class="card-img" alt="Promoción de Mates" style="filter: brightness(0.6);">
   
   <div class="card-img-overlay d-flex flex-column justify-content-center text-center">
-    <h5 class="card-title fw-bold fs-3">KITS ARTESANALES</h5>
+    <h5 class="card-title fw-bold fs-3">TERMOS</h5>
     <p class="card-text">La mejor calidad para tu ritual diario.</p>
     <a href="#" class="btn btn-outline-light mx-auto" style="width: fit-content;">Ver Colección</a>
   </div>
