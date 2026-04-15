@@ -5,16 +5,14 @@
 @section('content')
 <section>
     {{--Banner de inicio con carrusel de imágenes --}}
- <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide custom-carousel" data-bs-ride="carousel">
+
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/banner-1.png" class="d-block w-100" alt="Banner 1">
+      <img src="{{ asset('images/banneroficial1.png') }}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/banner-2.png" class="d-block w-100" alt="Banner 2   ">
-    </div>
-    <div class="carousel-item">
-      <img src="img/banner-3.png" class="d-block w-100" alt="Banner 3">
+      <img src="{{ asset('images/banner-2.png') }}" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -29,6 +27,8 @@
 {{--Fin carousel--}}
 
 {{-- Seccion de productos destacados --}}
+<div>
+    <h2 class="text-start my-5 ">Productos Destacados</h2>
 <div class="container my-5">
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     {{-- Producto 1 --}}

@@ -65,15 +65,4 @@
     font-weight: bold;
     color: #f8fdfa;
 }
-
-/* Modifco altura de carousel */
-.custom-carousel .carousel-item {
-  height: 400px; /* Ajusta este valor (ej: 300px, 50vh)  */
-}
-
-/* Fuerza a la imagen a cubrir todo el espacio sin deformarse */
-.custom-carousel .carousel-item img {
-  height: 100%;
-  object-fit: cover; /* Recorta la imagen para que encaje, no la estira */
-  object-position: center; /* Centra el recorte para no perder el foco principal */
-}
+    
