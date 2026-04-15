@@ -13,21 +13,23 @@
     color: #1c814c;
     border-radius: 8px;
 }
-.dropdown-toggle::after { /*pseudo-elemento*/
+.dropdown-toggle::after {
     display: none;  /*Oculta la flecha de los menu desplegables*/ 
 }
-/* --- ABRIR DROPDOWNS AL PASAR EL MOUSE --- */
-@media (min-width: 992px) { /* Solo para pantallas grandes (Laptops y PC) */
+
+/*Aplica reglas hover si la pantalla es una laptor o pc*/
+@media (min-width: 992px) {
     .dropdown:hover > .dropdown-menu {
         display: block;
-        margin-top: 0; /* Evita que haya un hueco y se cierre el menú */
+        margin-top: 0;
     }
-
-    /* Efecto de aparición suave */
-    .dropdown-menu {
-        animation: fadeIn 0.3s ease;
+    /* Si el menú tiene la clase '-end', lo alineamos a la derecha */
+    .dropdown-menu-end {
+        right: 0;
+        left: auto;
     }
 }
+
 /* Animación de entrada suave */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -47,16 +49,17 @@
 
 /*OPCIONES ICONOS (DCHA)*/
 
-/* Maneja el tamaño, color y efectos de los links en iconos */
+/* Maneja el tamaño, color y efectos de los links*/
 .nav-link-icon {
     color: #f8fdfa;
     font-size: 1.5rem;
     text-decoration: none;
     transition: 0.3s;
 }
-.nav-link-icon:hover { /*pseudo-clase*/
+.nav-link-icon:hover {
     color: #1c814c; /* Verde al pasar el mouse */
 }
+
 .nav-link {
     color: #f8fdfa;
     text-align: center;
@@ -64,4 +67,15 @@
 .nav-link:hover{
     font-weight: bold;
     color: #f8fdfa;
+}
+
+/* Evita que el botón de Productos se ponga negro al hacer clic o estar abierto */
+.nav-link.show, 
+.nav-link:focus {
+    color: #f8fdfa !important; /* Mantiene tu color blanco hueso */
+}
+
+/* Si quieres que mantenga el estilo de negrita cuando está el menú abierto */
+.nav-link.show {
+    font-weight: bold;
 }

@@ -4,7 +4,7 @@
 
 @section('content')
 <section>
-    <p class="text-start">'Login' en construcción.</p>
+    <p class="text-start">'Inicio' en construcción.</p>
 </section>
 
 @endsection

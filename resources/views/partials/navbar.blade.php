@@ -1,10 +1,18 @@
-<nav class="navbar navbar-expand-lg bg-navbar border-bottom">
+<nav class="navbar navbar-expand-lg bg-navbar">
     <div class="container-fluid">
         {{-- Seccion logo + titulo --}}
+
         <a class="navbar-brand" href="{{ route('inicio') }}">
-            <span class="d-flex align-items-center fs-1 text-light">🧉Matiensos</span>
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('img/icon-mate-logo.png') }}" 
+                    alt="Logo Matiensos" 
+                    width="50" 
+                    height="50" 
+                    class="me-2">
+                <span class="fs-1 text-light">Matiensos</span>
+            </div>
         </a>
-        
+
         {{-- Adapta las opciones que siguen a pantalla de celulares --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +21,9 @@
         <div class="collapse navbar-collapse" id="navbarContent"> 
             {{-- Seccion de opciones centrales 'Productos', 'Nosotros' y 'Contacto' --}}
             <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         Productos
@@ -21,38 +32,35 @@
                         <li><a class="dropdown-item" href="#">Mates</a></li>
                         <li><a class="dropdown-item" href="#">Termos</a></li>
                         <li><a class="dropdown-item" href="#">Bombillas</a></li>
-                        <li><a class="dropdown-item" href="#">Bolsos</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Ver todos</a></li>
+                        <li><a class="dropdown-item" href="{{route('productos')}}">Ver todos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('nosotros') }}">Nosotros</a>
+                    <a class="nav-link" href="{{ route('quienes-somos') }}">Quiénes Somos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contacto') }}">Preguntas Frecuentes</a>
-                </li>
             </ul>
 
-            {{-- Seccion de opciones 'Usuario', 'Favoritos' y 'Carrito de compras' --}}
+            {{-- Seccion de opciones 'Usuario' y 'Carrito de compras' --}}
             <div class="d-flex align-items-center ms-auto gap-3">
                 {{-- ícono menu de Usuario. Opciones 'Iniciar Sesion' y 'Registrarse' --}}
+                <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-search"></i>
+                </a>
+
                 <div class="dropdown">
-                    <a class="nav-link-icon dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle "></i>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="{{route('login')}}">Iniciar Sesión</a></li>
                         <li><a class="dropdown-item" href="{{route('register')}}">Registrarse</a></li>
                     </ul>
                 </div>
-                {{-- Seccion de iconos de compras y favoritos --}}
-                <a href="#" class="nav-link-icon">
-                    <i class="bi bi-heart"></i>
-                </a>
+                
                 <a href="#" class="nav-link-icon position-relative">
                     <i class="bi bi-bag-fill"></i>
                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"

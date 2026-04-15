@@ -1,14 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+Route::get('/', function () {
+    return view('front.inicio');
+}) ->name('inicio');
+
 
 Route::get('/contacto', function () {
     return view('front.contacto'); 
 }) ->name('contacto');
 
-Route::get('/', function () {
-    return view('front.inicio');
-}) ->name('inicio');
+Route::get('/quienes-somos', function () {
+    return view('front.quienes-somos');
+}) ->name('quienes-somos');
+
 
 Route::get('/login', function () {
     return view('front.login');
@@ -18,6 +23,8 @@ Route::get('/register', function () {
     return view('front.register');
 }) ->name('register');
 
-Route::get('/nosotros', function () {
-    return view('front.nosotros');
-}) ->name('nosotros');
+
+
+Route::get('/productos', function () {
+    return view('front.products');
+}) ->name('productos');
