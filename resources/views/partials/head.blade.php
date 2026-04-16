@@ -15,5 +15,5 @@
 <link rel="stylesheet" href="{{ asset('css/estilos-navbar.css') }}">
 
 {{--favicon --}}
-<link rel="icon" type="image/png" href="{{ asset('favicon-mate.png') }}">
+<link rel="icon" type="image/png" href="{{ asset('favicon-icono-mate.png') }}">
 

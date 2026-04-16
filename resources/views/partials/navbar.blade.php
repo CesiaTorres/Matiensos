@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-navbar sticky-top">
+<nav class="navbar navbar-expand-lg bg-matiensos sticky-top">
     <div class="container-fluid">
         {{-- Seccion logo + titulo --}}
 

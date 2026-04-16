@@ -4,11 +4,10 @@
             
             {{-- Columna 1: Categorías --}}
             <div class="col-md-3 col-sm-6 mb-4">
-                <h4>Categorías</h4>
+                <h4>Información de Compras</h4>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('productos') }}" class="text-decoration-none text-light opacity-75">Productos</a></li>
-                    <li><a href="{{ route('quienes-somos') }}" class="text-decoration-none text-light opacity-75">Quiénes Somos</a></li>
-                    <li><a href="{{ route('contacto') }}" class="text-decoration-none text-light opacity-75">Contactos</a></li>
+                    <li><a href="{{ route('productos') }}" class="text-decoration-none text-light opacity-75">Envios y Entregas</a></li>
+                    <li><a href="{{ route('quienes-somos') }}" class="text-decoration-none text-light opacity-75">Medios de Pago</a></li>
                 </ul>
             </div>
 
@@ -24,12 +23,12 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <h4>Términos y Legales</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-decoration-none text-light opacity-75">Términos de uso</a></li>
+                    <li><a href="#" class="text-decoration-none text-light opacity-75">Términos y uso</a></li>
                     <li><a href="#" class="text-decoration-none text-light opacity-75">Legales</a></li>
                 </ul>
             </div>
 
-            {{-- Columna 4: Seguinos --}}
+            {{-- Columna 4: Redes sociales --}}
             <div class="col-md-3 col-sm-6 mb-4">
                 <h4>Redes sociales</h4>
                 <ul class="list-unstyled mb-3">

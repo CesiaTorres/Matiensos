@@ -38,7 +38,7 @@
 
 /* background del navbar personalizado*/
 
-.bg-navbar {
+.bg-matiensos {
     background-color: #386150;
 }
 
@@ -92,3 +92,17 @@ h1, h2, h3, h4, .navbar-brand {
 body, .nav-link, .dropdown-item {
     font-family: 'Montserrat', sans-serif;
 }
+
+/*BOTONES*/
+.btn-color-matiensos {
+    background-color: #386150;
+    border: none;
+}
+.btn-color-matiensos:hover {
+    background-color: #3d755a; /* Un verde un poco más claro */
+}
+/* Cuando el input está seleccionado (focus) */
+.form-control:focus {
+    border-color:  #386150; /* El color de tu borde verde */
+}
+

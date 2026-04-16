@@ -28,3 +28,7 @@ Route::get('/register', function () {
 Route::get('/productos', function () {
     return view('front.products');
 }) ->name('productos');
+
+Route::get('/terminos-y-usos', function () {
+    return view('front.terms');
+}) ->named('terminos-y-usos');

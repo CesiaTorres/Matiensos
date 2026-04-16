@@ -9,10 +9,10 @@
         {{-- Llamas a navbar --}}
         @include('partials.navbar')
 
-        <div class="content">
+        <main>
             {{-- Aquí se inyectará "Nosotros", "Inicio", etc. --}}
             @yield('content')
-        </div>
+        </main>
 
         {{-- Llamas a footer --}}
         @include('partials.footer')
