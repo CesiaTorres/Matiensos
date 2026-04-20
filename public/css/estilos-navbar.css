@@ -42,7 +42,7 @@
 
 /* bg del body */
 body {
-    background-color: #FAF9F6 ;
+    background-color: #eaeaea ;
 }
 
 /*OPCIONES ICONOS (DCHA)*/
@@ -79,4 +79,63 @@ body {
     .img-banner {
         height: 250px; /* En el celu es más bajito para que se vea mejor */
     }
+}
+
+/* Estilos de las cards*/
+.card {
+    border-radius: 12px; /* Esquinas redondeadas */
+    overflow: hidden; /* Para que las esquinas redondeadas funcionen */
+    border: none; /* Sin borde */
+}
+
+/* Estilos para la img de cada card */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+/*estilo para precio de las cards*/
+.card-text {
+  color: #386150;
+  font-weight: bold;
+}
+/*Estilo para el boton de productos*/
+.btn-custom {
+    background: #386150;
+    color: #f8fdfa;
+    border: none;
+    transition: 0.3s;
+}
+.btn-custom:hover {
+    background: #2f5242;
+    color: white;
+    font-weight: bold;
+}
+/* Estilos para las cards de categorías */
+/* Bordes de la card */
+.card {
+  border-radius: 20px;
+  background: #000;
+  overflow: hidden; /* para que la imagen respete el borde */
+}
+
+/* Botón personalizado */
+.btn-categoria {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-categoria:hover {
+  background: #386150;
+  border-color: #386150;
+  color: #ffffff;
+}
+.card-title {
+  margin-bottom: 10px;
+}
+
+.btn-categoria {
+  margin-top: 10px;
 }
