@@ -82,10 +82,11 @@ body {
 }
 
 /* Estilos de las cards*/
-.card {
+.card-producto {
     border-radius: 12px; /* Esquinas redondeadas */
     overflow: hidden; /* Para que las esquinas redondeadas funcionen */
     border: none; /* Sin borde */
+    background-color: #dde8e1;
 }
 
 /* Estilos para la img de cada card */
@@ -113,7 +114,7 @@ body {
 }
 /* Estilos para las cards de categorías */
 /* Bordes de la card */
-.card {
+.card-categoria {
   border-radius: 20px;
   background: #000;
   overflow: hidden; /* para que la imagen respete el borde */

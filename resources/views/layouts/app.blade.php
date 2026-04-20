@@ -6,7 +6,7 @@
     </head>
     <body id="top">
 
-        {{-- Llamas a navbar --}}
+        {{-- Llamas a navbar --}} 
         @include('partials.navbar')
 
         <div class="content">
