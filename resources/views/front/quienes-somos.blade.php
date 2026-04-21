@@ -3,51 +3,93 @@
 
 
 @section('content')
-<section class="container my-5">
-    <div class="row align-items-center">
-        <h2 class="display-4 text-center">Nuestra Esencia</h2>
-         <p class="lead text-center">
-            Somos un dos estudiantes universitarias que transformamos nuestra pasión por el mate en un proyecto que conecta 
-            tradición, calidad y comunidad en cada producto que ofrecemos.
-         </p>
-    </div>
-   
-    <div class="container my-5" >
-        <div class="text-center mb-5">
-            <h2 class="display-4 font-titles">Nuestro Propósito</h2>
-            <p class="lead opacity-75">Lo que nos impulsa a mejorar cada mañana.</p>
+<section> {{-- Contenido informatiovo --}}
+    <div class="container my-5">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-12 text-center">
+                <h1 class="mb-4">Nuestra Esencia</h1>
+                <p class="fs-5 text-secondary">
+                    Nacimos en el corazón de la UNNE, entre apuntes y termos compartidos. 
+                    Entendemos que el mate no es solo una bebida, sino el compañero fiel de cada estudio, 
+                    cada charla y cada nuevo proyecto.
+                </p>
+                <p class="fs-5 text-secondary">
+                    En <strong>Matiensos</strong>, seleccionamos productos regionales que representan 
+                    nuestra identidad: calidad artesanal, durabilidad y ese toque moderno que el matero de hoy busca.
+                </p>
+            </div>
         </div>
 
-        <div class="row g-4 justify-content-center">
-            {{-- Tarjeta: Misión --}}
-            <div class="col-md-5">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-bullseye fs-1 text-success"></i>
+        <div class="row g-4 py-5 border-top border-bottom mb-5 text-center">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <i class="bi bi-heart-fill fs-1 color-matiensos"></i>
+                </div>
+                <h5 class="fw-bold">Pasión Regional</h5>
+                <p class="small text-muted">Apoyamos a artesanos locales del NEA en cada pieza que ofrecemos.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <i class="bi bi-shield-check fs-1 color-matiensos"></i>
+                </div>
+                <h5 class="fw-bold">Calidad Premium</h5>
+                <p class="small text-muted">Productos diseñados para durar años, no solo temporadas.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <i class="bi bi-people-fill fs-1 color-matiensos"></i>
+                </div>
+                <h5 class="fw-bold">Comunidad</h5>
+                <p class="small text-muted">Creamos un espacio para que cada matero encuentre su estilo único.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-4">
+                <h3 class="fw-bold">El Equipo detrás del Termo</h3>
+            </div>
+            
+            <div class="col-md-4 col-lg-3">
+                <div class="card border-0 bg-light shadow-sm mb-4">
+                    <div class="card-body text-center p-4">
+                    <img src="{{ asset('img/staff/staffLuana.jpg') }}" 
+                            class="rounded-circle mx-auto d-block mb-3 shadow-sm border-matiensos" 
+                            alt="Foto 1"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <h5 class="fw-bold mb-1">Romero Luana</h5>
+                        <p class="text-muted small">Fundación & Estrategia</p>
                     </div>
-                    <h3 class="h4 mb-3 font-titles">Nuestra Misión</h3>
-                    <p class="text-muted">
-                        Revalorizar la cultura matera ofreciendo productos artesanales de excelencia, 
-                        conectando el trabajo de pequeños productores regionales con el hogar de cada argentino.
-                    </p>
                 </div>
             </div>
 
-            {{-- Tarjeta: Visión --}}
-            <div class="col-md-5">
-                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
-                    <div class="mb-3">
-                        <i class="bi bi-eye fs-1 text-success"></i>
+            <div class="col-md-4 col-lg-3">
+                <div class="card border-0 bg-light shadow-sm mb-4">
+                    <div class="card-body text-center p-4">
+                        <img src="{{ asset('img/staff/staffCesia.jpg') }}" 
+                            class="rounded-circle mx-auto d-block mb-3 shadow-sm border-matiensos" 
+                            alt="Foto 1"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <h5 class="fw-bold mb-1">Torres Cesia</h5>
+                        <p class="text-muted small">Diseño & Curaduría</p>
                     </div>
-                    <h3 class="h4 mb-3 font-titles">Nuestra Visión</h3>
-                    <p class="text-muted">
-                        Convertirnos en el referente nacional para el cebador exigente, 
-                        siendo reconocidos por la calidad, la transparencia y el respeto por nuestras tradiciones.
-                    </p>
                 </div>
             </div>
+        </div>
+        
+    </div>
+</section>
+
+<section> {{-- banner inferior --}}
+    <div class="row">
+        <div class="col-12 px-0">
+            <img src="{{ asset('img/others-pages/pava_mate.jpg') }}" 
+                 class="img-fluid w-100 rounded shadow-sm" 
+                 alt="Ritual del mate en la naturaleza"
+                 style="height: 400px; object-fit: cover;">
+            
         </div>
     </div>
 </section>
+
 
 @endsection

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-matiensos sticky-top">
+<nav class="navbar navbar-expand-lg bg-navbar sticky-top">
     <div class="container-fluid">
         {{-- Seccion logo + titulo --}}
 
@@ -56,8 +56,8 @@
                         <i class="bi bi-person-circle "></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{{route('login')}}">Iniciar Sesión</a></li>
-                        <li><a class="dropdown-item" href="{{route('register')}}">Registrarse</a></li>
+                        <li><a class="dropdown-item" href="{{route('acceso')}}">Iniciar Sesión</a></li>
+                        <li><a class="dropdown-item" href="{{route('registro')}}">Registrarse</a></li>
                     </ul>
                 </div>
                 

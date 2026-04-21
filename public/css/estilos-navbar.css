@@ -1,3 +1,5 @@
+/*BARRA DE NAVEGACION*/
+
 /*NAVEGACION CENTRALES*/
 
 /*Estilo para la cajita desplegable (dropdown) */
@@ -35,13 +37,14 @@
 }
 
 /* background del navbar personalizado*/
-.bg-matiensos {
+
+.bg-navbar {
     background-color: #386150;
 }
 
 /* bg del body */
-.body {
-    background-color: #F5F5F5 ;
+body {
+    background-color: #eaeaea ;
 }
 
 /*OPCIONES ICONOS (DCHA)*/
@@ -65,13 +68,116 @@
     font-weight: bold;
     color: #f8fdfa;
 }
+
 /* Evita que el botón de Productos se ponga negro al hacer clic o estar abierto */
 .nav-link.show, 
 .nav-link:focus {
     color: #f8fdfa !important; /* Mantiene tu color blanco hueso */
 }
-/* estilo de negrita cuando está el menú abierto */
+
+/* Si quieres que mantenga el estilo de negrita cuando está el menú abierto */
 .nav-link.show {
     font-weight: bold;
 }
 
+
+/*Tipografia*/
+/* Para los títulos del Navbar y Footer */
+h1, h2, h3, h4, .navbar-brand {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+}
+
+/* Para los enlaces del menú, textos de productos y el resto */
+body, .nav-link, .dropdown-item {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*BOTONES*/
+.btn-color-matiensos {
+    background-color: #386150;
+    border: none;
+}
+.btn-color-matiensos:hover {
+    background-color: #3d755a; /* Un verde un poco más claro */
+}
+/* Cuando el input está seleccionado (focus) */
+.form-control:focus {
+    border-color:  #386150; /* El color de tu borde verde */
+}
+
+    
+/**Carrousel principal */
+.img-banner {
+    width: 100%;       /* Ocupa el ancho del contenedor */
+    height: 450px;     /* Altura fija para que no sea gigante en PC */
+    object-fit: cover; /* Recorta los bordes para no deformar la imagen */
+    object-position: center;
+}
+
+/* Ajuste para celulares (Pantallas menores a 768px) */
+@media (max-width: 768px) {
+    .img-banner {
+        height: 250px; /* En el celu es más bajito para que se vea mejor */
+    }
+}
+
+/* Estilos de las cards*/
+.card-producto {
+    border-radius: 12px; /* Esquinas redondeadas */
+    overflow: hidden; /* Para que las esquinas redondeadas funcionen */
+    border: none; /* Sin borde */
+    background-color: #dde8e1;
+}
+
+/* Estilos para la img de cada card */
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+/*estilo para precio de las cards*/
+.card-text {
+  color: #386150;
+  font-weight: bold;
+}
+/*Estilo para el boton de productos*/
+.btn-custom {
+    background: #386150;
+    color: #f8fdfa;
+    border: none;
+    transition: 0.3s;
+}
+.btn-custom:hover {
+    background: #2f5242;
+    color: white;
+    font-weight: bold;
+}
+/* Estilos para las cards de categorías */
+/* Bordes de la card */
+.card-categoria {
+  border-radius: 20px;
+  background: #000;
+  overflow: hidden; /* para que la imagen respete el borde */
+}
+
+/* Botón personalizado */
+.btn-categoria {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-categoria:hover {
+  background: #386150;
+  border-color: #386150;
+  color: #ffffff;
+}
+.card-title {
+  margin-bottom: 10px;
+}
+
+.btn-categoria {
+  margin-top: 10px;
+}

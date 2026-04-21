@@ -40,7 +40,7 @@
                 <button type="submit" class="btn btn-color-matiensos text-white mt-4 fw-bold">Registrarse</button>
                 <div class="text-center mt-3">
                     <p class="small">¿Ya tienes cuenta? 
-                        <a href="{{ url('/login') }}" class="text-dark text-muted">Inicia sesión</a>
+                        <a href="{{ route('acceso') }}" class="text-dark text-muted">Inicia sesión</a>
                     </p>
                 </div>
             </form>

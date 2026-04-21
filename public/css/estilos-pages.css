@@ -1,6 +1,6 @@
 /*TIPOGRAFIA*/
 /* Para los títulos del Navbar y Footer */
-h1, h2, h3, h4, .navbar-brand {
+h1, h2, h3, h4, h5, .navbar-brand {
     font-family: 'Lora', serif;
     font-weight: 700;
 }
@@ -24,5 +24,9 @@ body, .nav-link, .dropdown-item {
 }
 /* Cuando el input está seleccionado (focus) */
 .form-control:focus {
-    border-color:  #386150; /* El color de tu borde verde */
+    border-color:  #386150;
+}
+
+.border-matiensos {
+    border: 3px solid #386150
 }

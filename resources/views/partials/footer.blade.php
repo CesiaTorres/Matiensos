@@ -6,7 +6,7 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <h4>Información de Compras</h4>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('productos') }}" class="text-decoration-none text-light opacity-75">Envios y Entregas</a></li>
+                    <li><a href="{{ route('envios-y-entregas') }}" class="text-decoration-none text-light opacity-75">Envios y Entregas</a></li>
                     <li><a href="{{ route('quienes-somos') }}" class="text-decoration-none text-light opacity-75">Medios de Pago</a></li>
                 </ul>
             </div>
