@@ -42,6 +42,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Comercialización
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('envios-y-entregas')}}">Envios y Entregas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('medios-de-pago') }}">Medios de Pago</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('quienes-somos') }}"></a>
+                </li>
             </ul>
 
             {{-- Seccion de opciones 'Usuario' y 'Carrito de compras' --}}

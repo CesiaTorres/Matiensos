@@ -25,21 +25,21 @@
                 <div class="mb-3">
                     <i class="bi bi-heart-fill fs-1 color-matiensos"></i>
                 </div>
-                <h5 class="fw-bold">Pasión Regional</h5>
+                <h4 class="fw-bold">Pasión Regional</h4>
                 <p class="small text-muted">Apoyamos a artesanos locales del NEA en cada pieza que ofrecemos.</p>
             </div>
             <div class="col-md-4">
                 <div class="mb-3">
                     <i class="bi bi-shield-check fs-1 color-matiensos"></i>
                 </div>
-                <h5 class="fw-bold">Calidad Premium</h5>
+                <h4 class="fw-bold">Calidad Premium</h4>
                 <p class="small text-muted">Productos diseñados para durar años, no solo temporadas.</p>
             </div>
             <div class="col-md-4">
                 <div class="mb-3">
                     <i class="bi bi-people-fill fs-1 color-matiensos"></i>
                 </div>
-                <h5 class="fw-bold">Comunidad</h5>
+                <h4 class="fw-bold">Comunidad</h4>
                 <p class="small text-muted">Creamos un espacio para que cada matero encuentre su estilo único.</p>
             </div>
         </div>

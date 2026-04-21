@@ -35,3 +35,6 @@ Route::get('/terminos-y-usos', function () {
 Route::get('/envios-y-entregas', function () {
     return view('front.envios');
 }) ->name('envios-y-entregas');
+Route::get('/medios-de-pago', function () {
+    return view('front.pagos');
+}) ->name('medios-de-pago');
