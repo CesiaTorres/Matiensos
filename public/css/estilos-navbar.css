@@ -108,18 +108,27 @@ body, .nav-link, .dropdown-item {
 
     
 /**Carrousel principal */
-.img-banner {
-    width: 100%;       /* Ocupa el ancho del contenedor */
-    height: 450px;     /* Altura fija para que no sea gigante en PC */
-    object-fit: cover; /* Recorta los bordes para no deformar la imagen */
-    object-position: center;
+.carousel-banner {
+  height: 70vh;
+  min-height: 250px;
 }
 
-/* Ajuste para celulares (Pantallas menores a 768px) */
+.carousel-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
-    .img-banner {
-        height: 250px; /* En el celu es más bajito para que se vea mejor */
-    }
+  .carousel-banner {
+    height: 50vh;
+  }
+}
+/* Celular */
+@media (max-width: 576px) {
+  .carousel-banner {
+    height: 40vh;
+  }
 }
 
 /* Estilos de las cards*/
@@ -180,4 +189,15 @@ body, .nav-link, .dropdown-item {
 
 .btn-categoria {
   margin-top: 10px;
+}
+
+/* tema id productos */
+html {
+  scroll-behavior: smooth;
+}
+
+#mates,
+#bombillas,
+#termos {
+  scroll-margin-top: 100px;
 }

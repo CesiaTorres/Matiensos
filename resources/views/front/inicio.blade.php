@@ -3,16 +3,15 @@
 
 
 @section('content')
-<section>
     {{--Banner de inicio con carrusel de imágenes --}}
-<section class="w-100">
+<section class="w-100 carousel-banner">
   <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('img/banner-1.0.svg') }}" class="d-block img-banner" alt="banner 1">
+      <img src="{{ asset('img/banner-1.0.svg') }}" class="d-block" alt="banner 1">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('img/banner-2.0.svg') }}" class="d-block img-banner" alt="banner 2">
+      <img src="{{ asset('img/banner-2.0.svg') }}" class="d-block" alt="banner 2">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -29,39 +28,40 @@
 
 {{-- Seccion Productos principales--}}
 
-{{-- MATE--}}
+
 <div class="container my-5">
     <h2 class="text-center mb-5">Categorías</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-    <div class="col d-flex">
+    <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+{{-- MATE--}}
+    <div class="col d-flex justify-content-center">
  <div class="card card-categoria text-white border-0 ">
   <img src="img/mate.svg" class="card-img h-100" alt="Promoción de Mates">
   
   <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
     <h5 class="card-title fw-bold fs-3">MATES</h5>
-    <a href="#" class="btn btn-categoria">Ver Colección</a>
+    <a href="{{ route('productos') }}#mates" class="btn btn-categoria">Ver Colección</a>
   </div>
   </div>
 </div>
 {{-- BOMBILLAS --}}
-<div class="col d-flex">
+<div class="col d-flex justify-content-center">
 <div class="card card-categoria text-white border-0 ">
   <img src="img/bombillas1.0.svg" class="card-img h-100" alt="Promoción de Mates" >
   
   <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
     <h5 class="card-title fw-bold fs-3">BOMBILLAS</h5>
-    <a href="#" class="btn btn-categoria mx-auto">Ver Colección</a>
+    <a href="{{ route('productos') }}#bombillas" class="btn btn-categoria mx-auto">Ver Colección</a>
   </div>
  </div> 
 </div>
 {{-- TERMOS --}}
-<div class="col d-flex">
+<div class="col d-flex justify-content-center">
 <div class="card card-categoria text-white border-0 ">
   <img src="img/termos1.0.svg" class="card-img h-100" alt="Promoción de Mates">
   
   <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
     <h5 class="card-title fw-bold fs-3">TERMOS</h5>
-    <a href="#" class="btn btn-categoria mx-auto">Ver Colección</a>
+    <a href="{{ route('productos') }}#termos" class="btn btn-categoria mx-auto">Ver Colección</a>
   </div>
 </div>
 </div>
@@ -371,7 +371,7 @@
 
 {{--boton de ver mas prodcutos--}}
 <div class="container text-center mb-5">
-    <a href="{{ route('inicio') }}" class="btn btn-custom ">Ver todos los productos</a>
+    <a href="{{ route('productos') }}" class="btn btn-custom ">Ver todos los productos</a>
 </div>
 {{--fin de boton de ver mas productos--}}
 
