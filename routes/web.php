@@ -31,4 +31,4 @@ Route::get('/productos', function () {
 
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
-}) ->named('terminos-y-usos');
+}) ->name('terminos-y-usos');
