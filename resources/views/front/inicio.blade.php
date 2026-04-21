@@ -100,7 +100,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producB2.webp') }}" class="card-img-top " alt="Yerba Mate">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Yerba Mate Orgánica</h5>
+                                <h5 class="card-title fw-bold">Bombilla de alpaca</h5>
                                 <p class="card-text fw-bold  fs-4">$4.500</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
