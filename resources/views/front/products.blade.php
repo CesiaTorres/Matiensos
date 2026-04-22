@@ -19,7 +19,7 @@
                         <h5 class="card-title fw-bold">Mate personalizado</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }} " class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         <h5 class="card-title fw-bold">"El Campeón"</h5>
                         <p class="card-text fw-bold fs-4">$45.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <h5 class="card-title fw-bold">Mate camionero</h5>
                         <p class="card-text fw-bold fs-4">$32.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         <h5 class="card-title fw-bold">Mate Nativo</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <h5 class="card-title fw-bold">Bombilla de alpaca</h5>
                         <p class="card-text fw-bold fs-4">$4.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                         <h5 class="card-title fw-bold">Bombilla Premium</h5>
                         <p class="card-text fw-bold fs-4">$6.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                         <h5 class="card-title fw-bold">Bombilla Arg</h5>
                         <p class="card-text fw-bold fs-4">$24.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                         <h5 class="card-title fw-bold">Combo "6x5"</h5>
                         <p class="card-text fw-bold fs-4">$34.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                         <h5 class="card-title fw-bold">Bombilla acero inoxidable</h5>
                         <p class="card-text fw-bold fs-4">$4.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                         <h5 class="card-title fw-bold">Bombilla en alpaca</h5>
                         <p class="card-text fw-bold fs-4">$34.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                         <h5 class="card-title fw-bold">Termo ATQM 1L</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                         <h5 class="card-title fw-bold">Termo militar</h5>
                         <p class="card-text fw-bold fs-4">$24.500</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
                         <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                         <h5 class="card-title fw-bold">Termo Stanley 1L</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                         <h5 class="card-title fw-bold">Termo personalizado</h5>
                         <p class="card-text fw-bold fs-4">$25.000</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-custom w-100">Agregar al carrito</a>
+                            <a href="{{ route('pagina-en-construccion') }}" class="btn btn-custom w-100">Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
