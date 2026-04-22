@@ -30,7 +30,7 @@
 
 
 <div class="container my-5">
-    <h2 class="text-center mb-5">Categorías</h2>
+    <h1 class="text-center mb-5">Categorías</h1>
     <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
 {{-- MATE--}}
     <div class="col d-flex justify-content-center">
@@ -72,7 +72,7 @@
 
 {{-- Primer Sección de productos destacados con Carrusel --}}
 <div class="container my-5">
-    <h2 class="text-center mb-5">Productos Destacados</h2>
+    <h1 class="text-center mb-5">Productos Destacados</h1>
 
     <div id="carouselProductos" class="carousel slide" data-bs-interval="false">
         <div class="carousel-inner">
@@ -86,7 +86,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producM3.png') }}" class="card-img-top" alt="Mate Imperial Premium">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
+                                <h5 class="card-title fw-bold">Mate Personalizado</h5>
                                 <p class="card-text fw-bold  fs-4">$25.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -114,7 +114,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/prodcuM5.webp') }}" class="card-img-top " alt="Kit Selección">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <h5 class="card-title fw-bold">"El Campeón"</h5>
                                 <p class="card-text fw-bold  fs-4">$45.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -162,7 +162,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producT1.svg') }}" class="card-img-top " alt="Yerba Mate">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Yerba Mate Orgánica 1kg</h5>
+                                <h5 class="card-title fw-bold">Termo militar 1L </h5>
                                 <p class="card-text fw-bold fs-4">$4.500</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -176,7 +176,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/productB4.jpg') }}" class="card-img-top " alt="Kit Selección">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <h5 class="card-title fw-bold">Combo "6x5"</h5>
                                 <p class="card-text fw-bold fs-4">$45.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -190,7 +190,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producT3.webp') }}" class="card-img-top " alt="Termo">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
+                                <h5 class="card-title fw-bold">Termo ATQM 1L</h5>
                                 <p class="card-text fw-bold fs-4">$32.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -217,9 +217,9 @@
 </div>
     
 
-{{-- Fin productos destacados --}}
+<!-- {{-- Fin productos destacados --}} -->
 
-{{-- Segunda Sección de productos destacados con Carrusel --}}
+<!-- {{-- Segunda Sección de productos destacados con Carrusel --}}
 <div class="container my-5">
     <h2 class="text-center mb-5">Productos Destacados</h2>
 
@@ -235,7 +235,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producT4.webp') }}" class="card-img-top" alt="Mate Imperial Premium">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
+                                <h5 class="card-title fw-bold">Termo Stanley 1L</h5>
                                 <p class="card-text fw-bold  fs-4">$25.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -249,7 +249,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/productM2.svg') }}" class="card-img-top " alt="Yerba Mate">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Yerba Mate Orgánica</h5>
+                                <h5 class="card-title fw-bold">Mate camionero</h5>
                                 <p class="card-text fw-bold  fs-4">$4.500</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -263,7 +263,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/produc1.png') }}" class="card-img-top " alt="Kit Selección">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <h5 class="card-title fw-bold">Mate nativo</h5>
                                 <p class="card-text fw-bold  fs-4">$45.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -277,7 +277,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producB2.jpg') }}" class="card-img-top " alt="Termo">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
+                                <h5 class="card-title fw-bold">Bombilla Arg</h5>
                                 <p class="card-text fw-bold fs-4">$32.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -297,7 +297,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producB3.jpg') }}" class="card-img-top" alt="Mate Imperial">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Mate Imperial Premium</h5>
+                                <h5 class="card-title fw-bold">Bombilla en alpaca</h5>
                                 <p class="card-text fw-bold fs-4">$25.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -311,7 +311,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producT5.webp') }}" class="card-img-top " alt="Yerba Mate">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Yerba Mate Orgánica 1kg</h5>
+                                <h5 class="card-title fw-bold">Termo personalizado</h5>
                                 <p class="card-text fw-bold fs-4">$4.500</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -325,7 +325,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producB7.jpeg') }}" class="card-img-top " alt="Kit Selección">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Combo "El Campeón"</h5>
+                                <h5 class="card-title fw-bold">Bombilla criolla</h5>
                                 <p class="card-text fw-bold fs-4">$45.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -339,7 +339,7 @@
                         <div class="card card-producto h-100 shadow-sm border-0">
                             <img src="{{ asset('img/producB6.webp') }}" class="card-img-top " alt="Termo">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">Termo de Acero 1L</h5>
+                                <h5 class="card-title fw-bold">Bombilla acero inoxidable</h5>
                                 <p class="card-text fw-bold fs-4">$32.000</p>
                                 <div class="mt-auto">
                                     <a href="#" class="btn btn-custom  w-100">Agregar al carrito</a>
@@ -366,8 +366,8 @@
 </div>
     
 
-    
-{{-- Fin de grupo 2 de productos destacados --}}
+     -->
+<!-- {{-- Fin de grupo 2 de productos destacados --}} -->
 
 {{--boton de ver mas prodcutos--}}
 <div class="container text-center mb-5">
