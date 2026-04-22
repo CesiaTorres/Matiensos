@@ -6,7 +6,7 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-5 col-lg-5">
-            <form class="card shadow-sm p-4"> {{-- aca luego se añade 'action' y 'method' para el controlador --}}
+            <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
                 @csrf
                 <h2 class="text-center mb-4">Ingresar</h2>        
                 <div class="mb-3">
@@ -21,11 +21,12 @@
                     <input type="checkbox" name="remember" class="form-check-input" id="remember">
                     <label class="form-check-label" for="remember">Recordarme</label>
                 </div>
-                <button type="submit" class="btn btn-color-matiensos text-white mt-4 fw-bold">Entrar</button>
-                <div class="text-center mt-3">
-                    <a href="#" class="text-muted small">¿Olvidaste tu contraseña?</a>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-color-matiensos text-white fw-bold py-2">
+                        Entrar
+                    </button>
                 </div>
-            
             </form>
         </div>
 

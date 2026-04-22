@@ -59,7 +59,6 @@ body {
 .nav-link-icon:hover {
     color: #1c814c; /* Verde al pasar el mouse */
 }
-
 .nav-link {
     color: #f8fdfa;
     text-align: center;
@@ -68,42 +67,14 @@ body {
     font-weight: bold;
     color: #f8fdfa;
 }
-
 /* Evita que el botón de Productos se ponga negro al hacer clic o estar abierto */
 .nav-link.show, 
 .nav-link:focus {
     color: #f8fdfa !important; /* Mantiene tu color blanco hueso */
 }
-
 /* Si quieres que mantenga el estilo de negrita cuando está el menú abierto */
 .nav-link.show {
     font-weight: bold;
-}
-
-
-/*Tipografia*/
-/* Para los títulos del Navbar y Footer */
-h1, h2, h3, h4, .navbar-brand {
-    font-family: 'Lora', serif;
-    font-weight: 700;
-}
-
-/* Para los enlaces del menú, textos de productos y el resto */
-body, .nav-link, .dropdown-item {
-    font-family: 'Montserrat', sans-serif;
-}
-
-/*BOTONES*/
-.btn-color-matiensos {
-    background-color: #386150;
-    border: none;
-}
-.btn-color-matiensos:hover {
-    background-color: #3d755a; /* Un verde un poco más claro */
-}
-/* Cuando el input está seleccionado (focus) */
-.form-control:focus {
-    border-color:  #386150; /* El color de tu borde verde */
 }
 
     

@@ -3,10 +3,11 @@
 
 @section('content')
 <div class="container py-5">
-    <header class="text-center mb-5">
+    
+    <div class="text-center mb-5">
         <h1 class="display-5 fw-bold">Envíos y Entregas</h1>
         <p class="text-muted">Hacemos llegar tu ritual matero a cualquier punto del país.</p>
-    </header>
+    </div>
 
     <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -52,28 +53,27 @@
 
             <section>
                 <h4 class="fw-bold mb-4 text-center">Preguntas Frecuentes</h4>
-                <div class="accordion accordion-flush shadow-sm rounded" id="accordionEnvios">
+                <div class="accordion accordion-flush shadow-sm " id="envios">
                     
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#pregunta1">
                                 ¿Cómo realizo el seguimiento de mi pedido?
                             </button>
                         </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#accordionEnvios">
+                        <div id="pregunta1" class="accordion-collapse collapse" data-bs-parent="#envios">
                             <div class="accordion-body text-secondary">
                                 Una vez despachado, recibirás un mail con el número de tracking y el link para seguir el paquete en tiempo real.
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            <button class="accordion-button collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#pregunta2">
                                 ¿Qué pasa si no estoy en mi domicilio?
                             </button>
                         </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionEnvios">
+                        <div id="pregunta2" class="accordion-collapse collapse" data-bs-parent="#envios">
                             <div class="accordion-body text-secondary">
                                 El correo realiza dos visitas. Si no logra concretar la entrega, el paquete permanecerá en la sucursal más cercana por 5 días antes de ser devuelto.
                             </div>

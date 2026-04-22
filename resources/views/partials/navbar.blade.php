@@ -52,16 +52,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('quienes-somos') }}"></a>
+                    <a class="nav-link" href="{{ route('terminos-y-usos') }}">Términos y Usos</a>
                 </li>
             </ul>
 
             {{-- Seccion de opciones 'Usuario' y 'Carrito de compras' --}}
             <div class="d-flex align-items-center ms-auto gap-3">
                 {{-- ícono menu de Usuario. Opciones 'Iniciar Sesion' y 'Registrarse' --}}
-                <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-search"></i>
-                </a>
 
                 <div class="dropdown">
                     <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -73,7 +70,7 @@
                     </ul>
                 </div>
                 
-                <a href="#" class="nav-link-icon position-relative">
+                <a href="{{ route('pagina-en-construccion') }}" class="nav-link-icon position-relative">
                     <i class="bi bi-bag-fill"></i>
                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
                         style="font-size: 0.6rem;">

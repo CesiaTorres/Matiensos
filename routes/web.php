@@ -15,10 +15,10 @@ Route::get('/quienes-somos', function () {
 }) ->name('quienes-somos');
 
 
+
 Route::get('/acceso', function () {
     return view('front.acceso');
 }) ->name('acceso');
-
 Route::get('/registro', function () {
     return view('front.registro');
 }) ->name('registro');
@@ -38,3 +38,9 @@ Route::get('/envios-y-entregas', function () {
 Route::get('/medios-de-pago', function () {
     return view('front.pagos');
 }) ->name('medios-de-pago');
+
+
+Route::get('/pagina-en-construcción', function () {
+    return view('front.paginaConstruccion');
+}) ->name('pagina-en-construccion');
+

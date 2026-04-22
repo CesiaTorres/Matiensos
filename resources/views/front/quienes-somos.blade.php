@@ -5,9 +5,10 @@
 @section('content')
 <section> {{-- Contenido informatiovo --}}
     <div class="container my-5">
+        
         <div class="row justify-content-center mb-5">
             <div class="col-md-12 text-center">
-                <h1 class="mb-4">Nuestra Esencia</h1>
+                <h1 class="mb-4 display-5">Nuestra Esencia</h1>
                 <p class="fs-5 text-secondary">
                     Nacimos en el corazón de la UNNE, entre apuntes y termos compartidos. 
                     Entendemos que el mate no es solo una bebida, sino el compañero fiel de cada estudio, 
