@@ -42,4 +42,4 @@ Route::get('/medios-de-pago', function () {
 
 Route::get('/pagina-en-construcción', function () {
     return view('front.paginaConstruccion');
-}) ->name('pagina-en-construccion');gui
+}) ->name('pagina-en-construccion');
