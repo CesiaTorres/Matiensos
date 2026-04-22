@@ -15,13 +15,13 @@ Route::get('/quienes-somos', function () {
 }) ->name('quienes-somos');
 
 
-Route::get('/login', function () {
-    return view('front.login');
-}) ->name('login');
 
-Route::get('/register', function () {
-    return view('front.register');
-}) ->name('register');
+Route::get('/acceso', function () {
+    return view('front.acceso');
+}) ->name('acceso');
+Route::get('/registro', function () {
+    return view('front.registro');
+}) ->name('registro');
 
 
 
@@ -32,3 +32,14 @@ Route::get('/productos', function () {
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
 }) ->name('terminos-y-usos');
+Route::get('/envios-y-entregas', function () {
+    return view('front.envios');
+}) ->name('envios-y-entregas');
+Route::get('/medios-de-pago', function () {
+    return view('front.pagos');
+}) ->name('medios-de-pago');
+
+
+Route::get('/pagina-en-construcción', function () {
+    return view('front.paginaConstruccion');
+}) ->name('pagina-en-construccion');

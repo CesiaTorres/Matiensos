@@ -42,26 +42,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Comercialización
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{route('envios-y-entregas')}}">Envios y Entregas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('medios-de-pago') }}">Medios de Pago</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('terminos-y-usos') }}">Términos y Usos</a>
+                </li>
             </ul>
 
             {{-- Seccion de opciones 'Usuario' y 'Carrito de compras' --}}
             <div class="d-flex align-items-center ms-auto gap-3">
                 {{-- ícono menu de Usuario. Opciones 'Iniciar Sesion' y 'Registrarse' --}}
-                <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-search"></i>
-                </a>
 
                 <div class="dropdown">
                     <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle "></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{{route('login')}}">Iniciar Sesión</a></li>
-                        <li><a class="dropdown-item" href="{{route('register')}}">Registrarse</a></li>
+                        <li><a class="dropdown-item" href="{{route('acceso')}}">Iniciar Sesión</a></li>
+                        <li><a class="dropdown-item" href="{{route('registro')}}">Registrarse</a></li>
                     </ul>
                 </div>
                 
-                <a href="#" class="nav-link-icon position-relative">
+                <a href="{{ route('pagina-en-construccion') }}" class="nav-link-icon position-relative">
                     <i class="bi bi-bag-fill"></i>
                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
                         style="font-size: 0.6rem;">
