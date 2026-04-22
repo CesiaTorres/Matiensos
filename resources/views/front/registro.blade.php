@@ -6,9 +6,11 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-5 col-lg-5">
-            <form class="card shadow-sm p-4"> {{-- aca luego se añade 'action' y 'method' para el controlador --}}
+            
+        <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
                 @csrf
                 <h2 class="text-center mb-4">Crear Cuenta</h2>    
+                
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre/s</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Juan Ezequiel" required autofocus>
@@ -37,10 +39,16 @@
                         </p>     
                     </label>
                 </div>
-                <button type="submit" class="btn btn-color-matiensos text-white mt-4 fw-bold">Registrarse</button>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-color-matiensos text-white fw-bold py-2">
+                        Registrarse
+                    </button>
+                </div>
+
                 <div class="text-center mt-3">
                     <p class="small">¿Ya tienes cuenta? 
-                        <a href="{{ url('/login') }}" class="text-dark text-muted">Inicia sesión</a>
+                        <a href="{{ route('acceso') }}" class="text-dark text-muted">Inicia sesión</a>
                     </p>
                 </div>
             </form>

@@ -1,0 +1,49 @@
+/*TIPOGRAFIA*/
+/* Para los títulos del Navbar y Footer */
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+}
+/* Para los enlaces del menú, textos de productos y el resto */
+body, .nav-link, .dropdown-item {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/*COLOR MATIENSOS*/
+.color-matiensos {
+    color: #386150;
+}
+.border-matiensos {
+    border: 3px solid #386150
+}
+
+
+/*ESTILO DE LOS BOTONES*/
+.btn-color-matiensos {
+    background-color: #386150;
+    border: none;
+}
+.btn-color-matiensos:hover {
+    background-color: #3d755a; /* Un verde un poco más claro */
+}
+.form-control:focus { /* Cuando el input está seleccionado (focus) */ 
+    border-color:  #386150;
+    box-shadow: 0 0 0 0.25rem rgba(45, 87, 67, 0.25); /* Sombra verde traslúcida */
+}
+
+/*ESTILO DE ACORDEON*/
+/* Estilo del botón cuando está abierto */
+.accordion-item .accordion-button:not(.collapsed) {
+    background-color: white;
+}
+/* Quita el resplandor azul cuando se hace clic */
+.accordion-item .accordion-button:focus {
+    box-shadow: none;         /* Sin la sombra azul */
+    border-color: #dee2e6;    /* Mantenemos el borde gris clarito de Bootstrap */
+}
+/* Color de la flechita cuando se abre */
+.accordion-item .accordion-button::after {
+    /* Esto hace que la flecha sea negra en lugar de azul */
+    filter: brightness(0);
+}

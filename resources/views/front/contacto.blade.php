@@ -39,8 +39,7 @@
             <p>Ruta Nacional 12, Km 1030, Corrientes, Argentina.</p>
             {{-- Aquí podrías pegar un iframe de Google Maps --}}
             <div class="ratio ratio-16x9">
-                <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
-            </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7080.200537470057!2d-58.826259866732926!3d-27.46613759999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1776813762023!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>

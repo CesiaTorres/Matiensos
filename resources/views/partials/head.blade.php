@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 {{-- Hoja de estilos --}}
 <link rel="stylesheet" href="{{ asset('css/estilos-navbar.css') }}">
+<link rel="stylesheet" href="{{ asset('css/estilos-pages.css') }}">
 
 {{--favicon --}}
 <link rel="icon" type="image/png" href="{{ asset('favicon-icono-mate.png') }}">
