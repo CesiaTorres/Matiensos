@@ -37,7 +37,6 @@
 }
 
 /* background del navbar personalizado*/
-
 .bg-navbar {
     background-color: #386150;
 }
@@ -119,33 +118,37 @@ body {
     border: none;
     transition: 0.3s;
 }
-.btn-custom:hover {
-    background: #2f5242;
-    color: white;
-    font-weight: bold;
+.btn-color-matiensos:hover {
+    background-color: #3d755a; /* Un verde un poco más claro */
 }
-/* Estilos para las cards de categorías */
-/* Bordes de la card */
-.card-categoria {
-  border-radius: 20px;
-  background: #000;
-  overflow: hidden; /* para que la imagen respete el borde */
+/* Cuando el input está seleccionado (focus) */
+.form-control:focus {
+    border-color:  #386150; /* El color de tu borde verde */
 }
 
     
 /**Carrousel principal */
-.img-banner {
-    width: 100%;       /* Ocupa el ancho del contenedor */
-    height: 450px;     /* Altura fija para que no sea gigante en PC */
-    object-fit: cover; /* Recorta los bordes para no deformar la imagen */
-    object-position: center;
+.carousel-banner {
+  height: 70vh;
+  min-height: 250px;
 }
 
-/* Ajuste para celulares (Pantallas menores a 768px) */
+.carousel-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
-    .img-banner {
-        height: 250px; /* En el celu es más bajito para que se vea mejor */
-    }
+  .carousel-banner {
+    height: 50vh;
+  }
+}
+/* Celular */
+@media (max-width: 576px) {
+  .carousel-banner {
+    height: 40vh;
+  }
 }
 
 /* Estilos de las cards*/
@@ -206,4 +209,15 @@ body {
 
 .btn-categoria {
   margin-top: 10px;
+}
+
+/* tema id productos */
+html {
+  scroll-behavior: smooth;
+}
+
+#mates,
+#bombillas,
+#termos {
+  scroll-margin-top: 100px;
 }
