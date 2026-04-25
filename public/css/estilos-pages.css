@@ -17,7 +17,9 @@ body, .nav-link, .dropdown-item {
 .border-matiensos {
     border: 3px solid #386150
 }
-
+.bg-matiensos {
+    background-color: #386150
+}
 
 /*ESTILO DE LOS BOTONES*/
 .btn-color-matiensos {
