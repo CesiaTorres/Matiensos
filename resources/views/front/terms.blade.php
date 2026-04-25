@@ -7,7 +7,7 @@
     <div class="text-center mb-5">
         <h1 class="display-5"> Términos y Condiciones de Uso</h1>
         <p class="text-muted"> Información legal sobre nuestros servicios, políticas y compromisos con el cliente.</p>
-        <div class="mx-auto" style="width: 50px; height: 3px; background-color: #2d5743;"></div>
+        <div class="mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
     </div>
 
     <div class="row justify-content-center">
