@@ -1,6 +1,6 @@
 /*TIPOGRAFIA*/
 /* Para los títulos del Navbar y Footer */
-h1, h2, h3, h4, h5, .navbar-brand {
+h1, h2, h3, h4, h5, h6, .navbar-brand {
     font-family: 'Lora', serif;
     font-weight: 700;
 }

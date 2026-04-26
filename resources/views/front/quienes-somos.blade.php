@@ -53,12 +53,12 @@
             <div class="col-md-4 col-lg-3">
                 <div class="card border-0 bg-light shadow-sm mb-4">
                     <div class="card-body text-center p-4">
-                    <img src="{{ asset('img/staff/staffLuana.jpg') }}" 
+                    <img src="{{ asset('img/staff/staff2.png') }}" 
                             class="rounded-circle mx-auto d-block mb-3 shadow-sm border-matiensos" 
                             alt="Foto 1"
                             style="width: 120px; height: 120px; object-fit: cover;">
                         <h5 class="fw-bold mb-1">Romero Luana</h5>
-                        <p class="text-muted small">Fundación & Estrategia</p>
+                        <p class="text-muted small">Operaciones & Estrategia</p>
                     </div>
                 </div>
             </div>
@@ -66,12 +66,12 @@
             <div class="col-md-4 col-lg-3">
                 <div class="card border-0 bg-light shadow-sm mb-4">
                     <div class="card-body text-center p-4">
-                        <img src="{{ asset('img/staff/staffCesia.jpg') }}" 
+                        <img src="{{ asset('img/staff/staff1.png') }}" 
                             class="rounded-circle mx-auto d-block mb-3 shadow-sm border-matiensos" 
                             alt="Foto 1"
                             style="width: 120px; height: 120px; object-fit: cover;">
                         <h5 class="fw-bold mb-1">Torres Cesia</h5>
-                        <p class="text-muted small">Diseño & Curaduría</p>
+                        <p class="text-muted small">Producto & Calidad</p>
                     </div>
                 </div>
             </div>
