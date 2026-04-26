@@ -19,9 +19,11 @@
             {{-- Columna 2: Contactos --}}
             <div class="col-md-2 col-sm-6 mb-4 small">
                 <h5>Contactanos</h5>
-                <p class="mb-2 text-light opacity-75"><i class="bi bi-whatsapp me-2"></i> 3782456372</p>
-                <p class="mb-2 text-light opacity-75"><i class="bi bi-envelope me-2"></i> matiensos@gmail.com</p>
-                <p class="mb-2 text-light opacity-75"><i class="bi bi-geo-alt me-2"></i> Av. Las Heras 727, Corrientes</p>
+                <ul class="list-unstyled mb-3">
+                    <li><a href="https://wa.me/543644675174" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-whatsapp me-2"></i>543644675174</a></li>
+                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-envelope me-2"></i>matiensos@gmail.com</a></li>
+                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-geo-alt me-2"></i>Av. Las Heras 727, Corrientes</a></li>
+                </ul>
             </div>
 
             {{-- Columna 3: Legales --}}

@@ -58,7 +58,7 @@
                             alt="Foto 1"
                             style="width: 120px; height: 120px; object-fit: cover;">
                         <h5 class="fw-bold mb-1">Romero Luana</h5>
-                        <p class="text-muted small">Operaciones & Estrategia Digital</p>
+                        <p class="text-muted small">Operaciones & Estrategia</p>
                     </div>
                 </div>
             </div>
