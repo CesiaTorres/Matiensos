@@ -11,8 +11,8 @@
             <div class="col-md-2 col-sm-6 mb-4 small">
                 <h5>Comercialización</h5>
                 <ul class="list-unstyled mb-3">
-                    <li><a href="{{ route('envios-y-entregas') }}" class="text-decoration-none text-light opacity-75"><i class="bi bi-truck me-2"></i>Envios y Entregas</a></li>
-                    <li><a href="{{ route('quienes-somos') }}" class="text-decoration-none text-light opacity-75"><i class="bi bi-credit-card me-2"></i>Medios de Pago</a></li>
+                    <li><a href="{{ route('envios-y-entregas') }}" target="_blank"class="text-decoration-none text-light opacity-75"><i class="bi bi-truck me-2"></i>Envios y Entregas</a></li>
+                    <li><a href="{{ route('quienes-somos') }}" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-credit-card me-2"></i>Medios de Pago</a></li>
                 </ul>
             </div>
 
@@ -21,8 +21,8 @@
                 <h5>Contactanos</h5>
                 <ul class="list-unstyled mb-3">
                     <li><a href="https://wa.me/3782456372" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-whatsapp me-2"></i>3782456372</a></li>
-                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-envelope me-2"></i>matiensos@gmail.com</a></li>
-                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-geo-alt me-2"></i>Av. Las Heras 727, Corrientes</a></li>
+                    <li class="text-decoration-none text-light opacity-75"><i class="bi bi-envelope me-2"></i>matiensos@gmail.com</li>
+                    <li><a href="{{route('pagina-en-construccion')}}" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-geo-alt me-2"></i>Av. Las Heras 727, Corrientes</a></li>
                 </ul>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="col-md-2 col-sm-6 mb-4 small">
                 <h5>Términos y Legales</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('terminos-y-usos') }}" class="text-decoration-none text-light opacity-75">Términos y Usos</a></li>
+                    <li><a href="{{ route('terminos-y-usos') }}" target="_blank" class="text-decoration-none text-light opacity-75">Términos y Usos</a></li>
                 </ul>
             </div>
 
@@ -38,9 +38,9 @@
             <div class="col-md-2 col-sm-6 mb-4 small">
                 <h5>Redes Sociales</h5>
                 <ul class="list-unstyled mb-3">
-                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
-                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
-                    <li><a href="{{route('pagina-en-construccion')}}" class="text-decoration-none text-light opacity-75"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+                    <li><a href="https://www.facebook.com"  target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
+                    <li><a href="https://x.com"  target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-twitter-x me-2"></i>Twitter</a></li>
+                    <li><a href="https://www.instagram.com"  target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
                 </ul>
                 <a href="#top" class="btn btn-outline-light btn-sm mt-2">
                     <i class="bi bi-arrow-up"></i> Ir arriba
