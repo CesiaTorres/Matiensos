@@ -35,7 +35,7 @@
                     <input type="checkbox" name="terms" class="form-check-input" id="terms" required>
                     <label class="form-check-label" for="terms">
                         <p class="text-dark text-muted">Acepto los
-                            <a href="{{ route ('terminos-y-usos') }}" class="text-dark text-muted">Términos y Usos</a>
+                            <a href="{{ route ('terminos-y-usos') }}" target="_blank" class="text-dark text-muted">Términos y Usos</a>
                         </p>     
                     </label>
                 </div>

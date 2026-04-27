@@ -7,7 +7,7 @@
     <div class="text-center mb-5">
         <h1 class="display-5 fw-bold">Envíos y Entregas</h1>
         <p class="text-muted">Hacemos llegar tu ritual matero a cualquier punto del país.</p>
-        <div class="mx-auto" style="width: 50px; height: 3px; background-color: #2d5743;"></div>
+        <div class="mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
     </div>
 
     <div class="row justify-content-center">

@@ -8,13 +8,14 @@
         
         <div class="row justify-content-center mb-5">
             <div class="col-md-12 text-center">
-                <h1 class="mb-4 display-5">Nuestra Esencia</h1>
-                <p class="fs-5 text-secondary">
+                <h1 class="display-5">Nuestra Esencia</h1>
+                <div class="mx-auto bg-matiensos mb-4" style="width: 50px; height: 3px;"></div>
+                <p class="text-secondary">
                     Nacimos en el corazón de la UNNE, entre apuntes y termos compartidos. 
                     Entendemos que el mate no es solo una bebida, sino el compañero fiel de cada estudio, 
                     cada charla y cada nuevo proyecto.
                 </p>
-                <p class="fs-5 text-secondary">
+                <p class="text-secondary">
                     En <strong>Matiensos</strong>, seleccionamos productos regionales que representan 
                     nuestra identidad: calidad artesanal, durabilidad y ese toque moderno que el matero de hoy busca.
                 </p>
@@ -27,21 +28,21 @@
                     <i class="bi bi-heart-fill fs-1 color-matiensos"></i>
                 </div>
                 <h4 class="fw-bold">Pasión Regional</h4>
-                <p class="small text-muted">Apoyamos a artesanos locales del NEA en cada pieza que ofrecemos.</p>
+                <p class="text-muted">Apoyamos a artesanos locales del NEA en cada pieza que ofrecemos.</p>
             </div>
             <div class="col-md-4">
                 <div class="mb-3">
                     <i class="bi bi-shield-check fs-1 color-matiensos"></i>
                 </div>
                 <h4 class="fw-bold">Calidad Premium</h4>
-                <p class="small text-muted">Productos diseñados para durar años, no solo temporadas.</p>
+                <p class="text-muted">Productos diseñados para durar años, no solo temporadas.</p>
             </div>
             <div class="col-md-4">
                 <div class="mb-3">
                     <i class="bi bi-people-fill fs-1 color-matiensos"></i>
                 </div>
                 <h4 class="fw-bold">Comunidad</h4>
-                <p class="small text-muted">Creamos un espacio para que cada matero encuentre su estilo único.</p>
+                <p class="text-muted">Creamos un espacio para que cada matero encuentre su estilo único.</p>
             </div>
         </div>
 
@@ -58,7 +59,7 @@
                             alt="Foto 1"
                             style="width: 120px; height: 120px; object-fit: cover;">
                         <h5 class="fw-bold mb-1">Romero Luana</h5>
-                        <p class="text-muted small">Operaciones & Estrategia</p>
+                        <p class="text-muted ">Operaciones & Estrategia</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +72,7 @@
                             alt="Foto 1"
                             style="width: 120px; height: 120px; object-fit: cover;">
                         <h5 class="fw-bold mb-1">Torres Cesia</h5>
-                        <p class="text-muted small">Producto & Calidad</p>
+                        <p class="text-muted">Producto & Calidad</p>
                     </div>
                 </div>
             </div>

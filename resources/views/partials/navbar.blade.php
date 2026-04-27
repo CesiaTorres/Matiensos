@@ -29,9 +29,9 @@
                         Productos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Mates</a></li>
-                        <li><a class="dropdown-item" href="#">Termos</a></li>
-                        <li><a class="dropdown-item" href="#">Bombillas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('productos') }}#mates">Mates</a></li>
+                        <li><a class="dropdown-item" href="{{ route('productos') }}#termos">Termos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('productos') }}#bombillas">Bombillas</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('productos')}}">Ver todos</a></li>
                     </ul>
@@ -52,7 +52,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('terminos-y-usos') }}">Términos y Usos</a>
+                    <a class="nav-link" target="_blank" href="{{ route('terminos-y-usos') }}">Términos y Usos</a>
                 </li>
             </ul>
 

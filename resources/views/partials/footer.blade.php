@@ -11,8 +11,8 @@
             <div class="col-md-2 col-sm-6 mb-4 small">
                 <h5>Comercialización</h5>
                 <ul class="list-unstyled mb-3">
-                    <li><a href="{{ route('envios-y-entregas') }}" target="_blank"class="text-decoration-none text-light opacity-75"><i class="bi bi-truck me-2"></i>Envios y Entregas</a></li>
-                    <li><a href="{{ route('quienes-somos') }}" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-credit-card me-2"></i>Medios de Pago</a></li>
+                    <li><a href="{{ route('envios-y-entregas') }}" class="text-decoration-none text-light opacity-75"><i class="bi bi-truck me-2"></i>Envios y Entregas</a></li>
+                    <li><a href="{{ route('medios-de-pago') }}" class="text-decoration-none text-light opacity-75"><i class="bi bi-credit-card me-2"></i>Medios de Pago</a></li>
                 </ul>
             </div>
 
@@ -22,7 +22,7 @@
                 <ul class="list-unstyled mb-3">
                     <li><a href="https://wa.me/3782456372" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-whatsapp me-2"></i>3782456372</a></li>
                     <li class="text-decoration-none text-light opacity-75"><i class="bi bi-envelope me-2"></i>matiensos@gmail.com</li>
-                    <li><a href="{{route('pagina-en-construccion')}}" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-geo-alt me-2"></i>Av. Las Heras 727, Corrientes</a></li>
+                    <li><a href="https://maps.app.goo.gl/thb4YesxwtvfWPag7" target="_blank" class="text-decoration-none text-light opacity-75"><i class="bi bi-geo-alt me-2"></i>Mariano Necochea 297, Paraná, Entre Ríos</a></li>
                 </ul>
             </div>
 
@@ -53,8 +53,10 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <p class="mb-0 small opacity-75">Derechos de autor &copy; 2026 Universidad Nacional del Nordeste. Todos los derechos reservados.</p>
-            </div>
+            <p class="small opacity-75">
+                &copy; {{ date('Y') }} Matiensos | Facultad de Ciencias Exactas (UNNE). Todos los derechos reservados.
+            </p>
+        </div>
         </div>
     </div>
 </footer>
