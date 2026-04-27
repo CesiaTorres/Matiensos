@@ -10,8 +10,9 @@
     <!-- Título y descripción -->
     <div class="container text-center">
         <div class="row align-items-end">
-            <h1 class="mb-4 display-5">Siempre cerca tuyo</h1>
-            <p class="fs-5 text-secondary">
+            <h1 class="display-5">Siempre cerca tuyo</h1>
+            <div class="mb-4 mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
+            <p class="text-secondary lead">
                 En Matiensos, no solo vendemos productos, sino que también construimos puentes de comunicación con nuestra comunidad. 
                 Queremos que cada matero se sienta parte de esta gran familia, y para eso, estamos siempre dispuestos a escuchar tus dudas, sugerencias o simplemente charlar sobre el maravilloso mundo del mate.
             </p>
@@ -29,18 +30,15 @@
 
 
   {{-- Info de contacto --}}
-  <a href="https://wa.me/543782547040" 
-  target="_blank"
-   class="d-flex align-items-center gap-2 fs-5 pt-5 text-decoration-none text-dark">
-
-  <i class="bi bi-whatsapp fs-3 text-success"></i> 
+  <a href="https://wa.me/543782547040" target="_blank" class="d-flex align-items-center gap-2 fs-5 pt-5 text-decoration-none text-dark">
+  <i class="bi bi-whatsapp text-success"></i> 
   +54 9 3782 547040
 
 </a>
 
   <p class="d-flex align-items-center gap-2 fs-5">
     <i class="bi bi-envelope fs-3 text-dark"></i> 
-    info@matiensos.com
+    matiensos@gmail.com
   </p>
 </div>
         <div class="col-md-6 ">
