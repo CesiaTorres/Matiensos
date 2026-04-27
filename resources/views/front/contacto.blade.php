@@ -45,24 +45,23 @@
 </div>
         <div class="col-md-6 ">
         
-          <form action="/enviar-contacto" method="POST">
-            @csrf
-
+          <form action="{{ route('pagina-en-construccion') }}" method="GET">
+          
             <div class="mb-3">
               <label class="form-label">Nombre</label>
-              <input type="text" name="nombre" class="form-control" required>
+              <input type="text" name="nombre" class="form-control" placeholder="Juan Ezequiel" required autofocus>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email</label>
-              <input type="email" name="email" class="form-control" required>
+              <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"  required autofocus>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Mensaje</label>
-              <textarea name="mensaje" class="form-control" rows="4"></textarea>
+              <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí..." rows="4" autofocus></textarea>
             </div>
-
+          
             <button type="submit" class="btn btn-custom w-100">
               Enviar Consulta
             </button>
