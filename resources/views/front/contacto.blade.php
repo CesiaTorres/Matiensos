@@ -2,10 +2,10 @@
 @section('title', 'Contacto - Matiensos')
 
 @section('content')
-<div class="container py-5">   
+<div class="container pt-4 pb-5" id="contacto">
     <!-- Título y descripción -->
-    <section class="text-center mb-5">
-        <div class="row align-items-end">
+    <section class="text-center mb-5" >
+        <div class="row justify-content-center">
             <h1 class="display-5">Siempre cerca tuyo</h1>
             <div class="mb-4 mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
             <p class="text-secondary lead mx-auto">

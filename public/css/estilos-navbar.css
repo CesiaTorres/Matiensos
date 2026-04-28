@@ -92,6 +92,17 @@ body {
         height: 250px; /* En el celu es más bajito para que se vea mejor */
     }
 }
+.carousel-banner {
+  line-height: 0; /* 🔥 elimina espacio fantasma */
+}
+
+.carousel-banner img {
+  display: block;
+}
+
+.carousel-banner .carousel-item {
+  height: auto;
+}
 
 /* Estilos de las cards*/
 .card-producto {
@@ -129,27 +140,19 @@ body {
 
     
 /**Carrousel principal */
-.carousel-banner {
-  height: 70vh;
-  min-height: 250px;
+.img-banner {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
 }
 
-.carousel-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* MOBILE */
 @media (max-width: 768px) {
-  .carousel-banner {
-    height: 50vh;
-  }
-}
-/* Celular */
-@media (max-width: 576px) {
-  .carousel-banner {
-    height: 40vh;
-  }
+    .img-banner {
+        height: auto;              /* 🔥 clave */
+        object-fit: contain;       /* 🔥 no recorta */
+    }
 }
 
 /* Estilos de las cards*/
@@ -222,3 +225,44 @@ html {
 #termos {
   scroll-margin-top: 100px;
 }
+
+/* CARRUSEL FONDO CLARO → flechas negras 
+SOLO para el carrusel de productos */
+#carouselProductos .carousel-control-prev-icon,
+#carouselProductos .carousel-control-next-icon {
+    filter: brightness(0) !important; 
+    transform: scale(1.8);
+}
+
+/*  CARRUSEL FONDO OSCURO → flechas blancas */
+.carousel-dark-theme .carousel-control-prev-icon,
+.carousel-dark-theme .carousel-control-next-icon {
+    filter: brightness(0) invert(1); /* blancas */
+    transform: scale(1.8);
+}
+
+/* Área clickeable (para ambos) */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 6%;
+}
+
+/*contacto*/
+/* Esto aplica a todas las pantallas */
+#contacto {
+    scroll-margin-top: 80px; /* Ajusta este número según la altura de tu Navbar */
+}
+
+@media (max-width: 768px) {
+    #contacto {
+        /* En móvil, si tu navbar es más chico, ajustas aquí */
+        scroll-margin-top: 70px; 
+    }
+    
+    /* Opcional: Reduce el tamaño del título en móvil para que suba más */
+    #contacto h1.display-5 {
+        font-size: 1.8rem;
+        margin-top: 10px;
+    }
+}
+

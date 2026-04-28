@@ -3,16 +3,15 @@
 
 
 @section('content')
-    <section>
-        {{--Banner de inicio con carrusel de imágenes --}}
-        <section class="w-100 carousel-banner">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+ {{--Banner de inicio con carrusel de imágenes --}}
+<section class="w-100 carousel-banner">
+            <div id="carouselExampleAutoplaying" class="carousel slide carousel-dark-theme" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/banner-1.0.svg') }}" class="d-block" alt="banner 1">
+                        <img src="{{ asset('img/banner-1.0.svg') }}" class="d-block img-banner" alt="banner 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/banner-2.0.svg') }}" class="d-block" alt="banner 2">
+                        <img src="{{ asset('img/banner-2.0.svg') }}" class="d-block img-banner" alt="banner 2">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -32,8 +31,8 @@
         {{-- Seccion Productos principales--}}
 
 
-        <div class="container my-5">
-            <h1 class="text-center mb-5">Categorías</h1>
+        <div class="container mt-3 mt-md-5" >
+            <h1 class="text-center mb-3 mb-md-5">Categorías</h1>
             <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
                 {{-- MATE--}}
                 <div class="col d-flex justify-content-center">
@@ -77,7 +76,7 @@
         <div class="container my-5">
             <h1 class="text-center mb-5">Productos Destacados</h1>
 
-            <div id="carouselProductos" class="carousel slide" data-bs-interval="false">
+            <div id="carouselProductos" class="carousel slide carousel-ligth-theme" data-bs-interval="false">
                 <div class="carousel-inner">
 
                     {{-- GRUPO 1: Primeros 4 productos --}}
@@ -217,13 +216,11 @@
                 </div>
 
                 {{-- Botones de navegación --}}
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev"
-                    style="width: 2%; filter: invert(1);">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next"
-                    style="width: 2%; filter: invert(1);">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Siguiente</span>
                 </button>
