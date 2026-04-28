@@ -6,7 +6,7 @@
 <section>
     <div class="container py-5 text-center ">
         <h2 class="text-center">Página en Construcción</h2>
-        <img src="{{ asset('img/others-pages/pagina en construccion.png') }}">
+        <img src="{{ asset('img/others-pages/pagina en construccion.png') }}" class="img-fluid">
     </div>
 </section>
 

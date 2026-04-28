@@ -2,13 +2,14 @@
 @section('titulo', 'Medios de Pago | Matiensos')
 
 @section('content')
-<div class="container py-5">
+<div class="container my-5">
+    {{-- Titulo y descripción --}}
     <section class="text-center mb-5">
         <h1 class="display-5">Medios de Pago</h1>
         <p class="text-muted">Elegí la forma de pago que más te convenga de manera segura.</p>
         <div class="mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
     </section>
-
+    {{-- Medios de pago --}}
     <div class="row justify-content-center g-4">
         <div class="col-md-4">
             <div class="card h-100 border-0 shadow-sm text-center p-4">
@@ -48,7 +49,7 @@
             </div>
         </div>
     </div>
-
+    {{-- Aviso de compra protegida --}}
     <div class="row mt-5 justify-content-center">
         <div class="col-md-8">
             <div class="p-4 rounded-3 border d-flex align-items-center bg-light">
@@ -64,5 +65,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

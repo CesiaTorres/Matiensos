@@ -4,13 +4,10 @@
 @section('content')
 <section>
 <div class="container my-5">
-
     {{-- ================= MATES ================= --}}
     <div id="mates">
         <h2 class="text-start mb-5">Mates</h2>
-
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
             {{-- Producto 1 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -24,7 +21,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 2 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -38,7 +34,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 3 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -52,7 +47,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 4 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -66,7 +60,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 5 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -83,11 +76,9 @@
         </div>
     </div>
 
-
     {{-- ================= BOMBILLAS ================= --}}
     <div id="bombillas" class="mt-5">
         <h2 class="text-start mb-5">Bombillas</h2>
-
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
             {{-- Producto 1 --}}
@@ -103,7 +94,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 2 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -117,7 +107,6 @@
                     </div>
                 </div>
             </div>
-            
             {{-- Producto 3 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -131,7 +120,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 4 --}}  
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -145,7 +133,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 5 --}}  
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -159,7 +146,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 6 --}}  
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -183,7 +169,6 @@
         <h2 class="text-start mb-5">Termos</h2>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
              {{-- Producto 1 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -197,7 +182,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 2 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -211,9 +195,7 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 3 --}}
-
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
                     <img src="{{ asset('img/producT2.svg') }}" class="card-img-top">
@@ -226,7 +208,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 4 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">
@@ -240,7 +221,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- Producto 5 --}}
             <div class="col">
                 <div class="card card-producto h-100 shadow-sm border-0">

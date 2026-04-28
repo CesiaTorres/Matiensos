@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('titulo', 'Acceso | Matiensos')
 
-
 @section('content')
-<div class="container py-5">
+<div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-5 col-lg-5">
-            <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
-                @csrf
+        <div class="col-11 col-md-5">
+            {{-- Formulario de acceso --}}
+            <form action="{{ route('pagina-en-construccion') }}" class="card shadow-sm p-4">
                 <h2 class="text-center mb-4">Ingresar</h2>        
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
@@ -21,7 +20,7 @@
                     <input type="checkbox" name="remember" class="form-check-input" id="remember">
                     <label class="form-check-label" for="remember">Recordarme</label>
                 </div>
-
+                {{-- Boton 'Entrar' --}}
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-color-matiensos text-white fw-bold py-2">
                         Entrar
@@ -29,7 +28,6 @@
                 </div>
             </form>
         </div>
-
     </div>
 </div>
     
