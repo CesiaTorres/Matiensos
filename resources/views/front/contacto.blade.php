@@ -12,7 +12,7 @@
         <div class="row align-items-end">
             <h1 class="display-5">Siempre cerca tuyo</h1>
             <div class="mb-4 mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
-            <p class="fs-5 text-secondary lead">
+            <p class=" text-secondary ">
                 En Matiensos, no solo vendemos productos, sino que también construimos puentes de comunicación con nuestra comunidad. 
                 Queremos que cada matero se sienta parte de esta gran familia, y para eso, estamos siempre dispuestos a escuchar tus dudas, sugerencias o simplemente charlar sobre el maravilloso mundo del mate.
             </p>
