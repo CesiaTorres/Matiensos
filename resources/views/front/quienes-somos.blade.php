@@ -10,12 +10,12 @@
         <div class="col-md-12 text-center">
             <h1 class="display-5">Nuestra Esencia</h1>
             <div class="mx-auto bg-matiensos mb-4" style="width: 50px; height: 3px;"></div>
-            <p class="text-secondary">
+            <p class="text-secondary lead">
                 Nacimos en el corazón de la UNNE, entre apuntes y termos compartidos. 
                 Entendemos que el mate no es solo una bebida, sino el compañero fiel de cada estudio, 
                 cada charla y cada nuevo proyecto.
             </p>
-            <p class="text-secondary">
+            <p class="text-secondary lead">
                 En <strong>Matiensos</strong>, seleccionamos productos regionales que representan 
                 nuestra identidad: calidad artesanal, durabilidad y ese toque moderno que el matero de hoy busca.
             </p>

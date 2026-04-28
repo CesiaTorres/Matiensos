@@ -6,7 +6,7 @@
     {{-- Titulo y descripción --}}
     <section class="text-center mb-5">
         <h1 class="display-5">Medios de Pago</h1>
-        <p class="text-muted">Elegí la forma de pago que más te convenga de manera segura.</p>
+        <p class="text-muted lead">Elegí la forma de pago que más te convenga de manera segura.</p>
         <div class="mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
     </section>
     {{-- Medios de pago --}}

@@ -12,7 +12,7 @@
                 En Matiensos, no solo vendemos productos, sino que también construimos puentes de comunicación con
                 nuestra comunidad.
                 Queremos que cada matero se sienta parte de esta gran familia, y para eso, estamos siempre dispuestos a
-                escuchartus dudas, sugerencias o simplemente charlar sobre el maravilloso mundo del mate.
+                escuchar tus dudas, sugerencias o simplemente charlar sobre el maravilloso mundo del mate.
             </p>
         </div>
     </section>
@@ -25,12 +25,12 @@
                     {{-- Info de contacto --}}
                     <div class="col-md-6 border-end">
                         <h2 class="card-title mb-4">Escribinos</h2>
-                        <a href="https://wa.me/543782547040" target="_blank"
-                            class="d-flex align-items-center gap-2 fs-5 pt-5 text-decoration-none text-dark">
-                            <i class="bi bi-whatsapp text-success"></i>+54 9 3782 547040
+                        <a href="https://wa.me/3782456372" target="_blank"
+                            class="d-flex align-items-center gap-3 text-decoration-none text-dark pt-5">
+                            <i class="bi bi-whatsapp fs-5 text-success"></i>3782456372
                         </a>
-                        <p class="d-flex align-items-center gap-2 fs-5">
-                            <i class="bi bi-envelope fs-3 text-dark"></i>matiensos@gmail.com
+                        <p class="d-flex align-items-center gap-3 pt-3">
+                            <i class="bi bi-envelope fs-5 text-dark"></i>matiensos@gmail.com
                         </p>
                     </div>
                     {{-- Formulario de contacto --}}
@@ -71,18 +71,18 @@
                         <h2 class="card-title mb-4">Seguinos</h2>
                         <div class="d-flex flex-column gap-3 pt-5">
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
-                                <i class="bi bi-facebook fs-3 text-primary"></i>
+                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                <i class="bi bi-facebook fs-5 text-primary"></i>
                                 Facebook
                             </a>
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
-                                <i class="bi bi-twitter-x fs-3"></i>
+                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                <i class="bi bi-twitter-x fs-5"></i>
                                 Twitter
                             </a>
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
-                                <i class="bi bi-instagram fs-3 text-danger"></i>
+                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                <i class="bi bi-instagram fs-5 text-danger"></i>
                                 Instagram
                             </a>
                         </div>
