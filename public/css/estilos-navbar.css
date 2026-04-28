@@ -24,7 +24,8 @@
         margin-top: 0;
     }
     /* Si el menú tiene la clase '-end', lo alineamos a la derecha */
-    .dropdown-menu-end {
+    .dropdown-menu-end,
+    .dropdown-menu-md-end {
         right: 0;
         left: auto;
     }

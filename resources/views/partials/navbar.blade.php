@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-navbar sticky-top">
     <div class="container-fluid">
-        {{-- Seccion logo + titulo --}}
-
+        {{-- Seccion izquierda: logo + titulo --}}
         <a class="navbar-brand" href="{{ route('inicio') }}">
             <div class="d-flex align-items-center">
                 <img src="{{ asset('img/icon-mate-logo.png') }}" 
@@ -19,7 +18,7 @@
         </button>
         
         <div class="collapse navbar-collapse" id="navbarContent"> 
-            {{-- Seccion de opciones centrales 'Productos', 'Nosotros' y 'Contacto' --}}
+            {{-- Seccion de opciones centrales --}}
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
@@ -55,21 +54,19 @@
                     <a class="nav-link" target="_blank" href="{{ route('terminos-y-usos') }}">Términos y Usos</a>
                 </li>
             </ul>
-
-            {{-- Seccion de opciones 'Usuario' y 'Carrito de compras' --}}
+            {{-- Seccion de opciones dcha --}}
             <div class="d-flex align-items-center ms-auto gap-3">
-                {{-- ícono menu de Usuario. Opciones 'Iniciar Sesion' y 'Registrarse' --}}
-
+                {{-- Opciones user --}}
                 <div class="dropdown">
                     <a class="nav-link-icon dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="bi bi-person-circle "></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-md-end shadow-sm border-0">
                         <li><a class="dropdown-item" href="{{route('acceso')}}">Iniciar Sesión</a></li>
                         <li><a class="dropdown-item" href="{{route('registro')}}">Registrarse</a></li>
                     </ul>
                 </div>
-                
+                {{-- Carrito de compras --}}
                 <a href="{{ route('pagina-en-construccion') }}" class="nav-link-icon position-relative">
                     <i class="bi bi-bag-fill"></i>
                     <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"

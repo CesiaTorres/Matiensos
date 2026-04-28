@@ -5,7 +5,7 @@
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-5 col-lg-5">
+        <div class="col-11 col-md-5">
             
         <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
                 @csrf
