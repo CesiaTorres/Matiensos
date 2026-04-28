@@ -30,8 +30,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Mates</a></li>
-                        <li><a class="dropdown-item" href="#">Termos</a></li>
                         <li><a class="dropdown-item" href="#">Bombillas</a></li>
+                        <li><a class="dropdown-item" href="#">Termos</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('productos')}}">Ver todos</a></li>
                     </ul>
