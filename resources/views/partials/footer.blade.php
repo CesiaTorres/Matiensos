@@ -1,7 +1,7 @@
 <footer class="bg-dark text-light pt-5 pb-3">
     <div class="container">
         <div class="row text-center text-md-start justify-content-between">
-            <div class="col-md-2 mb-4 small">
+            <div class="col-md-2 col-sm-6 mb-4 small">
                 {{-- Info de marca --}}
                 <h5 class="text-white text-uppercase">Matiensos</h5>
                 <p class="text-light opacity-75" style="line-height: 1.6;">
