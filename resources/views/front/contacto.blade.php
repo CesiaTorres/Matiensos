@@ -2,13 +2,13 @@
 @section('title', 'Contacto - Matiensos')
 
 @section('content')
-<div class="container my-5">   
+<div class="container py-5">   
     <!-- Título y descripción -->
-    <section class="container text-center">
+    <section class="text-center mb-5">
         <div class="row align-items-end">
             <h1 class="display-5">Siempre cerca tuyo</h1>
             <div class="mb-4 mx-auto bg-matiensos" style="width: 50px; height: 3px;"></div>
-            <p class="text-secondary lead">
+            <p class="text-secondary lead mx-auto">
                 En Matiensos, no solo vendemos productos, sino que también construimos puentes de comunicación con
                 nuestra comunidad.
                 Queremos que cada matero se sienta parte de esta gran familia, y para eso, estamos siempre dispuestos a
@@ -18,36 +18,35 @@
     </section>
 
     <!-- Sección de contacto-primera card -->
-    <section class="container my-5">
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
+        <div class="card shadow-sm border-0 mb-5">
+            <div class="card-body p-4 p-md-5">
                 <div class="row">
                     {{-- Info de contacto --}}
-                    <div class="col-md-6 border-end">
+                    <div class="col-md-6 border-end text-center text-md-start">
                         <h2 class="card-title mb-4">Escribinos</h2>
                         <a href="https://wa.me/3782456372" target="_blank"
-                            class="d-flex align-items-center gap-3 text-decoration-none text-dark pt-5">
+                            class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 pt-md-3 text-decoration-none text-dark lead">
                             <i class="bi bi-whatsapp fs-5 text-success"></i>3782456372
                         </a>
-                        <p class="d-flex align-items-center gap-3 pt-3">
+                        <p class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 pt-md-3 lead">
                             <i class="bi bi-envelope fs-5 text-dark"></i>matiensos@gmail.com
                         </p>
                     </div>
                     {{-- Formulario de contacto --}}
-                    <div class="col-md-6 ">
+                    <div class="col-md-6">
                         <form action="{{ route('pagina-en-construccion') }}" method="GET">
                             <div class="mb-3">
-                                <label class="form-label">Nombre</label>
+                                <label class="form-label fw-bold">Nombre</label>
                                 <input type="text" name="nombre" class="form-control" placeholder="Juan Ezequiel"
                                     required autofocus>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Email</label>
+                                <label class="form-label fw-bold">Email</label>
                                 <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"
                                     required autofocus>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Mensaje</label>
+                                <label class="form-label fw-bold">Mensaje</label>
                                 <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí..."
                                     rows="4" autofocus></textarea>
                             </div>
@@ -59,29 +58,29 @@
                 </div>
             </div>
         </div>
-    </section>
+
 
     <!-- Sección de contacto-segunda card -->
     <section class="container my-5">
         <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-                <div class="row">
+            <div class="card-body p-4 p-md-5">
+                <div class="row g-4">
                     {{-- Info de redes sociales --}}
                     <div class="col-md-6 border-end">
                         <h2 class="card-title mb-4">Seguinos</h2>
-                        <div class="d-flex flex-column gap-3 pt-5">
+                        <div class="d-flex flex-column gap-3 pt-md-2">
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 text-decoration-none text-dark lead">
                                 <i class="bi bi-facebook fs-5 text-primary"></i>
                                 Facebook
                             </a>
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 text-decoration-none text-dark lead">
                                 <i class="bi bi-twitter-x fs-5"></i>
                                 Twitter
                             </a>
                             <a href="{{route('pagina-en-construccion')}}"
-                                class="d-flex align-items-center gap-3 text-decoration-none text-dark">
+                                class="d-flex align-items-center justify-content-center justify-content-md-start gap-3 text-decoration-none text-dark lead">
                                 <i class="bi bi-instagram fs-5 text-danger"></i>
                                 Instagram
                             </a>
