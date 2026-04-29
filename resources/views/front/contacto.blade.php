@@ -1,10 +1,5 @@
-{{-- 1. "Llamamos" al diseño global (el que tiene el head, navbar y footer) --}}
 @extends('layouts.app')
-
-{{-- 2. Le pasamos el título específico para esta pestaña --}}
 @section('title', 'Contacto - Matiensos')
-
-{{-- 3. Aquí metemos el contenido real de la sección --}}
 @section('content')
 <section class="container my-5 ">
     <!-- Título y descripción -->
@@ -71,8 +66,30 @@
     </div>
   </div>
 </div>
+{{-- Secccion- titular- razon social --}}
+ <div class="container my-5">
+    <div class="card h-100 border-0 shadow-sm p-4">
+       <div class="card-body">
 
-<!-- Sección de contacto-segunda card -->
+        <div class="row g-4 mb-5">
+
+        <div class="col-md-6 border-end">  
+          <h2 class="card-title mb-4">Información legal</h2>
+          <p class="align-items-center  fs-5">Titular: Cecilia Grierson </p>
+           
+             <p class="align-items-center  fs-5">Nombre de la empresa: Matiensos</p>
+        </div>
+
+        <div class="col-md-6 d-flex flex-column justify-content-center ">
+              <p class="align-items-center  fs-5">Razon social: Matiensos S.R.L.</p>
+             <p class="align-items-center  fs-5">Domicilio legal: Av. Las Heras 727, Corrientes</p>
+         </div>
+        </div>
+          
+    </div>
+</div>
+
+<!-- Sección de contacto-Tercera card -->
  <div class="container my-5">
   <div class="card shadow-sm border-0">
     <div class="card-body p-4">
