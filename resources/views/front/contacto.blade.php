@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container pt-4 pb-5" id="contacto">
-    <!-- Título y descripción -->
+    {{-- Título y descripción --}}
     <section class="text-center mb-5" >
         <div class="row justify-content-center">
             <h1 class="display-5">Siempre cerca tuyo</h1>
@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <!-- Sección de contacto-primera card -->
+    {{-- Sección de contacto-primera card --}}
         <div class="card shadow-sm border-0 mb-5">
             <div class="card-body p-4 p-md-5">
                 <div class="row">
@@ -60,7 +60,7 @@
         </div>
 
 
-    <!-- Sección de contacto-segunda card -->
+    {{-- Sección de contacto-segunda card --}}
     <section class="container my-5">
         <div class="card shadow-sm border-0">
             <div class="card-body p-4 p-md-5">

@@ -4,7 +4,7 @@
 @section('content')
 <section>
 <div class="container my-5">
-    {{-- ================= MATES ================= --}}
+    {{--  MATES  --}}
     <div id="mates">
         <h2 class="text-start mb-5">Mates</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    {{-- ================= BOMBILLAS ================= --}}
+    {{--  BOMBILLAS  --}}
     <div id="bombillas" class="mt-5">
         <h2 class="text-start mb-5">Bombillas</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -164,7 +164,7 @@
     </div>
 
 
-    {{-- ================= TERMOS ================= --}}
+    {{--  TERMOS  --}}
     <div id="termos" class="mt-5">
         <h2 class="text-start mb-5">Termos</h2>
 

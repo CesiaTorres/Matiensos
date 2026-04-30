@@ -93,7 +93,7 @@ body {
     }
 }
 .carousel-banner {
-  line-height: 0; /* 🔥 elimina espacio fantasma */
+  line-height: 0; 
 }
 
 .carousel-banner img {
@@ -150,8 +150,8 @@ body {
 /* MOBILE */
 @media (max-width: 768px) {
     .img-banner {
-        height: auto;              /* 🔥 clave */
-        object-fit: contain;       /* 🔥 no recorta */
+        height: auto;           
+        object-fit: contain;     
     }
 }
 
@@ -226,7 +226,7 @@ html {
   scroll-margin-top: 100px;
 }
 
-/* CARRUSEL FONDO CLARO → flechas negras 
+/* CARRUSEL FONDO CLARO - flechas negras 
 SOLO para el carrusel de productos */
 #carouselProductos .carousel-control-prev-icon,
 #carouselProductos .carousel-control-next-icon {
@@ -234,7 +234,7 @@ SOLO para el carrusel de productos */
     transform: scale(1.8);
 }
 
-/*  CARRUSEL FONDO OSCURO → flechas blancas */
+/*  CARRUSEL FONDO OSCURO - flechas blancas */
 .carousel-dark-theme .carousel-control-prev-icon,
 .carousel-dark-theme .carousel-control-next-icon {
     filter: brightness(0) invert(1); /* blancas */
