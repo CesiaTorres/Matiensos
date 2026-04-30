@@ -3,7 +3,7 @@
         {{-- Seccion izquierda: logo + titulo --}}
         <a class="navbar-brand" href="{{ route('inicio') }}">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/icon-mate-logo.png') }}" 
+                <img src="{{ asset('img/inicio/icon-mate-logo.png') }}" 
                     alt="Logo Matiensos" 
                     width="50" 
                     height="50" 
