@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->integer('cantidad');
+            $table->decimal('total', 10,2);
+            $table->foreignId('id_usuario')
+                    ->constrained('usuarios');
+            $table->foreignId('id_producto')
+                    ->('productos');
             $table->timestamps();
         });
     }
