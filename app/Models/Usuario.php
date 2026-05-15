@@ -2,16 +2,45 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Usuario extends Model
+#[Fillable([
+    'nombre',
+    'apellido',
+    'email',
+    'password',
+    'rol_usuario'
+])]
+
+#[Hidden([
+    'password',
+    'remember_token'
+])]
+
+class User extends Authenticatable
 {
-    protected $fillable = [
-        'nombre',
-        'apellido',
-        'email',
-        'password',
-        'rol_usuario',
-    ];
+    use HasFactory, Notifiable;
 
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->rol_usuario === 'admin';
+    }
+
+    public function isCustomer(): bool
+    {
+        return $this->rol_usuario === 'customer';
+    }
 }
