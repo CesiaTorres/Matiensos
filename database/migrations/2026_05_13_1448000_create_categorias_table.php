@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $nombre->string('nombre', 150);
+            $table->string('nombre', 150);
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cateegorias');
+        Schema::dropIfExists('categorias');
     }
 };
