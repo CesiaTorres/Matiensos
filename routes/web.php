@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
 Route::get('/', function () {
     return view('front.inicio');
 }) ->name('inicio');
@@ -16,12 +18,16 @@ Route::get('/quienes-somos', function () {
 
 
 
-Route::get('/acceso', function () {
-    return view('front.acceso');
-}) ->name('acceso');
-Route::get('/registro', function () {
-    return view('front.registro');
-}) ->name('registro');
+Route::get('/acceso', [AuthController::class, 'showLogin'])
+ ->name('acceso');
+Route::post('/acceso.post', [AuthController::class, 'login']);
+
+Route::get('/registro',  [AuthController::class, 'showRegister'])
+ ->name('registro');
+Route::post('/registro.post',  [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
 
 
 
@@ -43,3 +49,13 @@ Route::get('/medios-de-pago', function () {
 Route::get('/pagina-en-construcción', function () {
     return view('front.paginaConstruccion');
 }) ->name('pagina-en-construccion');
+
+// Rutas para todo lo que sea roles
+
+Route::get('/admin', function () {
+    return 'Panel admin';
+})->middleware('role:admin');
+
+Route::get('/carrito', function () {
+    return 'Carrito';
+})->middleware('role:admin,customer');

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-11 col-md-5">
             {{-- Formulario de acceso --}}
-            <form action="{{ route('pagina-en-construccion') }}" class="card shadow-sm p-4">
+            <form action="{{ route('acceso.post') }}" method="POST" class="card shadow-sm p-4">
                 <h2 class="text-center mb-4">Ingresar</h2>        
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>

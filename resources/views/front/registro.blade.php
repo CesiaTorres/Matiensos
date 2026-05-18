@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-11 col-md-5">
             
-        <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
+        <form action="{{ route('registro.post') }}" method="POST" class="card shadow-sm p-4">
                 @csrf
                 <h2 class="text-center mb-4">Crear Cuenta</h2>    
                 
