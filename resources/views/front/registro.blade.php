@@ -6,8 +6,8 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-11 col-md-5">
-            
-        <form action="{{ route('pagina-en-construccion') }}" method="GET" class="card shadow-sm p-4">
+
+        <form action="{{ route('register.store') }}" method="POST" class="card shadow-sm p-4">
                 @csrf
                 <h2 class="text-center mb-4">Crear Cuenta</h2>    
                 
@@ -17,7 +17,7 @@
                 </div>    
                 <div class="mb-3">
                     <label for="last_name" class="form-label">Apellido/s</label>
-                    <input type="text" name="lastName" id="last_name" class="form-control" placeholder="Perez" required>
+                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Perez" required>
                 </div>  
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>

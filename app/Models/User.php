@@ -8,14 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable([    //Campos que se pueden cargar masivamente.
-    'name',
-    'last_name',
-    'email',
-    'password',
-    'role'
-])]
-
 #[Hidden([  //Campos que permanecen ocultos
     'password',
     'remember_token'
@@ -24,7 +16,15 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    
+
+    protected $fillable = [
+        'name',
+        'last_name',
+        'email',
+        'password',
+        'role',
+    ];
+
     //Conversion de tipos de datos
     protected function casts(): array
     {
