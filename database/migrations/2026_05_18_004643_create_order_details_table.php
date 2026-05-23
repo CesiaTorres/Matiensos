@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-       Schema::create('order_details', function (Blueprint $table) {
+    public function up(): void {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade'); //Si se borra el pedido, se borra el detalle
-            $table->foreignId('product_id')->constrained('productos');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('restrict');
             $table->integer('quantity');
-            $table->decimal('unit_price', 10, 2); 
+            $table->decimal('unit_price', 10, 2); // Congela el precio histórico
             $table->timestamps();
-    });
+        });
     }
 
     /**

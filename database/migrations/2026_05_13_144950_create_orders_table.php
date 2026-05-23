@@ -9,15 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->decimal('total', 10, 2);
-            $table->string('status')->default('pending'); // 'pending', 'paid', 'shipped'
+            $table->foreignId('user_id')->constrained()->onDelete('restrict');
+            $table->enum('status', ['pending', 'paid', 'shipped', 'delivered', 'cancelled'])->default('pending');
+            $table->decimal('total_amount', 10, 2);
+            $table->string('shipping_address')->nullable();
+            $table->string('tracking_number')->nullable();
             $table->timestamps();
-});
+            $table->softDeletes();
+        });
     }
 
     /**
