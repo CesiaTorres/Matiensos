@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+
 Route::get('/', function () {
     return view('front.inicio');
 }) ->name('inicio');
@@ -43,3 +45,16 @@ Route::get('/medios-de-pago', function () {
 Route::get('/pagina-en-construcción', function () {
     return view('front.paginaConstruccion');
 }) ->name('pagina-en-construccion');
+
+
+//Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/productos', [AdminController::class, 'index'])->name('admin.products');
+    
+    // Aquí irán los ABM (CRUD) que vas a gestionar:
+    // Route::resource('products', ProductController::class);
+    // Route::resource('categories', CategoryController::class);
+    // Route::resource('orders', OrderController::class);
+    
+});
