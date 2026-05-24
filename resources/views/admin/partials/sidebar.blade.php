@@ -1,38 +1,38 @@
-<div class="bg-matiensos p-3 sidebar d-flex flex-column justify-content-between position-fixed sticky-top" 
-    style="width: 260px;">
+<div class="bg-matiensos p-3 sidebar d-flex flex-column justify-content-between" 
+     style="width: 260px;">
     
     <div>
         <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <h3 class="fw-bold">Panel de Administración</h3>    
+            <h3 class="fw-bold text-white fs-4">Panel de Administración</h3>    
         </a>
         
-        <hr>
+        <hr class="text-white-50">
         
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="nav-link {{ request()->routeIs('admin.dashboard') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
+                    class="nav-link text-white {{ request()->routeIs('admin.dashboard') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
                     <i class="bi bi-speedometer2 me-2"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.products') }}"
-                    class="nav-link {{ request()->routeIs('admin.products') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
+                    class="nav-link text-white {{ request()->routeIs('admin.products') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
                     <i class="bi bi-box-seam me-2"></i> Productos
                 </a>
             </li>
             <li class="mb-1">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link text-white">
                     <i class="bi bi-tags me-2"></i> Categorías
                 </a>
             </li>
             <li class="mb-1">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link text-white">
                     <i class="bi bi-cart-check me-2"></i> Pedidos
                 </a>
             </li>
             <li class="mb-1">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link text-white">
                     <i class="bi bi-envelope me-2"></i> Mensajes
                 </a>
             </li>
@@ -40,9 +40,9 @@
     </div>
     
     <div>
-        <hr>
+        <hr class="text-white-50">
         <div class="d-flex align-items-center mb-3 px-2">
-            <i class="bi bi-person-circle me-2 nav-link-icon"></i>
+            <i class="bi bi-person-circle me-2 text-white fs-5"></i>
             <span class="fw-bold text-white">Admin Principal</span>
         </div>
         <a href="/" class="nav-link text-white opacity-75 px-2">
