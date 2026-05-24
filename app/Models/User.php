@@ -13,7 +13,7 @@ use Illuminate\Notifications\Notifiable;
     'last_name',
     'email',
     'password',
-    'role'
+    'role_id'
 ])]
 
 #[Hidden([  //Campos que permanecen ocultos
@@ -36,11 +36,11 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role_id === 1;
     }
 
     public function isCustomer(): bool
     {
-        return $this->role === 'customer';
+        return $this->role_id === 2;
     }
 }
