@@ -10,9 +10,9 @@
                 <h2 class="text-dark fw-bold m-0">Gestión de Productos</h2>
                 <small class="text-muted">Panel de control de inventario y catálogo</small>
             </div>
-            <a href="#" class="btn btn-color-matiensos text-white px-3 fw-bold">
+            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createProduct">
                 <i class="bi bi-plus-circle me-2"></i> Nuevo Producto
-            </a>
+            </button>
         </div>
 
         <div class="row mb-4">

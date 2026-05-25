@@ -52,6 +52,7 @@ Route::get('/pagina-en-construcción', function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
+    Route::post('/productos', [ProductController::class, 'store'])->name('admin.products.store');
     
     // Aquí irán los ABM (CRUD) que vas a gestionar:
     // Route::resource('products', ProductController::class);
