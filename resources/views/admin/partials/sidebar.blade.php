@@ -33,7 +33,12 @@
             </li>
             <li class="mb-1">
                 <a href="#" class="nav-link text-white">
-                    <i class="bi bi-envelope me-2"></i> Mensajes
+                    <i class="bi bi-people me-2"></i> Usuarios
+                </a>
+            </li>
+            <li class="mb-1">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-envelope me-2"></i> Consultas
                 </a>
             </li>
         </ul>
@@ -45,7 +50,7 @@
             <i class="bi bi-person-circle me-2 text-white fs-5"></i>
             <span class="fw-bold text-white">Admin Principal</span>
         </div>
-        <a href="/" class="nav-link text-white opacity-75 px-2">
+        <a href="{{ route('inicio') }}" class="nav-link text-white opacity-75 px-2">
             <i class="bi bi-box-arrow-left me-2"></i> Ir a la Tienda
         </a>
     </div>

@@ -11,7 +11,7 @@ class ProductController
      */
     public function index()
     {
-        return view('admin-page-construction');
+        return view('admin.front.products');
     }
 
     /**
