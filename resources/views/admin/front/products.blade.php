@@ -9,7 +9,6 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h2 class="text-dark fw-bold m-0">Gestión de Productos</h2>
-                <small class="text-muted">Panel de control de inventario y catálogo</small>
             </div>
             <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createProductModal">
                 <i class="bi bi-plus-circle me-2"></i> Nuevo Producto
@@ -48,11 +47,11 @@
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
-                    <div class="bg-secondary" style="width: 6px;"></div>
+                    <div class="bg-matiensos" style="width: 6px;"></div>
                     <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
                         <div>
                             <h6 class="text-muted text-uppercase fw-bold mb-2">Productos Sin Stock</h6>
-                            <h3 class="fw-bold m-0 text-secondary">{{ $metrics['out_of_stock']}}</h3>
+                            <h3 class="fw-bold m-0">{{ $metrics['out_of_stock']}}</h3>
                         </div>
                         <div class="bg-secondary bg-opacity-10 p-3 rounded text-danger ">
                             <i class="bi bi-exclamation-octagon fs-3"></i>
@@ -159,6 +158,9 @@
                                 @endif
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end mt-3">
+                            {{ $products->links() }}
+                        </div>
                     </div>
 
                 </div>
@@ -167,6 +169,7 @@
 
     </div>
 </div>
+
 {{-- FORMULARIO CREAR NUEVO PRODUCTO --}}
 <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

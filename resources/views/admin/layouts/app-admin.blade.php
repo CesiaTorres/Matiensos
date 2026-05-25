@@ -7,14 +7,12 @@
 
     <body>
         <div class="d-flex">
-            <div class="flex-shrink-0" style="width: 260px;">
-                {{-- menú lateral --}}
-                @include('admin.partials.sidebar')
-            </div>
+            {{-- menú lateral --}}
+            @include('admin.partials.sidebar')
 
-            <div class="flex-grow-1 min-vh-100">
+            <div class="flex-grow-1 w-0 min-vh-100">
                 <main class="p-4">
-                    {{-- Aquí se inyectará el Dashboard, Lista de Productos, etc. --}}
+                    {{-- Dashboard, Lista de Productos, etc. --}}
                     @yield('content')
                 </main>
             </div>

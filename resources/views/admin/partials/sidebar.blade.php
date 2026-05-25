@@ -1,4 +1,4 @@
-<div class="bg-matiensos p-3 sidebar d-flex flex-column justify-content-between" 
+<div class="bg-matiensos p-3 sidebar d-flex flex-column justify-content-between flex-shrink-0 vh-100 position-sticky top-0" 
      style="width: 260px;">
     
     <div>
