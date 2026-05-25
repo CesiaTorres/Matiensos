@@ -9,13 +9,17 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = [
+        'name', 
+        'description',
+        'is_active'
+    ];
 
     /**
-     * Una categoría tiene muchos productos.
+     * Una Categoría tiene muchos Productos.
      */
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id');
     }
 }

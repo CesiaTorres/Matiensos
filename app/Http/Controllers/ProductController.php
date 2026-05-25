@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController
 {
@@ -13,7 +14,15 @@ class ProductController
     public function index()
     {
         $products = Product::with('category')->latest()->paginate(10);
-        return view('admin.front.products', compact('products'));
+        $categories = Category::orderBy('name', 'asc')->get();
+
+        $metrics = [
+            'total_products'        => Product::count(),
+            'stock'        => Product::sum('stock'),
+            'out_of_stock' => Product::where('stock', 0)->count(),
+        ];
+
+        return view('admin.front.products', compact('products', 'categories', 'metrics'));
     }
 
     /**
@@ -33,20 +42,22 @@ class ProductController
         $request->validate([
             'code' => 'required|string|unique:products,code|max:50',
             'name' => 'required|string|max:150',
+            'description' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
         
-        $imagePath = null;  //Inicializa la variable
-        if ($request->hasFile('image_url')) {   //Procesa la carga si el cliente subió un archivo
+        $imagePath = null;
+        if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('products', 'public');
         }
 
         Product::create([
             'code' => strtoupper($request->code),
             'name' => $request->name,
+            'description' => $request->description,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'stock' => $request->stock,

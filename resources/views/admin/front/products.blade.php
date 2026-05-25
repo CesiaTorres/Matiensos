@@ -2,19 +2,21 @@
 @section('titulo', 'Gestión de Productos | Matiensos')
 
 @section('content')
+
+{{-- VISTA PRINCIPAL DE PRODUCTOS --}}
 <div class="row g-0">
     <div class="col-12 p-4">
-
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h2 class="text-dark fw-bold m-0">Gestión de Productos</h2>
                 <small class="text-muted">Panel de control de inventario y catálogo</small>
             </div>
-            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createProduct">
+            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createProductModal">
                 <i class="bi bi-plus-circle me-2"></i> Nuevo Producto
             </button>
         </div>
 
+        {{-- Tarjetas --}}
         <div class="row mb-4">
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
@@ -22,7 +24,7 @@
                     <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
                         <div>
                             <h6 class="text-muted text-uppercase fw-bold mb-2">Total Productos</h6>
-                            <h3 class="fw-bold m-0 color-matiensos">48</h3>
+                            <h3 class="fw-bold m-0 text-dark">{{ $metrics['total_products'] }}</h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
                             <i class="bi bi-box-seam fs-3"></i>
@@ -30,7 +32,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
                     <div class="bg-matiensos" style="width: 6px;"></div>
@@ -45,7 +46,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
                     <div class="bg-secondary" style="width: 6px;"></div>
@@ -143,6 +143,77 @@
             </div>
         </div>
 
+    </div>
+</div>
+{{-- FORMULARIO CREAR NUEVO PRODUCTO --}}
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            
+            <div class="modal-header bg-light">
+                <h5 class="modal-title fw-bold text-dark" id="createProductModalLabel">
+                    <i class="bi bi-box-seam me-2 color-matiensos"></i>Agregar Producto
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body p-4">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold">Código</label>
+                            <input type="text" name="code" class="form-control" placeholder="Ej: MAT-001" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold">Nombre del Producto</label>
+                            <input type="text" name="name" class="form-control" placeholder="Ej: Mate Camionero" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Categoría</label>
+                        <select name="category_id" class="form-select" required>
+                            <option value="" selected disabled>Seleccionar Categoría...</option>
+                            
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                            
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold">Precio ($)</label>
+                            <input type="number" step="0.01" name="price" class="form-control" placeholder="0.00" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold">Stock Inicial</label>
+                            <input type="number" name="stock" class="form-control" placeholder="0" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Descripción (Opcional)</label>
+                        <input type="text" name="description" class="form-control" placeholder="Detalles del producto o especificaciones...">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Imagen del Producto</label>
+                        <input type="file" name="image" class="form-control" accept="image/*">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-color-matiensos text-white fw-bold">Guardar Producto</button>
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>
 @endsection
