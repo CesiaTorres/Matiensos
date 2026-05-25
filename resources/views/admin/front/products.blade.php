@@ -38,7 +38,7 @@
                     <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
                         <div>
                             <h6 class="text-muted text-uppercase fw-bold mb-2">Stock Total Físico</h6>
-                            <h3 class="fw-bold m-0 color-matiensos">324 <span class="fs-6 fw-normal text-muted">unidades</span></h3>
+                            <h3 class="fw-bold m-0">{{ $metrics['stock']}} <span class="fs-6 fw-normal text-muted">unidades</span></h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
                             <i class="bi bi-archive fs-3"></i>
@@ -52,9 +52,9 @@
                     <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
                         <div>
                             <h6 class="text-muted text-uppercase fw-bold mb-2">Productos Sin Stock</h6>
-                            <h3 class="fw-bold m-0 text-secondary">3</h3>
+                            <h3 class="fw-bold m-0 text-secondary">{{ $metrics['out_of_stock']}}</h3>
                         </div>
-                        <div class="bg-secondary bg-opacity-10 p-3 rounded text-secondary">
+                        <div class="bg-secondary bg-opacity-10 p-3 rounded text-danger ">
                             <i class="bi bi-exclamation-octagon fs-3"></i>
                         </div>
                     </div>
@@ -62,6 +62,7 @@
             </div>
         </div>
 
+        {{-- Listado de Productos --}}
         <div class="row">
             <div class="col-12">
                 <div class="card border-0 shadow-sm bg-white p-4">
@@ -75,66 +76,87 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="table-responsive">
                         <table class="table table-hover align-middle m-0">
+                            {{-- Encabezado --}}
                             <thead class="table-light">
                                 <tr>
-                                    <th style="width: 80px;">Imagen</th>
-                                    <th>Nombre del Producto</th>
+                                    <th style="width: 80px;">Código</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre/Descripción</th>
                                     <th>Categoría</th>
                                     <th>Precio</th>
                                     <th>Stock</th>
                                     <th class="text-end" style="width: 150px;">Acciones (ABM)</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="{{ asset('img/inicio/icon-mate-logo.png') }}" class="rounded bg-light" width="45" height="45" alt="Producto">
-                                    </td>
-                                    <td>
-                                        <h6 class="m-0 fw-bold text-dark">Mate Camionero Premium</h6>
-                                        <small class="text-muted">COD: MAT-001</small>
-                                    </td>
-                                    <td><span class="badge bg-light text-dark border">Mates</span></td>
-                                    <td class="fw-bold color-matiensos">$18.500</td>
-                                    <td>
-                                        <span class="badge bg-success bg-opacity-10 text-success fw-bold">24 u.</span>
-                                    </td>
-                                    <td class="text-end">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-light border text-primary" title="Editar">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-light border text-danger" title="Eliminar">
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="rounded bg-light d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
-                                            <i class="bi bi-image text-muted"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h6 class="m-0 fw-bold text-dark">Termo Media Manija 1L</h6>
-                                        <small class="text-muted">COD: TER-042</small>
-                                    </td>
-                                    <td><span class="badge bg-light text-dark border">Termos</span></td>
-                                    <td class="fw-bold color-matiensos">$32.000</td>
-                                    <td>
-                                        <span class="badge bg-danger bg-opacity-10 text-danger fw-bold">0 u.</span>
-                                    </td>
-                                    <td class="text-end">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-light border text-primary"><i class="bi bi-pencil-square"></i></a>
-                                            <button type="button" class="btn btn-light border text-danger"><i class="bi bi-trash3"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                            
+                            <tbody class="align-middle">
+                                {{-- Lista vacia --}}
+                                @if($products->isEmpty())
+                                    <tr>
+                                        <td colspan="7" class="text-center py-4 text-muted">
+                                            <i class="bi bi-box-open fs-3 d-block mb-2"></i>
+                                            No hay productos cargados en el catálogo de Matiensos.
+                                        </td>
+                                    </tr>
+                                @else
+                                    {{-- Lista con productos --}}
+                                    @foreach($products as $product)
+                                        <tr>
+                                            <td class="fw-bold text-secondary">{{ $product->code }}</td>
+                                            
+                                            <td>
+                                                @if($product->image_url)
+                                                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="rounded shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+                                                @else
+                                                    <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
+                                                        <i class="bi bi-image small"></i>
+                                                    </div>
+                                                @endif
+                                            </td>
+                                            
+                                            <td>
+                                                <div class="fw-bold text-dark">{{ $product->name }}</div>
+                                                @if($product->description)
+                                                    <small class="text-muted d-block text-truncate" style="max-width: 250px;">{{ $product->description }}</small>
+                                                @endif
+                                            </td>
+                                            
+                                            <td>
+                                                <span class="badge bg-light text-dark border px-2 py-1.5 small fw-semibold">
+                                                    {{ $product->category ? $product->category->name : 'Sin Categoría' }}
+                                                </span>
+                                            </td>
+                                            
+                                            <td class="fw-bold text-dark">${{ number_format($product->price, 2, ',', '.') }}</td>
+                                            
+                                            <td>
+                                                @if($product->stock > 0)
+                                                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 fw-bold">
+                                                        {{ $product->stock }} un.
+                                                    </span>
+                                                @else
+                                                    <span class="badge bg-danger bg-opacity-10 text-danger px-2 py-1 fw-bold">
+                                                        Sin Stock
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            
+                                            <td>
+                                                <div class="d-flex gap-2">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary border-0" title="Editar Producto">
+                                                        <i class="bi bi-pencil-square fs-6"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-outline-danger border-0" title="Eliminar Producto">
+                                                        <i class="bi bi-trash3 fs-6"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
