@@ -108,7 +108,8 @@
                                             
                                             <td>
                                                 @if($product->image_url)
-                                                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->name }}" class="rounded shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+                                                    {{-- Cambiá tu línea por esta forma interpolada pura --}}
+                                                    <img src="{{ asset("storage/$product->image_url") }}" alt="{{ $product->name }}" class="rounded shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
                                                 @else
                                                     <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
                                                         <i class="bi bi-image small"></i>
@@ -227,7 +228,7 @@
 
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Imagen del Producto</label>
-                        <input type="file" name="image" class="form-control" accept="image/*">
+                        <input type="file" name="image_url" class="form-control" accept="image/*">
                     </div>
 
                 </div>
