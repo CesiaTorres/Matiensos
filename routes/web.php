@@ -6,6 +6,7 @@ Route::get('/', function () {
 }) ->name('inicio');
 
 
+
 Route::get('/contacto', function () {
     return view('front.contacto'); 
 }) ->name('contacto');
@@ -16,9 +17,10 @@ Route::get('/quienes-somos', function () {
 
 
 
-Route::get('/acceso', function () {
-    return view('front.acceso');
-}) ->name('acceso');
+Route::get('/acceso', [AuthController::class, 'showLogin'])
+    ->name('acceso');
+Route::post('/acceso', [AuthController::class, 'login'])
+    ->name('login');
 
 Route::get('/registro', [AuthController::class, 'showRegister'])
     ->name('registro');

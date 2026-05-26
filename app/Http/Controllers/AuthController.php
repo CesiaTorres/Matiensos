@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,33 @@ class AuthController extends Controller
         return view('front.registro');
     }
 
+    //muestra vista login
+    public function showLogin()
+    {
+        return view('front.acceso');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+
+            'email' => 'required|email',
+
+            'password' => 'required'
+
+        ]);
+
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->regenerate();
+
+            return redirect('/')
+                ->with('success', 'Inicio de sesión exitoso');
+        }
+
+        return back()->withErrors([
+            'email' => 'Credenciales incorrectas'
+        ]);
+    }
 
     public function register(Request $request)
     {
@@ -42,7 +70,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/') ->with('success', 'Usuario registrado con éxito');
+        return redirect('/')->with('success', 'Usuario registrado con éxito');
     }
     public function logout(Request $request)
     {

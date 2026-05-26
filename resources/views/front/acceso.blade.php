@@ -6,15 +6,30 @@
     <div class="row justify-content-center">
         <div class="col-11 col-md-5">
             {{-- Formulario de acceso --}}
-            <form action="{{ route('pagina-en-construccion') }}" class="card shadow-sm p-4">
-                <h2 class="text-center mb-4">Ingresar</h2>        
+            <form action="{{ route('login') }}" method="POST" class="card shadow-sm p-4">
+                @csrf
+                <h2 class="text-center mb-4">Ingresar</h2>
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@gmail.com" required autofocus>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
+                    <div class="input-group">
+                        <input type="password"
+                            name="password"
+                            id="password"
+                            class="form-control"
+                            required>
+
+                        <button class="btn btn-outline-secondary"
+                            type="button"
+                            onclick="togglePassword()">
+
+                            <i class="bi bi-eye"></i>
+
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" name="remember" class="form-check-input" id="remember">
@@ -30,5 +45,14 @@
         </div>
     </div>
 </div>
-    
+<script>
+    function togglePassword() {
+        const password = document.getElementById('password');
+
+        password.type =
+            password.type === 'password' ?
+            'text' :
+            'password';
+    }
+</script>
 @endsection
