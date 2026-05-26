@@ -54,8 +54,8 @@ Route::get('/pagina-en-construcción', function () {
 
 Route::get('/admin', function () {
     return 'Panel admin';
-})->middleware('role:admin');
+})->middleware('role: 1');
 
 Route::get('/carrito', function () {
     return 'Carrito';
-})->middleware('role:admin,customer');
+})->middleware('role: 1, 2');
