@@ -159,7 +159,7 @@
                                 @endif
                             </tbody>
                         </table>
-                        <div class="d-flex justify-content-end mt-3">
+                        <div class="d-flex flex-column align-items-center gap-2 mt-4">
                             {{ $products->links() }}
                         </div>
                     </div>

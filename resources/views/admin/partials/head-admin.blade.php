@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 {{-- hoja de estilos --}}
 <link rel="stylesheet" href="{{ asset('css/estilos-pages.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-admin.css') }}">
 <style>
     .sidebar { min-height: 100vh; }
 </style>
