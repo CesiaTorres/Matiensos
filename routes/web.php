@@ -1,11 +1,16 @@
 <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
+
+/*
+|--------------------------------------------------------------------------
+| RUTAS PÚBLICAS
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('front.inicio');
 }) ->name('inicio');
-
-
 
 Route::get('/contacto', function () {
     return view('front.contacto'); 
@@ -15,22 +20,6 @@ Route::get('/quienes-somos', function () {
     return view('front.quienes-somos');
 }) ->name('quienes-somos');
 
-
-
-Route::get('/acceso', [AuthController::class, 'showLogin'])
-    ->name('acceso');
-Route::post('/acceso', [AuthController::class, 'login'])
-    ->name('login');
-
-Route::get('/registro', [AuthController::class, 'showRegister'])
-    ->name('registro');
-Route::post('/registro', [AuthController::class, 'register'])
-    ->name('register');
-
-Route::post('/logout', [AuthController::class, 'logout'])
-    ->name('logout');
-
-
 Route::get('/productos', function () {
     return view('front.products');
 }) ->name('productos');
@@ -38,9 +27,11 @@ Route::get('/productos', function () {
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
 }) ->name('terminos-y-usos');
+
 Route::get('/envios-y-entregas', function () {
     return view('front.envios');
 }) ->name('envios-y-entregas');
+
 Route::get('/medios-de-pago', function () {
     return view('front.pagos');
 }) ->name('medios-de-pago');
@@ -49,3 +40,59 @@ Route::get('/medios-de-pago', function () {
 Route::get('/pagina-en-construcción', function () {
     return view('front.paginaConstruccion');
 }) ->name('pagina-en-construccion');
+
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+
+Route::controller(AuthController::class)->group(function () {
+
+    Route::get('/acceso', 'showLogin')
+    ->name('acceso');
+
+    Route::post('/acceso', 'login')
+        ->name('login');
+
+    Route::get('/registro', 'showRegister')
+        ->name('registro');
+
+    Route::post('/registro', 'register')
+        ->name('register');
+
+    Route::post('/logout', 'logout')
+        ->name('logout');
+
+        /* Route::post('/logout', [AuthController::class, 'logout'])
+        ->name('logout');*/
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| RUTAS USUARIO LOGUEADO
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/perfil_user', function () {
+        return view('front.perfil_user');
+    })->name('perfil_user');
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| RUTAS ADMIN
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'role:1'])->group(function () {
+
+    Route::get('/admin', function () {
+        return view('admin.dashboard');
+    });
+
+});

@@ -34,9 +34,9 @@
 
                         <button class="btn btn-outline-secondary"
                             type="button"
-                            onclick="togglePassword()">
+                            onclick="togglePassword('password', 'eyeIcon1')">
 
-                            <i class="bi bi-eye"></i>
+                            <i id="eyeIcon1" class="bi bi-eye-slash"></i>
 
                         </button>
                     </div>
@@ -52,9 +52,9 @@
 
                         <button class="btn btn-outline-secondary"
                             type="button"
-                            onclick="togglePasswordConfirmation()">
+                            onclick="togglePassword('password_confirmation', 'eyeIcon2')">
 
-                            <i class="bi bi-eye"></i>
+                            <i id="eyeIcon2" class="bi bi-eye-slash"></i>
 
                         </button>
                     </div>
@@ -85,22 +85,19 @@
     </div>
 </div>
 <script>
-    function togglePassword() {
-        const password = document.getElementById('password');
+    function togglePassword(passwordId, iconId) {
+
+        const password = document.getElementById(passwordId);
+        const icon = document.getElementById(iconId);
 
         password.type =
             password.type === 'password' ?
             'text' :
             'password';
+
+        icon.classList.toggle('bi-eye');
+        icon.classList.toggle('bi-eye-slash');
     }
 
-    function togglePasswordConfirmation() {
-        const password = document.getElementById('password_confirmation');
-
-        password.type =
-            password.type === 'password' ?
-            'text' :
-            'password';
-    }
 </script>
 @endsection

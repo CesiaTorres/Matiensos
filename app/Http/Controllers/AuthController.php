@@ -19,6 +19,7 @@ class AuthController extends Controller
     {
         return view('front.acceso');
     }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -37,9 +38,9 @@ class AuthController extends Controller
                 ->with('success', 'Inicio de sesión exitoso');
         }
 
-        return back()->withErrors([
-            'email' => 'Credenciales incorrectas'
-        ]);
+        return back()
+            ->with('error', 'Correo o contraseña incorrectos');
+        
     }
 
     public function register(Request $request)

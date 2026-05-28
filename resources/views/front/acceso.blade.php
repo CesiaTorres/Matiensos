@@ -26,7 +26,7 @@
                             type="button"
                             onclick="togglePassword()">
 
-                            <i class="bi bi-eye"></i>
+                            <i id="eyeIcon" class="bi bi-eye-slash"></i>
 
                         </button>
                     </div>
@@ -48,11 +48,14 @@
 <script>
     function togglePassword() {
         const password = document.getElementById('password');
+        const icon = document.getElementById('eyeIcon');
 
         password.type =
             password.type === 'password' ?
             'text' :
             'password';
+        icon.classList.toggle('bi-eye');
+        icon.classList.toggle('bi-eye-slash');
     }
 </script>
 @endsection

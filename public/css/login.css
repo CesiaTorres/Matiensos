@@ -1,0 +1,6 @@
+/* css card de perfil usuario*/
+
+#profile-card {
+    background: linear-gradient(135deg, #1f4d3d, #2d6a54);
+    min-height: 280px;
+}

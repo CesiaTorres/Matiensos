@@ -62,9 +62,8 @@
                 <div class="d-flex align-items-center gap-2">
 
                     @auth
-                    <span class="text-light">
-                        Hola, {{ Auth::user()->name }}
-                    </span>
+                    <span class="text-light"> Hola, {{ Auth::user()->name }} </span>
+
                     @endauth
 
                     <div class="dropdown">
@@ -95,10 +94,19 @@
                             @endguest
 
                             @auth
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('perfil_user') }}">
+                                        Mi perfil
+                                    </a>
+                                </li>
+                                @if(Auth::user()->role_id == 1)
+
+                                <a class="dropdown-item" href="{{ route('perfil_user') }}"> Panel Admin </a>
+
+                                @endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-
                                     <button type="submit" class="dropdown-item">
                                         Cerrar sesión
                                     </button>
