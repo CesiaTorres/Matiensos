@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -40,7 +41,6 @@ class AuthController extends Controller
 
         return back()
             ->with('error', 'Correo o contraseña incorrectos');
-        
     }
 
     public function register(Request $request)
@@ -82,5 +82,51 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+
+    public function updateProfile(Request $request)
+    {
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        // VALIDACIONES
+        $request->validate([
+
+            'name' => 'required',
+
+            'email' => 'required|email',
+
+            'new_password' => 'nullable|min:6|confirmed'
+
+        ]);
+
+        // IMAGEN
+        if ($request->hasFile('profile_image')) {
+
+            $path = $request->file('profile_image')
+                ->store('profile-images', 'public');
+
+            $user->profile_image = $path;
+        }
+
+        // DATOS
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // CAMBIO PASSWORD
+        if ($request->filled('current_password')) {
+
+            if (!Hash::check($request->current_password, $user->password)) {
+
+                return back()->with('error', 'La contraseña actual es incorrecta');
+            }
+
+            $user->password = $request->new_password;
+        }
+
+        $user->save();
+
+        return back()->with('success', 'Perfil actualizado');
     }
 }

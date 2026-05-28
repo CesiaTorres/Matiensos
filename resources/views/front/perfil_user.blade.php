@@ -17,11 +17,23 @@
                     <div class="position-relative d-inline-block">
 
                         {{-- FOTO --}}
+                        @if(Auth::user()->profile_image)
+
+                        <img src="{{ asset('storage/' . Auth::user()->profile_image) }}"
+                            class="rounded-circle border border-4 border-white"
+                            width="140"
+                            height="140"
+                            style="object-fit: cover;">
+
+                        @else
+
                         <img src="{{ asset('img/profile-user/icono-perfil.png') }}"
                             class="rounded-circle border border-4 border-white"
                             width="140"
                             height="140"
                             style="object-fit: cover;">
+
+                        @endif
 
                     </div>
 
@@ -261,19 +273,25 @@
 
                 <div class="modal-body p-4">
 
-                    <form>
-
+                    <form action="{{route('perfil.update')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="text-center mb-4">
-
+                            @if(Auth::user()->profile_image)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}"
+                                class="rounded-circle mb-3 border border-4 border-green"
+                                width="120"
+                                height="120"
+                                style="object-fit: cover;">
+                            @else
                             <img src="{{ asset('img/profile-user/icono-perfil.png') }}"
                                 class="rounded-circle mb-3  border border-4 border-green"
                                 width="120"
                                 height="120"
                                 style="object-fit: cover;">
+                            @endif
 
                             <div>
-                                <input type="file"
-                                    class="form-control">
+                                <input type="file" name="profile_image" class="form-control">
                             </div>
 
                         </div>
@@ -285,8 +303,9 @@
                             </label>
 
                             <input type="text"
+                                name="name"
                                 class="form-control"
-                            value="{{ Auth::user()->name }}" >
+                                value="{{ Auth::user()->name }}">
 
                         </div>
 
@@ -297,6 +316,7 @@
                             </label>
 
                             <input type="email"
+                                name="email"
                                 class="form-control"
                                 value="{{ Auth::user()->email }}">
 
@@ -305,18 +325,76 @@
                         <div class="mb-3">
 
                             <label class="form-label">
-                                Teléfono
+                                Contraseña actual
                             </label>
+                            <div class="input-group">
+                                <input type="password"
+                                    id="currentPassword"
+                                    name="current_password"
+                                    class="form-control">
 
-                            <input type="text"
-                                class="form-control"
-                                value="+54 11 2345 6789">
+                                <button class="btn btn-outline-secondary"
+                                    type="button"
+                                    onclick="togglePassword('currentPassword', this)">
 
+                                    <i class="bi bi-eye-slash"></i>
+
+                                </button>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-custom w-100 ">
-                            Guardar cambios
-                        </button>
+                        <div id="newPasswordFields" class="d-none">
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Nueva contraseña
+                                </label>
+
+                                <div class="input-group">
+                                    <input type="password"
+                                        id="newPassword"
+                                        name="new_password"
+                                        class="form-control">
+
+                                    <button class="btn btn-outline-secondary"
+                                        type="button"
+                                        onclick="togglePassword('newPassword', this)">
+
+                                        <i class="bi bi-eye-slash"></i>
+
+                                    </button>
+
+                                </div>
+
+                                <div class="mb-3">
+
+                                    <label class="form-label">
+                                        Confirmar nueva contraseña
+                                    </label>
+                                    <div class="input-group">
+
+                                        <input type="password"
+                                            id="confirmPassword"
+                                            name="new_password_confirmation"
+                                            class="form-control">
+
+                                        <button class="btn btn-outline-secondary"
+                                            type="button"
+                                            onclick="togglePassword('confirmPassword', this)">
+
+                                            <i class="bi bi-eye-slash"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                    <small id="passwordMessage"></small>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-custom w-100 ">
+                                Guardar cambios
+                            </button>
 
                     </form>
 
@@ -325,7 +403,90 @@
             </div>
 
         </div>
-
     </div>
 
+    <script>
+        // MOSTRAR CAMPOS NUEVA PASSWORD
+
+        const currentPassword = document.getElementById('currentPassword');
+
+        const newPasswordFields = document.getElementById('newPasswordFields');
+
+        currentPassword.addEventListener('input', function() {
+
+            if (currentPassword.value.length > 0) {
+
+                newPasswordFields.classList.remove('d-none');
+
+            } else {
+
+                newPasswordFields.classList.add('d-none');
+
+            }
+
+        });
+
+
+
+        // VALIDAR CONFIRMACIÓN
+
+        const newPassword = document.getElementById('newPassword');
+
+        const confirmPassword = document.getElementById('confirmPassword');
+
+        const passwordMessage = document.getElementById('passwordMessage');
+
+        confirmPassword.addEventListener('input', function() {
+
+            if (confirmPassword.value.length === 0) {
+
+                passwordMessage.textContent = '';
+
+                confirmPassword.classList.remove('is-valid');
+                confirmPassword.classList.remove('is-invalid');
+
+                return;
+            }
+
+            if (newPassword.value === confirmPassword.value) {
+
+                passwordMessage.textContent = 'Las contraseñas coinciden';
+
+                passwordMessage.className = 'text-success';
+
+                confirmPassword.classList.remove('is-invalid');
+                confirmPassword.classList.add('is-valid');
+
+            } else {
+
+                passwordMessage.textContent = 'Las contraseñas no coinciden';
+
+                passwordMessage.className = 'text-danger';
+
+                confirmPassword.classList.remove('is-valid');
+                confirmPassword.classList.add('is-invalid');
+            }
+
+        });
+
+
+
+        // MOSTRAR / OCULTAR PASSWORD
+
+        function togglePassword(inputId, button) {
+
+            const input = document.getElementById(inputId);
+
+            const icon = button.querySelector('i');
+
+            input.type =
+                input.type === 'password' ?
+                'text' :
+                'password';
+
+            icon.classList.toggle('bi-eye');
+
+            icon.classList.toggle('bi-eye-slash');
+        }
+    </script>
     @endsection

@@ -13,7 +13,8 @@ use Illuminate\Notifications\Notifiable;
     'last_name',
     'email',
     'password',
-    'role_id'
+    'role_id',
+    'profile_image'
 ])]
 
 #[Hidden([  //Campos que permanecen ocultos
