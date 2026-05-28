@@ -1,13 +1,15 @@
 {{-- MODAL FORMULARIO CREAR NUEVO PRODUCTO --}}
 <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg">           
+        <div class="modal-content border-0 shadow-lg">    
+            {{-- Boton de 'Nuevo Producto' --}}       
             <div class="modal-header bg-light">
                 <h5 class="modal-title fw-bold text-dark" id="createProductModalLabel">
                     <i class="bi bi-box-seam me-2 color-matiensos"></i>Agregar Producto
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>       
+            </div>
+            {{-- Formulario de ingreso de datos --}}       
             <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body p-4">              
@@ -28,8 +30,7 @@
                             
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                            
+                            @endforeach              
                         </select>
                     </div>
                     <div class="row">
@@ -51,6 +52,7 @@
                         <input type="file" name="image_url" class="form-control" accept="image/*">
                     </div>
                 </div>
+                {{-- Botones para 'Guardar' o 'Cancelar' --}}
                 <div class="modal-footer bg-light border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-color-matiensos text-white fw-bold">Guardar Producto</button>

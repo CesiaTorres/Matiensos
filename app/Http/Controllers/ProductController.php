@@ -11,9 +11,15 @@ class ProductController
     /**
      * Muestra el listado de productos en BD y la vista
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(10);
+        $products = Product::with('category')
+            ->latest()
+            ->search($request->input('search'))
+            ->byStockStatus($request->input('stock_filter'))
+            ->byCategory($request->input('category_filter')) 
+            ->paginate(10);
+
         $categories = Category::orderBy('name', 'asc')->get();
 
         $metrics = [
@@ -21,6 +27,7 @@ class ProductController
             'stock'        => Product::sum('stock'),
             'out_of_stock' => Product::where('stock', 0)->count(),
         ];
+        
 
         return view('admin.front.products', compact('products', 'categories', 'metrics'));
     }

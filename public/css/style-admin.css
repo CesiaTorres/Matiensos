@@ -1,8 +1,3 @@
-/*Navbar-admin*/
-.bg-navbar.admin {
-    background-color: #386150;
-}
-
 /* PERSONALIZACIÓN SIMPLE DE LA PAGINACIÓN */
 
 /*Color de los números y flechas sueltas */
@@ -25,4 +20,9 @@
 .pagination .page-link:focus {
     box-shadow: 0 0 0 0.25rem rgba(45, 90, 39, 0.25); /* Destello verde sutil */
 }
-/* Ocultar el texto de resultados del paginador */
+
+/*SELECCIONADOR DE FILTROS AVANZADOS*/
+#filterCustomStock:not(:checked) ~ .input-group { /*si no esta seleccionado el filtro, bloqua el ingreso de datos*/
+    opacity: 0.5;
+    pointer-events: none;
+}

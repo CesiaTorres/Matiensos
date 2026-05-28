@@ -6,6 +6,7 @@
 {{-- VISTA PRINCIPAL DE PRODUCTOS --}}
 <div class="row g-0">
     <div class="col-12 p-4">
+        {{-- Titulo y boton para crear producto --}}
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h2 class="text-dark fw-bold m-0">Gestión de Productos</h2>
@@ -63,22 +64,16 @@
 
         {{-- Listado de Productos --}}
         <div class="row">
-            <div class="col-12">
+            <div class="col-12">                
                 <div class="card border-0 shadow-sm bg-white p-4">
-                    
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-dark m-0">Listado de Productos</h5>
-                        <div style="width: 300px;">
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
-                                <input type="text" class="form-control border-start-0" placeholder="Buscar por nombre o código...">
-                            </div>
-                        </div>
+                        @include('admin.front.components.products._search')
                     </div>
                     
                     <div class="table-responsive">
                         <table class="table table-hover align-middle m-0">
-                            {{-- Encabezado --}}
+                            {{-- Encabezado de la tabla --}}
                             <thead class="table-light">
                                 <tr>
                                     <th style="width: 80px;">Código</th>
@@ -90,18 +85,18 @@
                                     <th class="text-base" style="width: 150px;">Acciones</th>
                                 </tr>
                             </thead>
-                            
+                            {{-- Productos de la tabla --}}
                             <tbody class="align-middle">
                                 {{-- Lista vacia --}}
                                 @if($products->isEmpty())
                                     <tr>
                                         <td colspan="7" class="text-center py-4 text-muted">
                                             <i class="bi bi-box-open fs-3 d-block mb-2"></i>
-                                            No hay productos cargados en el catálogo de Matiensos.
+                                            No hay productos para mostrar.
                                         </td>
                                     </tr>
-                                @else
-                                    {{-- Lista con productos --}}
+                                @else 
+                                {{-- Lista con productos --}}                          
                                     @foreach($products as $product)
                                         <tr>
                                             <td class="fw-bold text-secondary">{{ $product->code }}</td>
@@ -129,8 +124,8 @@
                                                 </span>
                                             </td>
                                             
-                                            <td class="fw-bold text-dark">${{ number_format($product->price, 2, ',', '.') }}</td>
-                                            
+                                            <td class="fw-bold text-dark">${{ number_format($product->price, 2, ',', '.') }}</td>    
+
                                             <td>
                                                 @if($product->stock > 0)
                                                     <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 fw-bold">
@@ -163,8 +158,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @include('admin.front.products.modals._edit')
-                                        @include('admin.front.products.modals._delete')
+                                        @include('admin.front.components.products._edit')
+                                        @include('admin.front.components.products._delete')
                                     @endforeach
                                 @endif
                             </tbody>
@@ -175,15 +170,15 @@
                             <nav aria-label="Navegación de productos">
                                 <ul class="pagination m-0">                  
                                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
-                                        <a class="page-link" href="{{ $products->previousPageUrl() }}">&laquo;</a>
+                                        <a class="page-link" href="{{ $products->appends(request()->query())->previousPageUrl() }}">&laquo;</a>
                                     </li>                 
-                                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                                    @foreach ($products->appends(request()->query())->getUrlRange(1, $products->lastPage()) as $page => $url)
                                         <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}">
                                             <a class="page-link" href="{{ $url }}">{{ $page }}</a> {{-- href=".../productos?page=2">2< --}}
                                         </li>
                                     @endforeach
                                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $products->nextPageUrl() }}">&raquo;</a>
+                                        <a class="page-link" href="{{ $products->appends(request()->query())->nextPageUrl() }}">&raquo;</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -198,6 +193,7 @@
     </div>
 </div>
 
-@include('admin.front.modals.products._create')
+@include('admin.front.components.products._create')
+@include('admin.front.components.products._filters')
 
 @endsection
