@@ -288,8 +288,8 @@ body, .nav-link, .dropdown-item {
 .bg-matiensos {
     background-color: #386150
 }
-.bg-matiensos-light {/* Fondo verde Matiensos con 10% de opacidad */
-    background-color: rgba(56, 97, 80, 0.25); /* El 0.25 es el 25% */
+.bg-matiensos-light {
+    background-color: rgba(56, 97, 80, 0.15); /* El 0.25 es el 25% */
 }
 .border-mat {
     border-color: #386150;

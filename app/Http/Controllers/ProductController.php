@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class ProductController
 {
@@ -24,8 +25,10 @@ class ProductController
 
         $metrics = [
             'total_products'        => Product::count(),
+            'low_stock' => Product::where('stock', '>', 0)->where('stock', '<=', 5)->count(),
             'stock'        => Product::sum('stock'),
             'out_of_stock' => Product::where('stock', 0)->count(),
+            'inventory_value' => Product::sum(DB::raw('price * stock')),
         ];
         
 

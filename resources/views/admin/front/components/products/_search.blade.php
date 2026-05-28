@@ -13,17 +13,19 @@
         @endif
 
         {{-- Barra de Busqueda --}}
-        <span class="input-group-text bg-white border-end-0 text-muted">
-            <i class="bi bi-search"></i>
-        </span>  
-        <input type="text" name="search" class="form-control border-start-0 border-end-0" 
+        <input type="text" name="search" class="form-control border-start-1 border-end-1" 
                placeholder="Buscar por nombre o código..." value="{{ request('search') }}">
-        {{-- Icono borra busqueda o filtros --}} 
-        @if(request('search') || request('stock_filter') || request('category_filter'))
-            <a href="{{ route('admin.products') }}" class="btn btn-white bg-white border-start-0 text-muted border" title="Limpiar todo">
+        {{-- Boton busqueda --}}
+        @if(request('search'))
+            <a href="{{ route('admin.products') }}" class="btn btn-white bg-white border-start-1 border" title="Limpiar todo">
                 <i class="bi bi-x-lg small"></i>
             </a>
+        @else
+            <button type="submit" class="btn btn-white bg-white border border-start-1" title="Buscar">
+                <i class="bi bi-search"></i>
+            </button> 
         @endif
+        
     </form>
 
     {{-- Boton para aplicar Filtros --}}

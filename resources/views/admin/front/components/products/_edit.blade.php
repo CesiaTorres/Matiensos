@@ -19,16 +19,11 @@
                             <input type="text" name="code" class="form-control" value="{{ old('code', $product->code) }}" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold">Stock Disponible</label>
-                            <input type="number" name="stock" class="form-control" value="{{ old('stock', $product->stock) }}" min="0" required>
+                            <label class="form-label small fw-bold">Nombre del Producto</label>
+                            <input type="text" name="name" class="form-control" value="{{ old('name', $product->name) }}" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label small fw-bold">Nombre del Producto</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name', $product->name) }}" required>
-                    </div>
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
                             <label class="form-label small fw-bold">Categoría</label>
                             <select name="category_id" class="form-select" required>
                                 @foreach($categories as $category)
@@ -38,10 +33,15 @@
                                 @endforeach
                             </select>
                         </div>
+                    <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label small fw-bold">Precio ($)</label>
                             <input type="number" step="0.01" name="price" class="form-control" value="{{ old('price', $product->price) }}" min="0" required>
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Stock Disponible</label>
+                            <input type="number" name="stock" class="form-control" value="{{ old('stock', $product->stock) }}" min="0" required>
+                        </div>                    
                     </div>
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Descripción (Opcional)</label>
