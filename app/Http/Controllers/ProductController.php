@@ -91,10 +91,12 @@ class ProductController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el producto de la base de datos.
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('admin.products')->with('success', 'Producto eliminado correctamente.');
     }
 }

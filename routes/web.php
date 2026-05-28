@@ -53,6 +53,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
     Route::post('/productos', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
     
     // Aquí irán los ABM (CRUD) que vas a gestionar:
     // Route::resource('products', ProductController::class);

@@ -87,7 +87,7 @@
                                     <th>Categoría</th>
                                     <th>Precio</th>
                                     <th>Stock</th>
-                                    <th class="text-end" style="width: 150px;">Acciones (ABM)</th>
+                                    <th class="text-end" style="width: 150px;">Acciones</th>
                                 </tr>
                             </thead>
                             
@@ -142,18 +142,44 @@
                                                     </span>
                                                 @endif
                                             </td>
-                                            
+                                            {{-- Acciones --}}
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <button type="button" class="btn btn-sm btn-outline-secondary border-0" title="Editar Producto">
                                                         <i class="bi bi-pencil-square fs-6"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-sm btn-outline-danger border-0" title="Eliminar Producto">
+                                                    {{-- Eliminar --}}
+                                                    <button type="button" class="btn btn-sm btn-outline-danger border-0" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#deleteProductModal{{ $product->id }}" 
+                                                            title="Eliminar Producto">
                                                         <i class="bi bi-trash3 fs-6"></i>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>
+                                        {{-- MODAL de confirmacion de ELIMINACIÓN --}}
+                                        <div class="modal fade" id="deleteProductModal{{ $product->id }}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-sm">
+                                                <div class="modal-content border-0 shadow-lg">
+                                                    <div class="modal-body p-4 text-center">
+                                                        <i class="bi bi-exclamation-triangle text-danger display-4 d-block mb-3"></i>
+                                                        <h5 class="fw-bold text-dark">¿Eliminar producto?</h5>
+                                                        <p class="text-muted small mb-4">Vas a borrar definitivamente el producto <br><strong>{{ $product->name }}</strong>.</p>
+                                                        
+                                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            
+                                                            <div class="d-flex gap-2 justify-content-center">
+                                                                <button type="button" class="btn btn-light border px-3" data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn btn-danger px-3 fw-bold">Sí, eliminar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 @endif
                             </tbody>
@@ -162,22 +188,18 @@
                         {{-- Navegación de productos --}}
                         <div class="d-flex justify-content-center mt-4">
                             <nav aria-label="Navegación de productos">
-                                <ul class="pagination m-0">
-                                    
+                                <ul class="pagination m-0">                  
                                     <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
                                         <a class="page-link" href="{{ $products->previousPageUrl() }}">&laquo;</a>
-                                    </li>
-                         
+                                    </li>                 
                                     @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
                                         <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}">
                                             <a class="page-link" href="{{ $url }}">{{ $page }}</a> {{-- href=".../productos?page=2">2< --}}
                                         </li>
                                     @endforeach
-
                                     <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
                                         <a class="page-link" href="{{ $products->nextPageUrl() }}">&raquo;</a>
                                     </li>
-
                                 </ul>
                             </nav>
                         </div>
@@ -191,22 +213,19 @@
     </div>
 </div>
 
-{{-- FORMULARIO CREAR NUEVO PRODUCTO --}}
+{{-- MODAL FORMULARIO CREAR NUEVO PRODUCTO --}}
 <div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg">
-            
+        <div class="modal-content border-0 shadow-lg">           
             <div class="modal-header bg-light">
                 <h5 class="modal-title fw-bold text-dark" id="createProductModalLabel">
                     <i class="bi bi-box-seam me-2 color-matiensos"></i>Agregar Producto
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            
+            </div>       
             <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="modal-body p-4">
-                    
+                <div class="modal-body p-4">              
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Código</label>
@@ -217,7 +236,6 @@
                             <input type="text" name="name" class="form-control" placeholder="Ej: Mate Camionero" required>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Categoría</label>
                         <select name="category_id" class="form-select" required>
@@ -229,7 +247,6 @@
                             
                         </select>
                     </div>
-
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Precio ($)</label>
@@ -240,19 +257,15 @@
                             <input type="number" name="stock" class="form-control" placeholder="0" required>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Descripción (Opcional)</label>
                         <input type="text" name="description" class="form-control" placeholder="Detalles del producto o especificaciones...">
                     </div>
-
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Imagen del Producto</label>
                         <input type="file" name="image_url" class="form-control" accept="image/*">
                     </div>
-
                 </div>
-
                 <div class="modal-footer bg-light border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-color-matiensos text-white fw-bold">Guardar Producto</button>
