@@ -8,7 +8,6 @@
         {{-- Titulo pagina --}}
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="text-dark fw-bold m-0">Dashboard General</h2>
-            <span class="badge p-2 fs-6 btn-color-matiensos">Agrego mood operativo??</span>
         </div>
 
         {{-- Tarjetas --}}

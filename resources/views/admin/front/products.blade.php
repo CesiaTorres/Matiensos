@@ -108,7 +108,6 @@
                                             
                                             <td>
                                                 @if($product->image_url)
-                                                    {{-- Cambiá tu línea por esta forma interpolada pura --}}
                                                     <img src="{{ asset("storage/$product->image_url") }}" alt="{{ $product->name }}" class="rounded shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
                                                 @else
                                                     <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
@@ -159,9 +158,30 @@
                                 @endif
                             </tbody>
                         </table>
-                        <div class="d-flex flex-column align-items-center gap-2 mt-4">
-                            {{ $products->links() }}
+
+                        {{-- Navegación de productos --}}
+                        <div class="d-flex justify-content-center mt-4">
+                            <nav aria-label="Navegación de productos">
+                                <ul class="pagination m-0">
+                                    
+                                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                                        <a class="page-link" href="{{ $products->previousPageUrl() }}">&laquo;</a>
+                                    </li>
+                         
+                                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                                        <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}">
+                                            <a class="page-link" href="{{ $url }}">{{ $page }}</a> {{-- href=".../productos?page=2">2< --}}
+                                        </li>
+                                    @endforeach
+
+                                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                                        <a class="page-link" href="{{ $products->nextPageUrl() }}">&raquo;</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
                         </div>
+
                     </div>
 
                 </div>
