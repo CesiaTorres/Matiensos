@@ -51,13 +51,12 @@ Route::get('/pagina-en-construcción', function () {
 //Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    //Gestion de Productos
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
     Route::post('/productos', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::put('/admin/productos/{id}', [ProductController::class, 'update'])->name('admin.products.update');
     Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-    
-    // Aquí irán los ABM (CRUD) que vas a gestionar:
-    // Route::resource('products', ProductController::class);
-    // Route::resource('categories', CategoryController::class);
-    // Route::resource('orders', OrderController::class);
+
     
 });

@@ -34,7 +34,7 @@ class ProductController
     }
 
     /**
-     * Guarda un nuevo producto
+     * Guarda un nuevo producto en BD
      */
     public function store(Request $request)
     {
@@ -83,15 +83,41 @@ class ProductController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el producto en BD
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $request->validate([
+            'code'        => 'required|string|max:50|unique:products,code,' . $product->id,
+            'name'        => 'required|string|max:150',
+            'description' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'price'       => 'required|numeric|min:0',
+            'stock'       => 'required|integer|min:0',
+            'image_url'   => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+        if ($request->hasFile('image_url')) {       
+            $imagePath = $request->file('image_url')->store('products', 'public'); //guarda la nueva foto      
+            $product->image_url = $imagePath;//actualiza la ruta en el modelo
+        }
+        //actualiza campos
+        $product->code        = strtoupper($request->code);
+        $product->name        = $request->name;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->price       = $request->price;
+        $product->stock       = $request->stock;
+        
+        //guarda los cambios
+        $product->save();
+
+        return redirect()->route('admin.products')->with('success', 'Producto actualizado con éxito.');
+
     }
 
     /**
-     * Elimina el producto de la base de datos.
+     * Elimina el producto en BD.
      */
     public function destroy(string $id)
     {

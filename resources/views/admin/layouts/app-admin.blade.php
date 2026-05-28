@@ -8,7 +8,7 @@
     <body>
         <div class="d-flex">
             {{-- menú lateral --}}
-            @include('admin.partials.sidebar')
+            @include('admin.partials._sidebar')
 
             <div class="flex-grow-1 w-0 min-vh-100">
                 <main class="p-4">
