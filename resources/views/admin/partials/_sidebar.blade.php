@@ -45,11 +45,7 @@
     </div>
     
     <div>
-        <hr class="text-white-50">
-        <div class="d-flex align-items-center mb-3 px-2">
-            <i class="bi bi-person-circle me-2 text-white fs-5"></i>
-            <span class="fw-bold text-white">Admin Principal</span>
-        </div>
+        <hr class="text-white-50">    
         <a href="{{ route('inicio') }}" class="nav-link text-white opacity-75 px-2">
             <i class="bi bi-box-arrow-left me-2"></i> Ir a la Tienda
         </a>

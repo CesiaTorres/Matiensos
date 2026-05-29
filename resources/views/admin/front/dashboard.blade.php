@@ -11,7 +11,7 @@
         </div>
 
         {{-- Tarjetas --}}
-        <div class="row mb-4">
+        <div class="row mb-3">
             <div class="col-md-3 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
                     <div class="bg-matiensos" style="width: 6px;"></div>

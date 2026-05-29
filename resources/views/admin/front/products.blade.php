@@ -17,7 +17,7 @@
         </div>
 
         {{-- Tarjetas --}}
-        <div class="row mb-4">
+        <div class="row mb-3">
             <div class="col-md-3 mb-3">
                 <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
                     <div class="bg-matiensos" style="width: 6px;"></div>
@@ -41,7 +41,7 @@
                             <h3 class="fw-bold m-0">{{ $metrics['low_stock']}}</h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
-                            <i class="bi bi-archive fs-3"></i>
+                            <i class="bi bi-exclamation-octagon fs-3"></i>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             <h6 class="text-muted text-uppercase fw-bold mb-2">Sin Stock</h6>
                             <h3 class="fw-bold m-0">{{ $metrics['out_of_stock']}}</h3>
                         </div>
-                        <div class="bg-secondary bg-opacity-10 p-3 rounded color-matiensos">
+                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded text-danger">
                             <i class="bi bi-exclamation-octagon fs-3"></i>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="bg-matiensos" style="width: 6px;"></div>
                     <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
                         <div>
-                            <h6 class="text-muted text-uppercase fw-bold mb-2">Valor Total del Inventario</h6>
+                            <h6 class="text-muted text-uppercase fw-bold mb-2">Valor del Inventario</h6>
                             <h3 class="fw-bold m-0">${{ number_format($metrics['inventory_value'], 0, ',', '.') }}</h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos flex-shrink-0">
