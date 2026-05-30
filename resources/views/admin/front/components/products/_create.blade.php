@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Código</label>
-                            <input type="text" name="code" class="form-control" placeholder="Ej: MAT-001" required>
+                            <input type="text" name="code" pattern="^[^\s]+(\s+[^\s]+)*$" class="form-control" placeholder="Ej: MAT-001" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Nombre del Producto</label>

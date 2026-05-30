@@ -13,7 +13,7 @@
                     
                     <div class="d-flex gap-2 justify-content-center">
                         <button type="button" class="btn btn-light border px-3" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-danger px-3 fw-bold">Sí, eliminar</button>
+                        <button type="submit" class="btn btn-danger px-3 fw-bold btn-color-matiensos">Sí, eliminar</button>
                     </div>
                 </form>
             </div>

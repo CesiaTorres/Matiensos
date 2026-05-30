@@ -41,7 +41,7 @@
                             <h3 class="fw-bold m-0">{{ $metrics['low_stock']}}</h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
-                            <i class="bi bi-exclamation-octagon fs-3"></i>
+                            <i class="bi bi-exclamation-triangle fs-3"></i>
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                             <h3 class="fw-bold m-0">{{ $metrics['out_of_stock']}}</h3>
                         </div>
                         <div class="bg-matiensos-light bg-opacity-10 p-3 rounded text-danger">
-                            <i class="bi bi-exclamation-octagon fs-3"></i>
+                            <i class="bi bi-x-square fs-3"></i>
                         </div>
                     </div>
                 </div>
