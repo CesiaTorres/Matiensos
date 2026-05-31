@@ -51,18 +51,15 @@ class ProductController
         //Validación
         $request->validate([
             'code' => 'required|string|max:50|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:products,code',
-            'name' => 'required|string|max:150',
+            'name' => 'required|string|max:150|unique:products,name',
             'description' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ], [
-            'code.required' => 'El código es obligatorio y no puede ser solo espacios.',
-            'code.regex'    => 'El formato del código no es válido o contiene espacios innecesarios.',
-            'code.unique'   => 'Este código de producto ya está registrado.',
-            'price.min'     => 'El precio no puede ser un número negativo.',
-            'stock.min'     => 'El stock inicial no puede ser negativo.',
+            'code.unique' => 'No se pudo guardar: El código ingresado ya está en uso por otro producto.',
+            'name.unique' => 'No se pudo guardar: Ya existe un producto registrado con ese mismo nombre.',
         ]);
         
         $imagePath = null;
@@ -106,19 +103,17 @@ class ProductController
         $product = Product::findOrFail($id);
         $request->validate([
             'code'        => 'required|string|regex:/^[^\s]+(\s+[^\s]+)*$/|max:50|unique:products,code,' . $product->id,
-            'name'        => 'required|string|max:150',
+            'name'        => 'required|string|max:150|unique:products,name',
             'description' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'price'       => 'required|numeric|min:0',
             'stock'       => 'required|integer|min:0',
             'image_url'   => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ], [
-            'code.required' => 'El código es obligatorio y no puede ser solo espacios.',
-            'code.regex'    => 'El formato del código no es válido o contiene espacios innecesarios.',
-            'code.unique'   => 'Este código de producto ya está registrado.',
-            'price.min'     => 'El precio no puede ser un número negativo.',
-            'stock.min'     => 'El stock inicial no puede ser negativo.',
+            'code.unique' => 'No se pudo actualizar: El código ingresado ya está en uso por otro producto.',
+            'name.unique' => 'No se pudo actualizar: Ya existe un producto registrado con ese mismo nombre.',
         ]);
+
         if ($request->hasFile('image_url')) {       
             $imagePath = $request->file('image_url')->store('products', 'public'); //guarda la nueva foto      
             $product->image_url = $imagePath;//actualiza la ruta en el modelo

@@ -73,6 +73,69 @@
                 </div>
             </div>
         <div/>
+
+        <div class="row mb-3">
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
+                    <div class="bg-matiensos" style="width: 6px;"></div>
+
+                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
+                        <div>
+                            <h6 class="text-muted text-uppercase fw-bold mb-2">--------------------</h6>
+                            <h3 class="fw-bold m-0 text-dark">5</h3>
+                        </div>
+                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
+                            <i class="bi bi-cart-dash fs-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
+                    <div class="bg-matiensos" style="width: 6px;"></div>
+
+                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
+                        <div>
+                            <h6 class="text-muted text-uppercase fw-bold mb-2">------------------</h6>
+                            <h3 class="fw-bold m-0 text-dark">5</h3>
+                        </div>
+                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
+                            <i class="bi bi-envelope-open fs-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
+                    <div class="bg-matiensos" style="width: 6px;"></div>
+
+                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
+                        <div>
+                            <h6 class="text-muted text-uppercase fw-bold mb-2">------------------</h6>
+                            <h3 class="fw-bold m-0 text-dark">5</h3>
+                        </div>
+                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
+                            <i class="bi bi-exclamation-triangle fs-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
+                    <div class="bg-matiensos" style="width: 6px;"></div>
+
+                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
+                        <div>
+                            <h6 class="text-muted text-uppercase fw-bold mb-2">----------------</h6>
+                            <h3 class="fw-bold m-0 text-dark">5</h3>
+                        </div>
+                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
+                            <i class="bi bi-cash-coin fs-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div/>
         
         {{-- Tabla "Ultimos Pedidos Recientes" --}}
         <div class="row">

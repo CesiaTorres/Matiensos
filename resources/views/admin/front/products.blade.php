@@ -212,5 +212,35 @@
 
 @include('admin.front.components.products._create')
 @include('admin.front.components.products._filters')
-
+@include('admin.front.components.products._toast')
+<script>
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+    <script>
+    // RESETEO DE CUALQUIER MODAL AL CERRARLO (Limpia textos y bordes rojos)
+    var allModals = document.querySelectorAll('.modal');
+    allModals.forEach(function(modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+            var form = this.querySelector('form');
+            if(form) {
+                form.classList.remove('was-validated'); //Borra los bordes de color
+                if(this.id === 'createProductModal') {
+                    form.reset(); //Borra los textos solo en el modal de crear
+                }
+            }
+        });
+    });
+</script>
 @endsection
