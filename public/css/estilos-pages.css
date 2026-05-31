@@ -131,11 +131,7 @@ body {
     transition: 0.3s;
 }
 .btn-color-matiensos:hover {
-    background-color: #3d755a; /* Un verde un poco más claro */
-}
-/* Cuando el input está seleccionado (focus) */
-.form-control:focus {
-    border-color:  #386150; /* El color de tu borde verde */
+    background-color: #3d755a;
 }
 
     
@@ -306,7 +302,10 @@ body, .nav-link, .dropdown-item {
 .btn-color-matiensos:hover {
     background-color: #3d755a; /* Un verde un poco más claro */
 }
-.form-control:focus { /* Cuando el input está seleccionado (focus) */ 
+
+/*FORM INPUT Y SELECT*/
+.form-control:focus,
+.form-select:focus {
     border-color:  #386150;
     box-shadow: 0 0 0 0.25rem rgba(45, 87, 67, 0.25); /* Sombra verde traslúcida */
 }

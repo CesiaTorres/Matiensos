@@ -17,7 +17,7 @@
 
         {{-- exito --}}
         @if(session('success'))
-            <div class="toast align-items-center text-white bg-success border-0 show shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast align-items-center text-white bg-matiensos border-0 show shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body fw-bold">
                         <i class="bi bi-check-circle-fill me-2"></i>
