@@ -7,7 +7,7 @@
         </a>
         
         <hr class="text-white-50">
-        
+        {{-- Opciones --}}
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item mb-1">
                 <a href="{{ route('admin.dashboard') }}"
@@ -22,7 +22,8 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="#" class="nav-link text-white">
+                <a href="{{ route('admin.categories') }}"
+                    class="nav-link text-white {{ request()->routeIs('admin.categories') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
                     <i class="bi bi-tags me-2"></i> Categorías
                 </a>
             </li>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('front.inicio');
@@ -55,8 +56,10 @@ Route::prefix('admin')->group(function () {
     //Gestion de Productos
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
     Route::post('/productos', [ProductController::class, 'store'])->name('admin.products.store');
-    Route::put('/admin/productos/{id}', [ProductController::class, 'update'])->name('admin.products.update');
-    Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::put('/productos/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/productos/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 
+    //Gestion de Productos
+    Route::get('/categorias', [CategoryController::class, 'index'])->name('admin.categories');
     
 });
