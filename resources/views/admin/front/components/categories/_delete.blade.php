@@ -1,13 +1,13 @@
-{{-- MODAL de confirmacion de ELIMINACIÓN --}}
-<div class="modal fade" id="deleteProductModal{{ $product->id }}" tabindex="-1" aria-hidden="true">
+{{-- MODAL de confirmación de ELIMINACIÓN de CATEGORÍA --}}
+<div class="modal fade" id="deleteCategoryModal{{ $category->id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content border-0 shadow-lg">
             <div class="modal-body p-4 text-center">
                 <i class="bi bi-exclamation-triangle text-danger display-4 d-block mb-3"></i>
-                <h5 class="fw-bold text-dark">¿Eliminar producto?</h5>
-                <p class="text-muted small mb-4">Vas a borrar definitivamente el producto <br><strong>{{ $product->name }}</strong>.</p>
+                <h5 class="fw-bold text-dark">¿Eliminar categoría?</h5>
+                <p class="text-muted small mb-4">Vas a borrar definitivamente la categoría <br><strong>{{ $category->name }}</strong>.</p>
                 
-                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST">
+                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     

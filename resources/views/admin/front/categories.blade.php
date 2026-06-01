@@ -11,7 +11,9 @@
             <div>
                 <h2 class="text-dark fw-bold m-0">Gestión de Categorias</h2>
             </div>
-            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#createCategoryModal">
                 <i class="bi bi-plus-circle me-2"></i> Nueva Categoria
             </button>
         </div>
@@ -96,23 +98,22 @@
                                                     {{-- Modificar --}}
                                                     <button type="button" class="btn btn-sm btn-outline-secondary border-0" 
                                                             data-bs-toggle="modal" 
-                                                            data-bs-target="#editCategoryModal" 
+                                                            data-bs-target="#editCategoryModal{{ $category->id }}" 
                                                             title="Editar Categoría">
                                                         <i class="bi bi-pencil-square fs-6"></i>
                                                     </button>
                                                     {{-- Eliminar --}}
                                                     <button type="button" class="btn btn-sm btn-outline-danger border-0" 
                                                             data-bs-toggle="modal" 
-                                                            data-bs-target="#deleteCategoryModal" 
+                                                            data-bs-target="#deleteCategoryModal{{ $category->id }}" 
                                                             title="Eliminar Categoría">
                                                         <i class="bi bi-trash3 fs-6"></i>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>
-                                        
-                                        {{-- Includes de los modales para Editar y Eliminar --}}
-                                        
+                                        @include('admin.front.components.categories._edit')
+                                        @include('admin.front.components.categories._delete')
                                     @endforeach
                                 @endif
                             </tbody>
@@ -154,5 +155,7 @@
         </div>
     </div>
 </div>
+@include('admin.front.components.categories._create')
+@include('admin.front.components._toast') {{-- @include('admin.front.components.products.scripts') --}}
 
 @endsection

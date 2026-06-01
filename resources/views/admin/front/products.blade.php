@@ -11,7 +11,9 @@
             <div>
                 <h2 class="text-dark fw-bold m-0">Gestión de Productos</h2>
             </div>
-            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" data-bs-toggle="modal" data-bs-target="#createProductModal">
+            <button type="button" class="btn btn-color-matiensos text-white px-3 fw-bold" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#createProductModal">
                 <i class="bi bi-plus-circle me-2"></i> Nuevo Producto
             </button>
         </div>
@@ -212,6 +214,6 @@
 
 @include('admin.front.components.products._create')
 @include('admin.front.components.products._filters')
-@include('admin.front.components.products._toast')
+@include('admin.front.components._toast')
 @include('admin.front.components.products.scripts')
 @endsection

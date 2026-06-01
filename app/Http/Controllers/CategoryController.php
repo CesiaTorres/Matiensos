@@ -38,7 +38,7 @@ class CategoryController
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name',
+            'name' => 'required|string|max:100|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:categories,name',
             'description' => 'nullable|string|max:255',
         ], [
             'name.unique' => 'No se pudo guardar: Ya existe una categoría registrada con ese nombre.',
@@ -60,7 +60,7 @@ class CategoryController
         $category = Category::findOrFail($id);
 
         $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name,' . $category->id,
+            'name' => 'required|string|max:100|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:categories,name,' . $category->id,
             'description' => 'nullable|string|max:255',
         ], [
             'name.unique' => 'No se pudo actualizar: Ya existe otra categoría con ese nombre.',

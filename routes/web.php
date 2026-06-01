@@ -61,5 +61,8 @@ Route::prefix('admin')->group(function () {
 
     //Gestion de Productos
     Route::get('/categorias', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::post('/categorias', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     
 });
