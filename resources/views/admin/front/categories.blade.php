@@ -20,15 +20,15 @@
         <div class="row mb-3 justify-content-center">
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Total Categorias" value="--" icon="bi-grid" />
+                    title="Total Categorias" value="{{ $metrics['total'] }}" icon="bi-grid" />
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Más Vendida" value="--" icon="bi-graph-up-arrow"/>
+                    title="Más Vendida" value="{{ $metrics['top_category'] }}" icon="bi-graph-up-arrow"/>
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Menos Vendida" value="--" icon="bi-graph-down-arrow"/>
+                    title="Menos Vendida" value="{{ $metrics['bottom_category'] }}" icon="bi-graph-down-arrow"/>
             </div>
         </div>
 
@@ -43,31 +43,84 @@
                     <div class="table-responsive">
                         <table class="table table-hover align-middle m-0">
                             {{-- Encabezado de la tabla --}}
-                            <thead class="table-light">
+                            <thead class="table-light text-l">
                                 <tr>
-                                    <th style="width: 80px;">Nombre</th>
+                                    <th>Nombre / Descripción</th>
                                     <th>Productos</th>
-                                    <th>Stock</th>
+                                    <th>Stock Total</th>
                                     <th>Estado</th>
-                                    <th class="text-base" style="width: 150px;">Acciones</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
-                            {{-- Productos de la tabla --}}
+                            
+                            {{-- Categorías de la tabla --}}
                             <tbody class="align-middle">
-                                {{-- Lista vacia --}}
-                               
-                                {{-- Lista con productos --}}                          
-                                   
-                               
+                                {{-- Lista vacía --}}
+                                @if($categories->isEmpty())
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4 text-muted">
+                                            <i class="bi bi-collection fs-3 d-block mb-2"></i>
+                                            No hay categorías para mostrar.
+                                        </td>
+                                    </tr>
+                                @else 
+                                    {{-- Lista con categorías --}}                          
+                                    @foreach($categories as $category)
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold text-dark">{{ $category->name }}</div>
+                                                @if($category->description)
+                                                    <small class="text-muted d-block text-truncate" style="max-width: 200px;">{{ $category->description }}</small>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold text-dark">{{ $category->products_count }}</div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold text-dark">{{ $category->products_sum_stock ?? 0 }}</div>
+                                            </td>
+                                            <td>
+                                                @if($category->is_active)
+                                                    <span class="badge bg-success bg-opacity-10 text-success px-2 py-1 fw-bold">
+                                                        Activa
+                                                    </span>
+                                                @else
+                                                    <span class="badge bg-danger bg-opacity-10 text-danger px-2 py-1 fw-bold">
+                                                        Inactiva
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            {{-- Acciones --}}
+                                            <td>                                               
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    {{-- Modificar --}}
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary border-0" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#editCategoryModal" 
+                                                            title="Editar Categoría">
+                                                        <i class="bi bi-pencil-square fs-6"></i>
+                                                    </button>
+                                                    {{-- Eliminar --}}
+                                                    <button type="button" class="btn btn-sm btn-outline-danger border-0" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#deleteCategoryModal" 
+                                                            title="Eliminar Categoría">
+                                                        <i class="bi bi-trash3 fs-6"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        {{-- Includes de los modales para Editar y Eliminar --}}
+                                        
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
-
-                       
-
                     </div>
-
                 </div>
             </div>
+
             <div class="col-4">                
                 <div class="card border-0 shadow-sm bg-white p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">

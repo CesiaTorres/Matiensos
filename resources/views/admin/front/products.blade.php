@@ -88,10 +88,10 @@
                     <div class="table-responsive">
                         <table class="table table-hover align-middle m-0">
                             {{-- Encabezado de la tabla --}}
-                            <thead class="table-light">
+                             <thead class="table-light">
                                 <tr>
-                                    <th style="width: 80px;">Código</th>
-                                    <th>Imagen</th>
+                                    <th style="width: 110px;">Código</th>
+                                    <th style="width: 90px;">Imagen</th>
                                     <th>Nombre/Descripción</th>
                                     <th>Categoría</th>
                                     <th>Precio</th>
@@ -99,8 +99,9 @@
                                     <th class="text-base" style="width: 150px;">Acciones</th>
                                 </tr>
                             </thead>
+                        
                             {{-- Productos de la tabla --}}
-                            <tbody class="align-middle">
+                           <tbody class="align-middle">
                                 {{-- Lista vacia --}}
                                 @if($products->isEmpty())
                                     <tr>
