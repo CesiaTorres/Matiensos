@@ -94,16 +94,16 @@
                             @endguest
 
                             @auth
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('perfil_user') }}">
-                                        Mi perfil
-                                    </a>
-                                </li>
-                                @if(Auth::user()->role_id == 1)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('perfil_user') }}">
+                                    Mi perfil
+                                </a>
+                            </li>
+                            @if(Auth::user()->role_id == 1)
 
-                                <a class="dropdown-item" href="{{ route('perfil_user') }}"> Panel Admin </a>
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}"> Panel Admin </a>
 
-                                @endif
+                            @endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

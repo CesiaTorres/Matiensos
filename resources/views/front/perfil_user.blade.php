@@ -68,13 +68,12 @@
         {{-- CONTENIDO --}}
         <div class="card border-0 shadow-lg overflow-hidden rounded-4">
             <div class="p-4 p-md-5 bg-light">
+                <h2>Resumen de tu cuenta </h2>
 
-                <div class="row g-4">
-
-                    <h2>Resumen de tu cuenta </h2>
-
-                    {{-- CARD --}}
-                    <div class="col-6 col-lg-3">
+                {{-- CARDS --}}
+                <div class="row g-4 mt-5">
+                    {{-- CARD 1 --}}
+                    <div class="col-12 col-md-6 col-lg-4">
 
                         <div class="card border-0 shadow-sm rounded-4 text-center h-100">
 
@@ -82,7 +81,7 @@
 
                                 <div class="mb-3">
 
-                                    <i class="bi bi-bag fs-1 text-success"></i>
+                                    <i class="bi bi-box-seam fs-1 text-success"></i>
 
                                 </div>
 
@@ -100,8 +99,8 @@
 
                     </div>
 
-                    {{-- CARD --}}
-                    <div class="col-6 col-lg-3">
+                    {{-- CARD 2 --}}
+                    <div class="col-12 col-md-6 col-lg-4">
 
                         <div class="card border-0 shadow-sm rounded-4 text-center h-100">
 
@@ -118,7 +117,7 @@
                                 </h2>
 
                                 <p class="text-muted mb-0">
-                                    En camino
+                                    Pedidos en curso
                                 </p>
 
                             </div>
@@ -126,9 +125,8 @@
                         </div>
 
                     </div>
-
-                    {{-- CARD --}}
-                    <div class="col-6 col-lg-3">
+                    {{-- CARD 3 --}}
+                    <div class="col-12 col-md-6 col-lg-4">
 
                         <div class="card border-0 shadow-sm rounded-4 text-center h-100">
 
@@ -136,66 +134,7 @@
 
                                 <div class="mb-3">
 
-                                    <i class="bi bi-heart fs-1 text-danger"></i>
-
-                                </div>
-
-                                <h2 class="fw-bold">
-                                    8
-                                </h2>
-
-                                <p class="text-muted mb-0">
-                                    Favoritos
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    {{-- CARD --}}
-                    <div class="col-6 col-lg-3">
-
-                        <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-
-                            <div class="card-body">
-
-                                <div class="mb-3">
-
-                                    <i class="bi bi-ticket-perforated fs-1 text-warning"></i>
-
-                                </div>
-
-                                <h2 class="fw-bold">
-                                    3
-                                </h2>
-
-                                <p class="text-muted mb-0">
-                                    Cupones
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                {{--seccion 2 de cards--}}
-
-                <div class="row g-4 mt-5">
-                    {{-- CARD --}}
-                    <div class="col-12 col-lg-6">
-
-                        <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-
-                            <div class="card-body">
-
-                                <div class="mb-6">
-
-                                    <i class="bi bi-bag fs-1 text-success"></i>
+                                    <i class="bi bi-geo-alt fs-1 text-dark"></i>
 
                                 </div>
 
@@ -204,34 +143,7 @@
                                 </h2>
 
                                 <p class="text-muted mb-0">
-                                    Último pedido
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    {{-- CARD --}}
-                    <div class="col-12 col-lg-6">
-
-                        <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-
-                            <div class="card-body">
-
-                                <div class="mb-6">
-
-                                    <i class="bi bi-truck fs-1 text-primary"></i>
-
-                                </div>
-
-                                <h2 class="fw-bold">
-                                    2
-                                </h2>
-
-                                <p class="text-muted mb-0">
-                                    Dirección principal
+                                    Direccion de cuenta
                                 </p>
 
                             </div>
@@ -240,147 +152,136 @@
 
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
 
 
 
 
 
 
-    {{-- MODAL EDITAR PERFIL --}}
-    <div class="modal fade"
-        id="editProfileModal"
-        tabindex="-1">
+        {{-- MODAL EDITAR PERFIL --}}
+        <div class="modal fade"
+            id="editProfileModal"
+            tabindex="-1">
 
-        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered">
 
-            <div class="modal-content rounded-4 border-0">
+                <div class="modal-content rounded-4 border-0">
 
-                <div class="modal-header border-0">
+                    <div class="modal-header border-0">
 
-                    <h5 class="modal-title fw-bold">
-                        Editar perfil
-                    </h5>
+                        <h5 class="modal-title fw-bold">
+                            Editar perfil
+                        </h5>
 
-                    <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"></button>
+                        <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"></button>
 
-                </div>
+                    </div>
 
-                <div class="modal-body p-4">
+                    <div class="modal-body p-4">
 
-                    <form action="{{route('perfil.update')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="text-center mb-4">
-                            @if(Auth::user()->profile_image)
-                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}"
-                                class="rounded-circle mb-3 border border-4 border-green"
-                                width="120"
-                                height="120"
-                                style="object-fit: cover;">
-                            @else
-                            <img src="{{ asset('img/profile-user/icono-perfil.png') }}"
-                                class="rounded-circle mb-3  border border-4 border-green"
-                                width="120"
-                                height="120"
-                                style="object-fit: cover;">
-                            @endif
+                        <form action="{{route('perfil.update')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="text-center mb-4">
+                                @if(Auth::user()->profile_image)
+                                <img src="{{ asset('storage/' . Auth::user()->profile_image) }}"
+                                    class="rounded-circle mb-3 border border-4 border-green"
+                                    width="120"
+                                    height="120"
+                                    style="object-fit: cover;">
+                                @else
+                                <img src="{{ asset('img/profile-user/icono-perfil.png') }}"
+                                    class="rounded-circle mb-3  border border-4 border-green"
+                                    width="120"
+                                    height="120"
+                                    style="object-fit: cover;">
+                                @endif
 
-                            <div>
-                                <input type="file" name="profile_image" class="form-control">
+                                <div>
+                                    <input type="file" name="profile_image" class="form-control">
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Nombre
-                            </label>
-
-                            <input type="text"
-                                name="name"
-                                class="form-control"
-                                value="{{ Auth::user()->name }}">
-
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Email
-                            </label>
-
-                            <input type="email"
-                                name="email"
-                                class="form-control"
-                                value="{{ Auth::user()->email }}">
-
-                        </div>
-
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Contraseña actual
-                            </label>
-                            <div class="input-group">
-                                <input type="password"
-                                    id="currentPassword"
-                                    name="current_password"
-                                    class="form-control">
-
-                                <button class="btn btn-outline-secondary"
-                                    type="button"
-                                    onclick="togglePassword('currentPassword', this)">
-
-                                    <i class="bi bi-eye-slash"></i>
-
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="newPasswordFields" class="d-none">
                             <div class="mb-3">
 
                                 <label class="form-label">
-                                    Nueva contraseña
+                                    Nombre
                                 </label>
 
+                                <input type="text"
+                                    name="name"
+                                    class="form-control"
+                                    value="{{ Auth::user()->name }}">
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Apellido
+                                </label>
+
+                                <input type="text"
+                                    name="last_name"
+                                    class="form-control"
+                                    value="{{ Auth::user()->last_name }}">
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                    name="email"
+                                    class="form-control"
+                                    value="{{ Auth::user()->email }}">
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Contraseña actual
+                                </label>
                                 <div class="input-group">
                                     <input type="password"
-                                        id="newPassword"
-                                        name="new_password"
+                                        id="currentPassword"
+                                        name="current_password"
                                         class="form-control">
 
                                     <button class="btn btn-outline-secondary"
                                         type="button"
-                                        onclick="togglePassword('newPassword', this)">
+                                        onclick="togglePassword('currentPassword', this)">
 
                                         <i class="bi bi-eye-slash"></i>
 
                                     </button>
-
                                 </div>
+                            </div>
 
+                            <div id="newPasswordFields" class="d-none">
                                 <div class="mb-3">
 
                                     <label class="form-label">
-                                        Confirmar nueva contraseña
+                                        Nueva contraseña
                                     </label>
-                                    <div class="input-group">
 
+                                    <div class="input-group">
                                         <input type="password"
-                                            id="confirmPassword"
-                                            name="new_password_confirmation"
+                                            id="newPassword"
+                                            name="new_password"
                                             class="form-control">
 
                                         <button class="btn btn-outline-secondary"
                                             type="button"
-                                            onclick="togglePassword('confirmPassword', this)">
+                                            onclick="togglePassword('newPassword', this)">
 
                                             <i class="bi bi-eye-slash"></i>
 
@@ -388,105 +289,127 @@
 
                                     </div>
 
-                                    <small id="passwordMessage"></small>
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Confirmar nueva contraseña
+                                        </label>
+                                        <div class="input-group">
+
+                                            <input type="password"
+                                                id="confirmPassword"
+                                                name="new_password_confirmation"
+                                                class="form-control">
+
+                                            <button class="btn btn-outline-secondary"
+                                                type="button"
+                                                onclick="togglePassword('confirmPassword', this)">
+
+                                                <i class="bi bi-eye-slash"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                        <small id="passwordMessage"></small>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <button type="submit" class="btn btn-custom w-100 ">
-                                Guardar cambios
-                            </button>
+                                <button type="submit" class="btn btn-custom w-100 ">
+                                    Guardar cambios
+                                </button>
 
-                    </form>
+                        </form>
+
+                    </div>
 
                 </div>
 
             </div>
-
         </div>
-    </div>
 
-    <script>
-        // MOSTRAR CAMPOS NUEVA PASSWORD
+        <script>
+            // MOSTRAR CAMPOS NUEVA PASSWORD
 
-        const currentPassword = document.getElementById('currentPassword');
+            const currentPassword = document.getElementById('currentPassword');
 
-        const newPasswordFields = document.getElementById('newPasswordFields');
+            const newPasswordFields = document.getElementById('newPasswordFields');
 
-        currentPassword.addEventListener('input', function() {
+            currentPassword.addEventListener('input', function() {
 
-            if (currentPassword.value.length > 0) {
+                if (currentPassword.value.length > 0) {
 
-                newPasswordFields.classList.remove('d-none');
+                    newPasswordFields.classList.remove('d-none');
 
-            } else {
+                } else {
 
-                newPasswordFields.classList.add('d-none');
+                    newPasswordFields.classList.add('d-none');
 
+                }
+
+            });
+
+
+
+            // VALIDAR CONFIRMACIÓN
+
+            const newPassword = document.getElementById('newPassword');
+
+            const confirmPassword = document.getElementById('confirmPassword');
+
+            const passwordMessage = document.getElementById('passwordMessage');
+
+            confirmPassword.addEventListener('input', function() {
+
+                if (confirmPassword.value.length === 0) {
+
+                    passwordMessage.textContent = '';
+
+                    confirmPassword.classList.remove('is-valid');
+                    confirmPassword.classList.remove('is-invalid');
+
+                    return;
+                }
+
+                if (newPassword.value === confirmPassword.value) {
+
+                    passwordMessage.textContent = 'Las contraseñas coinciden';
+
+                    passwordMessage.className = 'text-success';
+
+                    confirmPassword.classList.remove('is-invalid');
+                    confirmPassword.classList.add('is-valid');
+
+                } else {
+
+                    passwordMessage.textContent = 'Las contraseñas no coinciden';
+
+                    passwordMessage.className = 'text-danger';
+
+                    confirmPassword.classList.remove('is-valid');
+                    confirmPassword.classList.add('is-invalid');
+                }
+
+            });
+
+
+
+            // MOSTRAR / OCULTAR PASSWORD
+
+            function togglePassword(inputId, button) {
+
+                const input = document.getElementById(inputId);
+
+                const icon = button.querySelector('i');
+
+                input.type =
+                    input.type === 'password' ?
+                    'text' :
+                    'password';
+
+                icon.classList.toggle('bi-eye');
+
+                icon.classList.toggle('bi-eye-slash');
             }
-
-        });
-
-
-
-        // VALIDAR CONFIRMACIÓN
-
-        const newPassword = document.getElementById('newPassword');
-
-        const confirmPassword = document.getElementById('confirmPassword');
-
-        const passwordMessage = document.getElementById('passwordMessage');
-
-        confirmPassword.addEventListener('input', function() {
-
-            if (confirmPassword.value.length === 0) {
-
-                passwordMessage.textContent = '';
-
-                confirmPassword.classList.remove('is-valid');
-                confirmPassword.classList.remove('is-invalid');
-
-                return;
-            }
-
-            if (newPassword.value === confirmPassword.value) {
-
-                passwordMessage.textContent = 'Las contraseñas coinciden';
-
-                passwordMessage.className = 'text-success';
-
-                confirmPassword.classList.remove('is-invalid');
-                confirmPassword.classList.add('is-valid');
-
-            } else {
-
-                passwordMessage.textContent = 'Las contraseñas no coinciden';
-
-                passwordMessage.className = 'text-danger';
-
-                confirmPassword.classList.remove('is-valid');
-                confirmPassword.classList.add('is-invalid');
-            }
-
-        });
-
-
-
-        // MOSTRAR / OCULTAR PASSWORD
-
-        function togglePassword(inputId, button) {
-
-            const input = document.getElementById(inputId);
-
-            const icon = button.querySelector('i');
-
-            input.type =
-                input.type === 'password' ?
-                'text' :
-                'password';
-
-            icon.classList.toggle('bi-eye');
-
-            icon.classList.toggle('bi-eye-slash');
-        }
-    </script>
-    @endsection
+        </script>
+        @endsection
