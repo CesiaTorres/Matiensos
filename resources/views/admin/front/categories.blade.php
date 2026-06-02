@@ -137,6 +137,8 @@
 </div>
 @include('admin.front.components.categories._create')
 @include('admin.front.components._toast')
+@include('admin.front.components.categories._chart')
 @include('admin.front.components.scripts')
+
 
 @endsection
