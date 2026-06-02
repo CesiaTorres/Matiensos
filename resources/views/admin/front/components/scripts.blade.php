@@ -24,10 +24,10 @@
         modal.addEventListener('hidden.bs.modal', function () {
             var form = this.querySelector('form');
             if(form) {
-                form.classList.remove('was-validated');
-                if(this.id === 'createProductModal') {
-                    form.reset();
-                }
+                //Borra los bordes rojos/verdes de validación
+                form.classList.remove('was-validated');                
+                //Restaura los inputs a su estado original (vacío en Crear, con datos reales en Editar)
+                form.reset();
             }
         });
     });

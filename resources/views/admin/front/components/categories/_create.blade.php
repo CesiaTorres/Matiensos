@@ -17,7 +17,7 @@
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Nombre de la Categoría</label>
                         <input type="text" name="name" pattern="^[^\s]+(\s+[^\s]+)*$" class="form-control" placeholder="Ej: Mates de Madera" required>
-                        <div class="invalid-feedback fw-semibold">El nombre es obligatorio.</div>
+                        <div class="invalid-feedback fw-semibold">El nombre es obligatorio.  No uses espacios vacíos</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Descripción (Opcional)</label>

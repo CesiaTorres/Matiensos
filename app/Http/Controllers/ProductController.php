@@ -103,7 +103,7 @@ class ProductController
         $product = Product::findOrFail($id);
         $request->validate([
             'code'        => 'required|string|regex:/^[^\s]+(\s+[^\s]+)*$/|max:50|unique:products,code,' . $product->id,
-            'name'        => 'required|string|max:150|unique:products,name',
+            'name'        => 'required|string|max:150|unique:products,name,' . $product->id,
             'description' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'price'       => 'required|numeric|min:0',

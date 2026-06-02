@@ -112,8 +112,6 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @include('admin.front.components.categories._edit')
-                                        @include('admin.front.components.categories._delete')
                                     @endforeach
                                 @endif
                             </tbody>
@@ -149,6 +147,11 @@
                         </table>
 
                     </div>
+                    @foreach ( $categories as $category )
+                        @include('admin.front.components.categories._edit')
+                        @include('admin.front.components.categories._delete')
+                    @endforeach
+                    
 
                 </div>
             </div>
@@ -156,6 +159,7 @@
     </div>
 </div>
 @include('admin.front.components.categories._create')
-@include('admin.front.components._toast') {{-- @include('admin.front.components.products.scripts') --}}
+@include('admin.front.components._toast')
+@include('admin.front.components.scripts')
 
 @endsection

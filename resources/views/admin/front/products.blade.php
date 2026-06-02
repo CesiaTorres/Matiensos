@@ -174,10 +174,8 @@
                                                     </button>
                                                 </div>
                                             </td>
-                                        </tr>
-                                        @include('admin.front.components.products._edit')
-                                        @include('admin.front.components.products._delete')
-                                    @endforeach
+                                        </tr>                                        
+                                    @endforeach                                  
                                 @endif
                             </tbody>
                         </table>
@@ -205,6 +203,10 @@
                         </div>
 
                     </div>
+                    @foreach($products as $product)
+                        @include('admin.front.components.products._edit')
+                        @include('admin.front.components.products._delete')
+                    @endforeach
 
                 </div>
             </div>
@@ -215,5 +217,5 @@
 @include('admin.front.components.products._create')
 @include('admin.front.components.products._filters')
 @include('admin.front.components._toast')
-@include('admin.front.components.products.scripts')
+@include('admin.front.components.scripts')
 @endsection

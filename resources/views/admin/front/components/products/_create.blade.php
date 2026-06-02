@@ -7,7 +7,7 @@
                 <h5 class="modal-title fw-bold text-dark" id="createProductModalLabel">
                     <i class="bi bi-box-seam me-2 color-matiensos"></i>Agregar Producto
                 </h5>
-                <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="BUTTON" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {{-- Formulario para ingreso de datos --}}
             <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>

@@ -17,7 +17,8 @@
                 <div class="modal-body p-4">
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Nombre de la Categoría</label>
-                        <input type="text" name="name" class="form-control" placeholder="Ej: Mates de Madera" value="{{ old('name', $category->name) }}" required>
+                        <input type="text" name="name" class="form-control" placeholder="Ej: Mates de Madera" 
+                            value="{{ old('name', $category->name) }}" pattern="^[^\s]+(\s+[^\s]+)*$" required>
                         <div class="invalid-feedback fw-semibold">El nombre es obligatorio.</div>
                     </div>
                     <div class="mb-3">
