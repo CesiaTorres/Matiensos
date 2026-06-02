@@ -1,13 +1,10 @@
 <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
-
-/*
-|--------------------------------------------------------------------------
-| RUTAS PÚBLICAS
-|--------------------------------------------------------------------------
-*/
 Route::get('/', function () {
     return view('front.inicio');
 }) ->name('inicio');
@@ -95,4 +92,20 @@ Route::middleware(['auth', 'role:1'])->group(function () {
         return view('admin.dashboard');
     });
 
+//Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    //Gestion de Productos
+    Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
+    Route::post('/productos', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::put('/productos/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/productos/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+
+    //Gestion de Productos
+    Route::get('/categorias', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::post('/categorias', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+    
 });
