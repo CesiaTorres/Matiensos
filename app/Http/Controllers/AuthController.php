@@ -23,49 +23,36 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-
             'email' => 'required|email',
-
             'password' => 'required'
 
         ]);
 
         if (Auth::attempt($credentials)) {
-
             $request->session()->regenerate();
 
-            return redirect('/')
-                ->with('success', 'Inicio de sesión exitoso');
+            return redirect('/')->with('success', 'Inicio de sesión exitoso');
         }
 
-        return back()
-            ->with('error', 'Correo o contraseña incorrectos');
+        return back()->with('error', 'Correo o contraseña incorrectos');
         
     }
 
     public function register(Request $request)
     {
         $request->validate([
-
             'name' => 'required',
-
             'last_name' => 'required',
-
             'email' => 'required|email|unique:users',
-
             'password' => 'required|min:6'
         ]);
 
         $user = User::create([
 
             'name' => $request->name,
-
             'last_name' => $request->last_name,
-
             'email' => $request->email,
-
             'password' => $request->password,
-
             'role_id' => 2
         ]);
 
@@ -73,12 +60,11 @@ class AuthController extends Controller
 
         return redirect('/')->with('success', 'Usuario registrado con éxito');
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Fillable([    //Campos que se pueden cargar masivamente.
     'name',
@@ -24,6 +25,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use SoftDeletes;
     
     //Conversion de tipos de datos
     protected function casts(): array
@@ -42,5 +44,11 @@ class User extends Authenticatable
     public function isCustomer(): bool
     {
         return $this->role_id === 2;
+    }
+    
+    //Un usuario tiene un rol
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
