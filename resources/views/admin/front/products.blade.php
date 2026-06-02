@@ -181,26 +181,7 @@
                         </table>
 
                         {{-- Navegación de productos --}}
-                        <div class="d-flex flex-column align-items-center gap-2 mt-4">
-                            <div class="text-muted small">
-                                Mostrando {{ $products->count() }} de {{ $products->total() }} productos
-                            </div>
-                            <nav aria-label="Navegación de productos">
-                                <ul class="pagination m-0">                  
-                                    <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
-                                        <a class="page-link" href="{{ $products->appends(request()->query())->previousPageUrl() }}">&laquo;</a>
-                                    </li>                 
-                                    @foreach ($products->appends(request()->query())->getUrlRange(1, $products->lastPage()) as $page => $url)
-                                        <li class="page-item {{ $page == $products->currentPage() ? 'active' : '' }}">
-                                            <a class="page-link" href="{{ $url }}">{{ $page }}</a> {{-- href=".../productos?page=2">2< --}}
-                                        </li>
-                                    @endforeach
-                                    <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $products->appends(request()->query())->nextPageUrl() }}">&raquo;</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                        <x-_pagination :items="$products" label="productos" />
 
                     </div>
                     @foreach($products as $product)

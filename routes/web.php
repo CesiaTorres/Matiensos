@@ -108,5 +108,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/usuarios', [UserController::class, 'store'])->name('admin.users.store');
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::patch('/usuarios/{id}/restaurar', [UserController::class, 'restore'])->name('admin.users.restore');
     
 });
