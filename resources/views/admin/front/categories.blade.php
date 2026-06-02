@@ -115,45 +115,22 @@
                                     @endforeach
                                 @endif
                             </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">                
-                <div class="card border-0 shadow-sm bg-white p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-dark m-0">Auditoria</h5>
-                        
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle m-0">
-                            {{-- Encabezado de la tabla --}}
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width: 80px;">Código</th>
-                                    <th>Imagen</th>
-                                    <th class="text-base" style="width: 150px;">Acciones</th>
-                                </tr>
-                            </thead>
-                            {{-- Productos de la tabla --}}
-                            <tbody class="align-middle">
-                                {{-- Lista vacia --}}
-                               
-                                {{-- Lista con productos --}}                          
-                                   
-                            </tbody>
-                        </table>
-
+                        </table>                        
                     </div>
                     @foreach ( $categories as $category )
                         @include('admin.front.components.categories._edit')
                         @include('admin.front.components.categories._delete')
                     @endforeach
-                    
-
                 </div>
+            </div>
+
+            <div class="col-4">                
+                <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bold text-dark mb-4">Distribución del Catálogo</h5>
+                            <canvas id="categoriasChart" style="max-height: 250px;"></canvas>                            
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

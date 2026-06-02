@@ -28,8 +28,11 @@ class CategoryController
             'top_category' => $mostPopulous ? $mostPopulous->name : '--',
             'bottom_category' => $leastPopulous ? $leastPopulous->name : '--',
         ];
+        $chartCategories = Category::withCount('products')->get();
+        $chartLabels = $chartCategories->pluck('name');
+        $chartData = $chartCategories->pluck('products_count');
         
-        return view('admin.front.categories', compact('categories', 'metrics'));
+        return view('admin.front.categories', compact('categories', 'metrics','chartLabels', 'chartData'));
     }
 
     /**
