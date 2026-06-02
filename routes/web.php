@@ -86,14 +86,7 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'role:1'])->group(function () {
-
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    });
-
-//Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     //Gestion de Productos
