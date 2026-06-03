@@ -36,10 +36,15 @@
                     <label class="form-check-label" for="remember">Recordarme</label>
                 </div>
                 {{-- Boton 'Entrar' --}}
-                <div class="d-grid mt-4">
+                <div class="d-grid mt-2">
                     <button type="submit" class="btn btn-color-matiensos text-white fw-bold py-2">
                         Entrar
                     </button>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="#" class="text-dark text-muted">
+                        ¿Has olvidado la contraseña?
+                    </a>
                 </div>
             </form>
         </div>

@@ -78,6 +78,9 @@ Route::middleware('auth')->group(function () {
         return view('front.perfil_user');
     })->name('perfil_user');
 
+    Route::post('/perfil_user', [AuthController::class, 'updateProfile'])
+        ->name('perfil.update');
+
 });
 
 /*
