@@ -6,14 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-11 col-md-5">
             {{-- Formulario de acceso --}}
-<<<<<<< HEAD
             <form action="{{ route('login') }}" method="POST" class="card shadow-sm p-4">
                 @csrf
                 <h2 class="text-center mb-4">Ingresar</h2>
-=======
-            <form action="{{ route('acceso.post') }}" method="POST" class="card shadow-sm p-4">
-                <h2 class="text-center mb-4">Ingresar</h2>        
->>>>>>> feat/middleware
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo electrónico</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@gmail.com" required autofocus>
