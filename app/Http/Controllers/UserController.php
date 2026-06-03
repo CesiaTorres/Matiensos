@@ -14,20 +14,27 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::whereIn('role_id', [1, 3])
-            ->withTrashed()
+        $roles = Role::all();
+
+        $users = User::query()
+            ->withTrashed() //todos (activos y suspendidos)
+            ->search($request->input('search'))
+            ->byRole($request->input('role_filter'))
+            ->byStatus($request->input('status_filter'))
             ->latest()
             ->paginate(10);
+
 
         $roles = Role::whereIn('id', [1, 3])->get();
 
         $metrics = [
-            'total_team'   => User::whereIn('role_id', [1, 3])->count(),
+            'total_users'   => User::count(),
             'total_admins' => User::where('role_id', 1)->count(),
+            'total_customer' => User::where('role_id', 2)->count(),
             'total_sellers'=> User::where('role_id', 3)->count(),
-            //lógicamente suspendidos
-            'suspended'    => User::onlyTrashed()->whereIn('role_id', [1, 3])->count(),
-            'active_now'   => User::whereIn('role_id', [1, 3])->whereNotNull('remember_token')->count(),
+            
+            'suspended'    => User::onlyTrashed()->count(),
+            'active_now'   => User::whereNotNull('remember_token')->count(),
         ];
 
         return view('admin.front.users', compact('users', 'roles', 'metrics'));

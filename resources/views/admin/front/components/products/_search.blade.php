@@ -1,13 +1,12 @@
 {{-- Barra de BUSQUEDA y boton de FILTROS --}}
 <div class="d-flex align-items-center gap-2">
     <form action="{{ route('admin.products') }}" method="GET" class="input-group input-group-sm" style="width: 300px;">      
-        @if(request('stock_filter')) {{-- guarda el filtro offcanva si es que esta aplicado --}}
+        @if(request('stock_filter')){{-- Se mantiene la busqueda de los filtros --}}
             <input type="hidden" name="stock_filter" value="{{ request('stock_filter') }}">
         @endif       
         @if(request('stock_value'))
             <input type="hidden" name="stock_value" value="{{ request('stock_value') }}">
-        @endif
-        
+        @endif        
         @if(request('category_filter'))
             <input type="hidden" name="category_filter" value="{{ request('category_filter') }}">
         @endif

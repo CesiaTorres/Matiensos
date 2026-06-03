@@ -35,7 +35,7 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label class="form-label small fw-bold">Rol en el Sistema</label>
+                            <label class="form-label small fw-bold">Rol</label>
                             <select name="role_id" class="form-select" required>
                                 <option value="" selected disabled>Seleccionar Rol...</option>
                                 @foreach($roles as $role)

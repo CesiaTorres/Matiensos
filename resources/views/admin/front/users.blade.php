@@ -22,7 +22,7 @@
         <div class="row mb-3 justify-content-center">
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Equipo Completo" value="{{ $metrics['total_team'] }}" icon="bi-shield-lock" />
+                    title="Equipo Completo" value="{{ $metrics['total_users'] }}" icon="bi-shield-lock" />
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Vendedores Activos" value="{{ $metrics['total_sellers'] }}" icon="bi-person-x"/>
+                    title="Clientes Activos" value="{{ $metrics['total_customer'] }}" icon="bi-person-x"/>
             </div>
         </div>
 
@@ -39,7 +39,8 @@
             <div class="col-8">                
                 <div class="card border-0 shadow-sm bg-white p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-dark m-0">Equipo</h5>                      
+                        <h5 class="fw-bold text-dark m-0">Equipo</h5>
+                        @include('admin.front.components.users._search')                      
                     </div>
                         <div class="table-responsive">
                             <table class="table table-hover align-middle mb-0">
@@ -86,7 +87,7 @@
                                                             Admin
                                                         </span>
                                                     @else
-                                                        <span class="badge bg-secondary bg-opacity-10 text-dark px-2 py-1 fw-bold border border-secondary">
+                                                        <span class="badge bg-secondary bg-opacity-10 text-dark px-2 py-1 fw-bold">
                                                             Vendedor
                                                         </span>
                                                     @endif
@@ -120,7 +121,7 @@
                                                                 <i class="bi bi-person-x fs-6"></i>
                                                             </button>
                                                             
-                                                        {{-- muestra el botón de reactivar --}}
+                                                        {{-- botón de reactivar --}}
                                                         @elseif($user->trashed())
                                                             <button type="button" class="btn btn-sm btn-outline-success border-0" 
                                                                     data-bs-toggle="modal" 
@@ -144,18 +145,63 @@
                         @include('admin.front.components.users._edit')
                         @include('admin.front.components.users._delete')
                         @include('admin.front.components.users._restore')
-                    @endforeach
-                    
-                </div>
-            
+                    @endforeach                    
+                </div>            
 
                 <div class="col-4">                
-                    <div class="card border-0 shadow-sm">
-                            <div class="card-body p-4 text-center">
-                                <h5 class="fw-bold text-dark mb-4">Historial de actividad</h5>
-                                                        
-                            </div>
+                    {{-- TARJETA DE HISTORIAL DE ACTIVIDAD --}}
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-white border-bottom-0 pt-4 pb-2">
+                            <h5 class="fw-bold text-dark mb-0">
+                                <i class="bi bi-clock-history me-2 color-matiensos"></i>Historial de actividad
+                            </h5>
                         </div>
+                        
+                        <div class="card-body pt-2" style="max-height: 600px; overflow-y: auto;">
+                            
+                            {{-- Contenedor de la Línea de Tiempo --}}
+                            <div class="border-start border-2 ms-2 ps-3 position-relative" style="border-color: #dee2e6 !important;">
+                                
+                                {{-- Item 1: Reactivación (Éxito) --}}
+                                <div class="mb-4 position-relative">
+                                    <span class="position-absolute top-0 start-0 translate-middle bg-success border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
+                                    <div class="small text-muted mb-1">Hoy, 10:45 AM</div>
+                                    <div class="text-dark" style="font-size: 0.9rem;">
+                                        <strong>Admin First</strong> reactivó al usuario <span class="fw-semibold">Facundo Romero</span>.
+                                    </div>
+                                </div>
+
+                                {{-- Item 2: Suspensión (Peligro) --}}
+                                <div class="mb-4 position-relative">
+                                    <span class="position-absolute top-0 start-0 translate-middle bg-danger border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
+                                    <div class="small text-muted mb-1">Ayer, 16:30 PM</div>
+                                    <div class="text-dark" style="font-size: 0.9rem;">
+                                        <strong>Valentina Ríos</strong> suspendió al usuario <span class="fw-semibold">Cliente Uno</span>.
+                                    </div>
+                                </div>
+
+                                {{-- Item 3: Actualización (Info/Secundario) --}}
+                                <div class="mb-4 position-relative">
+                                    <span class="position-absolute top-0 start-0 translate-middle bg-secondary border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
+                                    <div class="small text-muted mb-1">Ayer, 11:15 AM</div>
+                                    <div class="text-dark" style="font-size: 0.9rem;">
+                                        <strong>Admin First</strong> actualizó el rol de <span class="fw-semibold">Sofía Alonso</span> a Vendedor.
+                                    </div>
+                                </div>
+
+                                {{-- Item 4: Creación (Primario) --}}
+                                <div class="mb-2 position-relative">
+                                    <span class="position-absolute top-0 start-0 translate-middle bg-primary border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
+                                    <div class="small text-muted mb-1">01 Jun 2026, 09:00 AM</div>
+                                    <div class="text-dark" style="font-size: 0.9rem;">
+                                        <strong>Enzo Gómez</strong> registró un nuevo usuario: <span class="fw-semibold">Joaquín García</span>.
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,6 +211,7 @@
 @include('admin.front.components._toast')
 @include('admin.front.components.users._create')
 @include('admin.front.components.scripts')
+@include('admin.front.components.users._filters')
 
 
 
