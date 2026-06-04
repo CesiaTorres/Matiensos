@@ -42,7 +42,7 @@
             <hr class="text-muted opacity-25 my-4">
             {{-- Roles --}}
             <div class="mb-4">
-                <label class="form-label fw-bold small uppercase text-tracking mb-3">Roles del Sistema</label>      
+                <label class="form-label fw-bold small uppercase text-tracking mb-3">Roles</label>      
                 <div class="form-check mb-2">
                     <input class="form-check-input" type="radio" name="role_filter" id="filterRoleAll" value=""
                            {{ !request('role_filter') ? 'checked' : '' }}>

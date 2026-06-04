@@ -22,7 +22,7 @@
         <div class="row mb-3 justify-content-center">
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Equipo Completo" value="{{ $metrics['total_users'] }}" icon="bi-shield-lock" />
+                    title="Equipo Completo" value="{{ $metrics['total_team'] }}" icon="bi-shield-lock" />
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-3 mb-3">
                 <x-metric-card 
-                    title="Clientes Activos" value="{{ $metrics['total_customer'] }}" icon="bi-person-x"/>
+                    title="Clientes" value="{{ $metrics['total_customer'] }}" icon="bi-person-x"/>
             </div>
         </div>
 
@@ -82,15 +82,13 @@
                                                 </td>
                                                 {{-- Rol--}}
                                                 <td>
-                                                    @if($user->role_id == 1)
-                                                        <span class="badge bg-primary bg-opacity-10 text-primary px-2 py-1 fw-bold border border-primary">
-                                                            Admin
-                                                        </span>
-                                                    @else
-                                                        <span class="badge bg-secondary bg-opacity-10 text-dark px-2 py-1 fw-bold">
-                                                            Vendedor
-                                                        </span>
-                                                    @endif
+                                                    @php
+                                                        $theme = $user->role_id == 1 ? 'bg-primary text-primary' : 'bg-secondary text-dark';
+                                                    @endphp
+                                                    
+                                                    <span class="badge {{ $theme }} bg-opacity-10 px-2 py-1 fw-bold">
+                                                        {{ ucfirst($user->role->name ?? 'Desconocido') }} {{-- mayus la primera --}}
+                                                    </span>
                                                 </td>
                                                 {{-- Estado--}}
                                                 <td>
@@ -139,70 +137,61 @@
                             </table>
                         </div>
                         {{-- Navegacion de usuarios --}}
-                        <x-_pagination :items="$users" label="miembros del equipo" />                                        
+                        <x-_pagination :items="$users" label="usuarios" />                                        
                     </div>
                     @foreach($users as $user)
                         @include('admin.front.components.users._edit')
                         @include('admin.front.components.users._delete')
                         @include('admin.front.components.users._restore')
                     @endforeach                    
-                </div>            
+                </div>   
 
                 <div class="col-4">                
-                    {{-- TARJETA DE HISTORIAL DE ACTIVIDAD --}}
+                    {{-- Historial --}}
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-header bg-white border-bottom-0 pt-4 pb-2">
                             <h5 class="fw-bold text-dark mb-0">
                                 <i class="bi bi-clock-history me-2 color-matiensos"></i>Historial de actividad
                             </h5>
-                        </div>
+                        </div>                        
                         
-                        <div class="card-body pt-2" style="max-height: 600px; overflow-y: auto;">
-                            
-                            {{-- Contenedor de la Línea de Tiempo --}}
-                            <div class="border-start border-2 ms-2 ps-3 position-relative" style="border-color: #dee2e6 !important;">
-                                
-                                {{-- Item 1: Reactivación (Éxito) --}}
-                                <div class="mb-4 position-relative">
-                                    <span class="position-absolute top-0 start-0 translate-middle bg-success border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
-                                    <div class="small text-muted mb-1">Hoy, 10:45 AM</div>
-                                    <div class="text-dark" style="font-size: 0.9rem;">
-                                        <strong>Admin First</strong> reactivó al usuario <span class="fw-semibold">Facundo Romero</span>.
-                                    </div>
-                                </div>
+                        <div class="card-body pt-2 overflow-auto" style="max-height: 600px;">
+                            <div class="border-start border-2 ms-2 ps-3 position-relative">                                
+                                @forelse($logs as $log)
+                                    @php
+                                        $color = match($log->action) {
+                                            'create'  => 'bg-matiensos',
+                                            'update'  => 'bg-primary',
+                                            'suspend' => 'bg-danger',
+                                            'restore' => 'bg-success',
+                                            default   => 'bg-dark'
+                                        };
+                                    @endphp
 
-                                {{-- Item 2: Suspensión (Peligro) --}}
-                                <div class="mb-4 position-relative">
-                                    <span class="position-absolute top-0 start-0 translate-middle bg-danger border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
-                                    <div class="small text-muted mb-1">Ayer, 16:30 PM</div>
-                                    <div class="text-dark" style="font-size: 0.9rem;">
-                                        <strong>Valentina Ríos</strong> suspendió al usuario <span class="fw-semibold">Cliente Uno</span>.
+                                    <div class="mb-4 position-relative">                                        
+                                        <span class="position-absolute top-0 start-0 translate-middle {{ $color }} border border-2 border-white rounded-circle" 
+                                            style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
+                                                                                                    
+                                        <div class="small text-muted mb-1">{{ \Carbon\Carbon::parse($log->created_at)->format('d/m/Y H:i') }}</div>
+                                                                                
+                                        <div class="text-dark lh-sm small">
+                                            <span>
+                                                <strong>{{ $log->user ? $log->user->name . ' ' . $log->user->last_name : 'Sistema' }}</strong> 
+                                                {!! $log->description !!}.
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-
-                                {{-- Item 3: Actualización (Info/Secundario) --}}
-                                <div class="mb-4 position-relative">
-                                    <span class="position-absolute top-0 start-0 translate-middle bg-secondary border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
-                                    <div class="small text-muted mb-1">Ayer, 11:15 AM</div>
-                                    <div class="text-dark" style="font-size: 0.9rem;">
-                                        <strong>Admin First</strong> actualizó el rol de <span class="fw-semibold">Sofía Alonso</span> a Vendedor.
+                                @empty
+                                    <div class="text-muted small text-center py-4">
+                                        Aún no hay actividad registrada en el sistema.
                                     </div>
-                                </div>
-
-                                {{-- Item 4: Creación (Primario) --}}
-                                <div class="mb-2 position-relative">
-                                    <span class="position-absolute top-0 start-0 translate-middle bg-primary border border-2 border-white rounded-circle" style="width: 14px; height: 14px; margin-left: -17px; margin-top: 5px;"></span>
-                                    <div class="small text-muted mb-1">01 Jun 2026, 09:00 AM</div>
-                                    <div class="text-dark" style="font-size: 0.9rem;">
-                                        <strong>Enzo Gómez</strong> registró un nuevo usuario: <span class="fw-semibold">Joaquín García</span>.
-                                    </div>
-                                </div>
+                                @endforelse
 
                             </div>
-                            
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>

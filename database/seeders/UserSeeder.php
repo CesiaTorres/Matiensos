@@ -22,20 +22,6 @@ class UserSeeder extends Seeder
             'role_id'   => 1,
         ]);
         User::create([
-            'name'      => 'Valentina',
-            'last_name' => 'Ríos',
-            'email'     => 'vrios@matiensos.com',
-            'password'  => Hash::make('1234'),
-            'role_id'   => 1,
-        ]);
-        User::create([
-            'name'      => 'Enzo',
-            'last_name' => 'Gómez',
-            'email'     => 'egomez@matiensos.com',
-            'password'  => Hash::make('1234'),
-            'role_id'   => 1,
-        ]);
-        User::create([
             'name'      => 'Camila',
             'last_name' => 'Sosa',
             'email'     => 'csosa@matiensos.com',
