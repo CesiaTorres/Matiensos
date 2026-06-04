@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('front.inicio');
@@ -89,7 +90,8 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
+//Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     //Gestion de Productos
@@ -103,5 +105,12 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::post('/categorias', [CategoryController::class, 'store'])->name('admin.categories.store');
     Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+    //Gestion de User: Administradores
+    Route::get('/usuarios', [UserController::class, 'index'])->name('admin.users');
+    Route::post('/usuarios', [UserController::class, 'store'])->name('admin.users.store');
+    Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::patch('/usuarios/{id}/restaurar', [UserController::class, 'restore'])->name('admin.users.restore');
     
 });

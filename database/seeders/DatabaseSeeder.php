@@ -10,8 +10,7 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        //seeders de Matiensos
+    {       
         $this->call([
             RoleSeeder::class, 
             UserSeeder::class, 
