@@ -11,7 +11,7 @@ use App\Models\ActivityLog;
 class UserController extends Controller
 {
     /**
-     * Muestra el listado de 
+     * Info a page
      */
     public function index(Request $request)
     {

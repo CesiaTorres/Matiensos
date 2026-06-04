@@ -106,7 +106,7 @@ Route::prefix('admin')->group(function () {
     Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
-    //Gestion de User: Administradores
+    //Gestion de User
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.users');
     Route::post('/usuarios', [UserController::class, 'store'])->name('admin.users.store');
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('admin.users.update');
