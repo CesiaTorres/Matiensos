@@ -35,13 +35,8 @@ class AuthController extends Controller
             return redirect('/')->with('success', 'Inicio de sesión exitoso');
         }
 
-<<<<<<< HEAD
         return back()
             ->with('error', 'Correo o contraseña incorrectos');
-=======
-        return back()->with('error', 'Correo o contraseña incorrectos');
-        
->>>>>>> feat/admin/user
     }
 
     public function register(Request $request)
