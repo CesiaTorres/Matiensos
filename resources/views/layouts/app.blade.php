@@ -12,7 +12,7 @@
     @include('partials.navbar')
 
     {{-- Toast global --}}
-    @if(session('success') || session('error'))
+    @if(session('success') || session('error') || $errors->any())
 
     <div class="toast-container position-fixed bottom-40 end-0 p-3">
 
@@ -24,7 +24,7 @@
 
                 <div class="toast-body">
 
-                    {{ session('success') ?? session('error') }}
+                    {{ session('success') ?? session('error') ?? $errors->first() }}
 
                 </div>
 
