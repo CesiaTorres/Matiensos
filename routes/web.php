@@ -1,8 +1,8 @@
 <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\PasswordResetController;
 /*
 |--------------------------------------------------------------------------
 | RUTAS PÚBLICAS
@@ -99,3 +99,53 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     });
 
 });
+
+/*
+|--------------------------------------------------------------------------
+|ruta temporal 
+|--------------------------------------------------------------------------
+*/  
+Route::get('/test-mail', function () {
+
+    Mail::raw('Correo de prueba', function ($message) {
+
+        $message->to('test@test.com')
+                ->subject('Prueba Mailtrap');
+
+    });
+
+    return 'Correo enviado';
+});
+
+Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])
+    ->name('password.request');
+
+Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
+    ->name('password.update');
+
+/*
+|--------------------------------------------------------------------------
+|ruta recuperar contraseña
+|--------------------------------------------------------------------------
+*/
+
+// 1. Ruta para MOSTRAR el formulario (Le cambiamos el nombre a .request)
+Route::get('/recuperar-contrasenia', [PasswordResetController::class, 'showForgotForm'])
+    ->name('password.forgot');
+
+// 2. Ruta para PROCESAR el formulario (Esta es la que se queda con el nombre oficial)
+Route::post('/recuperar-contrasenia', [PasswordResetController::class, 'sendResetLinkEmail'])
+    ->name('password.request');
+
+    // 3. Ruta para mostrar el formulario de cambio de contraseña
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
+    ->name('password.reset');
+    // 4. Ruta para guardar la nueva contraseña
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
+    ->name('password.update');

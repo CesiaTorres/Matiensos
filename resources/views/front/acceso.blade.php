@@ -42,7 +42,7 @@
                     </button>
                 </div>
                 <div class="text-center mt-2">
-                    <a href="#" class="text-dark text-muted">
+                    <a href="{{ route('password.forgot') }}" class="text-dark text-muted">
                         ¿Has olvidado la contraseña?
                     </a>
                 </div>

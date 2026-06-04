@@ -161,11 +161,9 @@
 
 
         {{-- MODAL EDITAR PERFIL --}}
-        <div class="modal fade"
-            id="editProfileModal"
-            tabindex="-1">
+        <div class="modal fade" id="editProfileModal" tabindex="-1">
 
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
                 <div class="modal-content rounded-4 border-0">
 
@@ -296,8 +294,7 @@
                                         </label>
                                         <div class="input-group">
 
-                                            <input type="password"
-                                                id="confirmPassword"
+                                            <input type="password" id="confirmPassword"
                                                 name="new_password_confirmation"
                                                 class="form-control">
 
@@ -310,7 +307,6 @@
                                             </button>
 
                                         </div>
-
                                         <small id="passwordMessage"></small>
                                     </div>
                                 </div>
@@ -353,44 +349,37 @@
 
             // VALIDAR CONFIRMACIÓN
 
-            const newPassword = document.getElementById('newPassword');
+            function validatePasswords() {
 
-            const confirmPassword = document.getElementById('confirmPassword');
+                if (newPassword.value.length > 0 && newPassword.value.length < 6) {
 
-            const passwordMessage = document.getElementById('passwordMessage');
+                    passwordMessage.textContent = 'La contraseña debe tener al menos 6 caracteres';
+                    passwordMessage.className = 'text-danger';
 
-            confirmPassword.addEventListener('input', function() {
+                    return;
+                }
 
                 if (confirmPassword.value.length === 0) {
 
                     passwordMessage.textContent = '';
-
-                    confirmPassword.classList.remove('is-valid');
-                    confirmPassword.classList.remove('is-invalid');
-
                     return;
                 }
 
                 if (newPassword.value === confirmPassword.value) {
 
                     passwordMessage.textContent = 'Las contraseñas coinciden';
-
                     passwordMessage.className = 'text-success';
-
-                    confirmPassword.classList.remove('is-invalid');
-                    confirmPassword.classList.add('is-valid');
 
                 } else {
 
                     passwordMessage.textContent = 'Las contraseñas no coinciden';
-
                     passwordMessage.className = 'text-danger';
-
-                    confirmPassword.classList.remove('is-valid');
-                    confirmPassword.classList.add('is-invalid');
                 }
+            }
 
-            });
+            newPassword.addEventListener('input', validatePasswords);
+            confirmPassword.addEventListener('input', validatePasswords);
+
 
 
 
