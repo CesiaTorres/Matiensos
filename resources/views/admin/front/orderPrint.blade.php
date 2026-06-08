@@ -31,8 +31,7 @@
                 Imprimir
             </button>
         </div>
-
-        {{-- Cabecera del Ticket --}}
+        {{-- Cabecera--}}
         <div class="d-flex justify-content-between align-items-center mb-5 border-bottom pb-4">
             <div>
                 <h2 class="fw-bold text-dark mb-0">MATIENSOS</h2>
@@ -43,7 +42,6 @@
                 <small class="text-muted">Fecha: {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}</small>
             </div>
         </div>
-
         {{-- Datos del Cliente y Envío --}}
         <div class="row mb-5">
             <div class="col-6">

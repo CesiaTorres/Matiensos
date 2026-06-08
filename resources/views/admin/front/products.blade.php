@@ -40,7 +40,7 @@
 
         {{-- Lista de Prod --}}
         <div class="row">
-            <div class="col-12">                
+            <div class="col-9">                
                 <div class="card border-0 shadow-sm bg-white p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h5 class="fw-bold text-dark m-0">Listado de Productos</h5>
@@ -91,7 +91,7 @@
                                             <td>
                                                 <div class="fw-bold text-dark">{{ $product->name }}</div>
                                                 @if($product->description)
-                                                    <small class="text-muted d-block text-truncate" style="max-width: 250px;">{{ $product->description }}</small>
+                                                    <small class="text-muted d-block text-truncate" style="max-width: 220px;">{{ $product->description }}</small>
                                                 @endif
                                             </td>
                                             
@@ -101,7 +101,7 @@
                                                 </span>
                                             </td>
                                             
-                                            <td class="fw-bold text-dark">${{ number_format($product->price, 2, ',', '.') }}</td>    
+                                            <td class="fw-bold text-dark">${{ number_format($product->price, 0, ',', '.') }}</td>    
 
                                             <td>
                                                 @if($product->stock > 0)
@@ -147,6 +147,40 @@
                         @include('admin.front.components.products._delete')
                     @endforeach
                 </div>
+            </div>
+            {{-- Tabla informativa --}}
+            <div class="col-3">                
+                <div class="card border-0 shadow-sm bg-white mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold text-dark mb-3">
+                            <i class="bi bi-star-fill text-warning"></i> 
+                            Productos Estrellas</h5>
+                        <ul class="list-group list-group-flush mb-0 small">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                                <span class="">Mes Actual</span>
+                                <div class="fw-bold text-end small">{{ $masVendidoMes ? $masVendidoMes->name : '-' }}
+                                    @if($masVendidoMes)                                    
+                                        <div class="small text-success">{{ $masVendidoMes->total_sold }} vendidos</div>
+                                    @endif                                    
+                                </div>
+                                
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                                <span class="text-muted">Historico</span>
+                                <div class="fw-bold text-end small">
+                                    {{ $masVendidoHistorico ? $masVendidoHistorico->name : '-' }}
+                                    @if($masVendidoHistorico)
+                                        <div class="small text-success">{{ $masVendidoHistorico->total_sold }} vendidos</div>
+                                    @endif
+                                </div>
+                            </li>
+            
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
     </div>
