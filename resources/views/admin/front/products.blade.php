@@ -21,64 +21,24 @@
         {{-- Tarjetas --}}
         <div class="row mb-3">
             <div class="col-md-3 mb-3">
-                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
-                    <div class="bg-matiensos" style="width: 6px;"></div>
-                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
-                        <div>
-                            <h6 class="text-muted text-uppercase fw-bold mb-2">Total Productos</h6>
-                            <h3 class="fw-bold m-0 text-dark">{{ $metrics['total_products'] }}</h3>
-                        </div>
-                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
-                            <i class="bi bi-box-seam fs-3"></i>
-                        </div>
-                    </div>
-                </div>
+                <x-metric-card 
+                    title="Total Productos" value="{{ $metrics['total_products'] }}" icon="bi-box-seam" />
             </div>
             <div class="col-md-3 mb-3">
-                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
-                    <div class="bg-matiensos" style="width: 6px;"></div>
-                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
-                        <div>
-                            <h6 class="text-muted text-uppercase fw-bold mb-2">Stock Critico</h6>
-                            <h3 class="fw-bold m-0">{{ $metrics['low_stock']}}</h3>
-                        </div>
-                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos">
-                            <i class="bi bi-exclamation-triangle fs-3"></i>
-                        </div>
-                    </div>
-                </div>
+                <x-metric-card 
+                    title="Stock Critico" value="{{ $metrics['low_stock'] }}" icon="bi-exclamation-triangle" />
             </div>
             <div class="col-md-3 mb-3">
-                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
-                    <div class="bg-matiensos" style="width: 6px;"></div>
-                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
-                        <div>
-                            <h6 class="text-muted text-uppercase fw-bold mb-2">Sin Stock</h6>
-                            <h3 class="fw-bold m-0">{{ $metrics['out_of_stock']}}</h3>
-                        </div>
-                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded text-danger">
-                            <i class="bi bi-cart-x fs-3"></i>
-                        </div>
-                    </div>
-                </div>
+                <x-metric-card 
+                    title="Sin Stock" value="{{ $metrics['out_of_stock'] }}" icon="bi-cart-x" />
             </div>
             <div class="col-md-3 mb-3">
-                <div class="card border-0 shadow-sm bg-white h-100 d-flex flex-row overflow-hidden">
-                    <div class="bg-matiensos" style="width: 6px;"></div>
-                    <div class="card-body p-3 d-flex align-items-center justify-content-between w-100">
-                        <div>
-                            <h6 class="text-muted text-uppercase fw-bold mb-2">Valor del Inventario</h6>
-                            <h3 class="fw-bold m-0">${{ number_format($metrics['inventory_value'], 0, ',', '.') }}</h3>
-                        </div>
-                        <div class="bg-matiensos-light bg-opacity-10 p-3 rounded color-matiensos flex-shrink-0">
-                            <i class="bi bi-cash-coin fs-3"></i>
-                        </div>
-                    </div>
-                </div>
+                <x-metric-card 
+                    title="Valor del Inventario" value="{{ number_format($metrics['inventory_value'], 0, ',', '.') }}" icon="bi-cash-coin" />
             </div>
         </div>
 
-        {{-- Listado de Productos --}}
+        {{-- Lista de Prod --}}
         <div class="row">
             <div class="col-12">                
                 <div class="card border-0 shadow-sm bg-white p-4">
@@ -89,7 +49,7 @@
                     
                     <div class="table-responsive">
                         <table class="table table-hover align-middle m-0">
-                            {{-- Encabezado de la tabla --}}
+                            {{-- Encabezado --}}
                              <thead class="table-light">
                                 <tr>
                                     <th style="width: 110px;">Código</th>
@@ -100,27 +60,27 @@
                                     <th>Stock</th>
                                     <th class="text-base" style="width: 150px;">Acciones</th>
                                 </tr>
-                            </thead>
-                        
-                            {{-- Productos de la tabla --}}
+                            </thead>                        
+                            {{-- Listado --}}
                            <tbody class="align-middle">
-                                {{-- Lista vacia --}}
+                                {{-- vacio --}}
                                 @if($products->isEmpty())
                                     <tr>
-                                        <td colspan="7" class="text-center py-4 text-muted">
-                                            <i class="bi bi-box-open fs-3 d-block mb-2"></i>
+                                        <td colspan="7" class="text-center py-4 text-muted">                                            
                                             No hay productos para mostrar.
                                         </td>
                                     </tr>
                                 @else 
-                                {{-- Lista con productos --}}                          
+                                {{-- con productos --}}                          
                                     @foreach($products as $product)
                                         <tr>
                                             <td class="fw-bold text-secondary">{{ $product->code }}</td>
                                             
                                             <td>
                                                 @if($product->image_url)
-                                                    <img src="{{ asset("storage/$product->image_url") }}" alt="{{ $product->name }}" class="rounded shadow-sm" style="width: 45px; height: 45px; object-fit: cover;">
+                                                    <img src="{{ asset("storage/$product->image_url") }}" 
+                                                        alt="{{ $product->name }}" class="rounded shadow-sm" 
+                                                        style="width: 45px; height: 45px; object-fit: cover;">
                                                 @else
                                                     <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
                                                         <i class="bi bi-image small"></i>
@@ -154,7 +114,6 @@
                                                     </span>
                                                 @endif
                                             </td>
-
                                             {{-- Acciones --}}
                                             <td>                                               
                                                 <div class="d-flex gap-2">
@@ -179,7 +138,6 @@
                                 @endif
                             </tbody>
                         </table>
-
                         {{-- Navegación de productos --}}
                         <x-_pagination :items="$products" label="productos" />
 
@@ -188,7 +146,6 @@
                         @include('admin.front.components.products._edit')
                         @include('admin.front.components.products._delete')
                     @endforeach
-
                 </div>
             </div>
         </div>

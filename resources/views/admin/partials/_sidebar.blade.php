@@ -28,7 +28,8 @@
                 </a>
             </li>
             <li class="mb-1">
-                <a href="{{ route('admin.categories') }}" class="nav-link text-white">
+                <a href="{{ route('admin.orders') }}"
+                    class="nav-link text-white {{ request()->routeIs('admin.orders') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
                     <i class="bi bi-cart-check me-2"></i> Pedidos
                 </a>
             </li>

@@ -296,6 +296,7 @@ body, .nav-link, .dropdown-item {
 
 /*ESTILO DE LOS BOTONES*/
 .btn-color-matiensos {
+    color: #ffffff;
     background-color: #386150;
     border: none;
 }

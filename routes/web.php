@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('front.inicio');
@@ -113,4 +114,10 @@ Route::prefix('admin')->group(function () {
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     Route::patch('/usuarios/{id}/restaurar', [UserController::class, 'restore'])->name('admin.users.restore');
     
+    //Gestion de Pedidos
+    Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders');
+    Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+    Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    // Ruta para imprimir el remito
+Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 });
