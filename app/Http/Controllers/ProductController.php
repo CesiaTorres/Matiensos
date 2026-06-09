@@ -30,9 +30,27 @@ class ProductController
             'out_of_stock' => Product::where('stock', 0)->count(),
             'inventory_value' => Product::sum(DB::raw('price * stock')),
         ];
-        
+        $masVendidoMes = Product::select('products.name', DB::raw('SUM(order_details.quantity) as total_sold'))
+            ->join('order_details', 'products.id', '=', 'order_details.product_id')
+            ->join('orders', 'order_details.order_id', '=', 'orders.id')
+            ->whereMonth('orders.created_at', now()->month)
+            ->whereYear('orders.created_at', now()->year)
+            ->whereIn('orders.status', ['paid', 'shipped', 'delivered'])
+            ->groupBy('products.id', 'products.name')
+            ->orderByDesc('total_sold')
+            ->first();
 
-        return view('admin.front.products', compact('products', 'categories', 'metrics'));
+        $masVendidoHistorico = Product::select('products.name', DB::raw('SUM(order_details.quantity) as total_sold'))
+            ->join('order_details', 'products.id', '=', 'order_details.product_id')
+            ->join('orders', 'order_details.order_id', '=', 'orders.id')
+            ->whereIn('orders.status', ['paid', 'shipped', 'delivered'])
+            ->groupBy('products.id', 'products.name')
+            ->orderByDesc('total_sold')
+            ->first();
+
+        $categoriasConConteo = Category::withCount('products')->get();
+
+        return view('admin.front.products', compact('products', 'categories', 'metrics', 'masVendidoMes', 'masVendidoHistorico','categoriasConConteo'));
     }
 
     /**

@@ -9,7 +9,6 @@
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             {{-- Formulario para modificar datos --}}  
             <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" class="needs-validation" novalidate>
                 @csrf

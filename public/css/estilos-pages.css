@@ -276,7 +276,7 @@ body, .nav-link, .dropdown-item {
 
 /*COLOR MATIENSOS*/
 .color-matiensos {
-    color: #386150;
+    color: #386150 !important;
 }
 .border-matiensos {
     border: 3px solid #386150
@@ -296,6 +296,7 @@ body, .nav-link, .dropdown-item {
 
 /*ESTILO DE LOS BOTONES*/
 .btn-color-matiensos {
+    color: #ffffff;
     background-color: #386150;
     border: none;
 }

@@ -2,11 +2,12 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PasswordResetController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,14 +92,14 @@ Route::middleware('auth')->group(function () {
 
 });
 
-/*
-|--------------------------------------------------------------------------
-| RUTAS ADMIN
-|--------------------------------------------------------------------------
-*/
 
-//Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
-Route::prefix('admin')->group(function () {
+//CLIENTE
+Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
+    Route::post('/contacto/enviar', [ContactController::class, 'store'])->name('contact.store');
+});
+
+//ADMINISTRADOR
+Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     //Gestion de Productos
@@ -113,12 +114,23 @@ Route::prefix('admin')->group(function () {
     Route::put('/categorias/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/categorias/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
-    //Gestion de User: Administradores
+    //Gestion de User
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.users');
     Route::post('/usuarios', [UserController::class, 'store'])->name('admin.users.store');
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     Route::patch('/usuarios/{id}/restaurar', [UserController::class, 'restore'])->name('admin.users.restore');
+
+    //Gestion de Pedidos
+    Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders');
+    Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+    Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
+
+    //Gestion de Contactos
+    Route::get('/contactos', [ContactController::class, 'index'])->name('admin.contacts');
+    Route::put('/contactos/{contact}/read', [ContactController::class, 'markAsRead'])->name('admin.contacts.read');
+    Route::delete('/contactos/{contact}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
     
 });
 
@@ -171,3 +183,4 @@ Route::get('/reset-password/{token}', [PasswordResetController::class, 'showRese
     // 4. Ruta para guardar la nueva contraseña
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
     ->name('password.update');
+    

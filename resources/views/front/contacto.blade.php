@@ -42,29 +42,50 @@
                         </div>
                         <div class="col-md-6 ">
 
-                            <form action="{{ route('pagina-en-construccion') }}" method="GET">
+                            <form action="{{ route('contact.store') }}" method="POST">
+                                @csrf
+                                @auth
+                                    @if(auth()->user()->role_id == 1)
+                                        <div class="alert alert-info text-center shadow-sm border-0">
+                                            <i class="bi bi-info-circle me-2"></i>
+                                            Estás navegando como <strong>Administrador</strong>. 
+                                            <br>
+                                            <a href="{{ route('admin.dashboard') }}" class="alert-link small">Ir al Panel de Control</a>
+                                        </div>
+                                    @else
+                                        <div class="alert alert-light border mb-3">
+                                            <small class="text-muted d-block">Enviando consulta como:</small>
+                                            <span class="fw-bold text-dark">
+                                                <i class="bi bi-person-circle me-1 text-secondary"></i> 
+                                                {{ auth()->user()->name }} ({{ auth()->user()->email }})
+                                            </span>
+                                        </div>
+                                    @endif
+                                @endauth
 
-                                <div class="mb-3">
-                                    <label class="form-label">Nombre</label>
-                                    <input type="text" name="nombre" class="form-control" placeholder="Juan Ezequiel"
-                                        required autofocus>
-                                </div>
+                                @if(!auth()->check() || (auth()->check() && auth()->user()->role_id != 1))
+                                    @guest
+                                        <div class="mb-3">
+                                            <label class="form-label">Nombre</label>
+                                            <input type="text" name="nombre" class="form-control" placeholder="Juan Ezequiel"
+                                                required autofocus>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"
+                                                required autofocus>
+                                        </div>
+                                    @endguest                              
+                                        <div class="mb-3">
+                                            <label class="form-label">Mensaje</label>
+                                            <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí..."
+                                                rows="4" autofocus></textarea>
+                                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"
-                                        required autofocus>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Mensaje</label>
-                                    <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí..."
-                                        rows="4" autofocus></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-custom w-100">
-                                    Enviar Consulta
-                                </button>
+                                        <button type="submit" class="btn btn-custom w-100">
+                                            Enviar Consulta
+                                        </button>                                    
+                                @endif
                             </form>
                         </div>
 

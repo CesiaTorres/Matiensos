@@ -117,6 +117,8 @@
                             </tbody>
                         </table>                        
                     </div>
+                    {{-- Navegacion de categorias --}}
+                    <x-_pagination :items="$categories" label="categorias" />
                     @foreach ( $categories as $category )
                         @include('admin.front.components.categories._edit')
                         @include('admin.front.components.categories._delete')

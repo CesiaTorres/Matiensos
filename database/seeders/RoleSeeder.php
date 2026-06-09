@@ -21,5 +21,10 @@ class RoleSeeder extends Seeder
             'name' => 'Cliente',
             'description' => 'Cliente de la tienda Matiensos.'
         ]);
+        Role::create([
+            'id' => 3,
+            'name' => 'SuperAdmin',
+            'description' => 'Cliente de la tienda Matiensos.'
+        ]);
     }
 }
