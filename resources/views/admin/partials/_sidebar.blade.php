@@ -41,7 +41,7 @@
             </li>
             <li class="mb-1">
                 <a href="{{ route('admin.contacts') }}"
-                class="nav-link text-white {{ request()->routeIs('admin.contacts') ? 'bg-white bg-opacity-25 fw-bold' : '' }}"></a>
+                    class="nav-link text-white {{ request()->routeIs('admin.contacts') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
                     <i class="bi bi-envelope me-2"></i> Consultas
                 </a>
             </li>
