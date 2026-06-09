@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-6 ">
 
-                            <form action="{{ route('admin.store') }}" method="POST">
+                            <form action="{{ route('contact.store') }}" method="POST">
                                 @csrf
                                 @auth
                                     @if(auth()->user()->role_id == 1)
