@@ -37,8 +37,8 @@ class OrderController extends Controller
         
         $pedidosMesQuery = Order::whereMonth('created_at', now()->month)
                         ->whereYear('created_at', now()->year);
-        $exitosos_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered'])->count();
-        $recaudacion_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered'])->sum('total_amount');   
+        $exitosos_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered', 'shipped'])->count();
+        $recaudacion_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered','shipped'])->sum('total_amount');   
 
         $metrics = [            
             'pedidos_mes' => (clone $pedidosMesQuery)->count(),      
