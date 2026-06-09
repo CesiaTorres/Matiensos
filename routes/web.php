@@ -118,6 +118,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders');
     Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.orders.show');
     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
-    // Ruta para imprimir el remito
-Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
+    Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 });

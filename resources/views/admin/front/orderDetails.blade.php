@@ -25,12 +25,12 @@
     </div>
 
     <div class="row">
+        {{-- Detalles de pedido --}}
         <div class="col-md-8">
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    {{-- Detalles de pedido --}}
-                    <h5 class="fw-bold text-dark mb-4">Productos del Pedido</h5>
                     
+                    <h5 class="fw-bold text-dark mb-4">Productos del Pedido</h5>                    
                     <div class="table-responsive">
                         <table class="table align-middle">
                             <thead class="table-light text-muted">
@@ -77,7 +77,7 @@
                             <tfoot class="table-light">
                                 <tr>
                                     <td colspan="3" class="text-end fw-bold text-dark">TOTAL DEL PEDIDO:</td>
-                                    <td class="text-end fw-bold text-success fs-5">
+                                    <td class="text-end fw-bold color-matiensos fs-5">
                                         $ {{ number_format($order->total_amount, 0, ',', '.') }}
                                     </td>
                                 </tr>
@@ -87,10 +87,8 @@
                 </div>
             </div>
         </div>
-
-        
-        <div class="col-md-4">
-            {{-- Tarjeta Cliente --}}
+        {{-- Tarjetas --}}
+        <div class="col-md-4">            
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
                     <h6 class="fw-bold text-dark mb-3">Datos del Cliente</h6>
@@ -105,11 +103,9 @@
                     </div>
                 </div>
             </div>
-            {{-- Tarjeta Envio --}}
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
-                    <h6 class="fw-bold text-dark mb-3">Información de Envío</h6>
-                    
+                    <h6 class="fw-bold text-dark mb-3">Información de Envío</h6>                    
                     <div class="mb-3">
                         <small class="text-muted d-block fw-bold mb-1">DOMICILIO DE ENTREGA</small>
                         <div class="text-dark">
@@ -117,11 +113,10 @@
                             {{ $order->shipping_address ?? 'Retiro en sucursal / Sin dirección' }}
                         </div>
                     </div>
-
                     @if($order->tracking_number)
                     <div class="mb-0">
                         <small class="text-muted d-block fw-bold mb-1">CÓDIGO DE SEGUIMIENTO</small>
-                        <div class="fw-bold text-primary">
+                        <div class="fw-bold color-matiensos">
                             <i class="bi bi-upc-scan me-2 text-muted"></i> 
                             {{ $order->tracking_number }}
                         </div>

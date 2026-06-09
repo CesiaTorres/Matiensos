@@ -10,9 +10,16 @@ class OrderController extends Controller
     /**
      * Pedidos en el panel.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user')->latest('created_at')->paginate(10);
+        $orders = Order::with('user')
+            ->latest()
+            ->search($request->input('search'))
+            ->byStatus($request->input('status_filter'))
+            ->byDateRange($request->input('date_from'), $request->input('date_to'))
+            ->byPriceRange($request->input('price_min'), $request->input('price_max'))
+            ->paginate(10)
+            ->withQueryString();
          
         $historicos = Order::count();
         $cancelados = Order::where('status', 'cancelled')->count();

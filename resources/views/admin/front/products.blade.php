@@ -140,7 +140,6 @@
                         </table>
                         {{-- Navegación de productos --}}
                         <x-_pagination :items="$products" label="productos" />
-
                     </div>
                     @foreach($products as $product)
                         @include('admin.front.components.products._edit')
@@ -173,13 +172,10 @@
                                         <div class="small text-success">{{ $masVendidoHistorico->total_sold }} vendidos</div>
                                     @endif
                                 </div>
-                            </li>
-            
-                            
+                            </li>                            
                         </ul>
                     </div>
-                </div>
-                
+                </div>                
                 
             </div>
         </div>

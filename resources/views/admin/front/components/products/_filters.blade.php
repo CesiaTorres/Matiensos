@@ -7,7 +7,7 @@
         </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    {{-- Cuerpo del panel deslizante--}}
+    {{-- Cuerpo del panel--}}
     <div class="offcanvas-body p-4">
         <form action="{{ route('admin.products') }}" method="GET">        
             @if(request('search'))  {{-- Se mantiene la busqueda de la barra --}}

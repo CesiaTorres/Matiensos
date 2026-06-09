@@ -39,7 +39,8 @@
             <div class="col-8">                
                 <div class="card border-0 shadow-sm bg-white p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold text-dark m-0">Listado de Ventas</h5>                      
+                        <h5 class="fw-bold text-dark m-0">Listado de Ventas</h5> 
+                        @include('admin.front.components.orders._search')                     
                     </div>
                     {{-- Tabla --}}
                     <div class="table-responsive">
@@ -107,13 +108,11 @@
                         </table>                        
                     </div>
                     {{-- Navegacion de pedidos --}}
-                    <x-_pagination :items="$orders" label="pedidos" />  
-
-                    
-                    @foreach ( $orders as $order )
-                       @include('admin.front.components.orders._editStatus')
-                    @endforeach
+                    <x-_pagination :items="$orders" label="pedidos" />
                 </div>
+                @foreach ( $orders as $order )
+                    @include('admin.front.components.orders._editStatus')
+                @endforeach
             </div>
 
             {{-- Tabla informativa --}}
@@ -145,7 +144,7 @@
     </div>
 </div>
 
-
+@include('admin.front.components.orders._filters')  
 @include('admin.front.components._toast')
 @include('admin.front.components.scripts')
 
