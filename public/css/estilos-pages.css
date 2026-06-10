@@ -131,11 +131,7 @@ body {
     transition: 0.3s;
 }
 .btn-color-matiensos:hover {
-    background-color: #3d755a; /* Un verde un poco más claro */
-}
-/* Cuando el input está seleccionado (focus) */
-.form-control:focus {
-    border-color:  #386150; /* El color de tu borde verde */
+    background-color: #3d755a;
 }
 
     
@@ -280,7 +276,7 @@ body, .nav-link, .dropdown-item {
 
 /*COLOR MATIENSOS*/
 .color-matiensos {
-    color: #386150;
+    color: #386150 !important;
 }
 .border-matiensos {
     border: 3px solid #386150
@@ -288,16 +284,29 @@ body, .nav-link, .dropdown-item {
 .bg-matiensos {
     background-color: #386150
 }
+.bg-matiensos-light {
+    background-color: rgba(56, 97, 80, 0.15); /* El 0.25 es el 25% */
+}
+.border-mat {
+    border-color: #386150;
+}
+.bg-matiensos-custom {
+    background-color: #386150;
+}
 
 /*ESTILO DE LOS BOTONES*/
 .btn-color-matiensos {
+    color: #ffffff;
     background-color: #386150;
     border: none;
 }
 .btn-color-matiensos:hover {
     background-color: #3d755a; /* Un verde un poco más claro */
 }
-.form-control:focus { /* Cuando el input está seleccionado (focus) */ 
+
+/*FORM INPUT Y SELECT*/
+.form-control:focus,
+.form-select:focus {
     border-color:  #386150;
     box-shadow: 0 0 0 0.25rem rgba(45, 87, 67, 0.25); /* Sombra verde traslúcida */
 }

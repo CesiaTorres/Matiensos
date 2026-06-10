@@ -1,0 +1,28 @@
+/* PERSONALIZACIÓN SIMPLE DE LA PAGINACIÓN */
+
+/*Color de los números y flechas sueltas */
+.pagination .page-link {
+    color: #386150;
+    border-color: #dee2e6;
+}
+.pagination .page-link:hover {
+    color: #1e3d1a;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+/* Color del botón de la página activa*/
+.pagination .page-item.active .page-link {
+    background-color: #386150;
+    border-color: #2d5a27;
+    color: #ffffff;
+}
+/* Quitar reflejo azul al hacer clic */
+.pagination .page-link:focus {
+    box-shadow: 0 0 0 0.25rem rgba(45, 90, 39, 0.25);
+}
+
+/*SELECCIONADOR DE FILTROS AVANZADOS*/
+#filterCustomStock:not(:checked) ~ .input-group { /*si no esta seleccionado el filtro, bloqua el ingreso de datos*/
+    opacity: 0.5;
+    pointer-events: none;
+}

@@ -10,12 +10,12 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('restrict');
             $table->integer('quantity');
-            $table->decimal('unit_price', 10, 2); // Congela el precio histórico
+            $table->decimal('unit_price', 10, 2);
             $table->timestamps();
         });
     }

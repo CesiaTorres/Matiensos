@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('restrict');
             $table->enum('status', ['pending', 'paid', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->decimal('total_amount', 10, 2);
