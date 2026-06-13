@@ -127,11 +127,12 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 
-    //Gestion de Contactos
+    //Gestion de Consultas
     Route::get('/contactos', [ContactController::class, 'index'])->name('admin.contacts');
-    Route::put('/contactos/{contact}/read', [ContactController::class, 'markAsRead'])->name('admin.contacts.read');
-    Route::delete('/contactos/{contact}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
-    
+    Route::put('contactos/{contact}/toggle', [ContactController::class, 'toggleRead'])->name('admin.contacts.toggle');
+    Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
+
+
 });
 
 /*

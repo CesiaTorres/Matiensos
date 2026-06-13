@@ -33,4 +33,18 @@ class Contact extends Model
     {
         return $query->where('is_read', false);
     }
+
+    /**
+     * Filtro por estado de lectura
+     */
+    public function scopeByReadStatus($query, $status)
+    {
+        if ($status === 'read') {
+            return $query->where('is_read', true);
+        } elseif ($status === 'unread') {
+            return $query->where('is_read', false);
+        }
+        
+        return $query; // Si viene vacío, trae todos
+    }
 }
