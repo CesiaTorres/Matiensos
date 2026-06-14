@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Services\CartService;
+use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
@@ -23,7 +24,7 @@ class CartController extends Controller
         $cart = $this->cartService->getContent();
         $total = $this->cartService->getTotal();
 
-        return view('front.cart', compact('cart', 'total'));
+        return view('front.carrito.carts', compact('cart', 'total'));
     }
 
     /**

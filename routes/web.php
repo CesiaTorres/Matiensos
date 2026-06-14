@@ -103,7 +103,35 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     Route::post('/agregar/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/eliminar/{product}', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/vaciar', [CartController::class, 'clear'])->name('cart.clear');
+    
+    Route::get('/test-llenar', function () {
+        $cart = [
+            999 => [
+                'id' => 999,
+                'name' => 'Mate Imperial de Prueba',
+                'price' => 45000,
+                'image_url' => null,
+                'quantity' => 2
+            ]
+        ];
+        session()->put('cart', $cart);
+        return redirect()->route('cart')->with('success', 'Carrito de prueba cargado.');
+    });
+    
 });
+Route::get('/test-llenar', function () {
+        $cart = [
+            999 => [
+                'id' => 999,
+                'name' => 'Mate Imperial de Prueba',
+                'price' => 45000,
+                'image' => null,
+                'quantity' => 2
+            ]
+        ];
+        session()->put('cart', $cart);
+        return redirect()->route('cart')->with('success', 'Carrito de prueba cargado.');
+    });
 
 //ADMINISTRADOR
 Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {

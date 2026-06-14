@@ -120,22 +120,26 @@
 
                 </div>
                 
-                @php 
-                    $cartCount = app(App\Services\CartService::class)->count(); 
-                @endphp
-                <a href="#offcanvasCarrito" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasCarrito" class="nav-link-icon position-relative">
-                    <i class="bi bi-bag-fill"></i>
+                @auth
+                    @if(auth()->user()->role_id == 2)
+                        @php 
+                            $cartCount = app(App\Services\CartService::class)->count(); 
+                        @endphp
+                        <a href="#offcanvasCarrito" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasCarrito" class="nav-link-icon position-relative">
+                            <i class="bi bi-bag-fill"></i>
 
-                    @if($cartCount > 0)
-                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" style="font-size: 0.6rem;">
-                            {{ $cartCount }}
-                        </span>
+                            @if($cartCount > 0)
+                                <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" style="font-size: 0.6rem;">
+                                    {{ $cartCount }}
+                                </span>
+                            @endif
+                            
+                        </a>
                     @endif
-                    
-                </a>
+                @endauth
             </div>
         </div>
     </div>
 
 </nav>
-@include('front.carrito.cart')
+@include('front.carrito._cart-offcanvas')
