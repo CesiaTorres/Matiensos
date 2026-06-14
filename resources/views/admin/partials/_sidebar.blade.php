@@ -36,7 +36,7 @@
             <li class="mb-1">
                 <a href="{{ route('admin.users') }}"
                     class="nav-link text-white {{ request()->routeIs('admin.users') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
-                    <i class="bi bi-tags me-2"></i> Usuarios
+                    <i class="bi bi-people me-2"></i> Usuarios
                 </a>
             </li>
             <li class="mb-1">

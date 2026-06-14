@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,7 +104,7 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
 
 //ADMINISTRADOR
 Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     //Gestion de Productos
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');
@@ -131,10 +131,12 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 
-    //Gestion de Contactos
+    //Gestion de Consultas
     Route::get('/contactos', [ContactController::class, 'index'])->name('admin.contacts');
-    Route::put('/contactos/{contact}/read', [ContactController::class, 'markAsRead'])->name('admin.contacts.read');
-    Route::delete('/contactos/{contact}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
+    Route::put('contactos/{contact}/toggle', [ContactController::class, 'toggleRead'])->name('admin.contacts.toggle');
+    Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
+
+
 });
 
 /*

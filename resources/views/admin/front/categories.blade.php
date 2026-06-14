@@ -47,6 +47,7 @@
                             {{-- Encabezado de la tabla --}}
                             <thead class="table-light text-l">
                                 <tr>
+                                    <th style="width: 90px;">Imagen</th>
                                     <th>Nombre / Descripción</th>
                                     <th>Productos</th>
                                     <th>Stock Total</th>
@@ -69,6 +70,17 @@
                                     {{-- Lista con categorías --}}                          
                                     @foreach($categories as $category)
                                         <tr>
+                                            <td>
+                                                @if($category->image_url)
+                                                    <img src="{{ asset("storage/$category->image_url") }}" 
+                                                        alt="{{ $category->name }}" class="rounded shadow-sm" 
+                                                        style="width: 45px; height: 45px; object-fit: cover;">
+                                                @else
+                                                    <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
+                                                        <i class="bi bi-image small"></i>
+                                                    </div>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="fw-bold text-dark">{{ $category->name }}</div>
                                                 @if($category->description)

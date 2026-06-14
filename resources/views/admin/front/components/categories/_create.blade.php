@@ -11,7 +11,7 @@
             </div>
 
             {{-- Formulario para ingreso de datos --}}
-            <form action="{{ route('admin.categories.store') }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body p-4">              
                     <div class="mb-3">
@@ -22,6 +22,10 @@
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Descripción (Opcional)</label>
                         <textarea name="description" class="form-control" rows="3" placeholder="Detalles de la categoría..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Imagen de la Categoria</label>
+                        <input type="file" name="image_url" class="form-control" accept="image/*">
                     </div>
                     
                 </div>

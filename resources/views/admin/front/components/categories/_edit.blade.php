@@ -10,7 +10,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {{-- Formulario para modificar datos --}}  
-            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" class="needs-validation" novalidate>
+            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                 @csrf
                 @method('PUT')
                 <div class="modal-body p-4">
@@ -23,6 +23,10 @@
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Descripción (Opcional)</label>
                         <textarea name="description" class="form-control" rows="3" placeholder="Detalles de la categoría...">{{ old('description', $category->description) }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Imagen de la Categoria</label>
+                        <input type="file" name="image_url" class="form-control" accept="image/*">
                     </div>
                 </div>
                 {{-- Botones para 'Guardar' o 'Cancelar' --}}

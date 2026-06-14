@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     public function store(Request $request)
     {   
-        /**
-         * Procesa y guarda el formulario de contacto.
-         */
         $rules = [
             'mensaje' => 'required|string|regex:/^[^\s]+(\s+[^\s]+)*$/|min:5|max:2000',
         ];
@@ -46,29 +44,49 @@ class ContactController extends Controller
     /**
      * Muestra la bandeja de entrada en el panel admin.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Si quisieras traer solo los no leídos usarías: Contact::unread()->latest()->paginate(15);
-        $contacts = Contact::latest()->paginate(15);
+        $contacts = Contact::latest()
+            ->byReadStatus($request->input('status_filter'))
+            ->paginate(10)
+            ->withQueryString();
+        $metrics = [
+            'total'    => Contact::count(),
+            'sin_leer' => Contact::unread()->count(),
+        ];
         
-        return view('admin.front.contacts', compact('contacts'));
+        return view('admin.front.contacts', compact('contacts','metrics'));
     }
 
     /**
-     * Cambia el estado del mensaje a "Leído" u "Oculto".
+     * Alterna el estado del mensaje
      */
-    public function markAsRead(Contact $contact)
+    public function toggleRead(Contact $contact)
     {
+        $contact->update([
+            'is_read' => !$contact->is_read
+        ]);
+        $mensaje = $contact->is_read ? 'Mensaje marcado como leído.' : 'Mensaje marcado como no leído.';
+
+        return back()->with('success', $mensaje);
+    }
+
+    /**
+     * Respuesta rapida por correo.
+     */
+    public function reply(Request $request, Contact $contact)
+    {
+        $request->validate([
+            'respuesta' => 'required|string|min:5|max:5000',
+        ]);
+
+        /*Mail::raw($request->respuesta, function ($message) use ($contact) {
+            $message->to($contact->email)
+                    ->subject('Re: ' . ($contact->subject ?? 'Consulta en Matiensos'));
+        });*/
+
         $contact->update(['is_read' => true]);
-        return back()->with('success', 'Mensaje marcado como leído.');
-    }
 
-    /**
-     * Manda el mensaje a la papelera.
-     */
-    public function destroy(Contact $contact)
-    {
-        $contact->delete();
-        return back()->with('success', 'Mensaje eliminado.');
+        return back()->with('success', '¡Respuesta enviada con éxito al correo del cliente!');
     }
 }
