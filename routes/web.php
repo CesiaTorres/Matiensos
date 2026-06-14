@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,8 @@ use App\Http\Controllers\ContactController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('front.inicio');
-})->name('inicio');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('inicio');
 
 Route::get('/contacto', function () {
     return view('front.contacto');
@@ -92,7 +92,7 @@ Route::middleware('auth')->group(function () {
         ->name('perfil.update');
 
     Route::get('/perfil/pedido/{order}', [OrderController::class, 'showUserOrder'])
-    ->name('perfil.orders.show');
+        ->name('perfil.orders.show');
 });
 
 

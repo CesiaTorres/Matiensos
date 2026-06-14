@@ -19,7 +19,9 @@ class Product extends Model
         'stock',
         'image_url',
         'category_id',
-        'is_active'
+        'is_active',
+        'is_featured',
+        'category_id',
     ];
 
     /**
