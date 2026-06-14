@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 
 class HomeController extends Controller
@@ -17,6 +18,11 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
-        return view('front.inicio', compact('featuredProducts'));
+        $categories = Category::all();
+
+        return view('front.inicio', compact(
+            'featuredProducts',
+            'categories'
+        ));
     }
 }

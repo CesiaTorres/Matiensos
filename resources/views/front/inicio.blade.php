@@ -33,43 +33,44 @@
 
 <div class="container mt-3 mt-md-5">
     <h1 class="text-center mb-3 mb-md-5">Categorías</h1>
+
     <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-        {{-- MATE--}}
+
+        @foreach($categories as $category)
         <div class="col d-flex justify-content-center">
-            <div class="card card-categoria text-white border-0 ">
-                <img src="{{ asset('img/products/mate.svg') }}" class="card-img h-100" alt="Promoción de Mates">
+
+            <div class="card card-categoria text-white border-0">
+
+                @if($category->image_url)
+                <img src="{{ asset('img/categories/' . $category->image_url) }}"
+                    class="card-img h-100"
+                    alt="{{ $category->name }}">
+                @else
+                <img src="{{ asset('img/categories/default-category.jpg') }}"
+                    class="card-img h-100"
+                    alt="Sin imagen">
+                @endif
 
                 <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
-                    <h5 class="card-title fw-bold fs-3">MATES</h5>
-                    <a href="{{ route('productos') }}#mates" class="btn btn-categoria">Ver Colección</a>
-                </div>
-            </div>
-        </div>
-        {{-- BOMBILLAS --}}
-        <div class="col d-flex justify-content-center">
-            <div class="card card-categoria text-white border-0 ">
-                <img src="{{ asset('img/products/bombillas1.0.svg') }}" class="card-img h-100" alt="Promoción de Mates">
 
-                <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
-                    <h5 class="card-title fw-bold fs-3">BOMBILLAS</h5>
-                    <a href="{{ route('productos') }}#bombillas" class="btn btn-categoria mx-auto">Ver Colección</a>
-                </div>
-            </div>
-        </div>
-        {{-- TERMOS --}}
-        <div class="col d-flex justify-content-center">
-            <div class="card card-categoria text-white border-0 ">
-                <img src="{{ asset('img/products/termos1.0.svg') }}" class="card-img h-100" alt="Promoción de Mates">
+                    <h5 class="card-title fw-bold fs-3">
+                        {{ strtoupper($category->name) }}
+                    </h5>
 
-                <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center">
-                    <h5 class="card-title fw-bold fs-3">TERMOS</h5>
-                    <a href="{{ route('productos') }}#termos" class="btn btn-categoria mx-auto">Ver Colección</a>
+                    <a href="{{ route('productos') }}"
+                        class="btn btn-categoria">
+                        Ver Colección
+                    </a>
+
                 </div>
+
             </div>
+
         </div>
+        @endforeach
+
     </div>
 </div>
-
 {{ $featuredProducts->count() }}
 
 @php
