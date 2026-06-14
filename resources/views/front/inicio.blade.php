@@ -83,7 +83,7 @@ $secondGroup = $featuredProducts->slice(4, 4);
     <div id="carouselProductos" class="carousel slide carousel-ligth-theme" data-bs-interval="false">
         <div class="carousel-inner">
 
-            {{-- Primer slide --}}
+            {{-- Primer slide, primeros 4 productos--}}
             <div class="carousel-item active">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
@@ -121,7 +121,7 @@ $secondGroup = $featuredProducts->slice(4, 4);
                 </div>
             </div>
 
-            {{-- Segundo slide --}}
+            {{-- Segundo slide, segundos 4 productos--}}
             @if($secondGroup->count())
             <div class="carousel-item">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
