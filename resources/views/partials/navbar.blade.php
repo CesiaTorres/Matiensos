@@ -119,15 +119,23 @@
                     </div>
 
                 </div>
-                {{-- Carrito de compras --}}
-                <a href="{{ route('pagina-en-construccion') }}" class="nav-link-icon position-relative">
+                
+                @php 
+                    $cartCount = app(App\Services\CartService::class)->count(); 
+                @endphp
+                <a href="#offcanvasCarrito" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasCarrito" class="nav-link-icon position-relative">
                     <i class="bi bi-bag-fill"></i>
-                    <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
-                        style="font-size: 0.6rem;">
-                        0
-                    </span>
+
+                    @if($cartCount > 0)
+                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" style="font-size: 0.6rem;">
+                            {{ $cartCount }}
+                        </span>
+                    @endif
+                    
                 </a>
             </div>
         </div>
     </div>
+
 </nav>
+@include('front.carrito.cart')

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Front\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +97,12 @@ Route::middleware('auth')->group(function () {
 //CLIENTE
 Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     Route::post('/contacto/enviar', [ContactController::class, 'store'])->name('contact.store');
+
+    //Carrito de Compras
+    Route::get('/carrito', [CartController::class, 'index'])->name('cart');
+    Route::post('/agregar/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/eliminar/{product}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/vaciar', [CartController::class, 'clear'])->name('cart.clear');
 });
 
 //ADMINISTRADOR

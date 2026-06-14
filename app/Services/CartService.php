@@ -60,4 +60,25 @@ class CartService
     {
         return count($this->getContent());
     }
+
+    /**
+     * Elimina un producto específico del carrito.
+     */
+    public function remove($productId)
+    {
+        $cart = $this->getContent();
+
+        if (isset($cart[$productId])) {
+            unset($cart[$productId]);
+            Session::put($this->sessionKey, $cart);
+        }
+    }
+
+    /**
+     * Vacia el carrito por completo.
+     */
+    public function clear()
+    {
+        Session::forget($this->sessionKey);
+    }
 }
