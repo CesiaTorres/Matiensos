@@ -42,13 +42,20 @@ class CategoryController
         $request->validate([
             'name' => 'required|string|max:100|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:categories,name',
             'description' => 'nullable|string|max:255',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ], [
             'name.unique' => 'No se pudo guardar: Ya existe una categoría registrada con ese nombre.',
         ]);
 
+        $imagePath = null;
+            if ($request->hasFile('image_url')) {
+                $imagePath = $request->file('image_url')->store('products', 'public');
+            }
+
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
+            'image_url' => $imagePath,
         ]);
 
         return redirect()->route('admin.categories')->with('success', 'Categoría creada exitosamente.');
@@ -64,9 +71,14 @@ class CategoryController
         $request->validate([
             'name' => 'required|string|max:100|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:categories,name,' . $category->id,
             'description' => 'nullable|string|max:255',
+            'image_url'   => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ], [
             'name.unique' => 'No se pudo actualizar: Ya existe otra categoría con ese nombre.',
         ]);
+        if ($request->hasFile('image_url')) {       
+            $imagePath = $request->file('image_url')->store('products', 'public');     
+            $category->image_url = $imagePath;
+        }
 
         $category->name = $request->name;
         $category->description = $request->description;
