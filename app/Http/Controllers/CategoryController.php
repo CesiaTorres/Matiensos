@@ -19,7 +19,6 @@ class CategoryController
             ->latest()
             ->paginate(10);
 
-        // Busco la categoría con más productos y la que tiene menos (MODIFICAR LUEGO)
         $mostPopulous = Category::withCount('products')->orderBy('products_count', 'desc')->first();
         $leastPopulous = Category::withCount('products')->orderBy('products_count', 'asc')->first();
 

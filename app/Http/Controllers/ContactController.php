@@ -46,10 +46,9 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        //solo los no leídos usarías: Contact::unread()->latest()->paginate(15);
         $contacts = Contact::latest()
             ->byReadStatus($request->input('status_filter'))
-            ->paginate(15)
+            ->paginate(10)
             ->withQueryString();
         $metrics = [
             'total'    => Contact::count(),

@@ -40,10 +40,10 @@
                             <thead class="table-light text-l">
                                 <tr>
                                     <th>Remitente</th>
-                                    <th>Mensaje</th>
+                                    <th>Asunto/Mensaje</th>
                                     <th>Fecha</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th class="text-center">Estado</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             
@@ -60,20 +60,22 @@
                                     {{-- Lista con mensajes --}}                          
                                     @foreach($contacts as $contact)
                                         <tr class="{{ !$contact->is_read ? 'bg-light' : '' }}">
-                                            <td>
+                                            <td style="max-width: 180px;">
                                                 <div class="fw-bold text-dark">{{ $contact->name }}</div>
-                                                <small class="text-muted d-block text-truncate" style="max-width: 200px;">{{ $contact->email }}</small>
+                                                <small class="text-muted d-block text-truncate" style="max-width: 200px;">
+                                                    {{ $contact->email }}</small>
                                             </td>
-                                            <td>
-                                                <div class="text-dark text-truncate" style="max-width: 300px;">
-                                                    {{ $contact->message }}
-                                                </div>
+                                            <td style="max-width: 360px;">
+                                                <div class="fw-bold text-dark">{{ $contact->subject }}</div>
+                                                <div class="text-muted small text-truncate">
+                                                    {{ $contact->message }}</div>
+            
                                             </td>
                                             <td>
                                                 <div class="fw-bold text-dark">{{ \Carbon\Carbon::parse($contact->created_at)->format('d/m/Y') }}</div>
                                                 <small class="text-muted">{{ \Carbon\Carbon::parse($contact->created_at)->format('H:i') }} hs</small>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 @if($contact->is_read)
                                                     <span class="badge bg-matiensos-light bg-opacity-10 color-matiensos px-2 py-1 fw-bold">
                                                         Leído
@@ -100,7 +102,7 @@
                                                         @method('PUT')
                                                         
                                                         @if(!$contact->is_read)
-                                                            <button type="submit" class="btn btn-sm text-success border-0" title="Marcar como leído">
+                                                            <button type="submit" class="btn btn-sm text-success border-0 " title="Marcar como leído">
                                                                 <i class="bi bi-check-lg fs-6"></i>
                                                             </button>
                                                         @else
@@ -126,16 +128,12 @@
                      
                     @endforeach
                 </div>
-            </div>
-
-            
+            </div>            
         </div>
     </div>
 </div>
 
-{{-- Includes Generales --}}
 @include('admin.front.components._toast')
-{{-- @include('admin.front.components.contacts._chart') --}}
 @include('admin.front.components.scripts')
 
 @endsection

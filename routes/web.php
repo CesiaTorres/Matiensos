@@ -1,13 +1,13 @@
 <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +100,7 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
 
 //ADMINISTRADOR
 Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     //Gestion de Productos
     Route::get('/productos', [ProductController::class, 'index'])->name('admin.products');

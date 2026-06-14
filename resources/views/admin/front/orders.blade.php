@@ -48,7 +48,7 @@
                             {{-- Encabezado--}}
                             <thead class="table-light text-l">
                                 <tr>
-                                    <th>Ticket #</th>
+                                    <th>Código</th>
                                     <th>Cliente</th>
                                     <th>Fecha</th>
                                     <th>Total</th>
@@ -58,15 +58,13 @@
                             </thead>                            
                             {{-- Lista --}}
                             <tbody class="align-middle">
-                                {{-- vacia --}}
                                 @if($orders->isEmpty())
                                     <tr>
                                         <td colspan="6" class="text-center py-4 text-muted">                                            
                                             No hay pedidos para mostrar.
                                         </td>
                                     </tr>
-                                @else 
-                                    {{-- con pedidos --}}                          
+                                @else                   
                                     @foreach($orders as $order)
                                         <tr>
                                             <td>
