@@ -10,34 +10,8 @@
 
     {{-- Llamas a navbar --}}
     @include('partials.navbar')
+    @include('admin.front.components._toast')
 
-    {{-- Toast global --}}
-    @if(session('success') || session('error') || $errors->any())
-
-    <div class="toast-container position-fixed bottom-40 end-0 p-3">
-
-        <div class="toast align-items-center border-0 show
-            {{ session('success') ? 'text-bg-success' : 'text-bg-danger' }}"
-            role="alert">
-
-            <div class="d-flex">
-
-                <div class="toast-body">
-
-                    {{ session('success') ?? session('error') ?? $errors->first() }}
-
-                </div>
-
-                <button type="button"
-                    class="btn-close btn-close-white me-2 m-auto"
-                    data-bs-dismiss="toast">
-                </button>
-
-            </div>
-        </div>
-    </div>
-
-    @endif
 
     <main>
         {{-- Aquí se inyectará "Nosotros", "Inicio", etc. --}}

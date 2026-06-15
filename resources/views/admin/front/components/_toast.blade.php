@@ -1,5 +1,5 @@
 {{-- TOASTS --}}
-@if($errors->any() || session('success'))
+
     <div class="toast-container position-fixed top-0 end-0 p-4" style="z-index: 1055;">
         
         {{-- error --}}
@@ -17,7 +17,7 @@
 
         {{-- exito --}}
         @if(session('success'))
-            <div class="toast align-items-center text-white bg-matiensos border-0 show shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast align-items-center text-white bg-success border-0 show shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="d-flex">
                     <div class="toast-body fw-bold">
                         <i class="bi bi-check-circle-fill me-2"></i>
@@ -28,5 +28,28 @@
             </div>
         @endif
 
+        {{-- Información --}}
+        @if(session('info'))
+            <div class="toast align-items-center text-bg-secondary border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body fw-medium">
+                        <i class="bi bi-info-circle-fill me-2"></i>{{ session('info') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+
     </div>
-@endif
+
+
+{{-- 4 segundos al toast --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        var toastList = toastElList.map(function(toastEl) {
+            return new bootstrap.Toast(toastEl, { delay: 3000 });
+        });
+        toastList.forEach(toast => toast.show());
+    });
+</script>
