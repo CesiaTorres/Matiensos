@@ -49,10 +49,16 @@
                             </p>
 
                             <div class="mt-auto">
-                                <a href="{{ route('pagina-en-construccion') }}"
-                                    class="btn btn-custom w-100">
-                                    Agregar al carrito
-                                </a>
+                               
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    {{-- Input oculto para que por defecto se agregue de a 1 unidad por click --}}
+                                    <input type="hidden" name="quantity" value="1">
+
+                                    <button type="submit" class="btn btn-custom w-100">
+                                        <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
+                                    </button>
+                                </form>
                             </div>
 
                         </div>

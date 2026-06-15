@@ -73,14 +73,14 @@
                     style="object-fit: cover;"
                     alt="{{ $category->name }}">
                 @else
-   
+
                 <div class="d-flex flex-column align-items-center justify-content-center bg-secondary bg-opacity-10 w-100 h-100 rounded text-muted"
                     style="min-height: 250px; background-color: #f8f9fa;">
                     <i class="bi bi-images text-secondary mb-2" style="font-size: 3.5rem; opacity: 0.3;"></i>
                     <span class="small fw-semibold text-uppercase tracking-wider mt-1" style="font-size: 0.7rem; color: #6c757d; opacity: 0.6;">Sin imagen</span>
                 </div>
                 @endif
-                
+
                 <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center bg-dark bg-opacity-25 rounded">
 
                     <h5 class="card-title fw-bold fs-3 text-white text-shadow">
@@ -154,10 +154,16 @@ $secondGroup = $featuredProducts->slice(4, 4);
                                 </p>
 
                                 <div class="mt-auto">
-                                    <a href="{{ route('pagina-en-construccion') }}"
-                                        class="btn btn-custom w-100">
-                                        Agregar al carrito
-                                    </a>
+
+                                    <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                        @csrf
+                                        {{-- Input oculto para que por defecto se agregue de a 1 unidad por click --}}
+                                        <input type="hidden" name="quantity" value="1">
+
+                                        <button type="submit" class="btn btn-custom w-100">
+                                            <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
 

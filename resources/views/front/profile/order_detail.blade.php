@@ -37,16 +37,28 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            @if($item->product && $item->product->image_url)
-                                            <img src="{{ asset('storage/' . $item->product->image_url) }}"
+
+                                            {{-- ⬇️ CONTROL UNIFICADO PARA CARPETA PUBLIC_PATH ⬇️ --}}
+                                            @if($item->product && $item->product->image_url && file_exists(public_path('img/products/' . $item->product->image_url)))
+                                            <img src="{{ asset('img/products/' . $item->product->image_url) }}"
+                                                alt="{{ $item->product->name }}"
+                                                class="rounded shadow-sm me-3"
+                                                style="width: 45px; height: 45px; object-fit: cover;">
+                                            @elseif($item->product && $item->product->image_url && file_exists(storage_path('app/public/products/' . $item->product->image_url)))
+                                            {{-- Caso de respaldo: Por si las dudas se subieron mediante el Storage enlazado --}}
+                                            <img src="{{ asset('storage/products/' . $item->product->image_url) }}"
                                                 alt="{{ $item->product->name }}"
                                                 class="rounded shadow-sm me-3"
                                                 style="width: 45px; height: 45px; object-fit: cover;">
                                             @else
-                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
-                                                <i class="bi bi-box-seam fs-5 text-secondary"></i>
+                                            {{-- PLACEHOLDER: Si el archivo físico no existe en ningún lado --}}
+                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center border shadow-sm"
+                                                style="width: 45px; height: 45px; background-color: #f8f9fa;">
+                                                <i class="bi bi-images text-secondary opacity-50" style="font-size: 1.2rem;"></i>
                                             </div>
                                             @endif
+                                            {{-- ⬆️ TERMINA EL BLOQUE DE CONTROL DE IMAGEN ⬆️ --}}
+
                                             <div>
                                                 <div class="fw-bold text-dark">{{ $item->product->name ?? 'Producto Eliminado' }}</div>
                                                 <small class="text-muted">Cod: {{ $item->product->code ?? 'N/A' }}</small>
