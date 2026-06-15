@@ -7,7 +7,7 @@
                     alt="Logo Matiensos"
                     width="50"
                     height="50"
-                    class="me-2">
+                    class="me-2"> 
                 <span class="fs-1 text-light">Matiensos</span>
             </div>
         </a>
@@ -27,14 +27,27 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         Productos
                     </a>
+
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('productos') }}#mates">Mates</a></li>
-                        <li><a class="dropdown-item" href="{{ route('productos') }}#bombillas">Bombillas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('productos') }}#termos">Termos</a></li>
+
+                        @foreach($categories as $category)
+                        <li>
+                            <a class="dropdown-item"
+                                href="{{ route('productos') }}#categoria-{{ $category->id }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                        @endforeach
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="{{route('productos')}}">Ver todos</a></li>
+
+                        <li>
+                            <a class="dropdown-item" href="{{ route('productos') }}">
+                                Ver todos
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -20,31 +21,31 @@ class OrderController extends Controller
             ->byPriceRange($request->input('price_min'), $request->input('price_max'))
             ->paginate(10)
             ->withQueryString();
-         
+
         $historicos = Order::count();
         $cancelados = Order::where('status', 'cancelled')->count();
-        
-        $metricsGlobals = [    
+
+        $metricsGlobals = [
             'historicos' => $historicos,
-            'cancelados' => $cancelados,   
+            'cancelados' => $cancelados,
             'entregados' => Order::where('status', 'delivered')->count(),
             'pendientes' => Order::where('status', 'pending')->count(),
             'pagados' => Order::where('status', 'paid')->count(),
             'enviados' => Order::where('status', ['paid', 'shipped'])->count(),
             'tasa_cancelacion' => $historicos > 0 ? round(($cancelados / $historicos) * 100, 1) : 0,
-            
-        ];
-        
-        $pedidosMesQuery = Order::whereMonth('created_at', now()->month)
-                        ->whereYear('created_at', now()->year);
-        $exitosos_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered', 'shipped'])->count();
-        $recaudacion_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered','shipped'])->sum('total_amount');   
 
-        $metrics = [            
-            'pedidos_mes' => (clone $pedidosMesQuery)->count(),      
+        ];
+
+        $pedidosMesQuery = Order::whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year);
+        $exitosos_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered', 'shipped'])->count();
+        $recaudacion_mes = (clone $pedidosMesQuery)->whereIn('status', ['paid', 'delivered', 'shipped'])->sum('total_amount');
+
+        $metrics = [
+            'pedidos_mes' => (clone $pedidosMesQuery)->count(),
             'recaudacion_mes' => $recaudacion_mes,
             'exitosos_mes'     => $exitosos_mes,
-            'ticket_promedio' => $exitosos_mes > 0 ? ($recaudacion_mes / $exitosos_mes) : 0,                   
+            'ticket_promedio' => $exitosos_mes > 0 ? ($recaudacion_mes / $exitosos_mes) : 0,
         ];
 
         return view('admin.front.orders', compact('orders', 'metrics', 'metricsGlobals'));
@@ -84,5 +85,51 @@ class OrderController extends Controller
     {
         $order->load(['user', 'items.product']);
         return view('admin.front.orderPrint', compact('order'));
+    }
+
+    /**
+     * Muestra el perfil de usuario/administrador con el listado de órdenes.
+     */
+
+
+    public function perfilConOrdenes(Request $request)
+    {
+        $user = Auth::user();
+
+        $orders = Order::with('user')
+            ->where('user_id', $user->id)
+            ->latest()
+            ->paginate(10);
+
+        $totalOrders =  Order::where('user_id', $user->id)->count();
+
+        $ordersInProgress = Order::where('user_id', $user->id)
+            ->whereIn('status', ['pending', 'paid', 'shipped'])
+            ->count();
+
+        $ordersDelivered = Order::where('user_id', $user->id)
+            ->where('status', 'delivered')
+            ->count();
+
+        return view('front.profile.perfil_user', compact(
+            'orders',
+            'totalOrders',
+            'ordersInProgress',
+            'ordersDelivered'
+        ));
+    }
+
+    /**
+     * Muestra el detalle de una orden específica en el perfil del usuario.
+     */
+    public function showUserOrder(Order $order)
+    {
+        if ($order->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $order->load(['items.product']);
+
+        return view('front.profile.order_detail', compact('order'));
     }
 }

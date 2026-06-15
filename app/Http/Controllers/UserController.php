@@ -29,8 +29,8 @@ class UserController extends Controller
             'total_team'   => User::where('role_id', '!=', 2)->count(),
             'total_admins' => User::where('role_id', 1)->count(),
             'total_customer' => User::where('role_id', 2)->count(),
-            'total_sellers'=> User::where('role_id', 3)->count(),
-            
+            'total_sellers' => User::where('role_id', 3)->count(),
+
             'suspended'    => User::onlyTrashed()->count(),
             'active_now'   => User::whereNotNull('remember_token')->count(),
         ];
@@ -58,7 +58,7 @@ class UserController extends Controller
             'name'      => $request->name,
             'last_name' => $request->last_name,
             'email'     => $request->email,
-            'password'  => $request->password, 
+            'password'  => $request->password,
             'role_id'   => $request->role_id
         ]);
 
@@ -83,7 +83,7 @@ class UserController extends Controller
             'last_name' => 'required|string|regex:/^[^\s]+(\s+[^\s]+)*$/|max:255',
             'email'     => 'required|email|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:users,email,' . $user->id,
             'role_id'   => 'required|exists:roles,id',
-            'password'  => 'nullable|string|regex:/^[^\s]+(\s+[^\s]+)*$/|min:6' 
+            'password'  => 'nullable|string|regex:/^[^\s]+(\s+[^\s]+)*$/|min:6'
         ], [
             'email.unique' => 'No se pudo guardar: Ya existe un usuario registrado con este correo electrónico.'
         ]);
@@ -119,7 +119,7 @@ class UserController extends Controller
             return redirect()->route('admin.users')->with('error', 'No puedes suspender tu propia cuenta por seguridad.');
         }
 
-        $user->delete(); 
+        $user->delete();
 
         ActivityLog::create([
             'user_id' => Auth::id(),
@@ -136,7 +136,7 @@ class UserController extends Controller
     public function restore(string $id)
     {
         $user = User::withTrashed()->findOrFail($id);
-        $user->restore(); 
+        $user->restore();
 
         ActivityLog::create([
             'user_id' => Auth::id(),
@@ -145,5 +145,40 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('admin.users')->with('success', 'Usuario reactivado exitosamente. Ya puede volver a ingresar al panel.');
+    }
+
+    /**
+     * Actualiza la imagen y descripción del banner desde el panel o la home.
+     */
+    public function updateBanner(Request $request, string $id)
+    {
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'description'  => 'nullable|string|max:255',
+        ]);
+
+        $banner = \App\Models\Banner::findOrFail($id);
+
+        // 3. Si el administrador subió un archivo de imagen nuevo
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            // Creamos un nombre único para el archivo usando la función time()
+            $imageName = 'banner_' . time() . '.' . $image->getClientOriginalExtension();
+
+            // Movemos físicamente el archivo a la carpeta pública del proyecto
+            $image->move(public_path('img/inicio'), $imageName);
+
+            // Guardamos el nombre del nuevo archivo en la columna 'image'
+            $banner->image = $imageName;
+        }
+
+        // 4. Actualizamos la descripción del banner
+        $banner->description = $request->input('description');
+
+        // 5. Guardamos todos los cambios en la base de datos
+        $banner->save();
+
+        return redirect()->back()->with('success', '¡Banner actualizado correctamente!');
     }
 }

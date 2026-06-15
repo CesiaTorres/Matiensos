@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasswordResetController;
@@ -7,45 +8,46 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
 | RUTAS PÚBLICAS
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('front.inicio');
-}) ->name('inicio');
+
+Route::get('/', [HomeController::class, 'index'])
+    ->name('inicio');
 
 Route::get('/contacto', function () {
-    return view('front.contacto'); 
-}) ->name('contacto');
+    return view('front.contacto');
+})->name('contacto');
 
 Route::get('/quienes-somos', function () {
     return view('front.quienes-somos');
-}) ->name('quienes-somos');
+})->name('quienes-somos');
 
-Route::get('/productos', function () {
-    return view('front.products');
-}) ->name('productos');
+Route::get('/productos', [ProductController::class, 'catalog'])
+    ->name('productos');
 
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
-}) ->name('terminos-y-usos');
+})->name('terminos-y-usos');
 
 Route::get('/envios-y-entregas', function () {
     return view('front.envios');
-}) ->name('envios-y-entregas');
+})->name('envios-y-entregas');
 
 Route::get('/medios-de-pago', function () {
     return view('front.pagos');
-}) ->name('medios-de-pago');
+})->name('medios-de-pago');
 
 
 Route::get('/pagina-en-construcción', function () {
     return view('front.paginaConstruccion');
-}) ->name('pagina-en-construccion');
+})->name('pagina-en-construccion');
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +58,7 @@ Route::get('/pagina-en-construcción', function () {
 Route::controller(AuthController::class)->group(function () {
 
     Route::get('/acceso', 'showLogin')
-    ->name('acceso');
+        ->name('acceso');
 
     Route::post('/acceso', 'login')
         ->name('login');
@@ -70,7 +72,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/logout', 'logout')
         ->name('logout');
 
-        /* Route::post('/logout', [AuthController::class, 'logout'])
+    /* Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');*/
 });
 
@@ -83,14 +85,16 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/perfil_user', function () {
-        return view('front.perfil_user');
-    })->name('perfil_user');
+    Route::get('/perfil_user', [OrderController::class, 'perfilConOrdenes'])
+        ->name('perfil_user');
 
     Route::post('/perfil_user', [AuthController::class, 'updateProfile'])
         ->name('perfil.update');
 
+    Route::get('/perfil/pedido/{order}', [OrderController::class, 'showUserOrder'])
+        ->name('perfil.orders.show');
 });
+
 
 
 //CLIENTE
@@ -123,7 +127,7 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
 
     //Gestion de Pedidos
     Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders');
-    Route::get('/orders{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
     Route::put('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
     Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 
@@ -132,41 +136,13 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::put('contactos/{contact}/toggle', [ContactController::class, 'toggleRead'])->name('admin.contacts.toggle');
     Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
 
-
+    //Gestion banners
+    Route::put('/banners/{id}', [UserController::class, 'updateBanner'])->name('admin.banner.update');
 });
 
 /*
 |--------------------------------------------------------------------------
-|ruta temporal 
-|--------------------------------------------------------------------------
-*/  
-Route::get('/test-mail', function () {
-
-    Mail::raw('Correo de prueba', function ($message) {
-
-        $message->to('test@test.com')
-                ->subject('Prueba Mailtrap');
-
-    });
-
-    return 'Correo enviado';
-});
-
-Route::get('/forgot-password', [PasswordResetController::class, 'showForgotForm'])
-    ->name('password.request');
-
-Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLink'])
-    ->name('password.email');
-
-Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
-    ->name('password.reset');
-
-Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
-    ->name('password.update');
-
-/*
-|--------------------------------------------------------------------------
-|ruta recuperar contraseña
+|ruta recuperar contraseña - Mailtrap
 |--------------------------------------------------------------------------
 */
 
@@ -178,10 +154,9 @@ Route::get('/recuperar-contrasenia', [PasswordResetController::class, 'showForgo
 Route::post('/recuperar-contrasenia', [PasswordResetController::class, 'sendResetLinkEmail'])
     ->name('password.request');
 
-    // 3. Ruta para mostrar el formulario de cambio de contraseña
+// 3. Ruta para mostrar el formulario de cambio de contraseña
 Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
     ->name('password.reset');
-    // 4. Ruta para guardar la nueva contraseña
+// 4. Ruta para guardar la nueva contraseña
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
     ->name('password.update');
-    
