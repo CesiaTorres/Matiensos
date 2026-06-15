@@ -23,15 +23,20 @@
                 <div class="col">
                     <div class="card card-producto h-100 shadow-sm border-0">
 
-                        @if($product->image_url)
-                        <img src="{{ asset('img/products/' . $product->image_url) }}"
-                            class="card-img-top"
-                            alt="{{ $product->name }}">
-                        @else
-                        <img src="{{ asset('img/products/sin-imagen.png') }}"
-                            class="card-img-top"
-                            alt="Sin imagen">
-                        @endif
+                        <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
+                            @if($product->image_url && file_exists(public_path('img/products/' . $product->image_url)))
+                            <img src="{{ asset('img/products/' . $product->image_url) }}"
+                                class="card-img-top w-100 h-100"
+                                alt="{{ $product->name }}"
+                                style="object-fit: cover;">
+                            @else
+                            {{-- PLACEHOLDER: Ícono de Bootstrap para productos sin imagen --}}
+                            <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 h-100 rounded-top" style="background-color: #f8f9fa;">
+                                <i class="bi bi-box-seam text-secondary" style="font-size: 3rem; opacity: 0.5;"></i>
+                                <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.7rem; color: #6c757d;">Sin imagen</span>
+                            </div>
+                            @endif
+                        </div>
 
                         <div class="card-body d-flex flex-column">
 
