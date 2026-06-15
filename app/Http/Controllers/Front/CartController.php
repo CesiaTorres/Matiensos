@@ -44,7 +44,7 @@ class CartController extends Controller
         if (($currentQuantity + $quantity) > $product->stock) {
             return back()->withErrors(['quantity' => 'No podés agregar más. Solo tenemos ' . $product->stock . ' unidades disponibles.']);
         }
-        
+
         $this->cartService->add($product, $quantity);
 
         return back()->with('success', '¡' . $product->name . ' se agregó al carrito!');
@@ -63,7 +63,7 @@ class CartController extends Controller
 
         $this->cartService->update($product->id, $request->quantity);
 
-        return back()->with('success', 'Cantidad actualizada correctamente.');
+        return back();
     }
 
     /**

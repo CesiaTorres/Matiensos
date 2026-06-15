@@ -61,7 +61,7 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <form action="{{ route('cart.update', $item['id']) }}" method="POST" class="d-flex justify-content-center">
+                                                <form action="{{ route('cart.update', $item['id']) }}" method="POST" class="d-flex justify-content-center" novalidate>
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="input-group input-group-sm" style="width: 90px;">
@@ -144,5 +144,3 @@
     @endif
 </div>
 @endsection
-
-@include('admin.front.components._toast')
