@@ -301,6 +301,7 @@ body, .nav-link, .dropdown-item {
     border: none;
 }
 .btn-color-matiensos:hover {
+    color: #ffffff;
     background-color: #3d755a; /* Un verde un poco más claro */
 }
 

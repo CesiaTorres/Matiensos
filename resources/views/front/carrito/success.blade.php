@@ -29,7 +29,7 @@
                         <i class="bi bi-house-door me-2"></i>Volver al Inicio
                     </a>
                     <a href="{{ route('perfil_user') }}" class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">
-                        <i class="bi bi-house-door me-2"></i>Ir a mi perfil
+                        <i class="bi bi-person-circle me-2"></i>Ir a mis Compras
                     </a>
                 </div>
             </div>

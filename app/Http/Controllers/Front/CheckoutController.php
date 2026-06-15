@@ -93,7 +93,44 @@ class CheckoutController extends Controller
 
         $this->cartService->clear();
 
-        return redirect()->route('checkout.success') ->with('success', '¡Pedido confirmado con éxito!')
+        return redirect()->route('checkout.payment', $order->code);
+    }
+
+    /**
+     * Muestra la vista de pago simulada.
+     */
+    public function payment(Order $order)
+    {
+        if ($order->user_id !== Auth::id() || $order->status !== 'pending') {
+            abort(403, 'Acceso no autorizado a este pedido.');
+        }
+
+        return view('front.carrito.payment', compact('order'));
+    }
+
+    /**
+     * Procesa el pago simulado.
+     */
+    public function processPayment(Request $request, Order $order)
+    {
+        $request->validate([
+            'card_number' => ['required', 'string', 'regex:/^[\d\s]{16,19}$/'],
+            'expiry'      => ['required', 'string', 'regex:/^(0[1-9]|1[0-2])\/?([0-9]{2})$/'],
+            'cvc'         => ['required', 'digits_between:3,4'],
+        ], [
+            'card_number.required' => 'Ingresá el número de tu tarjeta.',
+            'card_number.regex'    => 'El número de tarjeta no es válido. Ingresá solo números.',
+            'expiry.required'      => 'Ingresá la fecha de vencimiento.',
+            'expiry.regex'         => 'El formato debe ser MM/AA (Ej: 12/28).',
+            'cvc.required'         => 'Ingresá el código de seguridad.',
+            'cvc.digits_between'   => 'El CVC debe tener 3 o 4 números.',
+        ]);
+        $order->update([
+            'status' => 'paid'
+        ]);
+
+        return redirect()->route('checkout.success')
+            ->with('success', '¡Pago procesado y aprobado con éxito!')
             ->with('orderCode', $order->code);
     }
 }

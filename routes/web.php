@@ -136,9 +136,11 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     });
     
     //Checkout
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/checkout/procesar', [CheckoutController::class, 'process'])->name('checkout.process');
-    Route::view('/checkout/exito', 'front.carrito.success')->name('checkout.success');
+    Route::get('/mi-compra/datos-envio', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/mi-compra/procesar', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::view('/mi-compra/exito', 'front.carrito.success')->name('checkout.success');
+    Route::get('/mi-compra/pago/{order:code}', [CheckoutController::class, 'payment'])->name('checkout.payment');
+    Route::post('/mi-compra/pago/{order:code}', [CheckoutController::class, 'processPayment'])->name('checkout.processPayment');
     
 });
 Route::get('/test-llenar', function () {
