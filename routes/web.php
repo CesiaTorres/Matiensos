@@ -135,6 +135,9 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/contactos', [ContactController::class, 'index'])->name('admin.contacts');
     Route::put('contactos/{contact}/toggle', [ContactController::class, 'toggleRead'])->name('admin.contacts.toggle');
     Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
+
+    //Gestion banners
+    Route::put('/banners/{id}', [UserController::class, 'updateBanner'])->name('admin.banner.update');
 });
 
 /*

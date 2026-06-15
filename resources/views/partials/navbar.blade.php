@@ -7,7 +7,7 @@
                     alt="Logo Matiensos"
                     width="50"
                     height="50"
-                    class="me-2">
+                    class="me-2"> 
                 <span class="fs-1 text-light">Matiensos</span>
             </div>
         </a>

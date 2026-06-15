@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Banner;
 
 
 class HomeController extends Controller
@@ -20,9 +21,12 @@ class HomeController extends Controller
 
         $categories = Category::orderBy('id')->get();
 
+        $banner = Banner::where('active', true)->get();
+
         return view('front.inicio', compact(
             'featuredProducts',
-            'categories'
+            'categories',
+            'banner'
         ));
     }
 }
