@@ -18,7 +18,7 @@ class CartService
     }
 
     /**
-     * Agrega un producto al carrito o suma la cantidad si ya existía.
+     * Agrega un producto al carrito o suma la cantidad si ya existia.
      */
     public function add(Product $product, $quantity = 1)
     {
@@ -33,9 +33,24 @@ class CartService
                 'price' => $product->price,
                 'image_url' => $product->image ?? null, 
                 'quantity' => $quantity,
+                'stock' => $product->stock,
             ];
         }
         Session::put($this->sessionKey, $cart);
+    }
+
+    /**
+     * Actualiza la cantidad de un producto específico en el carrito.
+     */
+    public function update($productId, $quantity)
+    {
+        $cart = $this->getContent();
+
+        if (isset($cart[$productId]) && $quantity > 0) {
+            $cart[$productId]['quantity'] = $quantity;
+
+            Session::put($this->sessionKey, $cart);
+        }
     }
 
     /**

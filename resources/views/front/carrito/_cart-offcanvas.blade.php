@@ -31,10 +31,16 @@
                 @foreach($items as $item)
                     <div class="d-flex align-items-center bg-white p-2 rounded border shadow-sm">
 
-                        <img src="{{ $item['image_url'] ? asset('storage/' . $item['image_url']) : asset('images/default-mate.png') }}" 
-                             alt="{{ $item['name'] }}" 
-                             class="rounded object-fit-cover" 
-                             style="width: 60px; height: 60px;">
+                        @if(!empty($item['image_url']))
+                            <img src="{{ asset('storage/' . $item['image_url']) }}" 
+                                alt="{{ $item['name'] }}" 
+                                class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3" 
+                                style="width: 60px; height: 60px;">
+                        @else
+                            <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm flex-shrink-0 me-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-image fs-5"></i>
+                            </div>
+                        @endif
 
                         <div class="flex-grow-1 ms-3" style="min-width: 0;">
                             <h6 class="text-dark fw-bold mb-0 text-truncate" style="font-size: 0.9rem;">{{ $item['name'] }}</h6>

@@ -33,13 +33,37 @@ class CartController extends Controller
     public function add(Request $request, Product $product)
     {
         $request->validate([
-            'quantity' => 'nullable|integer|min:1|max:50'
+            'quantity' => 'nullable|integer|min:1|max:' . $product->stock
         ]);
 
         $quantity = $request->input('quantity', 1);
+
+        $cart = $this->cartService->getContent();
+        $currentQuantity = isset($cart[$product->id]) ? $cart[$product->id]['quantity'] : 0;
+
+        if (($currentQuantity + $quantity) > $product->stock) {
+            return back()->withErrors(['quantity' => 'No podés agregar más. Solo tenemos ' . $product->stock . ' unidades disponibles.']);
+        }
+        
         $this->cartService->add($product, $quantity);
 
         return back()->with('success', '¡' . $product->name . ' se agregó al carrito!');
+    }
+
+    /**
+     * Actualiza la cantidad desde la vista del carrito.
+     */
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|regex:/^[^\s]+(\s+[^\s]+)*$/|min:1|max:' . $product->stock
+        ], [
+            'quantity.max' => 'Solo tenemos ' . $product->stock . ' unidades disponibles de este producto.'
+        ]);
+
+        $this->cartService->update($product->id, $request->quantity);
+
+        return back()->with('success', 'Cantidad actualizada correctamente.');
     }
 
     /**

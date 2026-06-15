@@ -59,13 +59,21 @@
                                             <td class="text-center">
                                                 ${{ number_format($item['price'], 0, ',', '.') }}
                                             </td>
+
                                             <td class="text-center">
-                                                <span class="badge bg-light text-dark border px-3 py-2 fs-6">
-                                                    {{ $item['quantity'] }}
-                                                </span>
-                                                {{-- botones de + y - --}}
-
-
+                                                <form action="{{ route('cart.update', $item['id']) }}" method="POST" class="d-flex justify-content-center">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="input-group input-group-sm" style="width: 90px;">
+                                                        <input type="number" 
+                                                            name="quantity" 
+                                                            value="{{ $item['quantity'] }}" 
+                                                            min="1" 
+                                                            max="{{ $item['stock'] }}"
+                                                            class="form-control text-center shadow-sm" 
+                                                            onchange="this.form.submit()">
+                                                    </div>
+                                                </form>
                                             </td>
                                             <td class="text-end fw-bold text-dark">
                                                 ${{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}
@@ -101,7 +109,7 @@
 
             {{-- Resumen de Compra --}}
             <div class="col-lg-4">
-                <div class="card border-0 shadow-sm bg-light sticky-top" style="top: 2rem;">
+                <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
                         <h5 class="fw-bold text-dark mb-4 border-bottom pb-2">Resumen de Compra</h5>
                         
@@ -136,3 +144,5 @@
     @endif
 </div>
 @endsection
+
+@include('admin.front.components._toast')
