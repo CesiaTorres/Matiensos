@@ -101,7 +101,7 @@
                             </li>
                             @if(Auth::user()->role_id == 1)
 
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}"> Panel Admin </a>
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}"> Gestionar Tienda </a>
 
                             @endif
                             <li>

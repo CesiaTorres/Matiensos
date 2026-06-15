@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckoutController;
 use App\Models\Product;
 
 /*
@@ -107,35 +108,37 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     Route::patch('/actualizar/{product}', [CartController::class, 'update'])->name('cart.update');
 
     Route::get('/test-llenar', function () {
-    // Traemos los primeros 2 productos reales de la Base de Datos
-    $productosReales = Product::take(2)->get();
-
-    if ($productosReales->count() < 2) {
-        return "Atención: Necesitás crear al menos 2 productos en tu panel de administrador para probar esto.";
-    }
-
-    $cart = [
-        $productosReales[0]->id => [
-            'id' => $productosReales[0]->id,
-            'name' => $productosReales[0]->name,
-            'price' => $productosReales[0]->price,
-            'image_url' => $productosReales[0]->image_url ?? null,
-            'quantity' => 1, // Empezamos con 1 unidad
-            'stock' => $productosReales[0]->stock,
-        ],
-        $productosReales[1]->id => [
-            'id' => $productosReales[1]->id,
-            'name' => $productosReales[1]->name,
-            'price' => $productosReales[1]->price,
-            'image_url' => $productosReales[1]->image_url ?? null,
-            'quantity' => 1, // Empezamos con 1 unidad
-            'stock' => $productosReales[1]->stock,
-        ]
-    ];
+        $productosReales = Product::take(2)->get();
+            if ($productosReales->count() < 2) {
+                return "Atención: Necesitás crear al menos 2 productos en tu panel de administrador para probar esto.";
+            }
+            $cart = [
+                $productosReales[0]->id => [
+                    'id' => $productosReales[0]->id,
+                    'name' => $productosReales[0]->name,
+                    'price' => $productosReales[0]->price,
+                    'image_url' => $productosReales[0]->image_url ?? null,
+                    'quantity' => 1, // Empezamos con 1 unidad
+                    'stock' => $productosReales[0]->stock,
+                ],
+                $productosReales[1]->id => [
+                    'id' => $productosReales[1]->id,
+                    'name' => $productosReales[1]->name,
+                    'price' => $productosReales[1]->price,
+                    'image_url' => $productosReales[1]->image_url ?? null,
+                    'quantity' => 1, // Empezamos con 1 unidad
+                    'stock' => $productosReales[1]->stock,
+                ]
+            ];
+            
+            session()->put('cart', $cart);
+            return redirect()->route('cart')->with('success', 'Carrito cargado con productos de la BD.');
+    });
     
-    session()->put('cart', $cart);
-    return redirect()->route('cart')->with('success', 'Carrito cargado con productos de la BD.');
-});
+    //Checkout
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/checkout/procesar', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::view('/checkout/exito', 'front.carrito.success')->name('checkout.success');
     
 });
 Route::get('/test-llenar', function () {

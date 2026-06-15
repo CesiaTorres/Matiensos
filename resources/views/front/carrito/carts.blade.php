@@ -11,7 +11,7 @@
                 <i class="bi bi-bag-x text-muted display-1 mb-3 d-block"></i>
                 <h4 class="text-muted fw-bold">Tu carrito está vacío</h4>
                 <p class="text-secondary mb-4">¡Tenemos un montón de mates y termos esperando por vos!</p>
-                <a href="{{ url('/') }}" class="btn btn-color-matiensos text-white px-4 py-2 rounded-pill fw-bold">
+                <a href="{{ route('inicio') }}" class="btn btn-color-matiensos text-white px-4 py-2 rounded-pill fw-bold">
                     Ir a la Tienda
                 </a>
             </div>
@@ -100,7 +100,7 @@
                                 <i class="bi bi-trash3 me-1"></i> Vaciar Carrito
                             </button>
                         </form>
-                        <a href="{{ url('/') }}" class="btn btn-link text-muted text-decoration-none">
+                        <a href="{{ route('inicio') }}" class="btn btn-link text-muted text-decoration-none">
                             <i class="bi bi-arrow-left me-1"></i> Seguir comprando
                         </a>
                     </div>
@@ -130,7 +130,7 @@
                             <span class="fw-bold fs-3 color-matiensos">${{ number_format($total, 0, ',', '.') }}</span>
                         </div>
 
-                        <a href="#" class="btn btn-color-matiensos text-white w-100 py-3 rounded-pill fw-bold fs-6 shadow-sm mb-2">
+                        <a href="{{ route('checkout') }}" class="btn btn-color-matiensos text-white w-100 py-3 rounded-pill fw-bold fs-6 shadow-sm mb-2">
                             Iniciar Compra <i class="bi bi-lock-fill ms-1"></i>
                         </a>
                         <div class="text-center mt-3">
