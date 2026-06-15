@@ -58,6 +58,7 @@
 
                         </button>
                     </div>
+                    <small id="passwordMessage"></small>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" name="terms" class="form-check-input" id="terms" required>
@@ -86,18 +87,42 @@
 </div>
 <script>
     function togglePassword(passwordId, iconId) {
-
         const password = document.getElementById(passwordId);
         const icon = document.getElementById(iconId);
 
-        password.type =
-            password.type === 'password' ?
-            'text' :
-            'password';
+        password.type = password.type === 'password' ? 'text' : 'password';
 
         icon.classList.toggle('bi-eye');
         icon.classList.toggle('bi-eye-slash');
     }
 
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('password_confirmation');
+    const passwordMessage = document.getElementById('passwordMessage');
+
+    function validatePasswords() {
+
+        if (password.value.length > 0 && password.value.length < 6) {
+            passwordMessage.textContent = 'La contraseña debe tener al menos 6 caracteres';
+            passwordMessage.className = 'text-danger';
+            return;
+        }
+
+        if (confirmPassword.value.length === 0) {
+            passwordMessage.textContent = '';
+            return;
+        }
+
+        if (password.value === confirmPassword.value) {
+            passwordMessage.textContent = 'Las contraseñas coinciden';
+            passwordMessage.className = 'text-success';
+        } else {
+            passwordMessage.textContent = 'Las contraseñas no coinciden';
+            passwordMessage.className = 'text-danger';
+        }
+    }
+
+    password.addEventListener('input', validatePasswords);
+    confirmPassword.addEventListener('input', validatePasswords);
 </script>
 @endsection
