@@ -10,6 +10,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckoutController;
+use App\Models\Product;
 
 
 /*
@@ -100,7 +103,63 @@ Route::middleware('auth')->group(function () {
 //CLIENTE
 Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     Route::post('/contacto/enviar', [ContactController::class, 'store'])->name('contact.store');
+
+    //Carrito de Compras
+    Route::get('/carrito', [CartController::class, 'index'])->name('cart');
+    Route::post('/agregar/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/eliminar/{product}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/vaciar', [CartController::class, 'clear'])->name('cart.clear');
+    Route::patch('/actualizar/{product}', [CartController::class, 'update'])->name('cart.update');
+
+    Route::get('/test-llenar', function () {
+        $productosReales = Product::take(2)->get();
+            if ($productosReales->count() < 2) {
+                return "Atención: Necesitás crear al menos 2 productos en tu panel de administrador para probar esto.";
+            }
+            $cart = [
+                $productosReales[0]->id => [
+                    'id' => $productosReales[0]->id,
+                    'name' => $productosReales[0]->name,
+                    'price' => $productosReales[0]->price,
+                    'image_url' => $productosReales[0]->image_url ?? null,
+                    'quantity' => 1, // Empezamos con 1 unidad
+                    'stock' => $productosReales[0]->stock,
+                ],
+                $productosReales[1]->id => [
+                    'id' => $productosReales[1]->id,
+                    'name' => $productosReales[1]->name,
+                    'price' => $productosReales[1]->price,
+                    'image_url' => $productosReales[1]->image_url ?? null,
+                    'quantity' => 1, // Empezamos con 1 unidad
+                    'stock' => $productosReales[1]->stock,
+                ]
+            ];
+            
+            session()->put('cart', $cart);
+            return redirect()->route('cart')->with('success', 'Carrito cargado con productos de la BD.');
+    });
+    
+    //Checkout
+    Route::get('/mi-compra/datos-envio', [CheckoutController::class, 'index'])->name('checkout');
+    Route::post('/mi-compra/procesar', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::view('/mi-compra/exito', 'front.carrito.success')->name('checkout.success');
+    Route::get('/mi-compra/pago/{order:code}', [CheckoutController::class, 'payment'])->name('checkout.payment');
+    Route::post('/mi-compra/pago/{order:code}', [CheckoutController::class, 'processPayment'])->name('checkout.processPayment');
+    
 });
+Route::get('/test-llenar', function () {
+        $cart = [
+            999 => [
+                'id' => 999,
+                'name' => 'Mate Imperial de Prueba',
+                'price' => 45000,
+                'image' => null,
+                'quantity' => 2
+            ]
+        ];
+        session()->put('cart', $cart);
+        return redirect()->route('cart')->with('success', 'Carrito de prueba cargado.');
+    });
 
 //ADMINISTRADOR
 Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
