@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
-class ProductController
+class ProductController extends Controller
 {
     /**
      * Muestra el listado de productos en BD y la vista
@@ -18,7 +18,7 @@ class ProductController
             ->latest()
             ->search($request->input('search'))
             ->byStockStatus($request->input('stock_filter'))
-            ->byCategory($request->input('category_filter')) 
+            ->byCategory($request->input('category_filter'))
             ->paginate(10);
 
         $categories = Category::orderBy('name', 'asc')->get();
@@ -50,7 +50,7 @@ class ProductController
 
         $categoriasConConteo = Category::withCount('products')->get();
 
-        return view('admin.front.products', compact('products', 'categories', 'metrics', 'masVendidoMes', 'masVendidoHistorico','categoriasConConteo'));
+        return view('admin.front.products', compact('products', 'categories', 'metrics', 'masVendidoMes', 'masVendidoHistorico', 'categoriasConConteo'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ProductController
             'code.unique' => 'No se pudo guardar: El código ingresado ya está en uso por otro producto.',
             'name.unique' => 'No se pudo guardar: Ya existe un producto registrado con ese mismo nombre.',
         ]);
-        
+
         $imagePath = null;
         if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('products', 'public');
@@ -132,9 +132,9 @@ class ProductController
             'name.unique' => 'No se pudo actualizar: Ya existe un producto registrado con ese mismo nombre.',
         ]);
 
-        if ($request->hasFile('image_url')) {       
+        if ($request->hasFile('image_url')) {
             $imagePath = $request->file('image_url')->store('products', 'public'); //guarda la nueva foto      
-            $product->image_url = $imagePath;//actualiza la ruta en el modelo
+            $product->image_url = $imagePath; //actualiza la ruta en el modelo
         }
         //actualiza campos
         $product->code        = strtoupper($request->code);
@@ -143,12 +143,11 @@ class ProductController
         $product->category_id = $request->category_id;
         $product->price       = $request->price;
         $product->stock       = $request->stock;
-        
+
         //guarda los cambios
         $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Producto actualizado con éxito.');
-
     }
 
     /**
@@ -159,5 +158,19 @@ class ProductController
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('admin.products')->with('success', 'Producto eliminado correctamente.');
+    }
+
+    public function catalog()
+    {
+        $products = Product::with('category')
+            ->where('is_active', true)
+            ->get();
+
+        $categories = Category::all();
+
+        return view('front.products', compact(
+            'products',
+            'categories'
+        ));
     }
 }

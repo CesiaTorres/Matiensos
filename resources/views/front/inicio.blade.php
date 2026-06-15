@@ -57,7 +57,7 @@
                         {{ strtoupper($category->name) }}
                     </h5>
 
-                    <a href="{{ route('productos') }}"
+                    <a href="{{ route('productos') }}#categoria-{{ $category->id }}"
                         class="btn btn-categoria">
                         Ver Colección
                     </a>

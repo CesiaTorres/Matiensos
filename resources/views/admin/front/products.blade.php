@@ -78,7 +78,7 @@
                                             
                                             <td>
                                                 @if($product->image_url)
-                                                    <img src="{{ asset('img/products/' . $product->image_url)  }}" 
+                                                    <img src="{{ asset("storage/$product->image_url") }}" 
                                                         alt="{{ $product->name }}" class="rounded shadow-sm" 
                                                         style="width: 45px; height: 45px; object-fit: cover;">
                                                 @else

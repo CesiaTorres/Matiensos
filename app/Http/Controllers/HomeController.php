@@ -18,7 +18,7 @@ class HomeController extends Controller
             ->take(8)
             ->get();
 
-        $categories = Category::all();
+        $categories = Category::orderBy('id')->get();
 
         return view('front.inicio', compact(
             'featuredProducts',

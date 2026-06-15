@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 
+
 /*
 |--------------------------------------------------------------------------
 | RUTAS PÚBLICAS
@@ -28,9 +29,8 @@ Route::get('/quienes-somos', function () {
     return view('front.quienes-somos');
 })->name('quienes-somos');
 
-Route::get('/productos', function () {
-    return view('front.products');
-})->name('productos');
+Route::get('/productos', [ProductController::class, 'catalog'])
+    ->name('productos');
 
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
@@ -135,8 +135,6 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::get('/contactos', [ContactController::class, 'index'])->name('admin.contacts');
     Route::put('contactos/{contact}/toggle', [ContactController::class, 'toggleRead'])->name('admin.contacts.toggle');
     Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
-
-
 });
 
 /*
