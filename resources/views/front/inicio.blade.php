@@ -157,7 +157,7 @@ $secondGroup = $featuredProducts->slice(4, 4);
                                 <div class="mt-auto">
                                     {{-- 1. Evaluamos si es un visitante o un cliente común --}}
                                     @if(!auth()->check())
-                                    <a href="{{ route('login') }}" class="btn btn-custom w-100">
+                                    <a href="{{ route('register') }}" class="btn btn-custom w-100">
                                         <i class="bi bi-box-arrow-in-right me-2"></i> Agregar al carrito
                                     </a>
 
@@ -228,8 +228,8 @@ $secondGroup = $featuredProducts->slice(4, 4);
                                 <div class="mt-auto">
                                     {{-- 1. Evaluamos si es un visitante o un cliente común --}}
                                     @if(!auth()->check())
-                                    <a href="{{ route('login') }}" class="btn btn-custom w-100">
-                                        <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar sesión para comprar
+                                    <a href="{{ route('register') }}" class="btn btn-custom w-100">
+                                        <i class="bi bi-box-arrow-in-right me-2"></i>Agregar al carrito
                                     </a>
 
                                     {{-- CASO 2: Está logueado y es ADMINISTRADOR (Filtramos por descarte si tu BD usa admin, ADMIN o número) --}}
