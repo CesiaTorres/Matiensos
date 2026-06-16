@@ -39,7 +39,7 @@
 
         @if(Auth::user()->role->name === 'Cliente')
         {{-- CONTENIDO --}}
-        
+
         <div class="p-4 p-md-5 bg-light">
             <h2>Resumen de tu cuenta</h2>
 
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div> {{-- FIN FILA CARDS --}}
-            
+
 
             {{-- SECCIÓN TABLA PEDIDOS DEL CLIENTE --}}
             <div class="row mt-5">
@@ -230,7 +230,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">
+                    <button type="submit" class="class= btn btn-custom w-100 ">
                         Guardar cambios
                     </button>
                 </form>
