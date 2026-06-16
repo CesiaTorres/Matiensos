@@ -67,10 +67,17 @@
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         {{-- Círculos --}}
-                                                        <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold flex-shrink-0" 
-                                                            style="width: 40px; height: 40px; font-size: 0.9rem; max-width: 110px;">
-                                                            {{ substr($user->name, 0, 1) }}{{ substr($user->last_name, 0, 1) }}
-                                                        </div>
+                                                        @if($user->profile_image)
+                                                            <img src="{{ asset('storage/' . $user->profile_image) }}" 
+                                                                alt="{{ $user->name }}" 
+                                                                class="rounded-circle me-3 flex-shrink-0 shadow-sm" 
+                                                                style="width: 40px; height: 40px; object-fit: cover;">
+                                                        @else
+                                                            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center me-3 fw-bold flex-shrink-0 shadow-sm" 
+                                                                style="width: 40px; height: 40px; font-size: 0.9rem;">
+                                                                {{ substr($user->name, 0, 1) }}{{ substr($user->last_name, 0, 1) }}
+                                                            </div>
+                                                        @endif
                                                         <div>
                                                             <span class=" d-block fw-bold text-dark">{{ $user->name }} {{ $user->last_name }}</span>
                                                         </div>
