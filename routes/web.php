@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Models\Product;
+use App\Http\Controllers\Admin\BannerController;
 
 
 /*
@@ -196,7 +197,8 @@ Route::prefix('admin')->middleware(['auth', 'role:1'])->group(function () {
     Route::post('/contactos/{contact}/reply', [ContactController::class, 'reply'])->name('admin.contacts.reply');
 
     //Gestion banners
-    Route::put('/banners/{id}', [UserController::class, 'updateBanner'])->name('admin.banner.update');
+    Route::post('/banner/store', [BannerController::class, 'store'])->name('admin.banner.store');
+    Route::put('/banner/update/{id}', [BannerController::class, 'update'])->name('admin.banner.update');
 });
 
 /*

@@ -24,15 +24,18 @@
             </p>
 
             <div class="mt-auto">
-                
                 @if(!auth()->check())
-                    <a href="{{ route('register') }}" class="btn btn-custom w-100">
-                        <i class="bi bi-box-arrow-in-right me-2"></i> Agregar al carrito
-                    </a>
-                @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'ADMIN' || auth()->user()->is_admin == 1 || auth()->user()->role_id == 1)
-                    <button type="button" class="btn btn-secondary w-100 disabled" style="cursor: not-allowed; opacity: 0.7;">
-                        <i class="bi bi-shield-lock me-2"></i> Vista de Admin
-                    </button>
+                    <div class="text-center p-2 bg-light rounded border">
+                        <small class="text-muted fw-semibold">
+                            <i class="bi bi-info-circle me-1"></i> Inicia sesión para añadir al carrito
+                        </small>
+                    </div>
+                @elseif(auth()->user()->role_id == 1)
+                    <div class="text-center p-2 bg-secondary bg-opacity-10 rounded border">
+                        <small class="text-secondary fw-bold text-uppercase tracking-wider">
+                            <i class="bi bi-shield-lock me-1"></i> Vista de Admin
+                        </small>
+                    </div>
                 @else
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf

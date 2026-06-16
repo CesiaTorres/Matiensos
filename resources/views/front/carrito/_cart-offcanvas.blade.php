@@ -30,27 +30,15 @@
         <div class="d-flex flex-column gap-3 mb-4">
             @foreach($items as $item)
             <div class="d-flex align-items-center bg-white p-2 rounded border shadow-sm">
-
-                @if(!empty($item['image_url']) && file_exists(storage_path('app/public/products-images/' . $item['image_url'])))
-                {{-- Opción 1: Si la foto está en products-images --}}
-                <img src="{{ asset('storage/products-images/' . $item['image_url']) }}"
-                    alt="{{ $item['name'] }}"
-                    class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3"
-                    style="width: 60px; height: 60px;">
-
-                @elseif(!empty($item['image_url']) && file_exists(storage_path('app/public/products/' . $item['image_url'])))
-                {{-- Opción 2: Si la foto está en la carpeta products a secas --}}
-                <img src="{{ asset('storage/products/' . $item['image_url']) }}"
-                    alt="{{ $item['name'] }}"
-                    class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3"
-                    style="width: 60px; height: 60px;">
-
+                @if(!empty($item['image_url']))
+                    <img src="{{ asset('storage/' . $item['image_url']) }}" 
+                        alt="{{ $item['name'] }}" 
+                        class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3" 
+                        style="width: 60px; height: 60px;">
                 @else
-                {{-- Si el archivo físico no existe en ninguna de las dos carpetas del depósito --}}
-                <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm flex-shrink-0 me-3 border"
-                    style="width: 60px; height: 60px; background-color: #f8f9fa;">
-                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 1.4rem;"></i>
-                </div>
+                    <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm flex-shrink-0 me-3" style="width: 60px; height: 60px;">
+                        <i class="bi bi-image fs-5"></i>
+                    </div>
                 @endif
 
                 <div class="flex-grow-1 ms-3" style="min-width: 0;">

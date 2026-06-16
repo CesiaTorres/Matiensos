@@ -147,38 +147,4 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with('success', 'Usuario reactivado exitosamente. Ya puede volver a ingresar al panel.');
     }
 
-    /**
-     * Actualiza la imagen y descripción del banner desde el panel o la home.
-     */
-    public function updateBanner(Request $request, string $id)
-    {
-        $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'description'  => 'nullable|string|max:255',
-        ]);
-
-        $banner = \App\Models\Banner::findOrFail($id);
-
-        // 3. Si el administrador subió un archivo de imagen nuevo
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-
-            // Creamos un nombre único para el archivo usando la función time()
-            $imageName = 'banner_' . time() . '.' . $image->getClientOriginalExtension();
-
-            // Movemos físicamente el archivo a la carpeta pública del proyecto
-            $image->move(public_path('img/inicio'), $imageName);
-
-            // Guardamos el nombre del nuevo archivo en la columna 'image'
-            $banner->image = $imageName;
-        }
-
-        // 4. Actualizamos la descripción del banner
-        $banner->description = $request->input('description');
-
-        // 5. Guardamos todos los cambios en la base de datos
-        $banner->save();
-
-        return redirect()->back()->with('success', '¡Banner actualizado correctamente!');
-    }
 }

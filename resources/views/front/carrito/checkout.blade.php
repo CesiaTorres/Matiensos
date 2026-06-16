@@ -6,7 +6,7 @@
     <h2 class="fw-bold mb-4 text-dark"><i class="bi bi-shield-lock me-2 color-matiensos"></i>Finalizar Compra</h2>
 
     <div class="row g-5">
-        {{-- Columna Izquierda: Formulario de Datos --}}
+        {{-- Formulario de Datos --}}
         <div class="col-lg-7">
             <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">

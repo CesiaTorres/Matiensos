@@ -20,7 +20,6 @@ class RoleMiddleware
             return redirect('/acceso');
         }
 
-
         if (!in_array(Auth::user()->role_id, $roles)) {    
             abort(403, 'No autorizado');
         }
