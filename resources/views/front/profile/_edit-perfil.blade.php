@@ -75,7 +75,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 rounded-3 mt-3">
+                    <button type="submit" class="btn btn-custom w-100 rounded-3 mt-3">
                         Guardar cambios
                     </button>
                 </form>
