@@ -90,8 +90,6 @@ class OrderController extends Controller
     /**
      * Muestra el perfil de usuario/administrador con el listado de órdenes.
      */
-
-
     public function perfilConOrdenes(Request $request)
     {
         $user = Auth::user();

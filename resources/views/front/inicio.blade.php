@@ -49,12 +49,11 @@
 <div class="container text-center mb-5">
     <a href="{{ route('productos') }}" class="btn btn-custom ">Ver todos los productos</a>
 </div>
-{{--fin de boton de ver mas productos--}}
 
 {{-- MODAL IMAGEN DEL BANNER --}}
 @if(auth()->check() && auth()->user()->role_id == 1)
-    @include('front.components.inicio._edit-banner')
-    @include('front.components.inicio._create-banner')
+    @include('admin.front.components.inicio._edit-banner')
+    @include('admin.front.components.inicio._create-banner')
 @endif
 
 @endsection

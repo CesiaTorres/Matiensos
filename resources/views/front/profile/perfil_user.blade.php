@@ -42,53 +42,50 @@
         <div class="p-4 p-md-5 bg-light">
             <h2>Resumen de tu cuenta</h2>
 
-            {{-- SECCIÓN CARDS INFORMATIVAS --}}
+            {{-- TARJETAS INFORMATIVAS --}}
             <div class="row g-4 mt-2">
                 {{-- CARD 1 --}}
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <i class="bi bi-cart-check fs-1 text-warning"></i>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 rounded-4">
+                        <div class="card-body p-4 d-flex align-items-center">
+                            <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-cart-check text-warning fs-3"></i>
                             </div>
-                            <h2 class="fw-bold">
-                                {{ $totalOrders }}
-                            </h2>
-                            <p class="text-muted mb-0">Pedidos realizados</p>
+                            <div>
+                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['total_orders'] ?? 0 }}</h3>
+                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Pedidos Realizados</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {{-- CARD 2 --}}
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <i class="bi bi-truck fs-1 text-primary"></i>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 rounded-4">
+                        <div class="card-body p-4 d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-truck text-primary fs-3"></i>
                             </div>
-                            <h2 class="fw-bold">
-                                {{ $ordersInProgress }}
-                            </h2>
-                            <p class="text-muted mb-0">Pedidos en curso</p>
+                            <div>
+                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['pending_orders'] ?? 0 }}</h3>
+                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">En Curso</small>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {{-- CARD 3 --}}
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card border-0 shadow-sm rounded-4 text-center h-100">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <i class="bi bi-box-seam fs-1 text-success"></i>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 rounded-4">
+                        <div class="card-body p-4 d-flex align-items-center">
+                            <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-box-seam text-success fs-3"></i>
                             </div>
-                            <h2 class="fw-bold">
-                                {{ $ordersDelivered }}
-                            </h2>
-                            <p class="text-muted mb-0">Pedidos entregados</p>
+                            <div>
+                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['delivered_orders'] ?? 0 }}</h3>
+                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Entregados</small>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div> {{-- FIN FILA CARDS --}}
+            
 
             {{-- SECCIÓN TABLA PEDIDOS DEL CLIENTE --}}
             <div class="row mt-5">
