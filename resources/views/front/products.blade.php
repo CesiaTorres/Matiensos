@@ -24,17 +24,28 @@
                     <div class="card card-producto h-100 shadow-sm border-0">
 
                         <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
-                            @if($product->image_url && file_exists(storage_path('app/public/products/' . $product->image_url)))
-                            {{-- CAPA 1: Intenta leer desde el Storage Oficial (storage/app/public/products/) --}}
-                            <img src="{{ asset('storage/products/' . $product->image_url) }}"
+                            @php
+                            $pureImageName = basename($product->image_url);
+                            @endphp
+
+                            @if($product->image_url && file_exists(storage_path('app/public/products-images/' . $pureImageName)))
+                            {{-- Opción A: Levanta los productos NUEVOS que creás desde la página --}}
+                            <img src="{{ asset('storage/products-images/' . $pureImageName) }}"
+                                class="card-img-top w-100 h-100"
+                                alt="{{ $product->name }}"
+                                style="object-fit: cover;">
+
+                            @elseif($product->image_url && file_exists(storage_path('app/public/products/' . $pureImageName)))
+
+                            <img src="{{ asset('storage/products/' . $pureImageName) }}"
                                 class="card-img-top w-100 h-100"
                                 alt="{{ $product->name }}"
                                 style="object-fit: cover;">
 
                             @else
-                            {{-- CAPA 2: Si el archivo físico no existe en NINGÚN lado, muestra el recuadro gris --}}
+                            {{-- Opción C: Recuadro gris de respaldo si la foto no existe en ningún lado --}}
                             <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 h-100 rounded-top shadow-sm border"
-                                style="background-color: #f8f9fa; min-height: 250px;">
+                                style="background-color: #f8f9fa; min-height: 200px;">
                                 <i class="bi bi-images text-secondary opacity-50" style="font-size: 3rem;"></i>
                                 <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.7rem; color: #6c757d;">Sin imagen</span>
                             </div>

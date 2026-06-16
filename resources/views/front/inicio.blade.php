@@ -127,22 +127,21 @@ $secondGroup = $featuredProducts->slice(4, 4);
 
                             <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
 
-
-                                @if($product->image_url && file_exists(storage_path('app/public/products/' . $product->image_url)))
-                                {{-- CAPA 1: Intenta leer desde el Storage Oficial (storage/app/public/products/) --}}
-                                <img src="{{ asset('storage/products/' . $product->image_url) }}"
-                                    class="card-img-top w-100 h-100"
+                                @if($product->image_url)
+                                {{-- Si el producto tiene una imagen en la base de datos, la muestra directamente --}}
+                                <img src="{{ asset('storage/products-images/' . basename($product->image_url)) }}"
+                                    class="card-img-top w-100 img-product"
                                     alt="{{ $product->name }}"
-                                    style="object-fit: cover;">
-
+                                    style="object-fit: cover; height: 220px;">
                                 @else
-                                {{-- CAPA 2: Si el archivo físico no existe en NINGÚN lado, muestra el recuadro gris --}}
-                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 h-100 rounded-top shadow-sm border"
-                                    style="background-color: #f8f9fa; min-height: 250px;">
-                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 3rem;"></i>
-                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.7rem; color: #6c757d;">Sin imagen</span>
+                                {{-- Si el campo de la base de datos vino vacío (null) --}}
+                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 rounded-top border-bottom"
+                                    style="height: 220px; background-color: #f8f9fa;">
+                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 2.5rem;"></i>
+                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.65rem; color: #6c757d;">Sin Imagen</span>
                                 </div>
                                 @endif
+
                             </div>
 
                             <div class="card-body d-flex flex-column">
@@ -199,19 +198,18 @@ $secondGroup = $featuredProducts->slice(4, 4);
                             <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
 
 
-                                @if($product->image_url && file_exists(storage_path('app/public/products/' . $product->image_url)))
-                                {{-- CAPA 1: Intenta leer desde el Storage Oficial (storage/app/public/products/) --}}
-                                <img src="{{ asset('storage/products/' . $product->image_url) }}"
-                                    class="card-img-top w-100 h-100"
+                                @if($product->image_url)
+                                {{-- Si el producto tiene una imagen en la base de datos, la muestra directamente --}}
+                                <img src="{{ asset('storage/products-images/' . basename($product->image_url)) }}"
+                                    class="card-img-top w-100 img-product"
                                     alt="{{ $product->name }}"
-                                    style="object-fit: cover;">
-
+                                    style="object-fit: cover; height: 220px;">
                                 @else
-                                {{-- CAPA 2: Si el archivo físico no existe en NINGÚN lado, muestra el recuadro gris --}}
-                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 h-100 rounded-top shadow-sm border"
-                                    style="background-color: #f8f9fa; min-height: 250px;">
-                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 3rem;"></i>
-                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.7rem; color: #6c757d;">Sin imagen </span>
+                                {{-- Si el campo de la base de datos vino vacío (null) --}}
+                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 rounded-top border-bottom"
+                                    style="height: 220px; background-color: #f8f9fa;">
+                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 2.5rem;"></i>
+                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.65rem; color: #6c757d;">Sin Imagen</span>
                                 </div>
                                 @endif
                             </div>
