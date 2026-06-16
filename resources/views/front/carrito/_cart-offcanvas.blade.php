@@ -31,14 +31,14 @@
             @foreach($items as $item)
             <div class="d-flex align-items-center bg-white p-2 rounded border shadow-sm">
                 @if(!empty($item['image_url']))
-                    <img src="{{ asset('storage/' . $item['image_url']) }}" 
-                        alt="{{ $item['name'] }}" 
-                        class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3" 
-                        style="width: 60px; height: 60px;">
+                <img src="{{ asset('storage/' . $item['image_url']) }}"
+                    alt="{{ $item['name'] }}"
+                    class="rounded shadow-sm object-fit-cover flex-shrink-0 me-3"
+                    style="width: 60px; height: 60px;">
                 @else
-                    <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm flex-shrink-0 me-3" style="width: 60px; height: 60px;">
-                        <i class="bi bi-image fs-5"></i>
-                    </div>
+                <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm flex-shrink-0 me-3" style="width: 60px; height: 60px;">
+                    <i class="bi bi-image fs-5"></i>
+                </div>
                 @endif
 
                 <div class="flex-grow-1 ms-3" style="min-width: 0;">
@@ -71,7 +71,7 @@
                 <a href="{{ route('cart') }}" class="btn btn-outline-secondary fw-bold py-2 w-100">
                     Ver Carrito
                 </a>
-                <a href="#" class="btn btn-color-matiensos text-white fw-bold py-2 w-100 shadow-sm">
+                <a href="{{ route('checkout') }}" class="btn btn-color-matiensos text-white fw-bold py-2 w-100 shadow-sm">
                     Iniciar Compra <i class="bi bi-arrow-right ms-2"></i>
                 </a>
             </div>
