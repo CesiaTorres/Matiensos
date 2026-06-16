@@ -12,38 +12,26 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\ProfileController;
 use App\Models\Product;
 use App\Http\Controllers\Admin\BannerController;
 
-
-/*
-|--------------------------------------------------------------------------
-| RUTAS PÚBLICAS
-|--------------------------------------------------------------------------
-*/
-
+//RUTAS PUBLICAS
 Route::get('/', [HomeController::class, 'index'])
     ->name('inicio');
-
 Route::get('/contacto', function () {
     return view('front.contacto');
 })->name('contacto');
-
 Route::get('/quienes-somos', function () {
     return view('front.quienes-somos');
 })->name('quienes-somos');
-
-Route::get('/productos', [ProductController::class, 'catalog'])
-    ->name('productos');
-
+Route::get('/productos', [ProductController::class, 'catalogo'])->name('productos');
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
 })->name('terminos-y-usos');
-
 Route::get('/envios-y-entregas', function () {
     return view('front.envios');
 })->name('envios-y-entregas');
-
 Route::get('/medios-de-pago', function () {
     return view('front.pagos');
 })->name('medios-de-pago');
@@ -89,17 +77,18 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/perfil_user', [OrderController::class, 'perfilConOrdenes'])
+    Route::get('/mi-perfil', [ProfileController::class, 'index'])
         ->name('perfil_user');
 
-    Route::post('/perfil_user', [AuthController::class, 'updateProfile'])
+    Route::post('/mi-perfil/actualizar', [AuthController::class, 'updateProfile'])
         ->name('perfil.update');
 
-    Route::get('/perfil/pedido/{order}', [OrderController::class, 'showUserOrder'])
+    Route::get('/mi-perfil/pedido/{order}', [ProfileController::class, 'showUserOrder'])
         ->name('perfil.orders.show');
+
+    //Mi perfil
+    Route::get('/orders/{order}/print', [OrderController::class, 'print'])->name('admin.orders.print');
 });
-
-
 
 //CLIENTE
 Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
@@ -118,7 +107,7 @@ Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
     Route::view('/mi-compra/exito', 'front.carrito.success')->name('checkout.success');
     Route::get('/mi-compra/pago/{order:code}', [CheckoutController::class, 'payment'])->name('checkout.payment');
     Route::post('/mi-compra/pago/{order:code}', [CheckoutController::class, 'processPayment'])->name('checkout.processPayment');
-    
+
 });
 
 //ADMINISTRADOR

@@ -71,7 +71,7 @@
                 <a href="{{ route('cart') }}" class="btn btn-outline-secondary fw-bold py-2 w-100">
                     Ver Carrito
                 </a>
-                <a href="#" class="btn btn-color-matiensos text-white fw-bold py-2 w-100 shadow-sm">
+                <a href="{{route ('checkout')}}" class="btn btn-color-matiensos text-white fw-bold py-2 w-100 shadow-sm">
                     Iniciar Compra <i class="bi bi-arrow-right ms-2"></i>
                 </a>
             </div>

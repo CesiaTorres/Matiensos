@@ -38,61 +38,58 @@
         </div>
 
         @if(Auth::user()->role->name === 'Cliente')
-        {{-- CONTENIDO --}}
-        <div class="p-4 p-md-5 bg-light">
-            <h2>Resumen de tu cuenta</h2>
+            {{-- CONTENIDO --}}
+            <div class="p-4 p-md-5 bg-light">
+                <h2>Resumen de tu cuenta</h2>
+                {{-- TARJETAS --}}
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100 rounded-4">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                                    <i class="bi bi-cart-check text-warning fs-3"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold m-0 text-dark">{{ $totalOrders ?? 0 }}</h3>
+                                    <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Pedidos Realizados</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100 rounded-4">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                    <i class="bi bi-truck text-primary fs-3"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold m-0 text-dark">{{ $ordersInProgress ?? 0 }}</h3>
+                                    <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">En Curso</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100 rounded-4">
+                            <div class="card-body p-4 d-flex align-items-center">
+                                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
+                                    <i class="bi bi-box-seam text-success fs-3"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold m-0 text-dark">{{ $ordersDelivered ?? 0 }}</h3>
+                                    <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Entregados</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
 
-            {{-- TARJETAS INFORMATIVAS --}}
-            <div class="row g-4 mt-2">
-                {{-- CARD 1 --}}
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100 rounded-4">
-                        <div class="card-body p-4 d-flex align-items-center">
-                            <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
-                                <i class="bi bi-cart-check text-warning fs-3"></i>
-                            </div>
-                            <div>
-                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['total_orders'] ?? 0 }}</h3>
-                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Pedidos Realizados</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100 rounded-4">
-                        <div class="card-body p-4 d-flex align-items-center">
-                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
-                                <i class="bi bi-truck text-primary fs-3"></i>
-                            </div>
-                            <div>
-                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['pending_orders'] ?? 0 }}</h3>
-                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">En Curso</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-sm h-100 rounded-4">
-                        <div class="card-body p-4 d-flex align-items-center">
-                            <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
-                                <i class="bi bi-box-seam text-success fs-3"></i>
-                            </div>
-                            <div>
-                                <h3 class="fw-bold m-0 text-dark">{{ $metrics['delivered_orders'] ?? 0 }}</h3>
-                                <small class="text-muted text-uppercase fw-semibold" style="font-size: 0.75rem;">Entregados</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> {{-- FIN FILA CARDS --}}
-            
-
-            {{-- SECCIÓN TABLA PEDIDOS DEL CLIENTE --}}
+            {{-- TABLA PEDIDOS DEL CLIENTE --}}
             <div class="row mt-5">
                 <div class="col-12 ">
                     <div class="card border-0 shadow-sm bg-white p-4 rounded-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="fw-bold text-dark m-0">Listado de Pedidos</h5>
+                            <h5 class="fw-bold text-dark m-0">Mis Últimos Pedidos</h5>
                         </div>
 
                         {{-- Tabla --}}
@@ -100,7 +97,7 @@
                             <table class="table table-hover align-middle m-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Ticket #</th>
+                                        <th>Pedido #</th>
                                         <th>Fecha</th>
                                         <th>Total</th>
                                         <th>Estado</th>
@@ -109,35 +106,35 @@
                                 </thead>
                                 <tbody>
                                     @if($orders->isEmpty())
-                                    <tr>
-                                        <td colspan="5" class="text-center py-4 text-muted">
-                                            No hay pedidos para mostrar.
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td colspan="5" class="text-center py-4 text-muted">
+                                                No hay pedidos para mostrar.
+                                            </td>
+                                        </tr>
                                     @else
-                                    @foreach($orders as $order)
-                                    <tr>
-                                        <td>
-                                            <div class="fw-bold text-dark">#{{ $order->code }}</div>
-                                        </td>
-                                        <td>
-                                            <div class="fw-semibold text-muted">{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y H:i') }}</div>
-                                        </td>
-                                        <td>
-                                            <div class="fw-bold text-dark">$ {{ number_format($order->total_amount, 2, ',', '.') }}</div>
-                                        </td>
-                                        <td>
-                                            <x-_order-status :status="$order->status" />
-                                        </td>
-                                        <td>
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <a href="{{ route('perfil.orders.show', $order->id) }}" class="btn btn-sm btn-outline-primary border-0" title="Ver Detalle completo">
-                                                    <i class="bi bi-eye fs-6"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
+                                        @foreach($orders as $order)
+                                        <tr>
+                                            <td>
+                                                <div class="fw-bold text-dark">#{{ $order->code }}</div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-semibold text-muted">{{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y H:i') }}</div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold text-dark">$ {{ number_format($order->total_amount, 2, ',', '.') }}</div>
+                                            </td>
+                                            <td>
+                                                <x-_order-status :status="$order->status" />
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <a href="{{ route('perfil.orders.show', $order->id) }}" class="btn btn-sm btn-outline-primary border-0" title="Ver Detalle completo">
+                                                        <i class="bi bi-eye fs-6"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                                     @endif
                                 </tbody>
                             </table>
@@ -146,12 +143,11 @@
                         <x-_pagination :items="$orders" label="pedidos" />
                     </div>
                 </div>
-            </div> {{-- FIN FILA TABLA --}}
-
-        </div>
+            </div>
+        @endif
     </div>
-</div> {{-- FIN CONTAINER --}}
-@endif
+</div>
+
 
 {{-- MODAL EDITAR PERFIL --}}
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
