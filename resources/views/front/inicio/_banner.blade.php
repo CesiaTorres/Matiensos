@@ -1,3 +1,4 @@
+{{-- BANNER --}}
 <section class="w-100 carousel-banner position-relative">
     <div id="carouselExampleAutoplaying" class="carousel slide carousel-dark-theme" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -17,14 +18,24 @@
                         </div>
                     @endif
 
-                    {{-- BOTÓN EDITAR BANNER (SOLO ADMIN) --}}
+                    {{-- CONTROLES DE ADMINISTRADOR --}}
                     @if(auth()->check() && auth()->user()->role_id == 1)
+                        {{-- 1. Botón para Editar el Banner Actual (Lápiz) --}}
                         <button class="btn btn-light btn-sm shadow position-absolute top-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center"
                             style="width: 40px; height: 40px; z-index: 10;"
                             data-bs-toggle="modal"
                             data-bs-target="#editBannerModal{{ $item->id }}"
                             title="Editar Banner">
                             <i class="bi bi-pencil-fill text-dark"></i>
+                        </button>
+
+                        {{-- Botón para Añadir un NUEVO Banner --}}
+                        <button class="btn btn-light btn-sm shadow position-absolute rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px; z-index: 10; top: 16px; right: 70px;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#createBannerModal"
+                            title="Añadir Nuevo Banner">
+                            <i class="bi bi-plus-lg text-dark"></i>
                         </button>
                     @endif
 
@@ -39,13 +50,11 @@
             </div>
             
             @empty
-            {{-- ESTADO VACÍO: Cuando no hay ningún banner en la base de datos --}}
             <div class="carousel-item active">
                 <div class="hero-banner position-relative bg-light d-flex flex-column align-items-center justify-content-center w-100 border-bottom" style="height: 450px;">
                     <i class="bi bi-images text-secondary opacity-25 mb-3" style="font-size: 6rem;"></i>
                     <h5 class="fw-bold text-muted text-uppercase tracking-wider">Espacio para Banner</h5>
                     
-                    {{-- Si está vacío, le damos al admin un botón para CREAR el primero --}}
                     @if(auth()->check() && auth()->user()->role_id == 1)
                         <button class="btn btn-color-matiensos text-white mt-3 px-4 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#createBannerModal">
                             <i class="bi bi-plus-circle me-2"></i>Crear Primer Banner

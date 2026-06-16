@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 {{-- BANNER --}}
 @include('front.inicio._banner')
 
@@ -54,7 +53,8 @@
 
 {{-- MODAL IMAGEN DEL BANNER --}}
 @if(auth()->check() && auth()->user()->role_id == 1)
-    @include('front.inicio._edit-banner')
+    @include('front.components.inicio._edit-banner')
+    @include('front.components.inicio._create-banner')
 @endif
 
 @endsection

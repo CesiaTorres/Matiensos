@@ -36,7 +36,7 @@ class BannerController extends Controller
                 'description' => $request->description,
             ]);
 
-            return redirect()->back()->with('success', '¡El primer banner se ha creado e implementado con éxito!');
+            return redirect()->back()->with('success', '¡Banner creado con éxito!');
         }
 
         return redirect()->back()->with('error', 'No se pudo procesar la imagen del banner.');
