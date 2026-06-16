@@ -13,16 +13,16 @@
 
                 <div class="hero-banner position-relative">
 
-                    @if($item->image && file_exists(public_path('img/inicio/' . $item->image)))
-                    <img src="{{ asset('img/inicio/' . $item->image) }}"
+                    @if($item->image && file_exists(storage_path('app/public/banner-images/' . $item->image)))
+
+                    <img src="{{ asset('storage/banner-images/' . $item->image) }}"
                         class="d-block w-100 img-banner"
                         alt="{{ $item->name ?? 'banner' }}">
                     @else
-                    {{-- Contenedor gris prolijo con ícono si la imagen no está físicamente subida --}}
+
                     <div class="d-flex flex-column align-items-center justify-content-center bg-secondary bg-opacity-10 w-100 text-muted border-bottom" style="height: 450px;">
                         <i class="bi bi-images text-secondary mb-2" style="font-size: 4rem; opacity: 0.3;"></i>
                         <h4 class="fw-bold m-0 text-uppercase tracking-wider fs-6 text-dark opacity-50">SIN IMAGEN</h4>
-
                     </div>
                     @endif
 
@@ -67,17 +67,15 @@
         <div class="col d-flex justify-content-center">
 
             <div class="card card-categoria text-white border-0 w-100" style="min-height: 250px; overflow: hidden;">
-                @if($category->image_url && file_exists(public_path('img/categories/' . $category->image_url)))
-                <img src="{{ asset('img/categories/' . $category->image_url) }}"
-                    class="card-img h-100"
-                    style="object-fit: cover;"
-                    alt="{{ $category->name }}">
+                @if($category->image_url && file_exists(storage_path('app/public/categories-images/' . $category->image_url)))
+
+                <img src="{{ asset('storage/categories-images/' . $category->image_url) }}"
+                    alt="{{ $category->name }}"
+                    class="img-fluid w-100 h-100 object-fit-contain">
                 @else
 
-                <div class="d-flex flex-column align-items-center justify-content-center bg-secondary bg-opacity-10 w-100 h-100 rounded text-muted"
-                    style="min-height: 250px; background-color: #f8f9fa;">
-                    <i class="bi bi-images text-secondary mb-2" style="font-size: 3.5rem; opacity: 0.3;"></i>
-                    <span class="small fw-semibold text-uppercase tracking-wider mt-1" style="font-size: 0.7rem; color: #6c757d; opacity: 0.6;">Sin imagen</span>
+                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center w-100 h-100 border">
+                    <i class="bi bi-tag text-secondary opacity-50 fs-3"></i>
                 </div>
                 @endif
 
@@ -160,7 +158,7 @@ $secondGroup = $featuredProducts->slice(4, 4);
                                     {{-- 1. Evaluamos si es un visitante o un cliente común --}}
                                     @if(!auth()->check())
                                     <a href="{{ route('login') }}" class="btn btn-custom w-100">
-                                        <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar sesión para comprar
+                                        <i class="bi bi-box-arrow-in-right me-2"></i> Agregar al carrito
                                     </a>
 
                                     {{-- CASO 2: Está logueado y es ADMINISTRADOR (Filtramos por descarte si tu BD usa admin, ADMIN o número) --}}
