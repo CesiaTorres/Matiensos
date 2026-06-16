@@ -1,4 +1,4 @@
-<div class="offcanvas-lg offcanvas-start text-white p-3 sidebar d-flex flex-column justify-content-between vh-100"
+<div class="offcanvas-lg offcanvas-start text-white p-3 sidebar d-flex flex-column justify-content-between sm-vh-100"
     tabindex="-1"
     id="adminSidebar"
     style="width: 260px;">
