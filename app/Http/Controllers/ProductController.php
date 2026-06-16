@@ -164,7 +164,7 @@ class ProductController extends Controller
 
     public function catalogo(Request $request)
     {
-        $query = Product::where('is_active', true);
+        $query = Product::where('is_active', true)->where('stock', '>', 0);
 
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'like', '%' . $request->search . '%');

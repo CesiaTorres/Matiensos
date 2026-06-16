@@ -20,7 +20,6 @@
 
                     {{-- CONTROLES DE ADMINISTRADOR --}}
                     @if(auth()->check() && auth()->user()->role_id == 1)
-                    {{-- 1. Botón para Editar el Banner Actual (Lápiz) --}}
                     <button class="btn btn-light btn-sm shadow position-absolute top-0 end-0 m-3 rounded-circle d-flex align-items-center justify-content-center"
                         style="width: 40px; height: 40px; z-index: 10;"
                         data-bs-toggle="modal"
@@ -29,7 +28,6 @@
                         <i class="bi bi-pencil-fill text-dark"></i>
                     </button>
 
-                    {{-- Botón para Añadir un NUEVO Banner --}}
                     <button class="btn btn-light btn-sm shadow position-absolute rounded-circle d-flex align-items-center justify-content-center"
                         style="width: 40px; height: 40px; z-index: 10; top: 16px; right: 70px;"
                         data-bs-toggle="modal"
