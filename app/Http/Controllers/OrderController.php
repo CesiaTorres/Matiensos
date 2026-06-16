@@ -86,45 +86,4 @@ class OrderController extends Controller
         $order->load(['user', 'items.product']);
         return view('admin.front.orderPrint', compact('order'));
     }
-
-    /**
-     * Muestra el perfil de usuario/administrador con el listado de órdenes.
-     */
-    public function perfilConOrdenes(Request $request)
-    {
-        $user = Auth::user();
-
-        $orders = Order::with('user')
-            ->where('user_id', $user->id)
-            ->latest()
-            ->paginate(10);
-
-        
-        $metrics = [
-            'total_orders'     => Order::where('user_id', $user->id)->count(),
-            'pending_orders'   => Order::where('user_id', $user->id)
-                ->whereIn('status', ['pending', 'paid', 'shipped']) // Incluye todos los estados "en curso"
-                ->count(),
-            'delivered_orders' => Order::where('user_id', $user->id)
-                ->where('status', 'delivered')
-                ->count(),
-        ];
-
-        
-        return view('front.profile.perfil_user', compact('orders', 'metrics'));
-    }
-
-    /**
-     * Muestra el detalle de una orden específica en el perfil del usuario.
-     */
-    public function showUserOrder(Order $order)
-    {
-        if ($order->user_id !== Auth::id()) {
-            abort(403);
-        }
-
-        $order->load(['items.product']);
-
-        return view('front.profile.order_detail', compact('order'));
-    }
 }

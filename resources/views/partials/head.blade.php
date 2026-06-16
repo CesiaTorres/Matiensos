@@ -14,6 +14,7 @@
 {{-- Hoja de estilos --}}
 <link rel="stylesheet" href="{{ asset('css/estilos-pages.css') }}">
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-admin.css') }}">
 
 {{--favicon --}}
 <link rel="icon" type="image/png" href="{{ asset('favicon-icono-mate.png') }}">

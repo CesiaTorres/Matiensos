@@ -7,6 +7,7 @@
                 <img src="{{ asset('storage/' . $product->image_url) }}"
                     class="card-img-top w-100 h-100 img-product"
                     alt="{{ $product->name }}"
+                    {{-- style="object-fit: contain; transform: scale(1.15);"> --}}
                     style="object-fit: cover;">
             @else
                 <div class="bg-light w-100 h-100 d-flex align-items-center justify-content-center text-muted border-bottom">

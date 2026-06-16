@@ -1,4 +1,4 @@
-@extends(auth()->check() && auth()->user()->role_id == 1 ? 'admin.layouts.app-admin' : 'layouts.app')
+@extends('admin.layouts.app-admin')
 @section('titulo', 'Detalle del Pedido | Matiensos')
 
 @section('content')
@@ -7,15 +7,9 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             {{-- Boton volver --}}
-            @if(auth()->check() && auth()->user()->role_id == 1)
-                <a href="{{ route('admin.orders') }}" class="btn btn-sm btn-color-matiensos border mb-2">
-                    <i class="bi bi-arrow-left me-1"></i> Volver a Pedidos
-                </a>
-            @else
-                <a href="{{ route('perfil-user') }}" class="btn btn-sm btn-color-matiensos border mb-2">
-                    <i class="bi bi-arrow-left me-1"></i> Volver a Pedidos
-                </a>
-            @endif
+            <a href="{{ route('admin.orders') }}" class="btn btn-sm btn-color-matiensos border mb-2">
+                <i class="bi bi-arrow-left me-1"></i> Volver a Pedidos
+            </a>
 
             {{-- Pedido y estado --}}
             <h2 class="fw-bold text-dark m-0 d-flex align-items-center gap-3">
@@ -63,7 +57,6 @@
                                                     <i class="bi bi-box-seam fs-5 text-secondary"></i>
                                                 </div>
                                             @endif
-                                        </div>                                        
                                             <div>
                                                 <div class="fw-bold text-dark">{{ $item->product->name ?? 'Producto Eliminado' }}</div>
                                                 <small class="text-muted">Cod: {{ $item->product->code ?? 'N/A' }}</small>
@@ -99,11 +92,9 @@
         <div class="col-md-4">
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-body p-4">
-                    @if(auth()->check() && auth()->user()->role_id == 1)
-                        <h6 class="fw-bold text-dark mb-3">Datos del Cliente</h6>
-                    @else
-                        <h6 class="fw-bold text-dark mb-3">Mis Datos</h6>
-                    @endif
+
+                    <h6 class="fw-bold text-dark mb-3">Datos del Cliente</h6>
+                    
                     <div class="d-flex align-items-center mb-3">
                         <div class="bg-secondary bg-opacity-10 rounded-circle p-3 me-3">
                             <i class="bi bi-person text-dark fs-4"></i>

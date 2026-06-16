@@ -40,6 +40,7 @@
                                 matiensos@gmail.com
                             </p>
                         </div>
+
                         <div class="col-md-6 ">
 
                             <form action="{{ route('contact.store') }}" method="POST">
@@ -75,7 +76,11 @@
                                             <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"
                                                 required autofocus>
                                         </div>
-                                    @endguest                              
+                                    @endguest   
+                                        <div class="mb-3">
+                                            <label class="form-label">Asunto</label>
+                                            <input type="text" name="asunto" class="form-control" placeholder="Ej: Consulta sobre envíos" required>
+                                        </div>                           
                                         <div class="mb-3">
                                             <label class="form-label">Mensaje</label>
                                             <textarea name="mensaje" class="form-control" placeholder="Escribe tu mensaje aquí..."
@@ -107,19 +112,20 @@
 
                             <div class="d-flex flex-column gap-3 pt-5">
 
-                                <a href="{{route('pagina-en-construccion')}}"
+                                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Des_LA"
+                                    target="_blank"
                                     class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
                                     <i class="bi bi-facebook fs-3 text-primary"></i>
                                     Facebook
                                 </a>
 
-                                <a href="{{route('pagina-en-construccion')}}"
+                                <a href="https://x.com/?lang=es" target="_blank"
                                     class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
                                     <i class="bi bi-twitter-x fs-3"></i>
                                     Twitter
                                 </a>
 
-                                <a href="{{route('pagina-en-construccion')}}"
+                                <a href="https://www.instagram.com/?hl=es" target="_blank"
                                     class="d-flex align-items-center gap-3 text-decoration-none text-dark fs-5">
                                     <i class="bi bi-instagram fs-3 text-danger"></i>
                                     Instagram
