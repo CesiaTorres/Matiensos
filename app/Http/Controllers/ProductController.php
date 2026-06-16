@@ -81,20 +81,10 @@ class ProductController extends Controller
         ]);
 
         
-        $dbImageValue = null;
+        $imagePath = null;
         if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-
-           
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-           
-            $file->storeAs('products-images', $filename, 'public');
-
-            
-            $dbImageValue = $filename;
+            $imagePath = $request->file('image_url')->store('products', 'public');
         }
-
         
         Product::create([
             'code' => strtoupper($request->code),
@@ -103,7 +93,7 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image_url' => $dbImageValue, 
+            'image_url' => $imagePath,
         ]);
 
         return redirect()->route('admin.products')->with('success', 'Producto agregado exitosamente al catálogo.');

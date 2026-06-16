@@ -48,26 +48,15 @@ class CategoryController
             'name.unique' => 'No se pudo guardar: Ya existe una categoría registrada con ese nombre.',
         ]);
 
-
-        $dbImageValue = null;
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-
-
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-
-            $file->storeAs('categories-images', $filename, 'public');
-
-
-            $dbImageValue = $filename;
-        }
-
+        $imagePath = null;
+            if ($request->hasFile('image_url')) {
+                $imagePath = $request->file('image_url')->store('products', 'public');
+            }
 
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image_url' => $dbImageValue,
+            'image_url' => $imagePath,
         ]);
 
         return redirect()->route('admin.categories')->with('success', 'Categoría creada exitosamente.');
@@ -87,17 +76,10 @@ class CategoryController
         ], [
             'name.unique' => 'No se pudo actualizar: Ya existe otra categoría con ese nombre.',
         ]);
-        if ($request->hasFile('image_url')) {
-            $file = $request->file('image_url');
-
-
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-
-            $file->storeAs('categories-images', $filename, 'public');
-
-
-            $category->image_url = $filename;
+        
+        if ($request->hasFile('image_url')) {       
+            $imagePath = $request->file('image_url')->store('products', 'public');     
+            $category->image_url = $imagePath;
         }
 
         $category->name = $request->name;

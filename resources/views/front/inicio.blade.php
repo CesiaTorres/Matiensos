@@ -62,208 +62,34 @@
     <h1 class="text-center mb-3 mb-md-5">Categorías</h1>
 
     <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-
         @foreach($categories as $category)
-        <div class="col d-flex justify-content-center">
-
-            <div class="card card-categoria text-white border-0 w-100" style="min-height: 250px; overflow: hidden;">
-                @if($category->image_url && file_exists(storage_path('app/public/categories-images/' . $category->image_url)))
-
-                <img src="{{ asset('storage/categories-images/' . $category->image_url) }}"
-                    alt="{{ $category->name }}"
-                    class="img-fluid w-100 h-100 object-fit-contain">
-                @else
-
-                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center w-100 h-100 border">
-                    <i class="bi bi-tag text-secondary opacity-50 fs-3"></i>
-                </div>
-                @endif
-
-                <div class="card-img-overlay d-flex flex-column justify-content-end text-center align-items-center bg-dark bg-opacity-25 rounded">
-
-                    <h5 class="card-title fw-bold fs-3 text-white text-shadow">
-                        {{ strtoupper($category->name) }}
-                    </h5>
-
-                    <a href="{{ route('productos') }}#categoria-{{ $category->id }}"
-                        class="btn btn-categoria mt-2">
-                        Ver Colección
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
+            @include('front.inicio._card-category')
         @endforeach
-
     </div>
 </div>
 {{-- Fin productos principales --}}
 
-{{--Inicio seccion productos destacados--}}
 
-{{ $featuredProducts->count() }}
-
-@php
-$firstGroup = $featuredProducts->take(4);
-$secondGroup = $featuredProducts->slice(4, 4);
-@endphp
-
-
+{{-- PRODUCTOS DESTACADOS --}}
 <div class="container my-5">
     <h1 class="text-center mb-5">Productos Destacados</h1>
 
     <div id="carouselProductos" class="carousel slide carousel-ligth-theme" data-bs-interval="false">
         <div class="carousel-inner">
-
-            {{-- Primer slide, primeros 4 productos--}}
-            <div class="carousel-item active">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
-                    @foreach($firstGroup as $product)
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm border-0">
-
-                            <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
-
-                                @if($product->image_url)
-                                {{-- Si el producto tiene una imagen en la base de datos, la muestra directamente --}}
-                                <img src="{{ asset('storage/products-images/' . basename($product->image_url)) }}"
-                                    class="card-img-top w-100 img-product"
-                                    alt="{{ $product->name }}"
-                                    style="object-fit: cover; height: 220px;">
-                                @else
-                                {{-- Si el campo de la base de datos vino vacío (null) --}}
-                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 rounded-top border-bottom"
-                                    style="height: 220px; background-color: #f8f9fa;">
-                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 2.5rem;"></i>
-                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.65rem; color: #6c757d;">Sin Imagen</span>
-                                </div>
-                                @endif
-
-                            </div>
-
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">
-                                    {{ $product->name }}
-                                </h5>
-
-                                <p class="card-text fw-bold fs-4">
-                                    ${{ number_format($product->price, 0, ',', '.') }}
-                                </p>
-
-                                <div class="mt-auto">
-                                    {{-- 1. Evaluamos si es un visitante o un cliente común --}}
-                                    @if(!auth()->check())
-                                    <a href="{{ route('register') }}" class="btn btn-custom w-100">
-                                        <i class="bi bi-box-arrow-in-right me-2"></i> Agregar al carrito
-                                    </a>
-
-                                    {{-- CASO 2: Está logueado y es ADMINISTRADOR (Filtramos por descarte si tu BD usa admin, ADMIN o número) --}}
-                                    @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'ADMIN' || auth()->user()->is_admin == 1 || auth()->user()->role_id == 1)
-                                    <button type="button" class="btn btn-secondary w-100 disabled" style="cursor: not-allowed; opacity: 0.7;">
-                                        <i class="bi bi-shield-lock me-2"></i> Vista de Admin
-                                    </button>
-
-                                    {{-- CASO 3: Si no es ninguno de los anteriores, es un cliente común logueado -> Puede comprar --}}
-                                    @else
-                                    <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="btn btn-custom w-100">
-                                            <i class="bi bi-cart-plus me-2"></i> Agregar al carrito
-                                        </button>
-                                    </form>
-                                    @endif
-                                </div>
-                            </div>
-
-                        </div>
+           @foreach($featuredProducts->chunk(4) as $chunk)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">                
+                        @foreach($chunk as $product)
+                            @include('front.inicio._card-product')
+                        @endforeach          
                     </div>
-                    @endforeach
-
                 </div>
-            </div>
-
-            {{-- Segundo slide, segundos 4 productos--}}
-            @if($secondGroup->count())
-            <div class="carousel-item">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-
-                    @foreach($secondGroup as $product)
-                    <div class="col">
-                        <div class="card card-producto h-100 shadow-sm border-0">
-
-                            <div class="card-img-top-container position-relative w-100" style="height: 200px; overflow: hidden;">
-
-
-                                @if($product->image_url)
-                                {{-- Si el producto tiene una imagen en la base de datos, la muestra directamente --}}
-                                <img src="{{ asset('storage/products-images/' . basename($product->image_url)) }}"
-                                    class="card-img-top w-100 img-product"
-                                    alt="{{ $product->name }}"
-                                    style="object-fit: cover; height: 220px;">
-                                @else
-                                {{-- Si el campo de la base de datos vino vacío (null) --}}
-                                <div class="d-flex flex-column align-items-center justify-content-center bg-light text-muted w-100 rounded-top border-bottom"
-                                    style="height: 220px; background-color: #f8f9fa;">
-                                    <i class="bi bi-images text-secondary opacity-50" style="font-size: 2.5rem;"></i>
-                                    <span class="small fw-semibold text-uppercase tracking-wider mt-2" style="font-size: 0.65rem; color: #6c757d;">Sin Imagen</span>
-                                </div>
-                                @endif
-                            </div>
-
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">
-                                    {{ $product->name }}
-                                </h5>
-
-                                <p class="card-text fw-bold fs-4">
-                                    ${{ number_format($product->price, 0, ',', '.') }}
-                                </p>
-
-                                <div class="mt-auto">
-                                    {{-- 1. Evaluamos si es un visitante o un cliente común --}}
-                                    @if(!auth()->check())
-                                    <a href="{{ route('register') }}" class="btn btn-custom w-100">
-                                        <i class="bi bi-box-arrow-in-right me-2"></i>Agregar al carrito
-                                    </a>
-
-                                    {{-- CASO 2: Está logueado y es ADMINISTRADOR (Filtramos por descarte si tu BD usa admin, ADMIN o número) --}}
-                                    @elseif(auth()->user()->role === 'admin' || auth()->user()->role === 'ADMIN' || auth()->user()->is_admin == 1 || auth()->user()->role_id == 1)
-                                    <button type="button" class="btn btn-secondary w-100 disabled" style="cursor: not-allowed; opacity: 0.7;">
-                                        <i class="bi bi-shield-lock me-2"></i> Vista de Admin
-                                    </button>
-
-                                    {{-- CASO 3: Si no es ninguno de los anteriores, es un cliente común logueado -> Puede comprar --}}
-                                    @else
-                                    <form action="{{ route('cart.add', $product->id) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="quantity" value="1">
-                                        <button type="submit" class="btn btn-custom w-100">
-                                            <i class="bi bi-cart-plus me-2"></i> Agregar al carrito
-                                        </button>
-                                    </form>
-                                    @endif
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
-            @endif
-
+            @endforeach
         </div>
-
         {{-- Controles --}}
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
-
         <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
