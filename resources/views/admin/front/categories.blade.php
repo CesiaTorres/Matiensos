@@ -72,9 +72,10 @@
                                 <tr>
                                     <td>
                                         @if($category->image_url)
-                                        <img src="{{ asset('img/categories/' . $category->image_url) }}"
-                                            alt="{{ $category->name }}" class="rounded shadow-sm"
-                                            style="width: 45px; height: 45px; object-fit: cover;">
+                                        <img src="{{ asset('storage/categories-images/' . basename($category->image_url)) }}"
+                                            alt="{{ $category->name }}"
+                                            style="width: 50px; height: 50px; object-fit: cover;"
+                                            class="rounded">
                                         @else
                                         <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
                                             <i class="bi bi-image small"></i>

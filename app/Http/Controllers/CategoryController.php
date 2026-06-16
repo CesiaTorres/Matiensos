@@ -30,8 +30,8 @@ class CategoryController
         $chartCategories = Category::withCount('products')->get();
         $chartLabels = $chartCategories->pluck('name');
         $chartData = $chartCategories->pluck('products_count');
-        
-        return view('admin.front.categories', compact('categories', 'metrics','chartLabels', 'chartData'));
+
+        return view('admin.front.categories', compact('categories', 'metrics', 'chartLabels', 'chartData'));
     }
 
     /**
@@ -39,6 +39,7 @@ class CategoryController
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string|max:100|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:categories,name',
             'description' => 'nullable|string|max:255',
@@ -47,15 +48,26 @@ class CategoryController
             'name.unique' => 'No se pudo guardar: Ya existe una categoría registrada con ese nombre.',
         ]);
 
-        $imagePath = null;
-            if ($request->hasFile('image_url')) {
-                $imagePath = $request->file('image_url')->store('products', 'public');
-            }
+
+        $dbImageValue = null;
+        if ($request->hasFile('image_url')) {
+            $file = $request->file('image_url');
+
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+
+            $file->storeAs('categories-images', $filename, 'public');
+
+
+            $dbImageValue = $filename;
+        }
+
 
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image_url' => $imagePath,
+            'image_url' => $dbImageValue,
         ]);
 
         return redirect()->route('admin.categories')->with('success', 'Categoría creada exitosamente.');
@@ -75,9 +87,17 @@ class CategoryController
         ], [
             'name.unique' => 'No se pudo actualizar: Ya existe otra categoría con ese nombre.',
         ]);
-        if ($request->hasFile('image_url')) {       
-            $imagePath = $request->file('image_url')->store('products', 'public');     
-            $category->image_url = $imagePath;
+        if ($request->hasFile('image_url')) {
+            $file = $request->file('image_url');
+
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+
+            $file->storeAs('categories-images', $filename, 'public');
+
+
+            $category->image_url = $filename;
         }
 
         $category->name = $request->name;
