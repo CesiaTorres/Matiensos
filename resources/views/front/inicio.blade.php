@@ -290,16 +290,16 @@ $secondGroup = $featuredProducts->slice(4, 4);
             </div>
 
             <div class="modal-body p-4">
-                <form action="{{ route('admin.banner.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.banner.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="text-center mb-4">
 
-                        @if($item->image && file_exists(public_path('img/inicio/' . $item->image)))
-                        <img src="{{ asset('img/inicio/' . $item->image) }}"
+                        @if($product->image && file_exists(public_path('img/inicio/' . $product->image)))
+                        <img src="{{ asset('img/inicio/' . $product->image) }}"
                             class="d-block w-100 img-banner rounded-3 mb-3 shadow-sm"
-                            alt="{{ $item->name ?? 'banner' }}"
+                            alt="{{ $product->name ?? 'banner' }}"
                             style="height: 150px; object-fit: cover;">
                         @else
                         <div class="hero-banner position-relative bg-light border-bottom d-flex align-items-center justify-content-center" style="height: 400px;">
@@ -318,7 +318,7 @@ $secondGroup = $featuredProducts->slice(4, 4);
 
                     <div class="mb-3">
                         <label class="form-label  d-block mb-3">Descripción del Banner</label>
-                        <input type=" text" name="description" class="form-control" value="{{ $item->description }}">
+                        <input type=" text" name="description" class="form-control" value="{{ $product->description }}">
                     </div>
 
                     <button type="submit" class="btn btn-color-matiensos text-white w-100 rounded-3 mt-3 fw-bold">

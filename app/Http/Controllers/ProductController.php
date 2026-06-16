@@ -66,7 +66,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //Validación
+        
         $request->validate([
             'code' => 'required|string|max:50|regex:/^[^\s]+(\s+[^\s]+)*$/|unique:products,code',
             'name' => 'required|string|max:150|unique:products,name',
@@ -80,11 +80,22 @@ class ProductController extends Controller
             'name.unique' => 'No se pudo guardar: Ya existe un producto registrado con ese mismo nombre.',
         ]);
 
-        $imagePath = null;
+        
+        $dbImageValue = null;
         if ($request->hasFile('image_url')) {
-            $imagePath = $request->file('image_url')->store('products', 'public');
+            $file = $request->file('image_url');
+
+           
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+           
+            $file->storeAs('products-images', $filename, 'public');
+
+            
+            $dbImageValue = $filename;
         }
 
+        
         Product::create([
             'code' => strtoupper($request->code),
             'name' => $request->name,
@@ -92,8 +103,9 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image_url' => $imagePath,
+            'image_url' => $dbImageValue, 
         ]);
+
         return redirect()->route('admin.products')->with('success', 'Producto agregado exitosamente al catálogo.');
     }
 
