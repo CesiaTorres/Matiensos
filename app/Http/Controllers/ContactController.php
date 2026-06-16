@@ -12,6 +12,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {   
         $rules = [
+            'asunto'  => 'required|string|max:255',
             'mensaje' => 'required|string|regex:/^[^\s]+(\s+[^\s]+)*$/|min:5|max:2000',
         ];
 
@@ -23,7 +24,7 @@ class ContactController extends Controller
         $validated = $request->validate($rules);
         $data = [
             'message' => $validated['mensaje'],
-            'subject' => null,
+            'subject' => $validated['asunto'],
         ];
 
         if (Auth::check()) {
