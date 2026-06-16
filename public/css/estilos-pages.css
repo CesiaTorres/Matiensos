@@ -14,7 +14,7 @@
     border-radius: 8px;
 }
 .dropdown-toggle::after {
-    display: none;  /*Oculta la flecha de los menu desplegables*/ 
+    display: none; /*Oculta la flecha de los menu desplegables*/
 }
 
 /*Aplica reglas hover si la pantalla es una laptor o pc*/
@@ -33,8 +33,14 @@
 
 /* Animación de entrada suave */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* background del navbar personalizado*/
@@ -44,7 +50,7 @@
 
 /* bg del body */
 body {
-    background-color: #eaeaea ;
+    background-color: #eaeaea;
 }
 
 /*OPCIONES ICONOS (DCHA)*/
@@ -63,12 +69,12 @@ body {
     color: #f8fdfa;
     text-align: center;
 }
-.nav-link:hover{
+.nav-link:hover {
     font-weight: bold;
     color: #f8fdfa;
 }
 /* Evita que el botón de Productos se ponga negro al hacer clic o estar abierto */
-.nav-link.show, 
+.nav-link.show,
 .nav-link:focus {
     color: #f8fdfa !important; /* Mantiene tu color blanco hueso */
 }
@@ -77,11 +83,10 @@ body {
     font-weight: bold;
 }
 
-    
 /**Carrousel principal */
 .img-banner {
-    width: 100%;       /* Ocupa el ancho del contenedor */
-    height: 450px;     /* Altura fija para que no sea gigante en PC */
+    width: 100%; /* Ocupa el ancho del contenedor */
+    height: 450px; /* Altura fija para que no sea gigante en PC */
     object-fit: cover; /* Recorta los bordes para no deformar la imagen */
     object-position: center;
 }
@@ -93,15 +98,15 @@ body {
     }
 }
 .carousel-banner {
-  line-height: 0; 
+    line-height: 0;
 }
 
 .carousel-banner img {
-  display: block;
+    display: block;
 }
 
 .carousel-banner .carousel-item {
-  height: auto;
+    height: auto;
 }
 
 /* Estilos de las cards*/
@@ -114,14 +119,14 @@ body {
 
 /* Estilos para la img de cada card */
 .card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 /*estilo para precio de las cards*/
 .card-text {
-  color: #386150;
-  font-weight: bold;
+    color: #386150;
+    font-weight: bold;
 }
 /*Estilo para el boton de productos*/
 .btn-custom {
@@ -134,7 +139,6 @@ body {
     background-color: #3d755a;
 }
 
-    
 /**Carrousel principal */
 .img-banner {
     width: 100%;
@@ -146,8 +150,8 @@ body {
 /* MOBILE */
 @media (max-width: 768px) {
     .img-banner {
-        height: auto;           
-        object-fit: contain;     
+        height: auto;
+        object-fit: contain;
     }
 }
 
@@ -161,14 +165,14 @@ body {
 
 /* Estilos para la img de cada card */
 .card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 /*estilo para precio de las cards*/
 .card-text {
-  color: #386150;
-  font-weight: bold;
+    color: #386150;
+    font-weight: bold;
 }
 /*Estilo para el boton de productos*/
 .btn-custom {
@@ -185,48 +189,48 @@ body {
 /* Estilos para las cards de categorías */
 /* Bordes de la card */
 .card-categoria {
-  border-radius: 20px;
-  background: #000;
-  overflow: hidden; /* para que la imagen respete el borde */
+    border-radius: 20px;
+    background: #000;
+    overflow: hidden; /* para que la imagen respete el borde */
 }
 
 /* Botón personalizado */
 .btn-categoria {
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  background: transparent;
-  transition: all 0.3s ease;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    background: transparent;
+    transition: all 0.3s ease;
 }
 
 .btn-categoria:hover {
-  background: #386150;
-  border-color: #386150;
-  color: #ffffff;
+    background: #386150;
+    border-color: #386150;
+    color: #ffffff;
 }
 .card-title {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .btn-categoria {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 /* tema id productos */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 #mates,
 #bombillas,
 #termos {
-  scroll-margin-top: 100px;
+    scroll-margin-top: 100px;
 }
 
 /* CARRUSEL FONDO CLARO - flechas negras 
 SOLO para el carrusel de productos */
 #carouselProductos .carousel-control-prev-icon,
 #carouselProductos .carousel-control-next-icon {
-    filter: brightness(0) !important; 
+    filter: brightness(0) !important;
     transform: scale(1.8);
 }
 
@@ -252,9 +256,9 @@ SOLO para el carrusel de productos */
 @media (max-width: 768px) {
     #contacto {
         /* En móvil, si tu navbar es más chico, ajustas aquí */
-        scroll-margin-top: 70px; 
+        scroll-margin-top: 70px;
     }
-    
+
     /* Opcional: Reduce el tamaño del título en móvil para que suba más */
     #contacto h1.display-5 {
         font-size: 1.8rem;
@@ -264,25 +268,32 @@ SOLO para el carrusel de productos */
 
 /*TIPOGRAFIA*/
 /* Para los títulos del Navbar y Footer */
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-    font-family: 'Lora', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: "Lora", serif;
     font-weight: 700;
 }
 /* Para los enlaces del menú, textos de productos y el resto */
-body, .nav-link, .dropdown-item {
-    font-family: 'Montserrat', sans-serif;
+body,
+.nav-link,
+.dropdown-item {
+    font-family: "Montserrat", sans-serif;
 }
-
 
 /*COLOR MATIENSOS*/
 .color-matiensos {
     color: #386150 !important;
 }
 .border-matiensos {
-    border: 3px solid #386150
+    border: 3px solid #386150;
 }
 .bg-matiensos {
-    background-color: #386150
+    background-color: #386150;
 }
 .bg-matiensos-light {
     background-color: rgba(56, 97, 80, 0.15); /* El 0.25 es el 25% */
@@ -308,7 +319,7 @@ body, .nav-link, .dropdown-item {
 /*FORM INPUT Y SELECT*/
 .form-control:focus,
 .form-select:focus {
-    border-color:  #386150;
+    border-color: #386150;
     box-shadow: 0 0 0 0.25rem rgba(45, 87, 67, 0.25); /* Sombra verde traslúcida */
 }
 
@@ -319,11 +330,14 @@ body, .nav-link, .dropdown-item {
 }
 /* Quita el resplandor azul cuando se hace clic */
 .accordion-item .accordion-button:focus {
-    box-shadow: none;         /* Sin la sombra azul */
-    border-color: #dee2e6;    /* Mantenemos el borde gris clarito de Bootstrap */
+    box-shadow: none; /* Sin la sombra azul */
+    border-color: #dee2e6; /* Mantenemos el borde gris clarito de Bootstrap */
 }
 /* Color de la flechita cuando se abre */
 .accordion-item .accordion-button::after {
     /* Esto hace que la flecha sea negra en lugar de azul */
     filter: brightness(0);
+}
+#adminSidebar {
+    background-color: #386150 !important;
 }

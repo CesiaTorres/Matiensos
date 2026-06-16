@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        {{-- head del admin --}}
-        @include('admin.partials.head-admin')
-    </head>
 
-    <body>
-        {{-- d-flex base. Si tu sidebar no es un offcanvas en mobile, podés sumar 'flex-column flex-md-row' --}}
-        <div class="d-flex min-vh-100 bg-light">
-            
-            {{-- menú lateral --}}
-            @include('admin.partials._sidebar')
+<head>
+    {{-- head del admin --}}
+    @include('admin.partials.head-admin')
+</head>
 
-            {{-- EL TRUCO MÁGICO: min-width: 0 evita que las tablas anchas rompan el flexbox principal --}}
-            <div class="flex-grow-1" style="min-width: 0;">
-                
-                {{-- Paddings responsivos: p-3 en celulares, p-4 a partir de tablets --}}
-                <main class="p-3 p-md-4 w-100 overflow-hidden">
-                    @yield('content')
-                </main>
-                
+<body>
+    <div class="d-flex">
+        {{-- menú lateral --}}
+        @include('admin.partials._sidebar')
+
+        <div class="flex-grow-1 w-0 min-vh-100">
+            <div class="d-lg-none p-3">
+                <button class="btn btn-color-matiensos"
+                    type=" button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#adminSidebar">
+                    <i class="bi bi-list"></i>
+                </button>
             </div>
-            
+            <main class="p-4">
+                {{-- Dashboard, Lista de Productos, etc. --}}
+                @yield('content')
+            </main>
         </div>
 
-        {{-- Los scripts del admin --}}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+    </div>
+    {{-- Los scripts del admin --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
