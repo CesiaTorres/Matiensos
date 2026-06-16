@@ -25,7 +25,10 @@ Route::get('/contacto', function () {
 Route::get('/quienes-somos', function () {
     return view('front.quienes-somos');
 })->name('quienes-somos');
+
 Route::get('/productos', [ProductController::class, 'catalogo'])->name('productos');
+Route::post('/contacto/enviar', [ContactController::class, 'store'])->name('contact.store');
+
 Route::get('/terminos-y-usos', function () {
     return view('front.terms');
 })->name('terminos-y-usos');
@@ -92,7 +95,6 @@ Route::middleware('auth')->group(function () {
 
 //CLIENTE
 Route::prefix('cliente')->middleware(['auth', 'role:2'])->group(function () {
-    Route::post('/contacto/enviar', [ContactController::class, 'store'])->name('contact.store');
 
     //Carrito de Compras
     Route::get('/carrito', [CartController::class, 'index'])->name('cart');

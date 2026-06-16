@@ -40,6 +40,7 @@
                                 matiensos@gmail.com
                             </p>
                         </div>
+                        
                         <div class="col-md-6 ">
 
                             <form action="{{ route('contact.store') }}" method="POST">

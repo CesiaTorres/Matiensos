@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+Use \App\Models\Contact;
 
 class ProfileController extends Controller
 {
@@ -33,13 +34,17 @@ class ProfileController extends Controller
         $ordersDelivered = Order::where('user_id', $user->id)
             ->where('status', 'delivered')
             ->count();
-
+        $contacts = Contact::where('email', $user->email)
+            ->latest()
+            ->paginate(5);
+            
         return view('front.profile.perfil_user', compact(
             'user',
             'orders',
             'totalOrders',
             'ordersInProgress',
-            'ordersDelivered'
+            'ordersDelivered',
+            'contacts'
         ));
     }
 
@@ -56,4 +61,6 @@ class ProfileController extends Controller
 
         return view('front.profile.order_detail', compact('order'));
     }
+
+    
 }

@@ -86,18 +86,17 @@
 
             {{-- TABLA PEDIDOS DEL CLIENTE --}}
             <div class="row mt-5">
-                <div class="col-12 ">
+                <div class="col-12">
                     <div class="card border-0 shadow-sm bg-white p-4 rounded-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="fw-bold text-dark m-0">Mis Últimos Pedidos</h5>
                         </div>
-
                         {{-- Tabla --}}
                         <div class="table-responsive">
                             <table class="table table-hover align-middle m-0">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Pedido #</th>
+                                        <th>Pedido</th>
                                         <th>Fecha</th>
                                         <th>Total</th>
                                         <th>Estado</th>
@@ -139,11 +138,17 @@
                                 </tbody>
                             </table>
                         </div>
+
+
                         {{-- Navegacion de pedidos --}}
                         <x-_pagination :items="$orders" label="pedidos" />
                     </div>
                 </div>
+                
             </div>
+            @include('front.profile._query-profile')
+            
+
         @endif
     </div>
 </div>
