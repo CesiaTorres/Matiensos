@@ -162,17 +162,16 @@ class ProductController extends Controller
         return redirect()->route('admin.products')->with('success', 'Producto eliminado correctamente.');
     }
 
-    public function catalog()
+    public function catalogo(Request $request)
     {
-        $products = Product::with('category')
-            ->where('is_active', true)
-            ->get();
+        $query = Product::where('is_active', true);
 
-        $categories = Category::all();
+        if ($request->has('search') && $request->search != '') {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
 
-        return view('front.products', compact(
-            'products',
-            'categories'
-        ));
+        $products = $query->orderBy('name')->paginate(8);
+
+        return view('front.products', compact('products'));
     }
 }

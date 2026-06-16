@@ -39,7 +39,9 @@
                             <select name="role_id" class="form-select" required>
                                 <option value="" selected disabled>Seleccionar Rol...</option>
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ ucfirst($role->name) }}</option>
+                                    @if($role->id != 2) 
+                                        <option value="{{ $role->id }}">{{ ucfirst($role->name) }}</option>
+                                    @endif
                                 @endforeach              
                             </select>
                             <div class="invalid-feedback fw-semibold">Seleccioná un rol válido.</div>

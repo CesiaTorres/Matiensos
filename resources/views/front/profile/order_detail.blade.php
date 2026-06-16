@@ -1,11 +1,16 @@
 @extends('layouts.app')
-@section('title', 'Detalle del pedido - Matiensos')
+@section('titulo', 'Detalle del Pedido | Matiensos')
 
 @section('content')
-<div class="container px-4  py-5">
+<div class="container-fluid px-4 pt-4">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
+            {{-- Boton volver --}}
+            <a href="{{route('perfil_user')}}" class="btn btn-sm btn-color-matiensos border mb-2">
+                <i class="bi bi-arrow-left me-1"></i> Volver a Mi Perfil
+            </a>
+
             {{-- Pedido y estado --}}
             <h2 class="fw-bold text-dark m-0 d-flex align-items-center gap-3">
                 Pedido #{{ $order->code }}
@@ -13,6 +18,11 @@
             </h2>
             <small class="text-muted">Fecha de compra: {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y H:i') }}</small>
         </div>
+
+        {{-- Botones de acción --}}
+        <a href="{{ route('admin.orders.print', $order->id) }}" target="_blank" class="btn btn-color-matiensos fw-bold me-2">
+            <i class="bi bi-printer me-2"></i> Imprimir Ticket
+        </a>
     </div>
 
     <div class="row">
@@ -37,27 +47,22 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-
-                                            {{-- ⬇️ CONTROL UNIFICADO PARA CARPETA PUBLIC_PATH ⬇️ --}}
-                                            @if($item->product && $item->product->image_url)
-                                            <img src="{{ asset('storage/' . $item->product->image_url) }}"
-                                                alt="{{ $item->product->name }}"
-                                                class="rounded shadow-sm me-3"
-                                                style="width: 45px; height: 45px; object-fit: cover;">
+                                             @if($item->product && $item->product->image_url)
+                                                <img src="{{ asset('storage/' . $item->product->image_url) }}" 
+                                                    alt="{{ $item->product->name }}" 
+                                                    class="rounded shadow-sm me-3" 
+                                                    style="width: 45px; height: 45px; object-fit: cover;">
                                             @else
-                                            {{-- PLACEHOLDER: Si el producto no tiene imagen cargada --}}
-                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center border shadow-sm"
-                                                style="width: 45px; height: 45px; background-color: #f8f9fa;">
-                                                <i class="bi bi-image text-secondary opacity-50" style="font-size: 1.2rem;"></i>
-                                            </div>
+                                                <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                    <i class="bi bi-box-seam fs-5 text-secondary"></i>
+                                                </div>
                                             @endif
-                                            {{-- ⬆️ TERMINA EL BLOQUE DE CONTROL DE IMAGEN ⬆️ --}}
-
+                                            
                                             <div>
                                                 <div class="fw-bold text-dark">{{ $item->product->name ?? 'Producto Eliminado' }}</div>
                                                 <small class="text-muted">Cod: {{ $item->product->code ?? 'N/A' }}</small>
                                             </div>
-                                        </div>
+                                        </div>                                        
                                     </td>
                                     <td class="text-center text-muted">
                                         $ {{ number_format($item->unit_price, 0, ',', '.') }}

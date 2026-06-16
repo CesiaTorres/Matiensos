@@ -23,32 +23,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Productos
-                    </a>
-
-                    <ul class="dropdown-menu">
-
-                        @foreach($categories as $category)
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('productos') }}#categoria-{{ $category->id }}">
-                                {{ $category->name }}
-                            </a>
-                        </li>
-                        @endforeach
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item" href="{{ route('productos') }}">
-                                Ver todos
-                            </a>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('productos') }}">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('quienes-somos') }}">Quiénes Somos</a>
