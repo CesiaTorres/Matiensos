@@ -1,11 +1,21 @@
-<div class="bg-matiensos p-3 sidebar d-flex flex-column justify-content-between flex-shrink-0 vh-100 position-sticky top-0" 
-     style="width: 260px;">
-    
+<div class="offcanvas-lg offcanvas-start text-white p-3 sidebar d-flex flex-column justify-content-between vh-100"
+    tabindex="-1"
+    id="adminSidebar"
+    style="width: 260px;">
+
+    <div class="offcanvas-header d-lg-none">
+        <h5 class="offcanvas-title text-white fw-bold">
+            Panel de Administración
+        </h5>
+        <button type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas">
+        </button>
+    </div>
     <div>
-        <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <h3 class="fw-bold text-white fs-4">Panel de Administración</h3>    
+        <a href="{{ route('admin.dashboard') }}" class="d-none d-lg-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <h3 class="fw-bold text-white fs-4">Panel de Administración</h3>
         </a>
-        
         <hr class="text-white-50">
         {{-- Opciones --}}
         <ul class="nav nav-pills flex-column mb-auto">
@@ -47,9 +57,9 @@
             </li>
         </ul>
     </div>
-    
+
     <div>
-        <hr class="text-white-50">    
+        <hr class="text-white-50">
         <a href="{{ route('inicio') }}" class="nav-link text-white opacity-75 px-2">
             <i class="bi bi-box-arrow-left me-2"></i> Ir a la Tienda
         </a>
