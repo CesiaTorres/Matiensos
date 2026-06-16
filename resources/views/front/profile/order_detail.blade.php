@@ -40,7 +40,7 @@
 
                                             {{-- ⬇️ CONTROL UNIFICADO PARA CARPETA PUBLIC_PATH ⬇️ --}}
                                             @if($item->product && $item->product->image_url && file_exists(public_path('img/products/' . $item->product->image_url)))
-                                            <img src="{{ asset('img/products/' . $item->product->image_url) }}"
+                                            <img src="{{ asset('img/products-images' . $item->product->image_url) }}"
                                                 alt="{{ $item->product->name }}"
                                                 class="rounded shadow-sm me-3"
                                                 style="width: 45px; height: 45px; object-fit: cover;">

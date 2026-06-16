@@ -77,15 +77,29 @@
                                     <td class="fw-bold text-secondary">{{ $product->code }}</td>
 
                                     <td>
-                                        @if($product->image_url)
-                                        <img src="{{ asset('img/products/' . $product->image_url)  }}"
-                                            alt="{{ $product->name }}" class="rounded shadow-sm"
+
+                                        @if($product && $product->image_url && file_exists(storage_path('app/public/products-images/' . $product->image_url)))
+                                        {{-- Opción 1: Si existe en products-images --}}
+                                        <img src="{{ asset('storage/products-images/' . $product->image_url) }}"
+                                            alt="{{ $product->name }}"
+                                            class="rounded shadow-sm"
                                             style="width: 45px; height: 45px; object-fit: cover;">
+
+                                        @elseif($product && $product->image_url && file_exists(storage_path('app/public/products/' . $product->image_url)))
+                                        {{-- Opción 2: Si existe en la carpeta products a secas --}}
+                                        <img src="{{ asset('storage/products/' . $product->image_url) }}"
+                                            alt="{{ $product->name }}"
+                                            class="rounded shadow-sm"
+                                            style="width: 45px; height: 45px; object-fit: cover;">
+
                                         @else
-                                        <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm" style="width: 45px; height: 45px;">
-                                            <i class="bi bi-image small"></i>
+                                        {{-- PLACEHOLDER UNIFICADO: Si el archivo físico no está en ningún lado --}}
+                                        <div class="bg-light rounded d-flex align-items-center justify-content-center text-muted shadow-sm border"
+                                            style="width: 45px; height: 45px; background-color: #f8f9fa;">
+                                            <i class="bi bi-images text-secondary opacity-50" style="font-size: 1.2rem;"></i>
                                         </div>
                                         @endif
+                                        {{-- ⬆️ TERMINA EL BLOQUE DE LA IMAGEN ⬆️ --}}
                                     </td>
 
                                     <td>
