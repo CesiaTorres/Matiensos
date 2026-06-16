@@ -99,22 +99,19 @@ class OrderController extends Controller
             ->latest()
             ->paginate(10);
 
-        $totalOrders =  Order::where('user_id', $user->id)->count();
+        
+        $metrics = [
+            'total_orders'     => Order::where('user_id', $user->id)->count(),
+            'pending_orders'   => Order::where('user_id', $user->id)
+                ->whereIn('status', ['pending', 'paid', 'shipped']) // Incluye todos los estados "en curso"
+                ->count(),
+            'delivered_orders' => Order::where('user_id', $user->id)
+                ->where('status', 'delivered')
+                ->count(),
+        ];
 
-        $ordersInProgress = Order::where('user_id', $user->id)
-            ->whereIn('status', ['pending', 'paid', 'shipped'])
-            ->count();
-
-        $ordersDelivered = Order::where('user_id', $user->id)
-            ->where('status', 'delivered')
-            ->count();
-
-        return view('front.profile.perfil_user', compact(
-            'orders',
-            'totalOrders',
-            'ordersInProgress',
-            'ordersDelivered'
-        ));
+        
+        return view('front.profile.perfil_user', compact('orders', 'metrics'));
     }
 
     /**

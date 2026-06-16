@@ -39,6 +39,7 @@
 
         @if(Auth::user()->role->name === 'Cliente')
         {{-- CONTENIDO --}}
+        
         <div class="p-4 p-md-5 bg-light">
             <h2>Resumen de tu cuenta</h2>
 

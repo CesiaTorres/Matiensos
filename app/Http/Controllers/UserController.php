@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ActivityLog;
 
+
 class UserController extends Controller
 {
     /**
@@ -34,6 +35,7 @@ class UserController extends Controller
             'suspended'    => User::onlyTrashed()->count(),
             'active_now'   => User::whereNotNull('remember_token')->count(),
         ];
+        
         $logs = ActivityLog::with('user')->latest('created_at')->take(15)->get();
 
         return view('admin.front.users', compact('users', 'roles', 'metrics', 'logs'));
